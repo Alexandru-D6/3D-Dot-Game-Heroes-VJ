@@ -40,11 +40,11 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void setRotation() {
-        if (moveDirection.x > 0.0f) {
+        if (moveDirection.x < 0.0f) {
             if (moveDirection.y > 0.0f) currentRotation = rotationStates.RightFront;
             else if (moveDirection.y < 0.0f) currentRotation = rotationStates.RightBack;
             else currentRotation = rotationStates.Right;
-        } else if (moveDirection.x < 0.0f) {
+        } else if (moveDirection.x > 0.0f) {
             if (moveDirection.y > 0.0f) currentRotation = rotationStates.LeftFront;
             else if (moveDirection.y < 0.0f) currentRotation = rotationStates.LeftBack;
             else currentRotation = rotationStates.Left;
@@ -61,8 +61,22 @@ public class PlayerInput : MonoBehaviour {
         playerAnimator.SetBool("Running", moveDirection != Vector2.zero);
     }
 
+    /**
+     * Both angle1 and angle2 should go with a range of [-180,180)
+     * @params angle1 
+     **/
+    /// <summary> Return the direction to the shortest rotation into destination </summary>
+    /// <param name="origin"> Origin of the rotation</param>
+    /// <param name="destination"> Destination of the rotation</param>
+    /// <remarks> Both angle should have a range of [-180,180)</remarks>
+    private float getShortestSign(float origin, float destination) {
+
+        return 0.0f;
+    }
+
     private void rotationRoutine() {
-        float angle = ((int)currentRotation - (int)rotationStates.Forward) * 90.0f;
+        float angle = -180.0f + ((int)currentRotation * 45.0f);
+        getShortestSign(angle, angle);
         transform.rotation = Quaternion.Euler(new Vector3(0.0f,angle,0.0f));
         /*if (currentRotation == 0) angle = (transform.rotation.y > 180.0f ? 360.0f : 0.0f);
 
