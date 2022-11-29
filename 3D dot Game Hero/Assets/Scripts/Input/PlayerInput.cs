@@ -13,10 +13,8 @@ public class PlayerInput : MonoBehaviour {
     [SerializeField] private Animator playerAnimator;
 
     [SerializeField] private Vector2 moveDirection = Vector2.zero;
-    [SerializeField] private Vector2 fireDirection = Vector2.zero;
     [SerializeField] private Vector2 moveSpeed;
     private InputAction move;
-    private InputAction fire;
 
     [SerializeField] rotationStates currentRotation = rotationStates.Forward;
     [SerializeField] private float rotationSpeed;
@@ -28,15 +26,10 @@ public class PlayerInput : MonoBehaviour {
     private void OnEnable() {
         move = playerControls.Player.Move;
         move.Enable();
-
-        fire = playerControls.Player.Fire;
-        fire.Enable();
-        fire.performed += Fire;
     }
 
     private void OnDisable() {
         move.Disable();
-        fire.Disable();
     }
 
     private void setRotation() {
@@ -74,14 +67,8 @@ public class PlayerInput : MonoBehaviour {
 
     void Update() {
         moveDirection = move.ReadValue<Vector2>();
-        fireDirection = fire.ReadValue<Vector2>();
 
         movementRoutine();
         rotationRoutine();
-    }
-
-    private void Fire(InputAction.CallbackContext context) {
-        Debug.Log("Fire");
-        //fireDirection = fire.ReadValue<Vector2>();
     }
 }
