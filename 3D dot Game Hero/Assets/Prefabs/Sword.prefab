@@ -239,6 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6109902119098858777}
   - component: {fileID: 7862891575511106029}
+  - component: {fileID: 6030879579919917851}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -281,3 +282,75 @@ MonoBehaviour:
   lockedRotation: {x: 0, y: 0, z: -90}
   weaponAnchor: {fileID: 0}
   shaftAnchor: {fileID: 6855031003710036800}
+--- !u!114 &6030879579919917851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6881899592116037539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 005eb2515ead9af4d81abf30ada1e870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordScaleCurveLenght:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  swordScaleCurveWidth:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2294315
+      value: 0.7575782
+      inSlope: 1.1687231
+      outSlope: 1.1687231
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bladeTransform: {fileID: 7688523148315110940}
+  deltaTime: 0
+  startAnim: 0
