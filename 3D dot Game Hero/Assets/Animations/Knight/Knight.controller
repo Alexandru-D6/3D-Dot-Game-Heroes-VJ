@@ -213,13 +213,13 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Base Layer
     m_StateMachine: {fileID: 6564653111678738114}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: e4a07521b799a8546a8ca0e31dae8415, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 0
-    m_IKPass: 0
+    m_IKPass: 1
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
 --- !u!1102 &2542407394206950996
@@ -296,7 +296,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9c02e70ef2766c94b8ec4e901b40ae5d, type: 2}
+  m_Motion: {fileID: 7400000, guid: aa40bb938dccdbc4c9b2bad9395093ca, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -313,16 +313,16 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 2542407394206950996}
-    m_Position: {x: 300, y: -140, z: 0}
+    m_Position: {x: 330, y: 500, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3857756345929666538}
-    m_Position: {x: 300, y: -190, z: 0}
+    m_Position: {x: 330, y: 450, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4878632843507213858}
     m_Position: {x: 330, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3277113476867949204}
-    m_Position: {x: 300, y: -90, z: 0}
+    m_Position: {x: 330, y: 550, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5957464796371933966}
     m_Position: {x: 330, y: 110, z: 0}
@@ -334,9 +334,9 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 40, y: -140, z: 0}
+  m_AnyStatePosition: {x: 70, y: 500, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 560, y: -140, z: 0}
+  m_ExitPosition: {x: 590, y: 500, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -5957464796371933966}
 --- !u!1101 &6569173726248416648

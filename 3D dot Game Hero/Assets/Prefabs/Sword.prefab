@@ -308,7 +308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9837f4055fdcc49b4e3fee9e992f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lock_: 0
   initialRotation: {x: 0, y: 0, z: -90}
   lockedRotation: {x: 0, y: 0, z: -90}
   weaponAnchor: {fileID: 0}
@@ -326,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staticRotation: {fileID: 7862891575511106029}
+  scales: {x: 3, y: 10, z: 10}
   swordScaleCurveLenght:
     serializedVersion: 2
     m_Curve:
@@ -388,3 +388,4 @@ MonoBehaviour:
   startAnim: 0
   restoreAnim: 0
   rangeLimiter: 1
+  delayRestore: 0.3
