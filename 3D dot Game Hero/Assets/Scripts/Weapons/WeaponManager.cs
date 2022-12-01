@@ -12,9 +12,8 @@ public class WeaponManager : MonoBehaviour {
     [SerializeField] private GameObject spawnParent;
     [SerializeField] private GameObject[] weaponsPrefabs;
 
-    private GameObject currentWeapon;
-
-    public bool[] debugBool = { false, false, false, false };
+    private GameObject currentWeapon = null;
+    private List<GameObject> inventory = new List<GameObject>(0);
 
     void deleteWeapon(string weapon) {
         for (int i = 0; i < AvailableWeapons.Count; ++i) {
@@ -45,24 +44,61 @@ public class WeaponManager : MonoBehaviour {
         }
     }
 
-    GameObject getWeapon(string weapon) {
+    GameObject getWeaponForSpawn(string weapon) {
         foreach(GameObject x in weaponsPrefabs) {
             if(x.tag.Equals(weapon)) return x; 
         }
         return null;
     }
 
+    bool revealSpawnedWeapon(string weapon) {
+        if (inventory.Count == 0) return false;
+
+        foreach (var x in inventory) {
+            if (x.tag.Equals(weapon)) {
+                if (currentWeapon != null) unselectCurrentWeapon();
+
+                currentWeapon = x;
+                currentWeapon.SetActive(x);
+                return true;
+            }
+        }
+        return false;
+    }
+
     void selectWeapon(string weapon) {
         if (findUses(weapon) > 0) {
-            GameObject obj = getWeapon(weapon);
+            if (revealSpawnedWeapon(weapon)) return;
+            GameObject obj = getWeaponForSpawn(weapon);
             obj = Instantiate(obj, new UnityEngine.Vector3(), new UnityEngine.Quaternion());
             obj.SetActive(false);
             obj.transform.parent = spawnParent.transform;
             obj.SetActive(true);
             currentWeapon = obj;
+            inventory.Add(obj);
             StartCoroutine(lazyActive(2.0f, currentWeapon));
         } else {
-            deleteWeapon(weapon);
+            destroyWeapon(weapon);
+        }
+    }
+
+    void unselectCurrentWeapon() {
+        if (currentWeapon != null) {
+            currentWeapon.SetActive(false);
+            currentWeapon = null;
+        }
+    }
+
+    void destroyWeapon(string weapon) {
+        for (int i = 0; i < inventory.Count; ++i) {
+            if (inventory[i].tag.Equals(weapon)) {
+                deleteWeapon(weapon);
+                inventory[i].transform.parent = null;
+                inventory[i].SetActive(false);
+                Destroy(inventory[i]);
+                inventory.RemoveAt(i);
+                return;
+            }
         }
     }
 
@@ -74,11 +110,23 @@ public class WeaponManager : MonoBehaviour {
         insertWeapon("Sword", int.MaxValue);
     }
 
-    private void Update() {
-        if (debugBool[0]) {
-            debugBool[0] = false;
-            selectWeapon("Sword");
-        }
+    #region DEBUG
+
+    public void DB_createWeapon(string weapon, int uses) {
+        insertWeapon(weapon, uses);
     }
+
+    public void DB_selectWeapon(string weapon) {
+        selectWeapon(weapon);
+    }
+
+    public void DB_deleteWeapon(string weapon) {
+        destroyWeapon(weapon);
+    }
+
+    public void DB_unselectCurrentWeapon() {
+        unselectCurrentWeapon();
+    }
+    #endregion
 
 }

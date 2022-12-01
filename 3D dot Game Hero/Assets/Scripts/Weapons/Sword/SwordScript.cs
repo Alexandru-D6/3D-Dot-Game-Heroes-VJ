@@ -53,7 +53,5 @@ public class SwordScript : MonoBehaviour
                                                 1.0f + 4.0f * swordScaleCurveLenght.Evaluate(deltaTime),
                                                 1.0f + 4.0f * swordScaleCurveWidth.Evaluate(deltaTime));
     }
-    private void FixedUpdate() {
-        
-    }
+
 }
