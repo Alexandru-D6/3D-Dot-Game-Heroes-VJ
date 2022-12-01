@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005eb2515ead9af4d81abf30ada1e870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  staticRotation: {fileID: 7862891575511106029}
   swordScaleCurveLenght:
     serializedVersion: 2
     m_Curve:

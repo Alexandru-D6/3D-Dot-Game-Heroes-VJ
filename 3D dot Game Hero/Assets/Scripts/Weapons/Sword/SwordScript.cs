@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordScript : MonoBehaviour
-{
+public class SwordScript : MonoBehaviour {
+
+    [SerializeField] private StaticRotation staticRotation;
+
     [SerializeField] private AnimationCurve swordScaleCurveLenght;
     [SerializeField] private AnimationCurve swordScaleCurveWidth;
     [SerializeField] private Transform bladeTransform;
@@ -40,11 +42,22 @@ public class SwordScript : MonoBehaviour
 
         if ((deltaTime >= swordScaleCurveLenght.keys[swordScaleCurveLenght.length - 1].time * rangeLimiter && startAnim) ||
                 (deltaTime <= 0.0 && restoreAnim)) {
+
+            if (restoreAnim) staticRotation.lockRotation = false;
+
+            if (startAnim) restoreAnim = true;
+            else restoreAnim = false;
+
             startAnim = false;
-            restoreAnim = false;
             stopAnim = true;
         }
     }
+
+    public void Attack() {
+        staticRotation.lockRotation = true;
+        startAnim = true;
+    }
+
 
     private void Update() {
         controlAnim();

@@ -7,6 +7,9 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class PlayerInput : MonoBehaviour {
 
+    //Managers
+    [SerializeField] private WeaponManager weaponManager;
+
     enum rotationStates { Backward, RightBack, Right, RightFront, Forward, LeftFront, Left, LeftBack};
 
     private PlayerInputActions playerControls;
@@ -32,6 +35,7 @@ public class PlayerInput : MonoBehaviour {
 
         fire = playerControls.Player.Fire;
         fire.Enable();
+        fire.performed += Fire;
     }
 
     private void OnDisable() {
@@ -80,6 +84,8 @@ public class PlayerInput : MonoBehaviour {
     }
 
     public void Fire(InputAction.CallbackContext context) {
-
+        Debug.Log("Fire");
+        playerAnimator.SetTrigger("Attack");
+        weaponManager.useCurrentWeapon();
     }
 }

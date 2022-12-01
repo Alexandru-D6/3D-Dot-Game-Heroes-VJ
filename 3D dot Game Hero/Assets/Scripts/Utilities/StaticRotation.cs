@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class StaticRotation : MonoBehaviour {
 
-    private bool lockRotation { get; set; }
-    [SerializeField] public bool lock_;
+    public bool lockRotation { get; set; }
 
     [SerializeField] private Vector3 initialRotation;
     [SerializeField] private Vector3 lockedRotation;
@@ -20,8 +19,6 @@ public class StaticRotation : MonoBehaviour {
     }
 
     void Update() {
-        lockRotation = lock_;
-
         // Global
         Vector3 temp = transform.eulerAngles;
         if (lockRotation) temp.z = lockedRotation.z;

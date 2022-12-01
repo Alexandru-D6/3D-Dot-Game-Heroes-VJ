@@ -102,12 +102,15 @@ public class WeaponManager : MonoBehaviour {
         }
     }
 
-    IEnumerator lazyActive(float time, GameObject obj) {
-        yield return new WaitForSeconds(time);
+    public void useCurrentWeapon() {
+        if (currentWeapon != null) {
+            decrementWeaponUses(currentWeapon.tag);
+            currentWeapon.GetComponent<SwordScript>().Attack();
+        }
     }
 
-    private void Start() {
-        insertWeapon("Sword", int.MaxValue);
+    IEnumerator lazyActive(float time, GameObject obj) {
+        yield return new WaitForSeconds(time);
     }
 
     #region DEBUG
