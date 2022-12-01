@@ -16,6 +16,9 @@ public class PlayerInput : MonoBehaviour {
     [SerializeField] private Vector2 moveSpeed;
     private InputAction move;
 
+
+    private InputAction fire;
+
     [SerializeField] rotationStates currentRotation = rotationStates.Forward;
     [SerializeField] private float rotationSpeed;
 
@@ -26,10 +29,14 @@ public class PlayerInput : MonoBehaviour {
     private void OnEnable() {
         move = playerControls.Player.Move;
         move.Enable();
+
+        fire = playerControls.Player.Fire;
+        fire.Enable();
     }
 
     private void OnDisable() {
         move.Disable();
+        fire.Disable();
     }
 
     private void setRotation() {
@@ -70,5 +77,9 @@ public class PlayerInput : MonoBehaviour {
 
         movementRoutine();
         rotationRoutine();
+    }
+
+    public void Fire(InputAction.CallbackContext context) {
+
     }
 }

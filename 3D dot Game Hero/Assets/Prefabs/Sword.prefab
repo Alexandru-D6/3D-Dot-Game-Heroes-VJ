@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1749568817714645326}
   - component: {fileID: 1267662896674353125}
   - component: {fileID: 5462544754345910821}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Shaft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7688523148315110940}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: BladeScale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,9 @@ GameObject:
   - component: {fileID: 5834172503983639474}
   - component: {fileID: 2833637859206973414}
   - component: {fileID: 2554436151395765651}
-  m_Layer: 0
+  - component: {fileID: 8075067714871763642}
+  - component: {fileID: 1288084988756154938}
+  m_Layer: 31
   m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,6 +200,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &8075067714871763642
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293144193284614784}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1288084988756154938
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293144193284614784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00075070723, y: 0.011137004, z: 0.0031824338}
+  m_Center: {x: -0.000021904312, y: 0.01247147, z: 0.0000005939278}
 --- !u!1 &5474711596254587870
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6855031003710036800}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: ShaftAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,9 +271,9 @@ GameObject:
   - component: {fileID: 6109902119098858777}
   - component: {fileID: 7862891575511106029}
   - component: {fileID: 6030879579919917851}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Sword
-  m_TagString: Untagged
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307,7 +338,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.25
       value: 1
       inSlope: 0
       outSlope: 0
@@ -331,8 +362,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.2294315
-      value: 0.7575782
+      time: 0.035695016
+      value: 0.7504722
       inSlope: 1.1687231
       outSlope: 1.1687231
       tangentMode: 0
@@ -340,7 +371,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
+      time: 0.1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -354,3 +385,5 @@ MonoBehaviour:
   bladeTransform: {fileID: 7688523148315110940}
   deltaTime: 0
   startAnim: 0
+  restoreAnim: 0
+  rangeLimiter: 1
