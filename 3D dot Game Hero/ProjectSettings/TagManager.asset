@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Sword
+  - Wall
+  - GiroCoconut
+  - ExternalAnchor
   layers:
   - Default
   - TransparentFX
@@ -36,7 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Obstacles
   - Weapon
   m_SortingLayers:
   - name: Default

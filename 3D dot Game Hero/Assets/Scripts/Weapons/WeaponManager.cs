@@ -1,9 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.WebSockets;
-using System.Numerics;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour {
