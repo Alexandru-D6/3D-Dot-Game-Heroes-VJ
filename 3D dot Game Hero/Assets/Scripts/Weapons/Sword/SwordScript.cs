@@ -28,7 +28,7 @@ public class SwordScript : MonoBehaviour {
     [SerializeField] private float rangeLimiter;
 
     [Range(0.0f, 1.0f)]
-    [SerializeField] private float delayRestore;
+    [SerializeField] private float animationDuration;
 
     private void controlAnim() {
         if (startAnim && stopAnim && !restoreAnim) {
@@ -50,22 +50,21 @@ public class SwordScript : MonoBehaviour {
         deltaTime = lastTime - startTime;
 
         if ((deltaTime >= swordScaleCurveLenght.keys[swordScaleCurveLenght.length - 1].time * rangeLimiter && startAnim) ||
-                (deltaTime <= 0.0 && restoreAnim) || emergencyStop) {
+                (deltaTime <= 0.0 && restoreAnim) || (emergencyStop && startAnim)) {
 
             if (restoreAnim) {
-                rotationConstraint.enabled = false;
-                Vector3 tmp = defaultRotation;
-                tmp.y = giroCoconutTransform.eulerAngles.y;
-                transform.eulerAngles = tmp;
+                rotationConstraint.constraintActive = false;
+                restoreDefaultRotation();
             }
 
-            if (startAnim || emergencyStop) StartCoroutine(delayRestoreRoutine(delayRestore));
+            if (startAnim || emergencyStop) StartCoroutine(delayRestoreRoutine(animationDuration - (2.0f * deltaTime)));
             else restoreAnim = false;
 
             startAnim = false;
             stopAnim = true;
-            emergencyStop = false;
         }
+
+        emergencyStop = false;
     }
 
     public void swordCollided() {
@@ -77,9 +76,25 @@ public class SwordScript : MonoBehaviour {
         restoreAnim = true;
     }
 
+    IEnumerator delayConstraintRoutine(float time) {
+        yield return new WaitForSeconds(time);
+        rotationConstraint.constraintActive = false;
+        restoreDefaultRotation();
+    }
+
     public void Attack() {
-        rotationConstraint.enabled = true;
+        rotationConstraint.constraintActive = true;
         startAnim = true;
+    }
+
+    private void restoreDefaultRotation() {
+        Vector3 tmp = transform.localEulerAngles;
+        tmp.z = defaultRotation.z;
+        transform.localEulerAngles = tmp;
+
+        tmp = transform.eulerAngles;
+        tmp.y = giroCoconutTransform.eulerAngles.y;
+        transform.eulerAngles = tmp;
     }
 
     private void Start() {
@@ -89,14 +104,12 @@ public class SwordScript : MonoBehaviour {
         tmp.weight = 1;
 
         rotationConstraint.SetSource(0,tmp);
-        rotationConstraint.enabled = false;
+        rotationConstraint.constraintActive = false;
+
+        restoreDefaultRotation();
     }
 
     private void Update() {
-        Vector3 tmp2 = defaultRotation;
-        tmp2.y = giroCoconutTransform.eulerAngles.y;
-        transform.eulerAngles = tmp2;
-
         controlAnim();
 
         bladeTransform.localScale = new Vector3(1.0f + scales.x * swordScaleCurveWidth.Evaluate(deltaTime),

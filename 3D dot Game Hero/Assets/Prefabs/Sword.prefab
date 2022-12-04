@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 8075067714871763642}
   - component: {fileID: 1288084988756154938}
   - component: {fileID: 6412424195773634189}
+  - component: {fileID: 1650907696738063647}
   m_Layer: 31
   m_Name: Blade
   m_TagString: Untagged
@@ -228,8 +229,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00075070723, y: 0.011137004, z: 0.0031824338}
-  m_Center: {x: -0.000021904312, y: 0.01247147, z: 0.0000005939278}
+  m_Size: {x: 0.00075070723, y: 0.012933889, z: 0.0031824338}
+  m_Center: {x: -0.000021904298, y: 0.01336997, z: 0.00000059396024}
 --- !u!114 &6412424195773634189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +244,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordScript: {fileID: 6030879579919917851}
+  bc: {fileID: 1288084988756154938}
+  increasedCenter: {x: -0.000021904298, y: 0.01336997, z: 0.00000059396024}
+  increasedSize: {x: 0.00075070723, y: 0.012933889, z: 0.0031824338}
+  originalCenter: {x: -0.000021904298, y: 0.012471199, z: 0.0000005939603}
+  originalSize: {x: 0.00075070723, y: 0.011136362, z: 0.0031824338}
+--- !u!114 &1650907696738063647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293144193284614784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5278b37326f42f547ba0ad9634544da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 1
+  angularVelocity: 1
+  inertiaTensor: 1
+  inertiaTensorRotation: 1
+  centerMass: 1
+  _rigidbody: {fileID: 8075067714871763642}
+  initialLocalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &5474711596254587870
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +379,15 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
+      time: 0.20096827
+      value: 0.27601928
+      inSlope: 4.6855545
+      outSlope: 4.6855545
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 0.25
       value: 1
       inSlope: 0
@@ -378,13 +412,22 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.035695016
-      value: 0.7504722
-      inSlope: 1.1687231
-      outSlope: 1.1687231
+      time: 0.043147385
+      value: 0.3241517
+      inSlope: 18.987822
+      outSlope: 18.987822
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.074635446
+      value: 0.7056571
+      inSlope: 10.179269
+      outSlope: 10.179269
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09711811
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.1
@@ -403,7 +446,7 @@ MonoBehaviour:
   startAnim: 0
   restoreAnim: 0
   rangeLimiter: 1
-  delayRestore: 0.1
+  animationDuration: 0.6
 --- !u!1818360609 &7166521443520201675
 RotationConstraint:
   m_ObjectHideFlags: 0

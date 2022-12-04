@@ -128,7 +128,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4816398731180999629, guid: 82a897325f129734ba49e57ccd586349, type: 3}
   m_PrefabInstance: {fileID: 1210537097}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 415047000}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc6d6515d913dde42b0c13616c023487, type: 3}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2123637362340070481, guid: 82a897325f129734ba49e57ccd586349, type: 3}
   m_PrefabInstance: {fileID: 1210537097}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 415047000}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b955e6a7fbbdf9c439d7ded6d55fdce7, type: 3}
@@ -229,6 +229,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 26.881, y: 90, z: 0}
+--- !u!1 &415047000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5626721005123845776, guid: 82a897325f129734ba49e57ccd586349, type: 3}
+  m_PrefabInstance: {fileID: 1210537097}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &415047004 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1603912058711816172, guid: 82a897325f129734ba49e57ccd586349, type: 3}
+  m_PrefabInstance: {fileID: 1210537097}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &415047006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415047000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5278b37326f42f547ba0ad9634544da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 1
+  angularVelocity: 1
+  inertiaTensor: 1
+  inertiaTensorRotation: 1
+  centerMass: 0
+  _rigidbody: {fileID: 415047004}
+  initialLocalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &573105922
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,6 +816,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 116
       objectReference: {fileID: 0}
+    - target: {fileID: 1603912058711816172, guid: 82a897325f129734ba49e57ccd586349, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2724112672218911991, guid: 82a897325f129734ba49e57ccd586349, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -922,6 +955,10 @@ PrefabInstance:
     - target: {fileID: 4415959460637841928, guid: 82a897325f129734ba49e57ccd586349, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -6.659501
+      objectReference: {fileID: 0}
+    - target: {fileID: 4816398731180999629, guid: 82a897325f129734ba49e57ccd586349, type: 3}
+      propertyPath: fireDelay
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4816398731180999629, guid: 82a897325f129734ba49e57ccd586349, type: 3}
       propertyPath: rotationSpeed

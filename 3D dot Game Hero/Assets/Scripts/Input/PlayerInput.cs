@@ -21,6 +21,8 @@ public class PlayerInput : MonoBehaviour {
 
 
     private InputAction fire;
+    private bool canFire;
+    [SerializeField] private float fireDelay;
 
     [SerializeField] rotationStates currentRotation = rotationStates.Forward;
     [SerializeField] private float rotationSpeed;
@@ -74,6 +76,7 @@ public class PlayerInput : MonoBehaviour {
     }
 
     void Start(){
+        canFire = true;
     }
 
     void Update() {
@@ -83,9 +86,17 @@ public class PlayerInput : MonoBehaviour {
         rotationRoutine();
     }
 
+    IEnumerator delayedFire(float time) {
+        yield return new WaitForSeconds(time);
+        canFire = true;
+    }
+
     public void Fire(InputAction.CallbackContext context) {
-        Debug.Log("Fire");
-        playerAnimator.SetTrigger("Attack");
-        weaponManager.useCurrentWeapon();
+        if (canFire) {
+            canFire = false;
+            playerAnimator.Play("Attack");
+            weaponManager.useCurrentWeapon();
+            StartCoroutine(delayedFire(fireDelay));
+        }
     }
 }
