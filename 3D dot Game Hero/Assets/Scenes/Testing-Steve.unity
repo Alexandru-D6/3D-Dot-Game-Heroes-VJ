@@ -258,6 +258,24 @@ MonoBehaviour:
   centerMass: 0
   _rigidbody: {fileID: 415047004}
   initialLocalPos: {x: 0, y: 0, z: 0}
+--- !u!114 &415047011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415047000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144c7f41256e11c479a458ea9c4f7bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisX: 0
+  axisY: 1
+  axisZ: 0
+  speedX: 0
+  speedY: 10
+  speedZ: 0
 --- !u!1 &573105922
 GameObject:
   m_ObjectHideFlags: 0

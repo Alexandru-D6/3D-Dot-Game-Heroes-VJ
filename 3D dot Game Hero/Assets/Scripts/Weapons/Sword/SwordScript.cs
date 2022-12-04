@@ -77,7 +77,7 @@ public class SwordScript : MonoBehaviour {
 
     IEnumerator delayRestoreRoutine(float time) {
         yield return new WaitForSeconds(time);
-        restoreAnim = true;
+        //restoreAnim = true;
     }
 
     IEnumerator delayConstraintRoutine(float time) {
