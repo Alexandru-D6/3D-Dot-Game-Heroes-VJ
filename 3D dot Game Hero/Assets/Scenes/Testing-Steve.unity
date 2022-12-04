@@ -558,6 +558,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponManager: {fileID: 222882608}
   SwordScript: {fileID: 0}
+  buttonAvailability: 1
+  buttonDelay: 0.3
 --- !u!4 &650691707
 Transform:
   m_ObjectHideFlags: 0

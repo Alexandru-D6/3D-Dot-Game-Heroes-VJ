@@ -7,12 +7,12 @@
             "actions": [
                 {
                     "name": "Key1",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "328b4194-59ab-4a55-b9fa-7071db6ddc9e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Key2",
@@ -61,30 +61,30 @@
                 },
                 {
                     "name": "Key7",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "65dfda53-2b59-4287-86b6-a3abe181688f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Key8",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "37744a6c-d2e3-43f9-ba7e-76a04344bf43",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Key9",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "dce7cb2b-6f9d-4a6e-898e-560fd674a04c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [

@@ -15,6 +15,10 @@ public class SwordScript : MonoBehaviour {
     [SerializeField] private AnimationCurve swordScaleCurveWidth;
     [SerializeField] private Transform bladeTransform;
 
+    [SerializeField] private GameObject originalBlade;
+    [SerializeField] private GameObject whiteBlade;
+    [SerializeField] public int levelOfPower { get; private set; }
+
     private float startTime;
     private float lastTime;
     [SerializeField] private float deltaTime;
@@ -97,6 +101,40 @@ public class SwordScript : MonoBehaviour {
         transform.eulerAngles = tmp;
     }
 
+    public void setLevelOfPower(int level) {
+        if (level < 0 || level > 2) return;
+
+        levelOfPower = level;
+    }
+    /// <summary> Method that change the blade aspect.</summary>
+    /// <param name="blade"> 
+    ///     -> 1 equals original blade 
+    ///     -> 2 equals white blade 
+    /// </param>
+    private void switchBlade(int blade) {
+        originalBlade.SetActive(blade == 1);
+        whiteBlade.SetActive(blade != 1);
+    }
+
+    private void swordLevelRoutine() {
+        switch(levelOfPower) {
+            case 0:
+                switchBlade(1);
+                rangeLimiter = 0.8f;
+                break;
+
+            case 1:
+                switchBlade(1);
+                rangeLimiter = 1.0f;
+                break;
+
+            case 2:
+                switchBlade(2);
+                rangeLimiter = 1.0f;
+                break;
+        }
+    }
+
     private void Start() {
         giroCoconutTransform = GameObject.FindGameObjectWithTag("GiroCoconut").transform;
         ConstraintSource tmp = new ConstraintSource();
@@ -111,6 +149,7 @@ public class SwordScript : MonoBehaviour {
 
     private void Update() {
         controlAnim();
+        swordLevelRoutine();
 
         bladeTransform.localScale = new Vector3(1.0f + scales.x * swordScaleCurveWidth.Evaluate(deltaTime),
                                                 1.0f + scales.y * swordScaleCurveLenght.Evaluate(deltaTime),
