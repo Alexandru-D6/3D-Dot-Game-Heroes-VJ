@@ -17,6 +17,7 @@ public class SwordScript : MonoBehaviour {
 
     [SerializeField] private GameObject originalBlade;
     [SerializeField] private GameObject whiteBlade;
+    [SerializeField] private GameObject trailBlade;
     [SerializeField] public int levelOfPower { get; private set; }
 
     private float startTime;
@@ -36,6 +37,7 @@ public class SwordScript : MonoBehaviour {
 
     private void controlAnim() {
         if (startAnim && stopAnim && !restoreAnim) {
+            trailBlade.SetActive(true);
             startTime = Time.time;
             stopAnim = false;
         }
@@ -59,6 +61,7 @@ public class SwordScript : MonoBehaviour {
             if (restoreAnim) {
                 rotationConstraint.constraintActive = false;
                 restoreDefaultRotation();
+                trailBlade.SetActive(false);
             }
 
             if (startAnim || emergencyStop) StartCoroutine(delayRestoreRoutine(animationDuration - (2.0f * deltaTime)));
@@ -77,7 +80,7 @@ public class SwordScript : MonoBehaviour {
 
     IEnumerator delayRestoreRoutine(float time) {
         yield return new WaitForSeconds(time);
-        //restoreAnim = true;
+        restoreAnim = true;
     }
 
     IEnumerator delayConstraintRoutine(float time) {
