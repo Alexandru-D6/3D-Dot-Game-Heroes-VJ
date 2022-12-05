@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Pair<T, U> {
-    public Pair() {
-    }
+    public Pair() { }
 
     public Pair(T first, U second) {
         this.First = first;
@@ -12,4 +11,5 @@ public class Pair<T, U> {
 
     public T First { get; set; }
     public U Second { get; set; }
+
 };

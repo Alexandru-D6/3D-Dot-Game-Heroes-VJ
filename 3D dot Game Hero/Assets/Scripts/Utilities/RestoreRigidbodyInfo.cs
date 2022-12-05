@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RestoreRigidbodyInfo : MonoBehaviour {
 
+    #region Parameters
+
     [SerializeField] bool velocity;
     [SerializeField] bool angularVelocity;
     [SerializeField] bool inertiaTensor;
@@ -12,6 +14,10 @@ public class RestoreRigidbodyInfo : MonoBehaviour {
 
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Vector3 initialLocalPos;
+
+    #endregion
+
+    #region MonoBehaviour Methods
 
     private void Start() {
         initialLocalPos = transform.localPosition;
@@ -30,4 +36,7 @@ public class RestoreRigidbodyInfo : MonoBehaviour {
             _rigidbody.ResetCenterOfMass();
         }
     }
+
+    #endregion
+
 }

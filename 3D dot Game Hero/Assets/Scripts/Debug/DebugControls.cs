@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// For general purpose while developing a feature. It could
+// change depending on the necessity.
 public class DebugControls : MonoBehaviour {
 
     public WeaponManager weaponManager;
     public SwordScript SwordScript;
 
     [SerializeField] private bool buttonAvailability;
-
     [SerializeField] private float buttonDelay;
+
+    #region IEnumerators
+
     IEnumerator delayedButon(float time) {
         buttonAvailability = false;
         yield return new WaitForSeconds(time);
         buttonAvailability = true;
     }
+
+    #endregion
 
     public void Key_1_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
@@ -70,4 +76,5 @@ public class DebugControls : MonoBehaviour {
             SwordScript.setLevelOfPower(SwordScript.levelOfPower + 1);
         }
     }
+
 }

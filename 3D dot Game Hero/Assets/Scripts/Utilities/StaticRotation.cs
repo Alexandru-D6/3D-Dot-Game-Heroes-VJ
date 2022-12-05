@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// [Deprecated] At this time not used anymore.
 public class StaticRotation : MonoBehaviour {
+
+    #region Parameters
 
     public bool lockRotation { get; set; }
     public bool debugrotation = false;
@@ -16,6 +19,10 @@ public class StaticRotation : MonoBehaviour {
     public float maxRotation;
     public float minRotation;
     public bool restartStats;
+
+    #endregion
+
+    #region MonoBehaviour Methods
 
     private void Start() {
         weaponAnchor = transform.parent.Find("WeaponAnchor").transform;
@@ -37,4 +44,7 @@ public class StaticRotation : MonoBehaviour {
 
         lockRotation = debugrotation;
     }
+
+    #endregion
+
 }

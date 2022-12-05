@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class ReplicateRotation : MonoBehaviour {
 
-    [SerializeField] private Transform original;
+    #region Parameters
 
+    [SerializeField] private Transform original;
     [SerializeField] private List<bool> lockedRotations;
+
+    #endregion
+
+    #region MonoBehaviour Methods
 
     void Update() {
         Vector3 tmp = transform.eulerAngles;
@@ -17,4 +22,7 @@ public class ReplicateRotation : MonoBehaviour {
 
         transform.eulerAngles = tmp;
     }
+
+    #endregion
+
 }

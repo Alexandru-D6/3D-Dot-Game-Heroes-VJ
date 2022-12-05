@@ -638,9 +638,9 @@ GameObject:
   - component: {fileID: 4816398731180999628}
   - component: {fileID: 4816398731180999629}
   - component: {fileID: 2123637362340070481}
-  - component: {fileID: 4816398731180999630}
   - component: {fileID: 1603912058711816172}
   - component: {fileID: 6925475127036339142}
+  - component: {fileID: 3411510570702866761}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -706,6 +706,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 4816398731180999628}
   moveDirection: {x: 0, y: 0}
   moveSpeed: {x: 5, y: 5}
+  fireDelay: 0
   currentRotation: 4
   rotationSpeed: 3
 --- !u!114 &2123637362340070481
@@ -723,36 +724,6 @@ MonoBehaviour:
   spawnParent: {fileID: 2497701129174850206}
   weaponsPrefabs:
   - {fileID: 6881899592116037539, guid: 32d3c163f020478419e278a81f328859, type: 3}
---- !u!114 &4816398731180999630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626721005123845776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2bfc135fc78ccdd4796c19411c9f3a3c, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!54 &1603912058711816172
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -783,6 +754,25 @@ CapsuleCollider:
   m_Height: 3.3369038
   m_Direction: 1
   m_Center: {x: 0, y: 1.6584519, z: 0}
+--- !u!114 &3411510570702866761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626721005123845776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5278b37326f42f547ba0ad9634544da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 1
+  angularVelocity: 1
+  inertiaTensor: 1
+  inertiaTensorRotation: 1
+  centerMass: 0
+  _rigidbody: {fileID: 1603912058711816172}
+  initialLocalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &8262481579576674807
 GameObject:
   m_ObjectHideFlags: 0

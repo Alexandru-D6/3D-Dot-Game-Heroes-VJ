@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// First version of the inventory system, it might need a huge refactor
+// once there's more weapons.
 public class WeaponManager : MonoBehaviour {
     List<Pair<string,int>> AvailableWeapons = new List<Pair<string, int>>();
 
@@ -109,7 +111,7 @@ public class WeaponManager : MonoBehaviour {
         yield return new WaitForSeconds(time);
     }
 
-    #region DEBUG
+    #region DEBUG (Delete afterwards the system works fine)
 
     public void DB_createWeapon(string weapon, int uses) {
         insertWeapon(weapon, uses);

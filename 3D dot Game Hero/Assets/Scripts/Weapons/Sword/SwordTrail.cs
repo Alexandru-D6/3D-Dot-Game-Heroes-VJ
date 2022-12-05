@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SwordTrail : MonoBehaviour {
+
+    #region Parameters
+
     [Header("Trails list (they should be order from the fardest to the closest)")]
     [SerializeField] private List<TrailRenderer> trailRendereres;
 
@@ -21,6 +24,10 @@ public class SwordTrail : MonoBehaviour {
     [SerializeField] private float lowerTime;
     [SerializeField] private AnimationCurve trailWidth;
 
+    #endregion
+
+    #region MonoBehaviour Methods
+
     private void Update() {
         float steeps = ((upperTime - lowerTime) / (trailRendereres.Count));
 
@@ -31,4 +38,7 @@ public class SwordTrail : MonoBehaviour {
             trailRendereres[i].widthCurve = trailWidth;
         }
     }
+
+    #endregion
+
 }
