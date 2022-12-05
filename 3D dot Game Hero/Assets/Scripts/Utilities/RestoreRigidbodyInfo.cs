@@ -12,7 +12,7 @@ public class RestoreRigidbodyInfo : MonoBehaviour {
     [SerializeField] bool inertiaTensorRotation;
     [SerializeField] bool centerMass;
 
-    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private Rigidbody rb;
     [SerializeField] private Vector3 initialLocalPos;
 
     #endregion
@@ -26,14 +26,14 @@ public class RestoreRigidbodyInfo : MonoBehaviour {
     private void Update() {
         Vector3 zero = Vector3.zero;
 
-        if (velocity) _rigidbody.velocity = zero;
-        if (angularVelocity) _rigidbody.angularVelocity = zero;
-        if (inertiaTensor) _rigidbody.inertiaTensor = zero;
-        if (inertiaTensorRotation) _rigidbody.inertiaTensorRotation = Quaternion.identity;
+        if (velocity) rb.velocity = zero;
+        if (angularVelocity) rb.angularVelocity = zero;
+        if (inertiaTensor) rb.inertiaTensor = zero;
+        if (inertiaTensorRotation) rb.inertiaTensorRotation = Quaternion.identity;
 
         if (centerMass) {
             transform.localPosition = initialLocalPos;
-            _rigidbody.ResetCenterOfMass();
+            rb.ResetCenterOfMass();
         }
     }
 
