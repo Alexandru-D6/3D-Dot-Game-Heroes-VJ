@@ -771,7 +771,7 @@ MonoBehaviour:
   inertiaTensor: 1
   inertiaTensorRotation: 1
   centerMass: 0
-  _rigidbody: {fileID: 1603912058711816172}
+  rb: {fileID: 1603912058711816172}
   initialLocalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &8262481579576674807
 GameObject:
