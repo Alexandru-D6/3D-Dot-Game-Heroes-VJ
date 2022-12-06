@@ -7,7 +7,7 @@ using UnityEngine.InputSystem.Processors;
 
 public class BoomerangScript : MonoBehaviour {
 
-    #region Parameters
+#region Parameters
 
     [Header("Boomerang Stabilizer")]
     [SerializeField] private Vector3 defaultRotation;
@@ -31,15 +31,16 @@ public class BoomerangScript : MonoBehaviour {
     [SerializeField] private Vector3 boomerangDirection;
 
 
-    #endregion
+#endregion
 
-    #region Collision Methods
+#region Collision Methods
 
     private void OnTriggerEnter(Collider other) {
 
         if (other.tag.Equals("Wall")) {
             isReturning = true;
         }else if (other.tag.Equals("Player") && isReturning) {
+            player.GetComponent<Animator>().SetTrigger("Boomerang Received");
             animator.SetBool("Flying", false);
             transform.parent = playerHand.transform;
             rotationConstraint.constraintActive = true;
@@ -49,28 +50,20 @@ public class BoomerangScript : MonoBehaviour {
         }
     }
 
-    #endregion
+#endregion
 
-    #region IEnumerators
+#region IEnumerators
 
-    IEnumerator debugRoutine(float time) {
-        yield return new WaitForSeconds(time);
-        transform.parent = playerHand.transform;
-        rotationConstraint.constraintActive = true;
-        followAnchorScript.enabled = true;
-        isFlying = false;
-        isReturning = false;
-    }
+#endregion
 
-    #endregion
-
-    #region Public Methods (Abstract probably)
+#region Public Methods (Abstract probably)
 
     public void weaponCollided() {
         if (isFlying) isReturning = true;
     }
 
     public void Attack() {
+        player.GetComponent<Animator>().Play("Attack Boomerang");
         // Change parent of boomerang, set new height and disable stabilizer
         rotationConstraint.constraintActive = false;
         transform.parent = sceneObjects.transform;
@@ -86,9 +79,9 @@ public class BoomerangScript : MonoBehaviour {
         animator.SetBool("Flying", true);
     }
 
-    #endregion
+#endregion
 
-    #region Private Methods
+#region Private Methods
 
     private void controlBoomerang() {
         if (isFlying) {
@@ -102,7 +95,7 @@ public class BoomerangScript : MonoBehaviour {
 
     private void normalizeVector(ref Vector3 vector) {
         for (int i = 0; i < 3; ++i) {
-            if (Mathf.Abs(vector[i]) >= 0.9) vector[i] = Mathf.Sign(vector[i]) * 1.0f;
+            if (Mathf.Abs(vector[i]) >= 0.5f) vector[i] = Mathf.Sign(vector[i]) * 1.0f;
             else vector[i] = 0.0f;
         }
     }
@@ -138,12 +131,12 @@ public class BoomerangScript : MonoBehaviour {
         transform.localPosition = tmp;
     }
 
-    #endregion
+#endregion
 
-    #region MonoBehaviour Methods
+#region MonoBehaviour Methods
 
     void Start() {
-        #region Setting up GiroCoconut
+#region Setting up GiroCoconut
         giroCoconutTransform = GameObject.FindGameObjectWithTag("GiroCoconut").transform;
 
         // TODO: Make this change whenever this weapon is selected, as this rotation is useless for the sword
@@ -157,7 +150,7 @@ public class BoomerangScript : MonoBehaviour {
 
         rotationConstraint.SetSource(0, tmp);
         rotationConstraint.constraintActive = false;
-        #endregion
+#endregion
 
         restoreDefaultRotation();
 
@@ -170,6 +163,6 @@ public class BoomerangScript : MonoBehaviour {
         controlBoomerang();
     }
 
-    #endregion
+#endregion
 
 }
