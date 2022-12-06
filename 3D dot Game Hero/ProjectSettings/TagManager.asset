@@ -9,6 +9,7 @@ TagManager:
   - GiroCoconut
   - ExternalAnchor
   - Boomerang
+  - SceneObjects
   layers:
   - Default
   - TransparentFX
@@ -39,7 +40,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - SceneObjects
   - Obstacles
   - Weapon
   m_SortingLayers:
