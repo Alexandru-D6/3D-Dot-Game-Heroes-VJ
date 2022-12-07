@@ -723,7 +723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnParent: {fileID: 2497701129174850206}
   weaponsPrefabs:
-  - {fileID: 6881899592116037539, guid: 32d3c163f020478419e278a81f328859, type: 3}
+  - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
 --- !u!54 &1603912058711816172
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -771,7 +771,7 @@ MonoBehaviour:
   inertiaTensor: 1
   inertiaTensorRotation: 1
   centerMass: 0
-  _rigidbody: {fileID: 1603912058711816172}
+  rb: {fileID: 1603912058711816172}
   initialLocalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &8262481579576674807
 GameObject:

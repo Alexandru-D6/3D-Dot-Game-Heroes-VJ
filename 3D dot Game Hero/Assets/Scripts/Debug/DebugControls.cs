@@ -26,7 +26,7 @@ public class DebugControls : MonoBehaviour {
     public void Key_1_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            weaponManager.DB_selectWeapon("Sword");
+            weaponManager.DB_selectWeapon("Boomerang");
         }
     }
     public void Key_2_Pressed(InputAction.CallbackContext context) {
@@ -38,13 +38,13 @@ public class DebugControls : MonoBehaviour {
     public void Key_3_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            weaponManager.DB_deleteWeapon("Sword");
+            weaponManager.DB_deleteWeapon("Boomerang");
         }
     }
     public void Key_4_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            weaponManager.DB_createWeapon("Sword", int.MaxValue);
+            weaponManager.DB_createWeapon("Boomerang", int.MaxValue);
         }
     }
     public void Key_5_Pressed(InputAction.CallbackContext context) {

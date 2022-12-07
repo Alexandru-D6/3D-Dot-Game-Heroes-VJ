@@ -1032,7 +1032,7 @@ MonoBehaviour:
   inertiaTensor: 1
   inertiaTensorRotation: 1
   centerMass: 1
-  _rigidbody: {fileID: 4982723311382552010}
+  rb: {fileID: 4982723311382552010}
   initialLocalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &6881899592116037539
 GameObject:
@@ -1168,14 +1168,14 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   bladeTransform: {fileID: 7688523148315110940}
-  originalBlade: {fileID: 5293144193284614784}
-  whiteBlade: {fileID: 6153515160434683315}
-  trailBlade: {fileID: 2704877144568792773}
+  rangeLimiter: 1
+  animationDuration: 0.75
   deltaTime: 0
   startAnim: 0
   restoreAnim: 0
-  rangeLimiter: 1
-  animationDuration: 0.75
+  originalBlade: {fileID: 5293144193284614784}
+  whiteBlade: {fileID: 6153515160434683315}
+  trailBlade: {fileID: 2704877144568792773}
 --- !u!1818360609 &7166521443520201675
 RotationConstraint:
   m_ObjectHideFlags: 0
