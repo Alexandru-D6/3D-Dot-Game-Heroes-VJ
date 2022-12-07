@@ -4,21 +4,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
 
-public class SwordScript : MonoBehaviour {
+public class SwordScript : WeaponScript {
 
-    #region Parameters
-
-    [Header("Sword Stabilizer")]
-    [SerializeField] private Vector3 defaultRotation;
-    private Transform giroCoconutTransform;
-    [SerializeField] private RotationConstraint rotationConstraint;
+#region Parameters
 
     [Header("Sword Animation")]
     [SerializeField] private Vector3 scales;
     [SerializeField] private AnimationCurve swordScaleCurveLenght;
     [SerializeField] private AnimationCurve swordScaleCurveWidth;
     [SerializeField] private Transform bladeTransform;
-    [SerializeField] public int levelOfPower { get; private set; }
     [Range(0.0f, 1.0f)]
     [SerializeField] private float rangeLimiter;
     [Range(0.0f, 1.0f)]
@@ -38,9 +32,9 @@ public class SwordScript : MonoBehaviour {
     [SerializeField] private GameObject whiteBlade;
     [SerializeField] private GameObject trailBlade;
 
-    #endregion
+#endregion
 
-    #region IEnumerators
+#region IEnumerators
 
     IEnumerator delayRestoreRoutine(float time) {
         yield return new WaitForSeconds(time);
@@ -53,20 +47,24 @@ public class SwordScript : MonoBehaviour {
         restoreDefaultRotation();
     }
 
-    #endregion
+#endregion
 
-    #region Public Methods (Abstract probably)
+#region Abstract Methods
 
-    public void swordCollided() {
+    public override void Collided() {
         emergencyStop = true;
     }
 
-    public void Attack() {
+    public override void Attack() {
         rotationConstraint.constraintActive = true;
         startAnim = true;
     }
 
-    public void setLevelOfPower(int level) {
+#endregion
+
+#region Virtual Methods
+
+    public override void SetLevelOfPower(int level) {
         if (level < 0 || level > 2) return;
 
         levelOfPower = level;
@@ -74,9 +72,9 @@ public class SwordScript : MonoBehaviour {
         swordLevelRoutine();
     }
 
-    #endregion
+#endregion
 
-    #region Private Methods
+#region Private Methods
 
     private void controlAnim() {
 
@@ -163,22 +161,14 @@ public class SwordScript : MonoBehaviour {
         }
     }
 
-    #endregion
+#endregion
 
-    #region MonoBehaviour Methods
+#region MonoBehaviour Methods
 
-    private void Start() {
-        #region Setting up GiroCoconut
-        giroCoconutTransform = GameObject.FindGameObjectWithTag("GiroCoconut").transform;
+    public override void Start() {
+        base.Start();
 
-        ConstraintSource tmp = new ConstraintSource();
-        tmp.sourceTransform = giroCoconutTransform;
-        tmp.weight = 1;
-
-        rotationConstraint.SetSource(0,tmp);
-        rotationConstraint.constraintActive = false;
-        #endregion
-
+        swordLevelRoutine();
         restoreDefaultRotation();
     }
 
@@ -193,6 +183,6 @@ public class SwordScript : MonoBehaviour {
         }
     }
 
-    #endregion
+#endregion
 
 }

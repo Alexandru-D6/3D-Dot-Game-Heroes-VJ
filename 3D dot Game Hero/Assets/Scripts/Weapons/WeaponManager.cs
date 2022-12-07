@@ -103,7 +103,7 @@ public class WeaponManager : MonoBehaviour {
     public void useCurrentWeapon() {
         if (currentWeapon != null) {
             decrementWeaponUses(currentWeapon.tag);
-            currentWeapon.GetComponent<BoomerangScript>().Attack();
+            currentWeapon.GetComponent<WeaponScript>().Attack();
         }
     }
 

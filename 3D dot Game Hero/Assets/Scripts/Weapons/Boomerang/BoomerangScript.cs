@@ -5,14 +5,9 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem.Processors;
 
-public class BoomerangScript : MonoBehaviour {
+public class BoomerangScript : WeaponScript {
 
 #region Parameters
-
-    [Header("Boomerang Stabilizer")]
-    [SerializeField] private Vector3 defaultRotation;
-    private Transform giroCoconutTransform;
-    [SerializeField] private RotationConstraint rotationConstraint;
 
     [Header("Boomerang Reference")]
     [SerializeField] private GameObject sceneObjects;
@@ -56,13 +51,13 @@ public class BoomerangScript : MonoBehaviour {
 
 #endregion
 
-#region Public Methods (Abstract probably)
+#region Abstract Methods
 
-    public void weaponCollided() {
+    public override void Collided() {
         if (isFlying) isReturning = true;
     }
 
-    public void Attack() {
+    public override void Attack() {
         player.GetComponent<Animator>().Play("Attack Boomerang");
         // Change parent of boomerang, set new height and disable stabilizer
         rotationConstraint.constraintActive = false;
@@ -135,21 +130,14 @@ public class BoomerangScript : MonoBehaviour {
 
 #region MonoBehaviour Methods
 
-    void Start() {
-#region Setting up GiroCoconut
-        giroCoconutTransform = GameObject.FindGameObjectWithTag("GiroCoconut").transform;
+    public override void Start() {
+        base.Start();
 
+#region Setting up GiroCoconut
         // TODO: Make this change whenever this weapon is selected, as this rotation is useless for the sword
         Vector3 tmp2 = giroCoconutTransform.transform.localEulerAngles;
         tmp2.z = 0.0f;
         giroCoconutTransform.transform.localEulerAngles = tmp2;
-
-        ConstraintSource tmp = new ConstraintSource();
-        tmp.sourceTransform = giroCoconutTransform;
-        tmp.weight = 1;
-
-        rotationConstraint.SetSource(0, tmp);
-        rotationConstraint.constraintActive = false;
 #endregion
 
         restoreDefaultRotation();
