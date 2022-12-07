@@ -7,6 +7,9 @@ public abstract class WeaponScript : MonoBehaviour {
 
 #region Parameters
 
+    [Header("Managers")]
+    [SerializeField] protected WeaponManager weaponManager;
+
     [Header("Weapon Stabilizer")]
     [SerializeField] protected Vector3 defaultRotation;
     protected Transform giroCoconutTransform;
@@ -36,6 +39,10 @@ public abstract class WeaponScript : MonoBehaviour {
         return levelOfPower;
     }
 
+    public virtual void AttackFinished() {
+        weaponManager.AttackFinished();
+    }
+
 #endregion
 
 #region Public Methods
@@ -54,6 +61,10 @@ public abstract class WeaponScript : MonoBehaviour {
 
     public string getName() {
         return weaponName;
+    }
+
+    public void SetWeaponManager(WeaponManager wp) {
+        weaponManager = wp;
     }
 
 #endregion

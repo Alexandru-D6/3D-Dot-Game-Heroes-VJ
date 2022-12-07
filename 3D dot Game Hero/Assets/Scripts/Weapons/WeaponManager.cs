@@ -28,7 +28,7 @@ public class WeaponManager : MonoBehaviour {
 
 #region Inventory Management
 
-    void addToAvailables(string weapon) {
+    void AddToAvailables(string weapon) {
         // Search if it's already exists
         foreach(string x in weaponsAvailable) {
             if (x.Equals(weapon)) return;
@@ -37,7 +37,7 @@ public class WeaponManager : MonoBehaviour {
         weaponsAvailable.Add(weapon);
     }
 
-    bool isWeaponAvailable(string weapon) {
+    bool IsWeaponAvailable(string weapon) {
         // Search if it's spawned
         foreach(WeaponScript x in inventory) {
             if (x.getName().Equals(weapon)) return true;
@@ -51,7 +51,7 @@ public class WeaponManager : MonoBehaviour {
         return false;
     }
 
-    bool revealSpawnedWeapon(string weapon) {
+    bool RevealSpawnedWeapon(string weapon) {
         if (inventory.Count == 0) return false;
 
         foreach (var x in inventory) {
@@ -64,14 +64,26 @@ public class WeaponManager : MonoBehaviour {
         return false;
     }
 
-    GameObject getObjectPrefab(string weapon) {
+    GameObject GetObjectPrefab(string weapon) {
         foreach(GameObject x in weaponsPrefabs) {
             if(x.tag.Equals(weapon)) return x; 
         }
         return null;
     }
 
-    void destroyWeapon(string weapon) {
+    void InstantiateWeapon(string weapon) {
+        GameObject prefab = GetObjectPrefab(weapon);
+        GameObject obj = Instantiate(prefab, new UnityEngine.Vector3(), new UnityEngine.Quaternion());
+
+        obj.SetActive(false);
+        obj.transform.parent = playerHand.transform;
+        currentWeapon = obj.GetComponent<WeaponScript>();
+        currentWeapon.SetWeaponManager(this);
+        inventory.Add(currentWeapon);
+        obj.SetActive(true);
+    }
+
+    void DestroyWeapon(string weapon) {
         for (int i = 0; i < inventory.Count; ++i) {
             if (inventory[i].getName().Equals(weapon)) {
                 inventory[i].SetActive(false);
@@ -84,39 +96,41 @@ public class WeaponManager : MonoBehaviour {
         }
     }
 
-    void unselectCurrentWeapon() {
+    void UnselectCurrentWeapon() {
         if (currentWeapon != null) {
             currentWeapon.SetActive(false);
             currentWeapon = null;
         }
     }
 
-    void selectWeapon(string weapon) {
-        if (isWeaponAvailable(weapon)) {
+    void SelectWeapon(string weapon) {
+        if (IsWeaponAvailable(weapon)) {
             // TODO: There is an edge case where the creation of this new weapon, not spawned yet, may fail
             //          if the prefab doesn't exist. It would be a great idea to select the previous weapon.
-            unselectCurrentWeapon();
+            UnselectCurrentWeapon();
 
-            if (revealSpawnedWeapon(weapon)) return;
+            if (RevealSpawnedWeapon(weapon)) return;
 
             // If it haven't spawned yet, do it.
-            GameObject prefab = getObjectPrefab(weapon);
-            GameObject obj = Instantiate(prefab, new UnityEngine.Vector3(), new UnityEngine.Quaternion());
-
-            obj.SetActive(false);
-            obj.transform.parent = playerHand.transform;
-            currentWeapon = obj.GetComponent<WeaponScript>();
-            inventory.Add(currentWeapon);
-            obj.SetActive(true);
+            InstantiateWeapon(weapon);
         } else {
             // TODO: It may return an error or do something?
         }
     }
 
-    public void useCurrentWeapon() {
+#endregion
+
+#region Public Methods
+
+    public void UseCurrentWeapon() {
         if (currentWeapon != null) {
+            animationManager.AttackStarted();
             currentWeapon.GetComponent<WeaponScript>().Attack();
         }
+    }
+
+    public void AttackFinished() {
+        animationManager.AttackFinished();
     }
 
 #endregion
@@ -124,19 +138,19 @@ public class WeaponManager : MonoBehaviour {
 #region DEBUG (Delete afterwards the system works fine)
 
     public void DB_createWeapon(string weapon, int uses) {
-        addToAvailables(weapon);
+        AddToAvailables(weapon);
     }
 
     public void DB_selectWeapon(string weapon) {
-        selectWeapon(weapon);
+        SelectWeapon(weapon);
     }
 
     public void DB_deleteWeapon(string weapon) {
-        destroyWeapon(weapon);
+        DestroyWeapon(weapon);
     }
 
     public void DB_unselectCurrentWeapon() {
-        unselectCurrentWeapon();
+        UnselectCurrentWeapon();
     }
 
 #endregion

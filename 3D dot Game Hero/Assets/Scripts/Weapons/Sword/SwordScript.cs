@@ -39,6 +39,7 @@ public class SwordScript : WeaponScript {
     IEnumerator delayRestoreRoutine(float time) {
         yield return new WaitForSeconds(time);
         restoreAnim = true;
+        AttackFinished();
     }
 
     IEnumerator delayConstraintRoutine(float time) {

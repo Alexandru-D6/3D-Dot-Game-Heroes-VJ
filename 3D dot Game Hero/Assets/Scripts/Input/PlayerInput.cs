@@ -125,8 +125,7 @@ public class PlayerInput : MonoBehaviour {
     public void Fire(InputAction.CallbackContext context) {
         if (canFire) {
             canFire = false;
-            animationManager.AttackStarted();
-            weaponManager.useCurrentWeapon();
+            weaponManager.UseCurrentWeapon();
             StartCoroutine(delayedFire(fireDelay));
         }
     }

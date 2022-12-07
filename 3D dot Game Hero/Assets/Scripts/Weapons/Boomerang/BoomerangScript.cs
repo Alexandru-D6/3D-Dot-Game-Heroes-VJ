@@ -35,7 +35,7 @@ public class BoomerangScript : WeaponScript {
         if (other.tag.Equals("Wall")) {
             isReturning = true;
         }else if (other.tag.Equals("Player") && isReturning) {
-            player.GetComponent<Animator>().SetTrigger("Boomerang Received");
+            AttackFinished();
             animator.SetBool("Flying", false);
             transform.parent = playerHand.transform;
             rotationConstraint.constraintActive = true;
@@ -58,7 +58,6 @@ public class BoomerangScript : WeaponScript {
     }
 
     public override void Attack() {
-        player.GetComponent<Animator>().Play("Attack Boomerang");
         // Change parent of boomerang, set new height and disable stabilizer
         rotationConstraint.constraintActive = false;
         transform.parent = sceneObjects.transform;
@@ -135,8 +134,9 @@ public class BoomerangScript : WeaponScript {
 
 #region Setting up GiroCoconut
         // TODO: Make this change whenever this weapon is selected, as this rotation is useless for the sword
+        // IDEA: remove the giroCoconut cause it's not needed for the attack neither running??
         Vector3 tmp2 = giroCoconutTransform.transform.localEulerAngles;
-        tmp2.z = 0.0f;
+        //tmp2.z = 0.0f;
         giroCoconutTransform.transform.localEulerAngles = tmp2;
 #endregion
 
