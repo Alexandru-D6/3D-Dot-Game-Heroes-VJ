@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour {
 
     [Header("Managers")]
     [SerializeField] private WeaponManager weaponManager;
+    [SerializeField] private AnimationManager animationManager;
 
     [Space(10)]
 
@@ -34,11 +35,6 @@ public class PlayerInput : MonoBehaviour {
     [Space(2)]
     [SerializeField] rotationStates currentRotation = rotationStates.Forward;
     [SerializeField] private float rotationSpeed;
-
-    [Space(10)]
-
-    [Header("Animations")]
-    [SerializeField] private Animator playerAnimator;
 
     #endregion
 
@@ -80,7 +76,7 @@ public class PlayerInput : MonoBehaviour {
         setTranslation();
         setRotation();
 
-        playerAnimator.SetBool("Running", moveDirection != Vector2.zero);
+        animationManager.enableRunning(moveDirection != Vector2.zero);
     }
 
     private void rotationRoutine() {
@@ -129,6 +125,7 @@ public class PlayerInput : MonoBehaviour {
     public void Fire(InputAction.CallbackContext context) {
         if (canFire) {
             canFire = false;
+            animationManager.AttackStarted();
             weaponManager.useCurrentWeapon();
             StartCoroutine(delayedFire(fireDelay));
         }

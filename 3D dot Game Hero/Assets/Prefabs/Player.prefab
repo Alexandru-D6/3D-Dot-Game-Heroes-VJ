@@ -637,6 +637,7 @@ GameObject:
   - component: {fileID: 4998415447198196778}
   - component: {fileID: 4816398731180999628}
   - component: {fileID: 4816398731180999629}
+  - component: {fileID: 9123643760422910634}
   - component: {fileID: 2123637362340070481}
   - component: {fileID: 1603912058711816172}
   - component: {fileID: 6925475127036339142}
@@ -703,12 +704,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponManager: {fileID: 2123637362340070481}
+  animationManager: {fileID: 9123643760422910634}
   fireDelay: 0.7
   moveDirection: {x: 0, y: 0}
   moveSpeed: {x: 5, y: 5}
   currentRotation: 4
   rotationSpeed: 10
-  playerAnimator: {fileID: 4816398731180999628}
+--- !u!114 &9123643760422910634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626721005123845776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62fba2b220092049b377fc8c606b8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4816398731180999628}
+  running: 0
 --- !u!114 &2123637362340070481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,9 +736,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b955e6a7fbbdf9c439d7ded6d55fdce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnParent: {fileID: 2497701129174850206}
+  animationManager: {fileID: 9123643760422910634}
   weaponsPrefabs:
+  - {fileID: 6881899592116037539, guid: 32d3c163f020478419e278a81f328859, type: 3}
   - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
+  weaponsAvailable:
+  - Sword
+  inventory: []
+  playerHand: {fileID: 2497701129174850206}
+  currentWeapon: {fileID: 0}
 --- !u!54 &1603912058711816172
 Rigidbody:
   m_ObjectHideFlags: 0

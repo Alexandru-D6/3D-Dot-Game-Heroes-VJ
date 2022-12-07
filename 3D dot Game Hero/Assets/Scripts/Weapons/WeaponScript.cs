@@ -13,6 +13,7 @@ public abstract class WeaponScript : MonoBehaviour {
     [SerializeField] protected RotationConstraint rotationConstraint;
 
     [Header("Weapon Parameters")]
+    [SerializeField] protected string weaponName;
     [SerializeField] protected int usesLeft;
     [SerializeField] protected int levelOfPower;
 
@@ -47,11 +48,20 @@ public abstract class WeaponScript : MonoBehaviour {
         usesLeft--;
     }
 
+    public void incrementUses() {
+        usesLeft++;
+    }
+
+    public string getName() {
+        return weaponName;
+    }
+
 #endregion
 
 #region MonoBehaviour Methods
 
     public virtual void Start() {
+        weaponName = gameObject.tag;
         usesLeft = 3;
         levelOfPower = 0;
 

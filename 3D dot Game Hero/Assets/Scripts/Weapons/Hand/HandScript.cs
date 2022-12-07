@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandScript : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class HandScript : WeaponScript {
+    public override void Attack() {
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void Collided() {
+        throw new System.NotImplementedException();
     }
 }
