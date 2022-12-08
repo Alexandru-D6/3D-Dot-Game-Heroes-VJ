@@ -54,8 +54,15 @@ public class WeaponManager : MonoBehaviour {
     bool RevealSpawnedWeapon(string weapon) {
         if (inventory.Count == 0) return false;
 
+        if (currentWeapon != null && currentWeapon.GetName().Equals(weapon)) {
+            SelectWeapon("Hand");
+            return true;
+        }
+
         foreach (var x in inventory) {
             if (x.GetName().Equals(weapon)) {
+                UnselectCurrentWeapon();
+
                 currentWeapon = x;
                 currentWeapon.SetActive(true);
                 return true;
@@ -77,8 +84,11 @@ public class WeaponManager : MonoBehaviour {
 
         obj.SetActive(false);
         obj.transform.parent = playerHand.transform;
+
+        UnselectCurrentWeapon();
         currentWeapon = obj.GetComponent<WeaponScript>();
         currentWeapon.SetWeaponManager(this);
+
         inventory.Add(currentWeapon);
         obj.SetActive(true);
     }
@@ -87,21 +97,6 @@ public class WeaponManager : MonoBehaviour {
         if (currentWeapon != null) {
             currentWeapon.SetActive(false);
             currentWeapon = null;
-        }
-    }
-
-    void SelectWeapon(string weapon) {
-        if (IsWeaponAvailable(weapon)) {
-            // TODO: There is an edge case where the creation of this new weapon, not spawned yet, may fail
-            //          if the prefab doesn't exist. It would be a great idea to select the previous weapon.
-            UnselectCurrentWeapon();
-
-            if (RevealSpawnedWeapon(weapon)) return;
-
-            // If it haven't spawned yet, do it.
-            InstantiateWeapon(weapon);
-        } else {
-            // TODO: It may return an error or do something?
         }
     }
 
@@ -122,6 +117,17 @@ public class WeaponManager : MonoBehaviour {
         }
     }
 
+    public void SelectWeapon(string weapon) {
+        if (IsWeaponAvailable(weapon)) {
+            if (RevealSpawnedWeapon(weapon)) return;
+
+            // If it haven't spawned yet, do it.
+            InstantiateWeapon(weapon);
+        } else {
+            // TODO: It may return an error or do something?
+        }
+    }
+
     public void UseCurrentWeapon() {
         if (currentWeapon != null) {
             animationManager.AttackStarted();
@@ -131,6 +137,14 @@ public class WeaponManager : MonoBehaviour {
 
     public void AttackFinished() {
         animationManager.AttackFinished();
+    }
+
+#endregion
+
+#region MonoBehaviour Methods
+
+    void Start() {
+        SelectWeapon("Hand");
     }
 
 #endregion
