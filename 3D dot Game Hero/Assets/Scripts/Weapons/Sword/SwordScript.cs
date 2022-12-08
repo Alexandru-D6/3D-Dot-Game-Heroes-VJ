@@ -4,21 +4,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
 
-public class SwordScript : MonoBehaviour {
+public class SwordScript : WeaponScript {
 
-    #region Parameters
-
-    [Header("Sword Stabilizer")]
-    [SerializeField] private Vector3 defaultRotation;
-    private Transform giroCoconutTransform;
-    [SerializeField] private RotationConstraint rotationConstraint;
+#region Parameters
 
     [Header("Sword Animation")]
     [SerializeField] private Vector3 scales;
     [SerializeField] private AnimationCurve swordScaleCurveLenght;
     [SerializeField] private AnimationCurve swordScaleCurveWidth;
     [SerializeField] private Transform bladeTransform;
-    [SerializeField] public int levelOfPower { get; private set; }
     [Range(0.0f, 1.0f)]
     [SerializeField] private float rangeLimiter;
     [Range(0.0f, 1.0f)]
@@ -38,35 +32,34 @@ public class SwordScript : MonoBehaviour {
     [SerializeField] private GameObject whiteBlade;
     [SerializeField] private GameObject trailBlade;
 
-    #endregion
+#endregion
 
-    #region IEnumerators
+#region IEnumerators
 
     IEnumerator delayRestoreRoutine(float time) {
         yield return new WaitForSeconds(time);
         restoreAnim = true;
+        AttackFinished();
     }
 
-    IEnumerator delayConstraintRoutine(float time) {
-        yield return new WaitForSeconds(time);
-        rotationConstraint.constraintActive = false;
-        restoreDefaultRotation();
-    }
+#endregion
 
-    #endregion
+#region Abstract Methods
 
-    #region Public Methods (Abstract probably)
-
-    public void swordCollided() {
+    public override void Collided() {
         emergencyStop = true;
     }
 
-    public void Attack() {
-        rotationConstraint.constraintActive = true;
+    public override void Attack() {
+        LockAxis(false, false, true);
         startAnim = true;
     }
 
-    public void setLevelOfPower(int level) {
+#endregion
+
+#region Virtual Methods
+
+    public override void SetLevelOfPower(int level) {
         if (level < 0 || level > 2) return;
 
         levelOfPower = level;
@@ -74,9 +67,9 @@ public class SwordScript : MonoBehaviour {
         swordLevelRoutine();
     }
 
-    #endregion
+#endregion
 
-    #region Private Methods
+#region Private Methods
 
     private void controlAnim() {
 
@@ -110,15 +103,16 @@ public class SwordScript : MonoBehaviour {
 
             // If the sword achieve the restore of the sword
             if (restoreAnim) {
-                rotationConstraint.constraintActive = false;
-                restoreDefaultRotation();
                 trailBlade.SetActive(false);
             }
 
             // If the sword expanded to the maximum or collided, lock that position for the remaining time to sync with
             // the arm animation.
             if (startAnim || emergencyStop) StartCoroutine(delayRestoreRoutine(animationDuration - (2.0f * deltaTime)));
-            else restoreAnim = false;
+            else {
+                restoreAnim = false;
+                LockAxis(true, true, false);
+            }
 
             startAnim = false;
             stopAnim = true;
@@ -127,16 +121,13 @@ public class SwordScript : MonoBehaviour {
         emergencyStop = false;
     }
 
-    private void restoreDefaultRotation() {
-        // Setting up z rotation (the one whose relative to the hand)
-        Vector3 tmp = transform.localEulerAngles;
-        tmp.z = defaultRotation.z;
-        transform.localEulerAngles = tmp;
+    private void LockAxis(bool x, bool y, bool z) {
+        rotationConstraint.enabled = false;
+        transform.localEulerAngles = defaultRotation;
+        rotationConstraint.enabled = true;
 
-        // Setting up y rotation (the one whose relative to the player rotation)
-        tmp = transform.eulerAngles;
-        tmp.y = giroCoconutTransform.eulerAngles.y;
-        transform.eulerAngles = tmp;
+        Axis lockedAxis = Axis.None | ((x == true) ? Axis.X : Axis.None) | ((y == true) ? Axis.Y : Axis.None) | ((z == true) ? Axis.Z : Axis.None);
+        rotationConstraint.rotationAxis = lockedAxis;
     }
 
     private void switchBlade(bool isOriginalSword) {
@@ -163,23 +154,18 @@ public class SwordScript : MonoBehaviour {
         }
     }
 
-    #endregion
+#endregion
 
-    #region MonoBehaviour Methods
+#region MonoBehaviour Methods
 
-    private void Start() {
-        #region Setting up GiroCoconut
-        giroCoconutTransform = GameObject.FindGameObjectWithTag("GiroCoconut").transform;
+    public override void Start() {
+        base.Start();
 
-        ConstraintSource tmp = new ConstraintSource();
-        tmp.sourceTransform = giroCoconutTransform;
-        tmp.weight = 1;
+        usesLeft = int.MaxValue;
 
-        rotationConstraint.SetSource(0,tmp);
-        rotationConstraint.constraintActive = false;
-        #endregion
+        swordLevelRoutine();
 
-        restoreDefaultRotation();
+        LockAxis(true, true, false);
     }
 
     private void Update() {
@@ -193,6 +179,6 @@ public class SwordScript : MonoBehaviour {
         }
     }
 
-    #endregion
+#endregion
 
 }

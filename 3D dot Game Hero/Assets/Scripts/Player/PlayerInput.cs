@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour {
 
     [Header("Managers")]
     [SerializeField] private WeaponManager weaponManager;
+    [SerializeField] private AnimationManager animationManager;
 
     [Space(10)]
 
@@ -22,23 +23,21 @@ public class PlayerInput : MonoBehaviour {
     private PlayerInputActions playerControls;
     private InputAction fire;
     private InputAction move;
+    private InputAction numericButtons;
     private bool canFire;
+    private bool canNumericButton;
 
     [Space(10)]
 
     [Header("Controls parameters")]
     [SerializeField] private float fireDelay;
+    [SerializeField] private float numericButtonDelay;
     [Space(2)]
     [SerializeField] private Vector2 moveDirection = Vector2.zero;
     [SerializeField] private Vector2 moveSpeed;
     [Space(2)]
     [SerializeField] rotationStates currentRotation = rotationStates.Forward;
     [SerializeField] private float rotationSpeed;
-
-    [Space(10)]
-
-    [Header("Animations")]
-    [SerializeField] private Animator playerAnimator;
 
     #endregion
 
@@ -47,6 +46,11 @@ public class PlayerInput : MonoBehaviour {
     IEnumerator delayedFire(float time) {
         yield return new WaitForSeconds(time);
         canFire = true;
+    }
+
+    IEnumerator delayedNumericButton(float time) {
+        yield return new WaitForSeconds(time);
+        canNumericButton = true;
     }
 
     #endregion
@@ -80,7 +84,7 @@ public class PlayerInput : MonoBehaviour {
         setTranslation();
         setRotation();
 
-        playerAnimator.SetBool("Running", moveDirection != Vector2.zero);
+        animationManager.enableRunning(moveDirection != Vector2.zero);
     }
 
     private void rotationRoutine() {
@@ -104,15 +108,21 @@ public class PlayerInput : MonoBehaviour {
         fire = playerControls.Player.Fire;
         fire.Enable();
         fire.performed += Fire;
+
+        numericButtons = playerControls.Player.NumericButtons;
+        numericButtons.Enable();
+        numericButtons.performed += NumericalButtons;
     }
 
     private void OnDisable() {
         move.Disable();
         fire.Disable();
+        numericButtons.Disable();
     }
 
     void Start(){
         canFire = true;
+        canNumericButton = true;
     }
 
     void Update() {
@@ -129,9 +139,34 @@ public class PlayerInput : MonoBehaviour {
     public void Fire(InputAction.CallbackContext context) {
         if (canFire) {
             canFire = false;
-            playerAnimator.Play("Attack");
-            weaponManager.useCurrentWeapon();
+            weaponManager.UseCurrentWeapon();
             StartCoroutine(delayedFire(fireDelay));
+        }
+    }
+
+    public void NumericalButtons(InputAction.CallbackContext context) {
+        if (canNumericButton) {
+            canNumericButton = false;
+
+            switch(context.control.path) {
+                case "/Keyboard/1":
+                    weaponManager.SelectWeapon("Sword");
+                    break;
+                case "/Keyboard/2":
+                    weaponManager.SelectWeapon("Boomerang");
+                    break;
+                case "/Keyboard/3":
+                case "/Keyboard/4":
+                case "/Keyboard/5":
+                case "/Keyboard/6":
+                case "/Keyboard/7":
+                case "/Keyboard/8":
+                case "/Keyboard/9":
+                case "/Keyboard/0":
+                    break;
+            }
+
+            StartCoroutine(delayedNumericButton(fireDelay));
         }
     }
 
