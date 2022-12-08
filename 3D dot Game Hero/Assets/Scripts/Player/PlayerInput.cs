@@ -127,7 +127,6 @@ public class PlayerInput : MonoBehaviour {
 
     void Update() {
         moveDirection = move.ReadValue<Vector2>();
-        moveDirection = new Vector2(-1.0f * moveDirection.y, moveDirection.x);
 
         movementRoutine();
         rotationRoutine();
