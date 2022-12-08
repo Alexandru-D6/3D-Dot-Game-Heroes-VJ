@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9088963112678075891}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Left Sholder Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4415959460637841928}
   - component: {fileID: 2317539288459946577}
   - component: {fileID: 5289940418899014805}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2724112672218911991}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: WeaponAnchor
   m_TagString: ExternalAnchor
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 7304181649179496168}
   - component: {fileID: 3611079847203739911}
   - component: {fileID: 2432664276639268749}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7797288237860526888}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Right Leg Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 3344681305821080717}
   - component: {fileID: 3930922037529547030}
   - component: {fileID: 1318709444757690411}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 3430063891175188137}
   - component: {fileID: 5919279490225620909}
   - component: {fileID: 331798422053780378}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4834534328087089816}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Left Leg Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 7039335358198323122}
   - component: {fileID: 2908771014373977146}
   - component: {fileID: 7940387064682250995}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 8863768931042593275}
   - component: {fileID: 1309313073987808291}
   - component: {fileID: 7024362267518465255}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 1603912058711816172}
   - component: {fileID: 6925475127036339142}
   - component: {fileID: 3411510570702866761}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -706,6 +706,7 @@ MonoBehaviour:
   weaponManager: {fileID: 2123637362340070481}
   animationManager: {fileID: 9123643760422910634}
   fireDelay: 0.5
+  numericButtonDelay: 0
   moveDirection: {x: 0, y: 0}
   moveSpeed: {x: 5, y: 5}
   currentRotation: 4
@@ -806,7 +807,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 387366340613743340}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Right Sholder Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7830583030283955280}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: GiroCoconut [Weapon Stabilizer]
   m_TagString: GiroCoconut
   m_Icon: {fileID: 0}

@@ -11,6 +11,7 @@ TagManager:
   - Boomerang
   - SceneObjects
   - Hand
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -40,7 +41,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Player
   - SceneObjects
   - Obstacles
   - Weapon

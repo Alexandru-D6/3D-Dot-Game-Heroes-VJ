@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3483078135985070684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1460361769680612459}
+  - component: {fileID: 8692506071489056116}
+  - component: {fileID: 3867995966488468269}
+  m_Layer: 29
+  m_Name: TriggerCollider
+  m_TagString: Chest
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1460361769680612459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483078135985070684}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6169559521070346554}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8692506071489056116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483078135985070684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0197258, y: 0.24887374, z: 1.8380778}
+  m_Center: {x: 1.0106342, y: 0.108824566, z: -0.008486867}
+--- !u!114 &3867995966488468269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483078135985070684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18bf03e79c0d68a40b5c001a18533beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestScript: {fileID: 7536865626911377238}
 --- !u!1 &4855988276571340742
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +68,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7148865693694569158}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Lead Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +89,7 @@ Transform:
   m_Children:
   - {fileID: 9100709521599937548}
   m_Father: {fileID: 6169559521070346554}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6463349174653919237
 GameObject:
@@ -43,7 +102,7 @@ GameObject:
   - component: {fileID: 9100709521599937548}
   - component: {fileID: 8566541115588667610}
   - component: {fileID: 2673224261562533078}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Lead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +185,7 @@ GameObject:
   - component: {fileID: 7764543371575827691}
   - component: {fileID: 209629185944418611}
   - component: {fileID: 8194530056669520375}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +205,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6169559521070346554}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &209629185944418611
 MeshFilter:
@@ -208,10 +267,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6169559521070346554}
   - component: {fileID: 4609280766500295775}
+  - component: {fileID: 7536865626911377238}
   - component: {fileID: 7503878481008685490}
-  m_Layer: 0
+  - component: {fileID: 6797283685443670415}
+  - component: {fileID: 8257653599598622258}
+  m_Layer: 29
   m_Name: Chest
-  m_TagString: Untagged
+  m_TagString: Chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,6 +290,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1460361769680612459}
   - {fileID: 7764543371575827691}
   - {fileID: 7148865693694569158}
   m_Father: {fileID: 0}
@@ -253,6 +316,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7536865626911377238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6833505580640283520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef48f38ae5932764997d12761a9989a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestAnimations: {fileID: 0}
+  prefabs: []
+  isPlayerNear: 0
+  openDelay: 0.5
 --- !u!114 &7503878481008685490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,3 +346,118 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4609280766500295775}
   running: 0
+--- !u!65 &6797283685443670415
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6833505580640283520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3300465, y: 1.4149193, z: 1.8678963}
+  m_Center: {x: 0.0056504607, y: 0.6797131, z: -0.0055912733}
+--- !u!114 &8257653599598622258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6833505580640283520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 2bfc135fc78ccdd4796c19411c9f3a3c, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a12ad846-0e9d-48f5-bda2-584edbcd6666
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 09a92ade-bb71-4396-9103-a1e14994825f
+    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dfe2c7ed-e4be-45a1-ae42-b5149e1c5be6
+    m_ActionName: Player/Fire[/Mouse/leftButton,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ac915d99-a63e-4ec3-8cd0-e1ca7aa4e446
+    m_ActionName: Player/NumericButtons[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5,/Keyboard/6,/Keyboard/7,/Keyboard/8,/Keyboard/9,/Keyboard/0]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6b293889-a599-4438-8f98-212c91378e73
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0886dcbf-76d3-4fcf-9be7-f685c4873526
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8fc39674-612d-45a2-9e1c-8290c5a12142
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 386b2eec-113a-481a-947b-841d63d79bd7
+    m_ActionName: UI/Point[/Mouse/position,/Pen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b681aa1a-e8c7-4fe1-acea-c952a20139bf
+    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b25b9dd9-c2da-432a-b4ae-541a5f3c1531
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0dd0ce5c-834c-4bd8-acf8-d7a552bd6b59
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3880074f-3799-457d-a6e4-9ce4b6c55002
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 75ba63a4-49fc-4bbc-aa8c-529bb89d9303
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 32436186-74c4-4550-8738-8fb1f7748b66
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7536865626911377238}
+        m_TargetAssemblyTypeName: ChestScript, Assembly-CSharp
+        m_MethodName: OpenChest
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: db7ae33d-6373-4945-bd91-9c171bb2504a
+    m_ActionName: Player/Interact[/Keyboard/e]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
