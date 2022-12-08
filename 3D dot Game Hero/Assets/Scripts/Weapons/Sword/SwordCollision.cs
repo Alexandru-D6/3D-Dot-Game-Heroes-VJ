@@ -32,7 +32,7 @@ public class SwordCollision : MonoBehaviour {
     // TODO: refactor must be needed to use Layers instead of Tag.
     private void OnCollisionEnter(Collision collision) {
         if (collision.collider.gameObject.CompareTag("Wall")) {
-            swordScript.swordCollided();
+            swordScript.Collided();
             setBoxColliderSize(originalCenter, originalSize);
 
         }
@@ -41,7 +41,7 @@ public class SwordCollision : MonoBehaviour {
     // TODO: refactor must be needed to use Layers instead of Tag.
     private void OnCollisionStay(Collision collision) {
         if (collision.collider.gameObject.CompareTag("Wall")) {
-            swordScript.swordCollided();
+            swordScript.Collided();
             setBoxColliderSize(originalCenter, originalSize);
         }
     }

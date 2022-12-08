@@ -10,6 +10,7 @@ TagManager:
   - ExternalAnchor
   - Boomerang
   - SceneObjects
+  - Hand
   layers:
   - Default
   - TransparentFX

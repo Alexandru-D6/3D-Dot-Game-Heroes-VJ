@@ -5,129 +5,168 @@ using UnityEngine;
 // First version of the inventory system, it might need a huge refactor
 // once there's more weapons.
 public class WeaponManager : MonoBehaviour {
-    List<Pair<string,int>> AvailableWeapons = new List<Pair<string, int>>();
 
-    [SerializeField] private GameObject spawnParent;
-    [SerializeField] private GameObject[] weaponsPrefabs;
+#region Parameters
 
-    private GameObject currentWeapon = null;
-    private List<GameObject> inventory = new List<GameObject>(0);
+    [Header("Managers")]
+    [SerializeField] private AnimationManager animationManager;
 
-    void deleteWeapon(string weapon) {
-        for (int i = 0; i < AvailableWeapons.Count; ++i) {
-            if(AvailableWeapons[i].First.Equals(weapon)) {
-                AvailableWeapons.RemoveAt(i);
-            }
+    [Space(10)]
+
+    [Header("Inventory Management")]
+    [SerializeField] private List<GameObject> weaponsPrefabs;
+    [SerializeField] private List<string> weaponsAvailable;
+    [SerializeField] private List<WeaponScript> inventory;
+
+    [Space(10)]
+
+    [Header("References")]
+    [SerializeField] private GameObject playerHand;
+    [SerializeField] private WeaponScript currentWeapon = null;
+
+#endregion
+
+#region Inventory Management
+
+    void AddToAvailables(string weapon) {
+        // Search if it's already exists
+        foreach(string x in weaponsAvailable) {
+            if (x.Equals(weapon)) return;
         }
+
+        weaponsAvailable.Add(weapon);
     }
 
-    void insertWeapon(string weapon, int uses) {
-        AvailableWeapons.Add(new Pair<string,int>(weapon, uses));
-    }
-
-    int findUses(string weapon) {
-        foreach(var x in AvailableWeapons) {
-            if (x.First.Equals(weapon)) {
-                return x.Second;
-            }
+    bool IsWeaponAvailable(string weapon) {
+        // Search if it's spawned
+        foreach(WeaponScript x in inventory) {
+            if (x.GetName().Equals(weapon)) return true;
         }
-        return 0;
-    }
 
-    void decrementWeaponUses(string weapon) {
-        foreach(var x in AvailableWeapons) {
-            if(x.First.Equals(weapon)) {
-                x.Second -= 1;
-            }
+        // Search if it's available to spawn
+        foreach(string x in weaponsAvailable) {
+            if (x.Equals(weapon)) return true;
         }
+
+        return false;
     }
 
-    GameObject getWeaponForSpawn(string weapon) {
-        foreach(GameObject x in weaponsPrefabs) {
-            if(x.tag.Equals(weapon)) return x; 
-        }
-        return null;
-    }
-
-    bool revealSpawnedWeapon(string weapon) {
+    bool RevealSpawnedWeapon(string weapon) {
         if (inventory.Count == 0) return false;
 
+        if (currentWeapon != null && currentWeapon.GetName().Equals(weapon)) {
+            SelectWeapon("Hand");
+            return true;
+        }
+
         foreach (var x in inventory) {
-            if (x.tag.Equals(weapon)) {
-                if (currentWeapon != null) unselectCurrentWeapon();
+            if (x.GetName().Equals(weapon)) {
+                UnselectCurrentWeapon();
 
                 currentWeapon = x;
-                currentWeapon.SetActive(x);
+                currentWeapon.SetActive(true);
                 return true;
             }
         }
         return false;
     }
 
-    void selectWeapon(string weapon) {
-        if (findUses(weapon) > 0) {
-            if (revealSpawnedWeapon(weapon)) return;
-            GameObject obj = getWeaponForSpawn(weapon);
-            obj = Instantiate(obj, new UnityEngine.Vector3(), new UnityEngine.Quaternion());
-            obj.SetActive(false);
-            obj.transform.parent = spawnParent.transform;
-            obj.SetActive(true);
-            currentWeapon = obj;
-            inventory.Add(obj);
-            StartCoroutine(lazyActive(2.0f, currentWeapon));
-        } else {
-            destroyWeapon(weapon);
+    GameObject GetObjectPrefab(string weapon) {
+        foreach(GameObject x in weaponsPrefabs) {
+            if(x.tag.Equals(weapon)) return x; 
         }
+        return null;
     }
 
-    void unselectCurrentWeapon() {
+    void InstantiateWeapon(string weapon) {
+        GameObject prefab = GetObjectPrefab(weapon);
+        GameObject obj = Instantiate(prefab, new UnityEngine.Vector3(), new UnityEngine.Quaternion());
+
+        obj.SetActive(false);
+        obj.transform.parent = playerHand.transform;
+
+        UnselectCurrentWeapon();
+        currentWeapon = obj.GetComponent<WeaponScript>();
+        currentWeapon.SetWeaponManager(this);
+
+        inventory.Add(currentWeapon);
+        obj.SetActive(true);
+    }
+
+    void UnselectCurrentWeapon() {
         if (currentWeapon != null) {
             currentWeapon.SetActive(false);
             currentWeapon = null;
         }
     }
 
-    void destroyWeapon(string weapon) {
+#endregion
+
+#region Public Methods
+
+    public void DestroyWeapon(string weapon) {
         for (int i = 0; i < inventory.Count; ++i) {
-            if (inventory[i].tag.Equals(weapon)) {
-                deleteWeapon(weapon);
-                inventory[i].transform.parent = null;
+            if (inventory[i].GetName().Equals(weapon)) {
                 inventory[i].SetActive(false);
-                Destroy(inventory[i]);
+                inventory[i].transform.parent = null;
+
+                Destroy(inventory[i].gameObject);
                 inventory.RemoveAt(i);
                 return;
             }
         }
     }
 
-    public void useCurrentWeapon() {
-        if (currentWeapon != null) {
-            decrementWeaponUses(currentWeapon.tag);
-            currentWeapon.GetComponent<BoomerangScript>().Attack();
+    public void SelectWeapon(string weapon) {
+        if (IsWeaponAvailable(weapon)) {
+            if (RevealSpawnedWeapon(weapon)) return;
+
+            // If it haven't spawned yet, do it.
+            InstantiateWeapon(weapon);
+        } else {
+            // TODO: It may return an error or do something?
         }
     }
 
-    IEnumerator lazyActive(float time, GameObject obj) {
-        yield return new WaitForSeconds(time);
+    public void UseCurrentWeapon() {
+        if (currentWeapon != null) {
+            animationManager.AttackStarted();
+            currentWeapon.GetComponent<WeaponScript>().Attack();
+        }
     }
 
-    #region DEBUG (Delete afterwards the system works fine)
+    public void AttackFinished() {
+        animationManager.AttackFinished();
+    }
+
+#endregion
+
+#region MonoBehaviour Methods
+
+    void Start() {
+        SelectWeapon("Hand");
+    }
+
+#endregion
+
+#region DEBUG (Delete afterwards the system works fine)
 
     public void DB_createWeapon(string weapon, int uses) {
-        insertWeapon(weapon, uses);
+        AddToAvailables(weapon);
     }
 
     public void DB_selectWeapon(string weapon) {
-        selectWeapon(weapon);
+        SelectWeapon(weapon);
     }
 
     public void DB_deleteWeapon(string weapon) {
-        destroyWeapon(weapon);
+        DestroyWeapon(weapon);
     }
 
     public void DB_unselectCurrentWeapon() {
-        unselectCurrentWeapon();
+        UnselectCurrentWeapon();
     }
-    #endregion
+
+#endregion
 
 }

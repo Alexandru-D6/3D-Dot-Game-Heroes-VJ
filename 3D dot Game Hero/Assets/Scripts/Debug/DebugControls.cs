@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class DebugControls : MonoBehaviour {
 
     public WeaponManager weaponManager;
-    public SwordScript SwordScript;
+    public WeaponScript weaponScript;
 
     [SerializeField] private bool buttonAvailability;
     [SerializeField] private float buttonDelay;
@@ -26,25 +26,21 @@ public class DebugControls : MonoBehaviour {
     public void Key_1_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            weaponManager.DB_selectWeapon("Boomerang");
         }
     }
     public void Key_2_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            weaponManager.DB_unselectCurrentWeapon();
         }
     }
     public void Key_3_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            weaponManager.DB_deleteWeapon("Boomerang");
         }
     }
     public void Key_4_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            weaponManager.DB_createWeapon("Boomerang", int.MaxValue);
         }
     }
     public void Key_5_Pressed(InputAction.CallbackContext context) {
@@ -60,20 +56,19 @@ public class DebugControls : MonoBehaviour {
     public void Key_7_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            SwordScript = GameObject.FindGameObjectWithTag("Sword").GetComponent<SwordScript>();
+            weaponScript = GameObject.FindGameObjectWithTag("Sword").GetComponent<WeaponScript>();
         }
     }
     public void Key_8_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            SwordScript.setLevelOfPower(SwordScript.levelOfPower - 1);
+            weaponScript.SetLevelOfPower(weaponScript.GetLevelOfPower() - 1);
         }
     }
     public void Key_9_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            Debug.Log(SwordScript.levelOfPower);
-            SwordScript.setLevelOfPower(SwordScript.levelOfPower + 1);
+            weaponScript.SetLevelOfPower(weaponScript.GetLevelOfPower() + 1);
         }
     }
 

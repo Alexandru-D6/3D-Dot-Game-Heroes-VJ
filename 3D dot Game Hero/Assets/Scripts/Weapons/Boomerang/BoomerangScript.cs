@@ -5,21 +5,16 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem.Processors;
 
-public class BoomerangScript : MonoBehaviour {
+public class BoomerangScript : WeaponScript {
 
 #region Parameters
-
-    [Header("Boomerang Stabilizer")]
-    [SerializeField] private Vector3 defaultRotation;
-    private Transform giroCoconutTransform;
-    [SerializeField] private RotationConstraint rotationConstraint;
 
     [Header("Boomerang Reference")]
     [SerializeField] private GameObject sceneObjects;
     [SerializeField] private GameObject playerHand;
     [SerializeField] private GameObject player;
     [SerializeField] private FollowAnchor followAnchorScript;
-    [SerializeField] private Animator animator;
+    [SerializeField] private BoomerangAnimations boomerangAnimations;
 
     [Header("Boomerang Parameters")]
     [SerializeField] private bool isFlying;
@@ -40,13 +35,14 @@ public class BoomerangScript : MonoBehaviour {
         if (other.tag.Equals("Wall")) {
             isReturning = true;
         }else if (other.tag.Equals("Player") && isReturning) {
-            player.GetComponent<Animator>().SetTrigger("Boomerang Received");
-            animator.SetBool("Flying", false);
-            transform.parent = playerHand.transform;
-            rotationConstraint.constraintActive = true;
-            followAnchorScript.enabled = true;
+            boomerangAnimations.enableFlying(false);
             isFlying = false;
             isReturning = false;
+
+            transform.parent = playerHand.transform;
+            followAnchorScript.enabled = true;
+
+            AttackFinished();
         }
     }
 
@@ -56,64 +52,82 @@ public class BoomerangScript : MonoBehaviour {
 
 #endregion
 
-#region Public Methods (Abstract probably)
+#region Abstract Methods
 
-    public void weaponCollided() {
+    public override void Collided() {
         if (isFlying) isReturning = true;
     }
 
-    public void Attack() {
-        player.GetComponent<Animator>().Play("Attack Boomerang");
+    public override void Attack() {
         // Change parent of boomerang, set new height and disable stabilizer
-        rotationConstraint.constraintActive = false;
         transform.parent = sceneObjects.transform;
-        setPosition(transform, y: flyHeight);
+        SetPosition(transform, y: flyHeight);
         followAnchorScript.enabled = false;
 
         // Save necesary values
         originalPosition = transform.localPosition;
         boomerangDirection = new Vector3(Mathf.Cos(Mathf.Deg2Rad * player.transform.localEulerAngles.y), 0.0f, -1.0f * Mathf.Sin(Mathf.Deg2Rad * player.transform.localEulerAngles.y));
-        normalizeVector(ref boomerangDirection);
+        NormalizeVector(ref boomerangDirection);
 
         isFlying = true;
-        animator.SetBool("Flying", true);
+        boomerangAnimations.enableFlying(true);
+
+        LockAxis(true, true, true);
+    }
+
+#endregion
+
+#region Virtual Methods
+
+    public override void AttackFinished() {
+        base.AttackFinished();
+
+        LockAxis(true, false, false);
+
+        DecrementUses();
+
+        if (GetLeftUses() == 0) {
+            weaponManager.DestroyWeapon(GetName());
+        }
     }
 
 #endregion
 
 #region Private Methods
 
-    private void controlBoomerang() {
+    private void ControlBoomerang() {
         if (isFlying) {
-            translate(boomerangDirection);
+            Translate(boomerangDirection);
 
             if (!isReturning) isReturning = Vector3.Distance(transform.localPosition, originalPosition) >= maxFlyDistance;
 
-            if (isReturning) boomerangDirection = calculateDirection(transform.localPosition, player.transform.localPosition);
+            if (isReturning) boomerangDirection = CalculateDirection(transform.localPosition, player.transform.localPosition);
         }
     }
 
-    private void normalizeVector(ref Vector3 vector) {
+    private void NormalizeVector(ref Vector3 vector) {
         for (int i = 0; i < 3; ++i) {
             if (Mathf.Abs(vector[i]) >= 0.5f) vector[i] = Mathf.Sign(vector[i]) * 1.0f;
             else vector[i] = 0.0f;
         }
     }
 
-    private Vector3 calculateDirection(Vector3 origin, Vector3 Destination) {
+    private Vector3 CalculateDirection(Vector3 origin, Vector3 Destination) {
         Vector3 dir = (Destination - origin).normalized;
         dir.y = 0.0f;
         return dir;
     }
 
-    private void restoreDefaultRotation() {
-        // Setting up y rotation (the one whose relative to the player rotation)
-        Vector3 tmp = transform.localEulerAngles;
-        tmp.y = defaultRotation.y;
-        transform.localEulerAngles = tmp;
+    private void LockAxis(bool x, bool y, bool z) {
+        rotationConstraint.enabled = false;
+        Axis lockedAxis = Axis.None | ((x == true) ? Axis.X : Axis.None) | ((y == true) ? Axis.Y : Axis.None) | ((z == true) ? Axis.Z : Axis.None);
+        rotationConstraint.rotationAxis = lockedAxis;
+
+        transform.localEulerAngles = defaultRotation;
+        rotationConstraint.enabled = true;
     }
 
-    private void translate(Vector3 direction) {
+    private void Translate(Vector3 direction) {
         Vector3 tmp = transform.localPosition;
 
         tmp += direction * velocity * Time.deltaTime;
@@ -121,7 +135,7 @@ public class BoomerangScript : MonoBehaviour {
         transform.localPosition = tmp;
     }
 
-    private void setPosition(Transform transform, float x = float.NaN, float y = float.NaN, float z = float.NaN) {
+    private void SetPosition(Transform transform, float x = float.NaN, float y = float.NaN, float z = float.NaN) {
         Vector3 tmp = transform.localPosition;
 
         if (!float.IsNaN(x)) tmp.x = x;
@@ -135,32 +149,20 @@ public class BoomerangScript : MonoBehaviour {
 
 #region MonoBehaviour Methods
 
-    void Start() {
-#region Setting up GiroCoconut
-        giroCoconutTransform = GameObject.FindGameObjectWithTag("GiroCoconut").transform;
+    public override void Start() {
+        base.Start();
 
-        // TODO: Make this change whenever this weapon is selected, as this rotation is useless for the sword
-        Vector3 tmp2 = giroCoconutTransform.transform.localEulerAngles;
-        tmp2.z = 0.0f;
-        giroCoconutTransform.transform.localEulerAngles = tmp2;
-
-        ConstraintSource tmp = new ConstraintSource();
-        tmp.sourceTransform = giroCoconutTransform;
-        tmp.weight = 1;
-
-        rotationConstraint.SetSource(0, tmp);
-        rotationConstraint.constraintActive = false;
-#endregion
-
-        restoreDefaultRotation();
+        usesLeft = int.MaxValue;
 
         playerHand = transform.parent.gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
         sceneObjects = GameObject.FindGameObjectWithTag("SceneObjects");
+
+        LockAxis(true, false, false);
     }
 
     void Update() {
-        controlBoomerang();
+        ControlBoomerang();
     }
 
 #endregion
