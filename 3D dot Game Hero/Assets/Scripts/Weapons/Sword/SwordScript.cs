@@ -51,7 +51,7 @@ public class SwordScript : WeaponScript {
     }
 
     public override void Attack() {
-        lockAxis(false, false, true);
+        LockAxis(false, false, true);
         startAnim = true;
     }
 
@@ -111,7 +111,7 @@ public class SwordScript : WeaponScript {
             if (startAnim || emergencyStop) StartCoroutine(delayRestoreRoutine(animationDuration - (2.0f * deltaTime)));
             else {
                 restoreAnim = false;
-                lockAxis(true, true, false);
+                LockAxis(true, true, false);
             }
 
             startAnim = false;
@@ -121,7 +121,7 @@ public class SwordScript : WeaponScript {
         emergencyStop = false;
     }
 
-    private void lockAxis(bool x, bool y, bool z) {
+    private void LockAxis(bool x, bool y, bool z) {
         rotationConstraint.enabled = false;
         transform.localEulerAngles = defaultRotation;
         rotationConstraint.enabled = true;
@@ -165,8 +165,7 @@ public class SwordScript : WeaponScript {
 
         swordLevelRoutine();
 
-        rotationConstraint.constraintActive = true;
-        lockAxis(true, true, false);
+        LockAxis(true, true, false);
     }
 
     private void Update() {

@@ -35,13 +35,14 @@ public class BoomerangScript : WeaponScript {
         if (other.tag.Equals("Wall")) {
             isReturning = true;
         }else if (other.tag.Equals("Player") && isReturning) {
-            AttackFinished();
             boomerangAnimations.enableFlying(false);
-            transform.parent = playerHand.transform;
-            rotationConstraint.constraintActive = true;
-            followAnchorScript.enabled = true;
             isFlying = false;
             isReturning = false;
+
+            transform.parent = playerHand.transform;
+            followAnchorScript.enabled = true;
+
+            AttackFinished();
         }
     }
 
@@ -59,7 +60,6 @@ public class BoomerangScript : WeaponScript {
 
     public override void Attack() {
         // Change parent of boomerang, set new height and disable stabilizer
-        rotationConstraint.constraintActive = false;
         transform.parent = sceneObjects.transform;
         SetPosition(transform, y: flyHeight);
         followAnchorScript.enabled = false;
@@ -71,6 +71,8 @@ public class BoomerangScript : WeaponScript {
 
         isFlying = true;
         boomerangAnimations.enableFlying(true);
+
+        LockAxis(true, true, true);
     }
 
 #endregion
@@ -79,6 +81,8 @@ public class BoomerangScript : WeaponScript {
 
     public override void AttackFinished() {
         base.AttackFinished();
+
+        LockAxis(true, false, false);
 
         DecrementUses();
 
@@ -114,11 +118,13 @@ public class BoomerangScript : WeaponScript {
         return dir;
     }
 
-    private void RestoreDefaultRotation() {
-        // Setting up y rotation (the one whose relative to the player rotation)
-        Vector3 tmp = transform.localEulerAngles;
-        tmp.y = defaultRotation.y;
-        transform.localEulerAngles = tmp;
+    private void LockAxis(bool x, bool y, bool z) {
+        rotationConstraint.enabled = false;
+        Axis lockedAxis = Axis.None | ((x == true) ? Axis.X : Axis.None) | ((y == true) ? Axis.Y : Axis.None) | ((z == true) ? Axis.Z : Axis.None);
+        rotationConstraint.rotationAxis = lockedAxis;
+
+        transform.localEulerAngles = defaultRotation;
+        rotationConstraint.enabled = true;
     }
 
     private void Translate(Vector3 direction) {
@@ -146,21 +152,13 @@ public class BoomerangScript : WeaponScript {
     public override void Start() {
         base.Start();
 
-#region Setting up GiroCoconut
-        // TODO: Make this change whenever this weapon is selected, as this rotation is useless for the sword
-        // IDEA: remove the giroCoconut cause it's not needed for the attack neither running??
-        Vector3 tmp2 = giroCoconutTransform.transform.localEulerAngles;
-        //tmp2.z = 0.0f;
-        giroCoconutTransform.transform.localEulerAngles = tmp2;
-#endregion
-
         usesLeft = int.MaxValue;
-
-        RestoreDefaultRotation();
 
         playerHand = transform.parent.gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
         sceneObjects = GameObject.FindGameObjectWithTag("SceneObjects");
+
+        LockAxis(true, false, false);
     }
 
     void Update() {

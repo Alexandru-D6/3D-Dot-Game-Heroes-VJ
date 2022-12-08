@@ -90,7 +90,6 @@ public abstract class WeaponScript : MonoBehaviour {
         if (rotationConstraint.sourceCount != 0) rotationConstraint.SetSource(0,tmp);
         else rotationConstraint.AddSource(tmp);
 
-        rotationConstraint.constraintActive = false;
         #endregion
     }
 
