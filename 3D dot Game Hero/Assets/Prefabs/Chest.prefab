@@ -328,10 +328,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef48f38ae5932764997d12761a9989a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestAnimations: {fileID: 0}
+  chestAnimations: {fileID: 7503878481008685490}
   prefabs: []
   isPlayerNear: 0
   openDelay: 0.5
+  closeChestDelay: 2
 --- !u!114 &7503878481008685490
 MonoBehaviour:
   m_ObjectHideFlags: 0

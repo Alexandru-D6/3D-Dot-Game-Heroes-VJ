@@ -14,14 +14,20 @@ public class ChestScript : MonoBehaviour {
     [SerializeField] private bool isPlayerNear;
     private bool canOpen;
     [SerializeField] private float openDelay;
+    [SerializeField] private float closeChestDelay;
 
 #endregion
 
 #region IEnumerators
 
-    IEnumerator delayedOpen(float time) {
+    IEnumerator delayedOpenButton(float time) {
         yield return new WaitForSeconds(time);
         canOpen = true;
+    }
+
+    IEnumerator delayedCloseChest(float time) {
+        yield return new WaitForSeconds(time);
+        chestAnimations.close();
     }
 
 #endregion
@@ -49,10 +55,11 @@ public class ChestScript : MonoBehaviour {
     #region Callbacks Functions
 
     public void OpenChest(InputAction.CallbackContext context) {
-        if (canOpen) {
+        if (canOpen && isPlayerNear) {
             canOpen = false;
-            Debug.Log("Chest Opened");
-            StartCoroutine(delayedOpen(openDelay));
+            chestAnimations.open();
+            StartCoroutine(delayedOpenButton(openDelay));
+            StartCoroutine(delayedCloseChest(closeChestDelay));
         }
     }
 
