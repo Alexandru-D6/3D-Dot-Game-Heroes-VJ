@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5070667555494746543}
   - component: {fileID: 1233469772536942144}
   - component: {fileID: 198585549773351114}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 907760285316395502}
   - component: {fileID: 8153356533464223978}
   - component: {fileID: 2853526433309224157}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 966508281600375754}
   - component: {fileID: 1553314162152408657}
   - component: {fileID: 3553327482510085996}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3984288524859896697}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm Left Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 2183023710435380559}
   - component: {fileID: 228142547614252310}
   - component: {fileID: 7668133784082801618}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3330116683564822129}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg Left Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5130333840357026610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm Right Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 4806385279753224437}
   - component: {fileID: 818824002485042045}
   - component: {fileID: 5562755000148923828}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5202694697777537879}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg Right Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 6341460961595596476}
   - component: {fileID: 3542246625567636324}
   - component: {fileID: 4789727187735536544}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,9 +636,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7376609877970088813}
   - component: {fileID: 6617030023809101826}
-  m_Layer: 0
+  - component: {fileID: 2201615992237364386}
+  - component: {fileID: 5072185551581666535}
+  m_Layer: 6
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -684,3 +686,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2201615992237364386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7860236232448223703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fc0571b5b16bb47b3f499684e238a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6617030023809101826}
+  running: 0
+--- !u!114 &5072185551581666535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7860236232448223703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c068d95c4751ce4fb08ae71a9674000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rutina: 0
+  crono: 0
+  anim: {fileID: 0}
+  angle: {x: 0, y: 0, z: 0, w: 0}
+  grado: 0
+  target: {fileID: 0}

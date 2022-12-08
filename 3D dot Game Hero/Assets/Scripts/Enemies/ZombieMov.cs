@@ -5,31 +5,67 @@ using UnityEngine.AI;
 
 public class ZombieMov : MonoBehaviour
 {
-    private Transform player;
+    #region Parameters
+    public int rutina;
+    public float crono;
+    public Animator anim;
+    public Quaternion angle;
+    public float grado;
 
-    private NavMeshAgent agent;
+    public GameObject target;
 
-    public float enemyDistance = 0.7f;
-    // Start is called before the first frame update
+    #endregion
+
+    
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
-
-        agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+        target = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Look at the player
-        transform.LookAt(player);
+        Comportamiento_Zombie();
+    }
 
-        agent.SetDestination(player.transform.position);
-
-        if (Vector3.Distance(transform.position, player.position) < enemyDistance)
+    public void Comportamiento_Zombie()
+    {
+        if(Vector3.Distance(transform.position, target.transform.position) > 5)
         {
-            gameObject.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
-            gameObject.GetComponent<Animator>().Play("attack");
+            crono += 1 * Time.deltaTime;
+            if(crono >= 4)
+            {
+                rutina = Random.Range(0, 2);
+                crono = 0;
+            }
+            switch (rutina)
+            {
+                case 0:
+                    anim.SetBool("Running", false);
+                    break;
+                case 1:
+                    grado = Random.Range(0, 360);
+                    angle = Quaternion.Euler(0, grado, 0);
+                    rutina++;
+                    break;
+                case 2:
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, 0.5f);
+                    transform.Translate(Vector3.right * 1 * Time.deltaTime);
+                    anim.SetBool("Running", true);
+                    break;
+            }
         }
+        else
+        {
+            anim.SetBool("Running", true);
+            var lookPos = target.transform.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
+
+            transform.Translate(Vector3.right * 2 * Time.deltaTime);
+        }
+        
     }
 }
