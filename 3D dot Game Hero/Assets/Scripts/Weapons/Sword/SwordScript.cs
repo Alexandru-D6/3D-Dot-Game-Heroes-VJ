@@ -42,12 +42,6 @@ public class SwordScript : WeaponScript {
         AttackFinished();
     }
 
-    IEnumerator delayConstraintRoutine(float time) {
-        yield return new WaitForSeconds(time);
-        rotationConstraint.constraintActive = false;
-        restoreDefaultRotation();
-    }
-
 #endregion
 
 #region Abstract Methods
@@ -57,7 +51,7 @@ public class SwordScript : WeaponScript {
     }
 
     public override void Attack() {
-        rotationConstraint.constraintActive = true;
+        lockAxis(false, false, true);
         startAnim = true;
     }
 
@@ -109,15 +103,16 @@ public class SwordScript : WeaponScript {
 
             // If the sword achieve the restore of the sword
             if (restoreAnim) {
-                rotationConstraint.constraintActive = false;
-                restoreDefaultRotation();
                 trailBlade.SetActive(false);
             }
 
             // If the sword expanded to the maximum or collided, lock that position for the remaining time to sync with
             // the arm animation.
             if (startAnim || emergencyStop) StartCoroutine(delayRestoreRoutine(animationDuration - (2.0f * deltaTime)));
-            else restoreAnim = false;
+            else {
+                restoreAnim = false;
+                lockAxis(true, true, false);
+            }
 
             startAnim = false;
             stopAnim = true;
@@ -126,16 +121,13 @@ public class SwordScript : WeaponScript {
         emergencyStop = false;
     }
 
-    private void restoreDefaultRotation() {
-        // Setting up z rotation (the one whose relative to the hand)
-        Vector3 tmp = transform.localEulerAngles;
-        tmp.z = defaultRotation.z;
-        transform.localEulerAngles = tmp;
+    private void lockAxis(bool x, bool y, bool z) {
+        rotationConstraint.enabled = false;
+        transform.localEulerAngles = defaultRotation;
+        rotationConstraint.enabled = true;
 
-        // Setting up y rotation (the one whose relative to the player rotation)
-        tmp = transform.eulerAngles;
-        tmp.y = giroCoconutTransform.eulerAngles.y;
-        transform.eulerAngles = tmp;
+        Axis lockedAxis = Axis.None | ((x == true) ? Axis.X : Axis.None) | ((y == true) ? Axis.Y : Axis.None) | ((z == true) ? Axis.Z : Axis.None);
+        rotationConstraint.rotationAxis = lockedAxis;
     }
 
     private void switchBlade(bool isOriginalSword) {
@@ -173,7 +165,8 @@ public class SwordScript : WeaponScript {
 
         swordLevelRoutine();
 
-        restoreDefaultRotation();
+        rotationConstraint.constraintActive = true;
+        lockAxis(true, true, false);
     }
 
     private void Update() {
