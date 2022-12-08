@@ -61,7 +61,9 @@ public class ZombieMov : MonoBehaviour
             anim.SetBool("Running", true);
             var lookPos = target.transform.position - transform.position;
             lookPos.y = 0;
-            var rotation = Quaternion.LookRotation(lookPos);
+
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            rotation = Quaternion.Euler(rotation.eulerAngles.x, rotation.eulerAngles.y - 90.0f, rotation.eulerAngles.z);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
 
             transform.Translate(Vector3.right * 2 * Time.deltaTime);
