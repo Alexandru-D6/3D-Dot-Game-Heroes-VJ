@@ -14,7 +14,7 @@ public class BoomerangScript : WeaponScript {
     [SerializeField] private GameObject playerHand;
     [SerializeField] private GameObject player;
     [SerializeField] private FollowAnchor followAnchorScript;
-    [SerializeField] private Animator animator;
+    [SerializeField] private BoomerangAnimations boomerangAnimations;
 
     [Header("Boomerang Parameters")]
     [SerializeField] private bool isFlying;
@@ -36,7 +36,7 @@ public class BoomerangScript : WeaponScript {
             isReturning = true;
         }else if (other.tag.Equals("Player") && isReturning) {
             AttackFinished();
-            animator.SetBool("Flying", false);
+            boomerangAnimations.enableFlying(false);
             transform.parent = playerHand.transform;
             rotationConstraint.constraintActive = true;
             followAnchorScript.enabled = true;
@@ -61,53 +61,67 @@ public class BoomerangScript : WeaponScript {
         // Change parent of boomerang, set new height and disable stabilizer
         rotationConstraint.constraintActive = false;
         transform.parent = sceneObjects.transform;
-        setPosition(transform, y: flyHeight);
+        SetPosition(transform, y: flyHeight);
         followAnchorScript.enabled = false;
 
         // Save necesary values
         originalPosition = transform.localPosition;
         boomerangDirection = new Vector3(Mathf.Cos(Mathf.Deg2Rad * player.transform.localEulerAngles.y), 0.0f, -1.0f * Mathf.Sin(Mathf.Deg2Rad * player.transform.localEulerAngles.y));
-        normalizeVector(ref boomerangDirection);
+        NormalizeVector(ref boomerangDirection);
 
         isFlying = true;
-        animator.SetBool("Flying", true);
+        boomerangAnimations.enableFlying(true);
+    }
+
+#endregion
+
+#region Virtual Methods
+
+    public override void AttackFinished() {
+        base.AttackFinished();
+
+        DecrementUses();
+
+        if (GetLeftUses() == 0) {
+            weaponManager.DestroyWeapon(GetName());
+        }
     }
 
 #endregion
 
 #region Private Methods
 
-    private void controlBoomerang() {
+    private void ControlBoomerang() {
         if (isFlying) {
-            translate(boomerangDirection);
+            Translate(boomerangDirection);
 
             if (!isReturning) isReturning = Vector3.Distance(transform.localPosition, originalPosition) >= maxFlyDistance;
 
-            if (isReturning) boomerangDirection = calculateDirection(transform.localPosition, player.transform.localPosition);
+            if (isReturning) boomerangDirection = CalculateDirection(transform.localPosition, player.transform.localPosition);
         }
     }
 
-    private void normalizeVector(ref Vector3 vector) {
+    private void NormalizeVector(ref Vector3 vector) {
         for (int i = 0; i < 3; ++i) {
             if (Mathf.Abs(vector[i]) >= 0.5f) vector[i] = Mathf.Sign(vector[i]) * 1.0f;
             else vector[i] = 0.0f;
         }
     }
 
-    private Vector3 calculateDirection(Vector3 origin, Vector3 Destination) {
+    private Vector3 CalculateDirection(Vector3 origin, Vector3 Destination) {
         Vector3 dir = (Destination - origin).normalized;
         dir.y = 0.0f;
         return dir;
     }
 
-    private void restoreDefaultRotation() {
+    private void RestoreDefaultRotation() {
         // Setting up y rotation (the one whose relative to the player rotation)
         Vector3 tmp = transform.localEulerAngles;
         tmp.y = defaultRotation.y;
         transform.localEulerAngles = tmp;
     }
 
-    private void translate(Vector3 direction) {
+    private void Translate(Vector3 direction) {
         Vector3 tmp = transform.localPosition;
 
         tmp += direction * velocity * Time.deltaTime;
@@ -115,7 +129,7 @@ public class BoomerangScript : WeaponScript {
         transform.localPosition = tmp;
     }
 
-    private void setPosition(Transform transform, float x = float.NaN, float y = float.NaN, float z = float.NaN) {
+    private void SetPosition(Transform transform, float x = float.NaN, float y = float.NaN, float z = float.NaN) {
         Vector3 tmp = transform.localPosition;
 
         if (!float.IsNaN(x)) tmp.x = x;
@@ -140,7 +154,9 @@ public class BoomerangScript : WeaponScript {
         giroCoconutTransform.transform.localEulerAngles = tmp2;
 #endregion
 
-        restoreDefaultRotation();
+        usesLeft = int.MaxValue;
+
+        RestoreDefaultRotation();
 
         playerHand = transform.parent.gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -148,7 +164,7 @@ public class BoomerangScript : WeaponScript {
     }
 
     void Update() {
-        controlBoomerang();
+        ControlBoomerang();
     }
 
 #endregion

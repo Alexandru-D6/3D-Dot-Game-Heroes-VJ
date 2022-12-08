@@ -719,7 +719,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5626721005123845776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a62fba2b220092049b377fc8c606b8d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 58fc0571b5b16bb47b3f499684e238a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4816398731180999628}
@@ -738,10 +738,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationManager: {fileID: 9123643760422910634}
   weaponsPrefabs:
+  - {fileID: 6862776136738712332, guid: a427d608c30c0b2458af6df2edff7e71, type: 3}
   - {fileID: 6881899592116037539, guid: 32d3c163f020478419e278a81f328859, type: 3}
   - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
   weaponsAvailable:
+  - Hand
   - Sword
+  - Boomerang
   inventory: []
   playerHand: {fileID: 2497701129174850206}
   currentWeapon: {fileID: 0}

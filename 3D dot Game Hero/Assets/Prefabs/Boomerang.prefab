@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7470752804272300381}
   - component: {fileID: 3442740638912467826}
   - component: {fileID: 1663931552083446344}
+  - component: {fileID: -4037926294053425422}
   - component: {fileID: 1746232766629360100}
   - component: {fileID: 5788236640446100920}
   m_Layer: 31
@@ -85,13 +86,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb69faab99cf484d84fbf6cb877bf09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponManager: {fileID: 0}
   defaultRotation: {x: 0, y: -45, z: 0}
   rotationConstraint: {fileID: 1746232766629360100}
+  weaponName: 
+  usesLeft: 0
+  levelOfPower: 0
   sceneObjects: {fileID: 0}
   playerHand: {fileID: 0}
   player: {fileID: 0}
   followAnchorScript: {fileID: 3442740638912467826}
-  animator: {fileID: 7470752804272300381}
+  boomerangAnimations: {fileID: -4037926294053425422}
   isFlying: 0
   isReturning: 0
   maxFlyDistance: 10
@@ -99,6 +104,20 @@ MonoBehaviour:
   velocity: 20
   originalPosition: {x: 0, y: 0, z: 0}
   boomerangDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &-4037926294053425422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639913805845899478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48028a417f8109e4492f63cdfeda82fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7470752804272300381}
+  running: 0
 --- !u!1818360609 &1746232766629360100
 RotationConstraint:
   m_ObjectHideFlags: 0

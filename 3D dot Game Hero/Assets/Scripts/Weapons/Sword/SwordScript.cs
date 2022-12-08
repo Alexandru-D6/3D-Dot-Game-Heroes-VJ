@@ -169,7 +169,10 @@ public class SwordScript : WeaponScript {
     public override void Start() {
         base.Start();
 
+        usesLeft = int.MaxValue;
+
         swordLevelRoutine();
+
         restoreDefaultRotation();
     }
 

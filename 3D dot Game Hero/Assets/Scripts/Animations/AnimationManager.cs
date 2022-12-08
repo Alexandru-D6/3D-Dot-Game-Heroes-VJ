@@ -10,7 +10,7 @@ public class AnimationManager : MonoBehaviour {
     [SerializeField] protected Animator animator;
 
     [Header("Debug info, don't modify")]
-    [SerializeField] private bool running; 
+    [SerializeField] protected bool running; 
 
 #endregion
 

@@ -51,15 +51,19 @@ public abstract class WeaponScript : MonoBehaviour {
         gameObject.SetActive(value);
     }
 
-    public void decrementUses() {
+    public void DecrementUses() {
         usesLeft--;
     }
 
-    public void incrementUses() {
+    public void IncrementUses() {
         usesLeft++;
     }
 
-    public string getName() {
+    public int GetLeftUses() {
+        return usesLeft;
+    }
+
+    public string GetName() {
         return weaponName;
     }
 
@@ -83,7 +87,9 @@ public abstract class WeaponScript : MonoBehaviour {
         tmp.sourceTransform = giroCoconutTransform;
         tmp.weight = 1;
 
-        rotationConstraint.SetSource(0,tmp);
+        if (rotationConstraint.sourceCount != 0) rotationConstraint.SetSource(0,tmp);
+        else rotationConstraint.AddSource(tmp);
+
         rotationConstraint.constraintActive = false;
         #endregion
     }

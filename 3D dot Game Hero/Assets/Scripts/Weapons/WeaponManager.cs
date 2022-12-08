@@ -40,7 +40,7 @@ public class WeaponManager : MonoBehaviour {
     bool IsWeaponAvailable(string weapon) {
         // Search if it's spawned
         foreach(WeaponScript x in inventory) {
-            if (x.getName().Equals(weapon)) return true;
+            if (x.GetName().Equals(weapon)) return true;
         }
 
         // Search if it's available to spawn
@@ -55,7 +55,7 @@ public class WeaponManager : MonoBehaviour {
         if (inventory.Count == 0) return false;
 
         foreach (var x in inventory) {
-            if (x.getName().Equals(weapon)) {
+            if (x.GetName().Equals(weapon)) {
                 currentWeapon = x;
                 currentWeapon.SetActive(true);
                 return true;
@@ -83,19 +83,6 @@ public class WeaponManager : MonoBehaviour {
         obj.SetActive(true);
     }
 
-    void DestroyWeapon(string weapon) {
-        for (int i = 0; i < inventory.Count; ++i) {
-            if (inventory[i].getName().Equals(weapon)) {
-                inventory[i].SetActive(false);
-                inventory[i].transform.parent = null;
-
-                Destroy(inventory[i].gameObject);
-                inventory.RemoveAt(i);
-                return;
-            }
-        }
-    }
-
     void UnselectCurrentWeapon() {
         if (currentWeapon != null) {
             currentWeapon.SetActive(false);
@@ -121,6 +108,19 @@ public class WeaponManager : MonoBehaviour {
 #endregion
 
 #region Public Methods
+
+    public void DestroyWeapon(string weapon) {
+        for (int i = 0; i < inventory.Count; ++i) {
+            if (inventory[i].GetName().Equals(weapon)) {
+                inventory[i].SetActive(false);
+                inventory[i].transform.parent = null;
+
+                Destroy(inventory[i].gameObject);
+                inventory.RemoveAt(i);
+                return;
+            }
+        }
+    }
 
     public void UseCurrentWeapon() {
         if (currentWeapon != null) {

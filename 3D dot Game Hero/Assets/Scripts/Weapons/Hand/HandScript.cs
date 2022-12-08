@@ -3,11 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HandScript : WeaponScript {
+
+#region Parameters
+
+    [Header("Hand Parameters")]
+    [SerializeField] private float delayAttack;
+
+#endregion
+
+#region IEnumerators
+
+    IEnumerator delayAttackFinished(float time) {
+        yield return new WaitForSeconds(time);
+        weaponManager.AttackFinished();
+    }
+
+#endregion
+
+#region Abstract Methods
+
     public override void Attack() {
-        throw new System.NotImplementedException();
+        StartCoroutine(delayAttackFinished(delayAttack));
     }
 
     public override void Collided() {
-        throw new System.NotImplementedException();
     }
+
+    public override void Start() {
+        base.Start();
+
+        usesLeft = int.MaxValue;
+    }
+
+#endregion
+
 }
