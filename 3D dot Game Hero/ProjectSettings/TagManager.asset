@@ -8,6 +8,9 @@ TagManager:
   - Wall
   - GiroCoconut
   - ExternalAnchor
+  - Boomerang
+  - SceneObjects
+  - Hand
   layers:
   - Default
   - TransparentFX
@@ -38,7 +41,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - SceneObjects
   - Obstacles
   - Weapon
   m_SortingLayers:
