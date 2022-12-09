@@ -88,7 +88,7 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void rotationRoutine() {
-        float angleDest = -180.0f + ((int)currentRotation * 45.0f);
+        float angleDest = -90.0f + ((int)currentRotation * 45.0f);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0.0f, angleDest, 0.0f), rotationSpeed);
     }
 

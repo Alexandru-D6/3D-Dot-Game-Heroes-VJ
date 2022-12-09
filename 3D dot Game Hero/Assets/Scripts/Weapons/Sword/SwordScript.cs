@@ -51,7 +51,7 @@ public class SwordScript : WeaponScript {
     }
 
     public override void Attack() {
-        LockAxis(false, false, true);
+        LockAxis(true, false, false);
         startAnim = true;
     }
 
@@ -111,7 +111,7 @@ public class SwordScript : WeaponScript {
             if (startAnim || emergencyStop) StartCoroutine(delayRestoreRoutine(animationDuration - (2.0f * deltaTime)));
             else {
                 restoreAnim = false;
-                LockAxis(true, true, false);
+                LockAxis(false, true, true);
             }
 
             startAnim = false;
@@ -165,7 +165,7 @@ public class SwordScript : WeaponScript {
 
         swordLevelRoutine();
 
-        LockAxis(true, true, false);
+        LockAxis(false, true, true);
     }
 
     private void Update() {
@@ -173,7 +173,7 @@ public class SwordScript : WeaponScript {
 
         // Making the actual scale to the sword
         if (startAnim || restoreAnim) {
-            bladeTransform.localScale = new Vector3(1.0f + scales.x * swordScaleCurveWidth.Evaluate(deltaTime),
+            bladeTransform.localScale = new Vector3(1.0f + scales.x * swordScaleCurveLenght.Evaluate(deltaTime),
                                                     1.0f + scales.y * swordScaleCurveLenght.Evaluate(deltaTime),
                                                     1.0f + scales.z * swordScaleCurveWidth.Evaluate(deltaTime));
         }
