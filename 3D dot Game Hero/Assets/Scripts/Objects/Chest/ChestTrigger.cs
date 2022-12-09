@@ -12,13 +12,13 @@ public class ChestTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
-            chestScript.playerEntered(true);
+            chestScript.PlayerEntered(true);
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.CompareTag("Player")) {
-            chestScript.playerEntered(false);
+            chestScript.PlayerEntered(false);
         }
     }
 

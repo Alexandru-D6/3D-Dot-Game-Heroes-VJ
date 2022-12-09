@@ -1,0 +1,71 @@
+using static UnityEditor.Experimental.GraphView.GraphView;
+using static UnityEditorInternal.ReorderableList;
+using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SocialPlatforms;
+using UnityEngine.UIElements;
+using UnityEngine.XR;
+
+[System.Serializable]
+public enum Tags {
+    Sword,
+    Wall,
+    GiroCoconut,
+    ExternalAnchor,
+    Boomerang,
+    SceneObjects,
+    Hand,
+    Chest,
+    Arrow,
+    Bomb,
+    BossKey,
+    Bow,
+    Coin,
+    Creeper,
+    Dragon,
+    EnderKey,
+    Enderman,
+    GoldenKey,
+    Hamburguer,
+    Shield,
+    Skeleton,
+    SkullKey,
+    Vase,
+    Uknown,
+}
+
+[System.Serializable]
+public enum Layers{
+    Default,
+    TransparentFX,
+    IgnoreRaycast,
+    Empty3,
+    Water,
+    UI,
+    Empty6,
+    Empty7,
+    Empty8,
+    Empty9,
+    Empty10,
+    Empty11,
+    Empty12,
+    Empty13,
+    Empty14,
+    Empty15,
+    Empty16,
+    Empty17,
+    Empty18,
+    Empty19,
+    Empty20,
+    Empty21,
+    Empty22,
+    Empty23,
+    Empty24,
+    Empty25,
+    Empty26,
+    Key,
+    Player,
+    SceneObjects,
+    Obstacles,
+    Weapon
+}

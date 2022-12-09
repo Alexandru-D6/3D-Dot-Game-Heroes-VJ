@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(ChestProbabilities))]
+[RequireComponent(typeof(ChestAnimations))]
 public class ChestScript : MonoBehaviour {
 
 #region Parameters
 
-    [Header("Managers")]
+    [Header("Reference")]
     [SerializeField] private ChestAnimations chestAnimations;
+    [SerializeField] private ChestProbabilities chestProbabilities;
 
     [SerializeField] private List<GameObject> prefabs;
     [SerializeField] private bool isPlayerNear;
@@ -20,12 +23,12 @@ public class ChestScript : MonoBehaviour {
 
 #region IEnumerators
 
-    IEnumerator delayedOpenButton(float time) {
+    IEnumerator DelayedOpenButton(float time) {
         yield return new WaitForSeconds(time);
         canOpen = true;
     }
 
-    IEnumerator delayedCloseChest(float time) {
+    IEnumerator DelayedCloseChest(float time) {
         yield return new WaitForSeconds(time);
         chestAnimations.close();
     }
@@ -34,7 +37,7 @@ public class ChestScript : MonoBehaviour {
 
 #region Public Methods
 
-    public void playerEntered(bool value) {
+    public void PlayerEntered(bool value) {
         isPlayerNear = value;
     }
 
@@ -58,8 +61,9 @@ public class ChestScript : MonoBehaviour {
         if (canOpen && isPlayerNear) {
             canOpen = false;
             chestAnimations.open();
-            StartCoroutine(delayedOpenButton(openDelay));
-            StartCoroutine(delayedCloseChest(closeChestDelay));
+            Debug.Log(chestProbabilities.RollAnItem());
+            StartCoroutine(DelayedOpenButton(openDelay));
+            StartCoroutine(DelayedCloseChest(closeChestDelay));
         }
     }
 

@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0197258, y: 0.24887374, z: 1.8380778}
-  m_Center: {x: 1.0106342, y: 0.108824566, z: -0.008486867}
+  m_Size: {x: 1.6869137, y: 0.24887374, z: 1.0213742}
+  m_Center: {x: -0.002642274, y: 0.108824566, z: 1.0698473}
 --- !u!114 &3867995966488468269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 4609280766500295775}
   - component: {fileID: 7536865626911377238}
   - component: {fileID: 7503878481008685490}
+  - component: {fileID: 1320336253940215270}
   - component: {fileID: 6797283685443670415}
   - component: {fileID: 8257653599598622258}
   m_Layer: 29
@@ -329,6 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestAnimations: {fileID: 7503878481008685490}
+  chestProbabilities: {fileID: 1320336253940215270}
   prefabs: []
   isPlayerNear: 0
   openDelay: 0.5
@@ -347,6 +349,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4609280766500295775}
   running: 0
+--- !u!114 &1320336253940215270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6833505580640283520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0ff624cd39ebf42bcab35ad348620f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestSingleton: {fileID: 0}
+  probabilities:
+  - tag: 4
+    probability: 50
+  - tag: 18
+    probability: 30
+  - tag: 8
+    probability: 20
+  totalProbability: 0
+  maxTry: 5
 --- !u!65 &6797283685443670415
 BoxCollider:
   m_ObjectHideFlags: 0
