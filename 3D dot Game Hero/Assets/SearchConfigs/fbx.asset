@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13982, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: fbx
   m_EditorClassIdentifier: 
-  text: '*.fbx'
+  text: 'find: *.fbx'
   description: 
   providerIds: []
   viewState:
@@ -28,7 +28,7 @@ MonoBehaviour:
     - store
     - settings
     searchFlags: 1006632962
-    searchText: '*.fbx'
+    searchText: 'find: *.fbx'
     forceViewMode: 0
     m_SelectHandler:
       stream: 
@@ -46,8 +46,8 @@ MonoBehaviour:
       x: 0
       y: 0
       width: 950
-      height: 538
-    flags: 0
-    group: 
+      height: 532
+    flags: 2048
+    group: asset
   icon: {fileID: 0}
   m_IsSearchTemplate: 0
