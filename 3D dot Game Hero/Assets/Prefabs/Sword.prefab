@@ -995,8 +995,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00075070723, y: 0.012933889, z: 0.0031824338}
-  m_Center: {x: -0.000021904298, y: 0.01336997, z: 0.00000059396024}
+  m_Size: {x: 0.003242973, y: 0.01247566, z: 0.0008629689}
+  m_Center: {x: -0.000016978533, y: 0.013140897, z: 0.0000028790007}
 --- !u!114 &505593363159841761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,10 +1011,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordScript: {fileID: 6030879579919917851}
   bc: {fileID: 7766095655578042760}
-  increasedCenter: {x: -0.000021904298, y: 0.01336997, z: 0.00000059396024}
-  increasedSize: {x: 0.00075070723, y: 0.012933889, z: 0.0031824338}
-  originalCenter: {x: -0.000021904298, y: 0.012471199, z: 0.0000005939603}
-  originalSize: {x: 0.00075070723, y: 0.011136362, z: 0.0031824338}
+  increasedCenter: {x: -0.000016978533, y: 0.013140897, z: 0.0000028790007}
+  increasedSize: {x: 0.003242973, y: 0.01247566, z: 0.0008629689}
+  originalCenter: {x: -0.000016978533, y: 0.01250152, z: 0.0000028790287}
+  originalSize: {x: 0.003242973, y: 0.01119695, z: 0.0008629689}
 --- !u!114 &7004614298030007133
 MonoBehaviour:
   m_ObjectHideFlags: 0
