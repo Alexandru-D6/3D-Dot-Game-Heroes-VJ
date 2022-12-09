@@ -15,7 +15,7 @@ public class WeaponManager : MonoBehaviour {
 
     [Header("Inventory Management")]
     [SerializeField] private List<GameObject> weaponsPrefabs;
-    [SerializeField] private List<string> weaponsAvailable;
+    [SerializeField] private List<Tags> weaponsAvailable;
     [SerializeField] private List<WeaponScript> inventory;
 
     [Space(10)]
@@ -28,39 +28,30 @@ public class WeaponManager : MonoBehaviour {
 
 #region Inventory Management
 
-    void AddToAvailables(string weapon) {
-        // Search if it's already exists
-        foreach(string x in weaponsAvailable) {
-            if (x.Equals(weapon)) return;
-        }
-
-        weaponsAvailable.Add(weapon);
-    }
-
-    bool IsWeaponAvailable(string weapon) {
+    bool IsWeaponAvailable(Tags weapon) {
         // Search if it's spawned
         foreach(WeaponScript x in inventory) {
-            if (x.GetName().Equals(weapon)) return true;
+            if (x.GetName().Equals(weapon.ToString())) return true;
         }
 
         // Search if it's available to spawn
-        foreach(string x in weaponsAvailable) {
+        foreach(Tags x in weaponsAvailable) {
             if (x.Equals(weapon)) return true;
         }
 
         return false;
     }
 
-    bool RevealSpawnedWeapon(string weapon) {
+    bool RevealSpawnedWeapon(Tags weapon) {
         if (inventory.Count == 0) return false;
 
-        if (currentWeapon != null && currentWeapon.GetName().Equals(weapon)) {
-            SelectWeapon("Hand");
+        if (currentWeapon != null && currentWeapon.GetName().Equals(weapon.ToString())) {
+            SelectWeapon(Tags.Hand);
             return true;
         }
 
         foreach (var x in inventory) {
-            if (x.GetName().Equals(weapon)) {
+            if (x.GetName().Equals(weapon.ToString())) {
                 UnselectCurrentWeapon();
 
                 currentWeapon = x;
@@ -71,14 +62,14 @@ public class WeaponManager : MonoBehaviour {
         return false;
     }
 
-    GameObject GetObjectPrefab(string weapon) {
+    GameObject GetObjectPrefab(Tags weapon) {
         foreach(GameObject x in weaponsPrefabs) {
-            if(x.tag.Equals(weapon)) return x; 
+            if(x.tag.Equals(weapon.ToString())) return x; 
         }
         return null;
     }
 
-    void InstantiateWeapon(string weapon) {
+    void InstantiateWeapon(Tags weapon) {
         GameObject prefab = GetObjectPrefab(weapon);
         GameObject obj = Instantiate(prefab, new UnityEngine.Vector3(), new UnityEngine.Quaternion());
 
@@ -104,9 +95,9 @@ public class WeaponManager : MonoBehaviour {
 
 #region Public Methods
 
-    public void DestroyWeapon(string weapon) {
+    public void DestroyWeapon(Tags weapon) {
         for (int i = 0; i < inventory.Count; ++i) {
-            if (inventory[i].GetName().Equals(weapon)) {
+            if (inventory[i].GetName().Equals(weapon.ToString())) {
                 inventory[i].SetActive(false);
                 inventory[i].transform.parent = null;
 
@@ -117,7 +108,16 @@ public class WeaponManager : MonoBehaviour {
         }
     }
 
-    public void SelectWeapon(string weapon) {
+    public void AddToAvailables(Tags weapon) {
+        // Search if it's already exists
+        foreach(Tags x in weaponsAvailable) {
+            if (x.Equals(weapon)) return;
+        }
+
+        weaponsAvailable.Add(weapon);
+    }
+
+    public void SelectWeapon(Tags weapon) {
         if (IsWeaponAvailable(weapon)) {
             if (RevealSpawnedWeapon(weapon)) return;
 
@@ -144,27 +144,7 @@ public class WeaponManager : MonoBehaviour {
 #region MonoBehaviour Methods
 
     void Start() {
-        SelectWeapon("Hand");
-    }
-
-#endregion
-
-#region DEBUG (Delete afterwards the system works fine)
-
-    public void DB_createWeapon(string weapon, int uses) {
-        AddToAvailables(weapon);
-    }
-
-    public void DB_selectWeapon(string weapon) {
-        SelectWeapon(weapon);
-    }
-
-    public void DB_deleteWeapon(string weapon) {
-        DestroyWeapon(weapon);
-    }
-
-    public void DB_unselectCurrentWeapon() {
-        UnselectCurrentWeapon();
+        SelectWeapon(Tags.Hand);
     }
 
 #endregion

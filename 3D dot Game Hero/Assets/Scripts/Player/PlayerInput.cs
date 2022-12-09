@@ -150,10 +150,10 @@ public class PlayerInput : MonoBehaviour {
 
             switch(context.control.path) {
                 case "/Keyboard/1":
-                    weaponManager.SelectWeapon("Sword");
+                    weaponManager.SelectWeapon(Tags.Sword);
                     break;
                 case "/Keyboard/2":
-                    weaponManager.SelectWeapon("Boomerang");
+                    weaponManager.SelectWeapon(Tags.Boomerang);
                     break;
                 case "/Keyboard/3":
                 case "/Keyboard/4":

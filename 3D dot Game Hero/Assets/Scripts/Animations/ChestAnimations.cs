@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoomerangAnimations : AnimationManager {
-    
-    public void enableFlying(bool value) {
-        running = value;
-        animator.SetBool("Flying", running);
+public class ChestAnimations : AnimationManager {
+
+    public void open() {
+        running = true;
+        animator.SetBool("Opened", true);
+    }
+
+    public void close() {
+        running = false;
+        animator.SetBool("Opened", false);
     }
 
     public override void toIdle() {
-        enableFlying(false);
-        animator.Play("Idle");
+        running = false;
+        animator.SetBool("Opened", false);
     }
 
     public override void AttackStarted() { return; }
@@ -23,5 +28,4 @@ public class BoomerangAnimations : AnimationManager {
     public override void toDeath() { return; }
 
     public override void toHit() { return; }
-
 }
