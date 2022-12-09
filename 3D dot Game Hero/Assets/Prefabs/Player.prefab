@@ -704,7 +704,7 @@ MonoBehaviour:
   weaponManager: {fileID: 2123637362340070481}
   animationManager: {fileID: 9123643760422910634}
   fireDelay: 0.5
-  numericButtonDelay: 0
+  numericButtonDelay: 0.15
   moveDirection: {x: 0, y: 0}
   moveSpeed: {x: 5, y: 5}
   currentRotation: 4
@@ -756,6 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a462184b13954cc4b919e87788be27fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemsAvailable: 
 --- !u!114 &3411510570702866761
 MonoBehaviour:
   m_ObjectHideFlags: 0
