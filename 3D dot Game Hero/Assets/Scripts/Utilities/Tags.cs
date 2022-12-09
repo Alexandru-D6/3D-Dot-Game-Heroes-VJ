@@ -1,11 +1,3 @@
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEditorInternal.ReorderableList;
-using UnityEngine.InputSystem;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.SocialPlatforms;
-using UnityEngine.UIElements;
-using UnityEngine.XR;
-
 [System.Serializable]
 public enum Tags {
     Sword,

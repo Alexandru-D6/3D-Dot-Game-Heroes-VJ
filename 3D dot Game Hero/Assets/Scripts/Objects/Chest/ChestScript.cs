@@ -18,6 +18,7 @@ public class ChestScript : MonoBehaviour {
     private bool canOpen;
     [SerializeField] private float openDelay;
     [SerializeField] private float closeChestDelay;
+    [SerializeField] private float destroyDelay;
 
 #endregion
 
@@ -31,6 +32,12 @@ public class ChestScript : MonoBehaviour {
     IEnumerator DelayedCloseChest(float time) {
         yield return new WaitForSeconds(time);
         chestAnimations.close();
+        StartCoroutine(DelayedDestroy(destroyDelay));
+    }
+
+    IEnumerator DelayedDestroy(float time) {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);
     }
 
 #endregion

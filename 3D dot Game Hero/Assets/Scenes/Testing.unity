@@ -669,3 +669,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b9f92dd2e06b14cbf0ed2f6f210b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableObjectsList:
+  - tag: 4
+    usesLeft: 1
+  - tag: 9
+    usesLeft: 10
+  - tag: 10
+    usesLeft: 1
+  - tag: 11
+    usesLeft: 1
+  - tag: 12
+    usesLeft: 20
+  - tag: 15
+    usesLeft: 1
+  - tag: 17
+    usesLeft: 1
+  - tag: 18
+    usesLeft: 20
+  - tag: 19
+    usesLeft: 1
+  - tag: 21
+    usesLeft: 1
+  syncListState: 1

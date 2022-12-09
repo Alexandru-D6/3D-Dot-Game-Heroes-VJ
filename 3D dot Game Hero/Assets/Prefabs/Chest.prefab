@@ -335,6 +335,7 @@ MonoBehaviour:
   isPlayerNear: 0
   openDelay: 0.5
   closeChestDelay: 2
+  destroyDelay: 0.5
 --- !u!114 &7503878481008685490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,8 +364,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chestSingleton: {fileID: 0}
   probabilities:
-  - tag: 4
-    probability: 50
+  - tag: 10
+    probability: 100
   - tag: 18
     probability: 30
   - tag: 8

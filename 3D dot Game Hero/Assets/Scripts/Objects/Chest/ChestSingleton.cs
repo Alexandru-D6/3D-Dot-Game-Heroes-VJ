@@ -27,6 +27,9 @@ public class ChestSingleton : MonoBehaviour {
 
     #region Parameters
 
+    [Header("References")]
+    private PlayerManager playerManager;
+
     [Header("Available Tags in Pool")]
     [SerializeField] private List<PoolObject> availableObjectsList;
     [SerializeField] private bool syncListState;
@@ -43,9 +46,14 @@ public class ChestSingleton : MonoBehaviour {
 
     public bool UseTag(Tags tag) {
         if (availableObjects.ContainsKey(tag)) {
+            // Update the state of drops
             availableObjects[tag]--;
             decrementFromList(tag);
             if (availableObjects[tag] == 0) availableObjects.Remove(tag);
+
+            // Send that item to the player
+            playerManager.ReceiveItem(tag);
+
             return true;
         }
         return false;
@@ -82,6 +90,7 @@ public class ChestSingleton : MonoBehaviour {
     #region MonoBehaviour Methods
 
     private void Start() {
+        playerManager = PlayerManager.Instance;
         syncListState = true;
         SyncList();
     }
