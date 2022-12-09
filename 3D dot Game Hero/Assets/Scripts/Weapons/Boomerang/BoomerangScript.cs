@@ -66,7 +66,7 @@ public class BoomerangScript : WeaponScript {
 
         // Save necesary values
         originalPosition = transform.localPosition;
-        boomerangDirection = new Vector3(Mathf.Cos(Mathf.Deg2Rad * player.transform.localEulerAngles.y), 0.0f, -1.0f * Mathf.Sin(Mathf.Deg2Rad * player.transform.localEulerAngles.y));
+        boomerangDirection = new Vector3(Mathf.Sin(Mathf.Deg2Rad * player.transform.localEulerAngles.y), 0.0f, Mathf.Cos(Mathf.Deg2Rad * player.transform.localEulerAngles.y));
         NormalizeVector(ref boomerangDirection);
 
         isFlying = true;

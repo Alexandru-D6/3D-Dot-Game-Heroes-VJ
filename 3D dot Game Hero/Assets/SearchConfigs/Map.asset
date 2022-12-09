@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13982, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Map
   m_EditorClassIdentifier: 
-  text: 'p: Map/*.fbx'
+  text: 'find: /Map/*.fbx'
   description: 
   providerIds: []
   viewState:
@@ -28,7 +28,7 @@ MonoBehaviour:
     - store
     - settings
     searchFlags: 1006632962
-    searchText: 'p: Map/*.fbx'
+    searchText: 'find: /Map/*.fbx'
     forceViewMode: 0
     m_SelectHandler:
       stream: 
@@ -46,7 +46,7 @@ MonoBehaviour:
       x: 0
       y: 0
       width: 950
-      height: 538
+      height: 532
     flags: 2048
     group: 
   icon: {fileID: 0}
