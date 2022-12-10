@@ -81,15 +81,9 @@ public class SwordScript : WeaponScript {
         LockAxis(false, true, true);
         startAnim = false;
         stopAnim = true;
-        restoreAnim = false;
+        restoreAnim = true;
         emergencyStop = false;
         deltaTime = 0.0f;
-
-        trailBlade.SetActive(false);
-
-        bladeTransform.localScale = new Vector3(1.0f + scales.x * swordScaleCurveLenght.Evaluate(deltaTime),
-                                                    1.0f + scales.y * swordScaleCurveLenght.Evaluate(deltaTime),
-                                                    1.0f + scales.z * swordScaleCurveWidth.Evaluate(deltaTime));
     }
 
     #endregion
@@ -193,14 +187,14 @@ public class SwordScript : WeaponScript {
     }
 
     private void Update() {
-        controlAnim();
-
         // Making the actual scale to the sword
         if (startAnim || restoreAnim) {
             bladeTransform.localScale = new Vector3(1.0f + scales.x * swordScaleCurveLenght.Evaluate(deltaTime),
                                                     1.0f + scales.y * swordScaleCurveLenght.Evaluate(deltaTime),
                                                     1.0f + scales.z * swordScaleCurveWidth.Evaluate(deltaTime));
         }
+
+        controlAnim();
     }
 
 #endregion
