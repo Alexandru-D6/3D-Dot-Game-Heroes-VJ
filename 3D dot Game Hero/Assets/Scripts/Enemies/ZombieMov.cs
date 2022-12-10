@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class ZombieMov : MonoBehaviour
     public Animator anim;
     public Quaternion angle;
     public float grado;
+    public bool attacking;
 
     public GameObject target;
 
@@ -51,23 +53,38 @@ public class ZombieMov : MonoBehaviour
                     break;
                 case 2:
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, 0.5f);
-                    transform.Translate(Vector3.right * 1 * Time.deltaTime);
+                    transform.Translate(Vector3.forward * 1 * Time.deltaTime);
                     anim.SetBool("Running", true);
                     break;
             }
         }
         else
         {
-            anim.SetBool("Running", true);
-            var lookPos = target.transform.position - transform.position;
-            lookPos.y = 0;
+            if (Vector3.Distance(transform.position, target.transform.position) > 1 && !attacking) 
+            { 
+                anim.SetBool("Running", true);
+                var lookPos = target.transform.position - transform.position;
+                lookPos.y = 0;
 
-            Quaternion rotation = Quaternion.LookRotation(lookPos);
-            rotation = Quaternion.Euler(rotation.eulerAngles.x, rotation.eulerAngles.y - 90.0f, rotation.eulerAngles.z);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
+                Quaternion rotation = Quaternion.LookRotation(lookPos);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
 
-            transform.Translate(Vector3.right * 2 * Time.deltaTime);
+                transform.Translate(Vector3.forward * 2 * Time.deltaTime);
+                anim.SetBool("Attack", false);
+            }
+            else
+            {
+                anim.SetBool("Running", false);
+                anim.SetBool("Attack", true);
+                attacking = true;
+            }
         }
-        
+    }
+
+    public void Final_Anim()
+    {
+        anim.SetBool("Attack", false);
+        attacking = false;
+
     }
 }
