@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// First version of the inventory system, it might need a huge refactor
-// once there's more weapons.
 public class WeaponManager : MonoBehaviour {
 
 #region Parameters
 
     [Header("Managers")]
-    [SerializeField] private AnimationManager animationManager;
+    [SerializeField] private PlayerAnimations playerAnimations;
+    [SerializeField] private PlayerInput playerInput;
 
     [Space(10)]
 
@@ -45,6 +44,13 @@ public class WeaponManager : MonoBehaviour {
     bool RevealSpawnedWeapon(Tags weapon) {
         if (inventory.Count == 0) return false;
 
+        // Returning true, the selection of another weapon while boomerang is flying while be invalid
+        if (currentWeapon.transform.parent != playerHand.transform) return true;
+
+        // Reset animation and button cooldown
+        playerAnimations.toIdle();
+        playerInput.PI_resetFire();
+
         if (currentWeapon != null && currentWeapon.GetName().Equals(weapon.ToString())) {
             SelectWeapon(Tags.Hand);
             return true;
@@ -56,6 +62,7 @@ public class WeaponManager : MonoBehaviour {
 
                 currentWeapon = x;
                 currentWeapon.SetActive(true);
+                currentWeapon.RestartState();
                 return true;
             }
         }
@@ -130,13 +137,13 @@ public class WeaponManager : MonoBehaviour {
 
     public void UseCurrentWeapon() {
         if (currentWeapon != null) {
-            animationManager.AttackStarted();
+            playerAnimations.AttackStart();
             currentWeapon.GetComponent<WeaponScript>().Attack();
         }
     }
 
     public void AttackFinished() {
-        animationManager.AttackFinished();
+        playerAnimations.AttackReturn();
     }
 
 #endregion

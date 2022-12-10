@@ -17,11 +17,11 @@ public class AnimationManager : MonoBehaviour {
 #region Virtual Methods
 
     public virtual void AttackStarted() {
-        animator.Play("Attack Started");
+        animator.Play("Attack Start");
     }
 
     public virtual void AttackFinished() {
-        animator.Play("Attack Finished");
+        animator.Play("Attack Return");
     }
 
     public virtual void enableRunning(bool value) {
