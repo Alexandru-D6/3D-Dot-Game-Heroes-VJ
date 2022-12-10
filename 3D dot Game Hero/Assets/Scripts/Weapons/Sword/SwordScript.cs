@@ -60,6 +60,9 @@ public class SwordScript : WeaponScript {
     public override void Attack() {
         LockAxis(true, false, false);
         startAnim = true;
+        stopAnim = true;
+        restoreAnim = false;
+        emergencyStop = false;
     }
 
 #endregion

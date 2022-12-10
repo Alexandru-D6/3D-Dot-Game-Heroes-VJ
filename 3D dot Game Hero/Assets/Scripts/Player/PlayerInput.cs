@@ -96,8 +96,8 @@ public class PlayerInput : MonoBehaviour {
 
     #region Public Methods
 
-    public void AttackFinished() {
-        StartCoroutine(delayedFire(fireDelay));
+    public void PI_AttackReturned() {
+        canFire = true;
     }
 
     #endregion

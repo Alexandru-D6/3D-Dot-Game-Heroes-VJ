@@ -7,7 +7,7 @@ public class WeaponManager : MonoBehaviour {
 #region Parameters
 
     [Header("Managers")]
-    [SerializeField] private AnimationManager animationManager;
+    [SerializeField] private PlayerAnimations playerAnimations;
     [SerializeField] private PlayerInput playerInput;
 
     [Space(10)]
@@ -23,14 +23,7 @@ public class WeaponManager : MonoBehaviour {
     [SerializeField] private GameObject playerHand;
     [SerializeField] private WeaponScript currentWeapon = null;
 
-    [SerializeField] private float animDuration;
-
 #endregion
-
-    IEnumerator delayAttackFinished(float time) {
-        yield return new WaitForSeconds(time);
-        playerInput.AttackFinished();
-    }
 
 #region Inventory Management
 
@@ -136,15 +129,13 @@ public class WeaponManager : MonoBehaviour {
 
     public void UseCurrentWeapon() {
         if (currentWeapon != null) {
-            animationManager.AttackStarted();
+            playerAnimations.AttackStart();
             currentWeapon.GetComponent<WeaponScript>().Attack();
         }
     }
 
-    // TODO: this method may be a unity Event
     public void AttackFinished() {
-        animationManager.AttackFinished();
-        StartCoroutine(delayAttackFinished(animDuration));
+        playerAnimations.AttackReturn();
     }
 
 #endregion

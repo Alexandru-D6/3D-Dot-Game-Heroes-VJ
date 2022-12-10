@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(WeaponManager))]
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(InventorySystem))]
-[RequireComponent(typeof(AnimationManager))]
+[RequireComponent(typeof(PlayerAnimations))]
 public class PlayerManager : MonoBehaviour {
 
     #region Singleton
@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private InventorySystem inventorySystem;
-    [SerializeField] private AnimationManager animationManager;
+    [SerializeField] private PlayerAnimations playerAnimations;
 
     #endregion
 

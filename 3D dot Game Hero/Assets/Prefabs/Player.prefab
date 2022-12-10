@@ -637,9 +637,9 @@ GameObject:
   - component: {fileID: 4998415447198196778}
   - component: {fileID: 8215279082758402672}
   - component: {fileID: 4816398731180999629}
-  - component: {fileID: 9123643760422910634}
   - component: {fileID: 2123637362340070481}
   - component: {fileID: 505633924705408062}
+  - component: {fileID: 2222480201678553054}
   - component: {fileID: 3411510570702866761}
   - component: {fileID: 1603912058711816172}
   - component: {fileID: 6925475127036339142}
@@ -688,7 +688,7 @@ MonoBehaviour:
   weaponManager: {fileID: 2123637362340070481}
   playerInput: {fileID: 4816398731180999629}
   inventorySystem: {fileID: 505633924705408062}
-  animationManager: {fileID: 9123643760422910634}
+  playerAnimations: {fileID: 2222480201678553054}
 --- !u!114 &4816398731180999629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,27 +702,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponManager: {fileID: 2123637362340070481}
-  animationManager: {fileID: 9123643760422910634}
+  animationManager: {fileID: 2222480201678553054}
   fireDelay: 0.05
   numericButtonDelay: 0.15
   moveDirection: {x: 0, y: 0}
   moveSpeed: {x: 5, y: 5}
   currentRotation: 4
   rotationSpeed: 10
---- !u!114 &9123643760422910634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626721005123845776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58fc0571b5b16bb47b3f499684e238a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4816398731180999628}
-  running: 0
 --- !u!114 &2123637362340070481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,7 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b955e6a7fbbdf9c439d7ded6d55fdce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationManager: {fileID: 9123643760422910634}
+  playerAnimations: {fileID: 2222480201678553054}
   playerInput: {fileID: 4816398731180999629}
   weaponsPrefabs:
   - {fileID: 6862776136738712332, guid: a427d608c30c0b2458af6df2edff7e71, type: 3}
@@ -745,7 +731,6 @@ MonoBehaviour:
   inventory: []
   playerHand: {fileID: 2497701129174850206}
   currentWeapon: {fileID: 0}
-  animDuration: 0.17
 --- !u!114 &505633924705408062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,6 +744,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsAvailable: 
+--- !u!114 &2222480201678553054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626721005123845776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8269bb1d671d846bbf924ae7d3366d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4816398731180999628}
+  running: 0
 --- !u!114 &3411510570702866761
 MonoBehaviour:
   m_ObjectHideFlags: 0
