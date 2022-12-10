@@ -12,6 +12,22 @@ TagManager:
   - SceneObjects
   - Hand
   - Zombie
+  - Chest
+  - Arrow
+  - Bomb
+  - BossKey
+  - Bow
+  - Coin
+  - Creeper
+  - Dragon
+  - EnderKey
+  - Enderman
+  - GoldenKey
+  - Hamburguer
+  - Shield
+  - Skeleton
+  - SkullKey
+  - Vase
   layers:
   - Default
   - TransparentFX
@@ -40,8 +56,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Key
+  - Player
   - SceneObjects
   - Obstacles
   - Weapon

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9088963112678075891}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Left Sholder Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4415959460637841928}
   - component: {fileID: 2317539288459946577}
   - component: {fileID: 5289940418899014805}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2724112672218911991}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: WeaponAnchor
   m_TagString: ExternalAnchor
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 7304181649179496168}
   - component: {fileID: 3611079847203739911}
   - component: {fileID: 2432664276639268749}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7797288237860526888}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Right Leg Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 3344681305821080717}
   - component: {fileID: 3930922037529547030}
   - component: {fileID: 1318709444757690411}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 3430063891175188137}
   - component: {fileID: 5919279490225620909}
   - component: {fileID: 331798422053780378}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4834534328087089816}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Left Leg Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 7039335358198323122}
   - component: {fileID: 2908771014373977146}
   - component: {fileID: 7940387064682250995}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 8863768931042593275}
   - component: {fileID: 1309313073987808291}
   - component: {fileID: 7024362267518465255}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,14 +635,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4998415447198196778}
-  - component: {fileID: 4816398731180999628}
+  - component: {fileID: 8215279082758402672}
   - component: {fileID: 4816398731180999629}
   - component: {fileID: 9123643760422910634}
   - component: {fileID: 2123637362340070481}
+  - component: {fileID: 505633924705408062}
+  - component: {fileID: 3411510570702866761}
   - component: {fileID: 1603912058711816172}
   - component: {fileID: 6925475127036339142}
-  - component: {fileID: 3411510570702866761}
-  m_Layer: 0
+  - component: {fileID: 4816398731180999628}
+  m_Layer: 28
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -671,26 +673,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4816398731180999628
-Animator:
-  serializedVersion: 4
+--- !u!114 &8215279082758402672
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5626721005123845776}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a47dd96c43e7b1c4b87f7b1725a818c8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b9a3c0c7642ff43b267520bd480138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponManager: {fileID: 2123637362340070481}
+  playerInput: {fileID: 4816398731180999629}
+  inventorySystem: {fileID: 505633924705408062}
+  animationManager: {fileID: 9123643760422910634}
 --- !u!114 &4816398731180999629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,7 +704,7 @@ MonoBehaviour:
   weaponManager: {fileID: 2123637362340070481}
   animationManager: {fileID: 9123643760422910634}
   fireDelay: 0.5
-  numericButtonDelay: 0
+  numericButtonDelay: 0.15
   moveDirection: {x: 0, y: 0}
   moveSpeed: {x: 5, y: 5}
   currentRotation: 4
@@ -742,13 +740,42 @@ MonoBehaviour:
   - {fileID: 6862776136738712332, guid: a427d608c30c0b2458af6df2edff7e71, type: 3}
   - {fileID: 6881899592116037539, guid: 32d3c163f020478419e278a81f328859, type: 3}
   - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
-  weaponsAvailable:
-  - Hand
-  - Sword
-  - Boomerang
+  weaponsAvailable: 0600000000000000
   inventory: []
   playerHand: {fileID: 2497701129174850206}
   currentWeapon: {fileID: 0}
+--- !u!114 &505633924705408062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626721005123845776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a462184b13954cc4b919e87788be27fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsAvailable: 
+--- !u!114 &3411510570702866761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626721005123845776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5278b37326f42f547ba0ad9634544da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 1
+  angularVelocity: 1
+  inertiaTensor: 1
+  inertiaTensorRotation: 1
+  centerMass: 0
+  rb: {fileID: 1603912058711816172}
+  initialLocalPos: {x: 0, y: 0, z: 0}
 --- !u!54 &1603912058711816172
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -779,25 +806,26 @@ CapsuleCollider:
   m_Height: 3.3369038
   m_Direction: 1
   m_Center: {x: 0, y: 1.6584519, z: 0}
---- !u!114 &3411510570702866761
-MonoBehaviour:
+--- !u!95 &4816398731180999628
+Animator:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5626721005123845776}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5278b37326f42f547ba0ad9634544da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 1
-  angularVelocity: 1
-  inertiaTensor: 1
-  inertiaTensorRotation: 1
-  centerMass: 0
-  rb: {fileID: 1603912058711816172}
-  initialLocalPos: {x: 0, y: 0, z: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a47dd96c43e7b1c4b87f7b1725a818c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8262481579576674807
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +835,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 387366340613743340}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Right Sholder Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +867,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7830583030283955280}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: GiroCoconut [Weapon Stabilizer]
   m_TagString: GiroCoconut
   m_Icon: {fileID: 0}

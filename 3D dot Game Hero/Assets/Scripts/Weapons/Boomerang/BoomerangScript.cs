@@ -87,7 +87,7 @@ public class BoomerangScript : WeaponScript {
         DecrementUses();
 
         if (GetLeftUses() == 0) {
-            weaponManager.DestroyWeapon(GetName());
+            weaponManager.DestroyWeapon((Tags)System.Enum.Parse(typeof(Tags), GetName()));
         }
     }
 

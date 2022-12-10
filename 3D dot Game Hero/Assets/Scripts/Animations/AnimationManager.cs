@@ -30,7 +30,7 @@ public class AnimationManager : MonoBehaviour {
     }
 
     public virtual void toIdle() {
-        animator.SetBool("Running", false);
+        enableRunning(false);
         animator.Play("Idle");
     }
 
