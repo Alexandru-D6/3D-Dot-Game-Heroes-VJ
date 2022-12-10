@@ -1174,6 +1174,7 @@ MonoBehaviour:
   bladeTransform: {fileID: 7688523148315110940}
   rangeLimiter: 1
   animationDuration: 0.75
+  returnAnimationDuration: 0.17
   deltaTime: 0
   startAnim: 0
   restoreAnim: 0

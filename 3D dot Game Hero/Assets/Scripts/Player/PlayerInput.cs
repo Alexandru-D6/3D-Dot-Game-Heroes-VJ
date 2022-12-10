@@ -94,6 +94,14 @@ public class PlayerInput : MonoBehaviour {
 
     #endregion
 
+    #region Public Methods
+
+    public void AttackFinished() {
+        StartCoroutine(delayedFire(fireDelay));
+    }
+
+    #endregion
+
     #region MonoBehaviour Methods
 
     private void Awake() {
@@ -140,7 +148,6 @@ public class PlayerInput : MonoBehaviour {
         if (canFire) {
             canFire = false;
             weaponManager.UseCurrentWeapon();
-            StartCoroutine(delayedFire(fireDelay));
         }
     }
 

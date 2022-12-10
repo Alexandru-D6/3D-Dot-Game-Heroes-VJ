@@ -17,6 +17,7 @@ public class SwordScript : WeaponScript {
     [SerializeField] private float rangeLimiter;
     [Range(0.0f, 1.0f)]
     [SerializeField] private float animationDuration;
+    [SerializeField] private float returnAnimationDuration;
 
     [Header("Sword Animation Backend")]
     [SerializeField] private float deltaTime;
@@ -36,10 +37,16 @@ public class SwordScript : WeaponScript {
 
 #region IEnumerators
 
-    IEnumerator delayRestoreRoutine(float time) {
+    IEnumerator delayRestoreRoutine(float time, float time2) {
         yield return new WaitForSeconds(time);
         restoreAnim = true;
         AttackFinished();
+        StartCoroutine(delayEnableStabilizer(time2));
+    }
+
+    IEnumerator delayEnableStabilizer(float time) {
+        yield return new WaitForSeconds(time);
+        LockAxis(false, true, true);
     }
 
 #endregion
@@ -108,11 +115,8 @@ public class SwordScript : WeaponScript {
 
             // If the sword expanded to the maximum or collided, lock that position for the remaining time to sync with
             // the arm animation.
-            if (startAnim || emergencyStop) StartCoroutine(delayRestoreRoutine(animationDuration - (2.0f * deltaTime)));
-            else {
-                restoreAnim = false;
-                LockAxis(false, true, true);
-            }
+            if (startAnim || emergencyStop) StartCoroutine(delayRestoreRoutine(animationDuration - (2.0f * deltaTime), Mathf.Abs(returnAnimationDuration * 0.8f)));
+            else restoreAnim = false;
 
             startAnim = false;
             stopAnim = true;

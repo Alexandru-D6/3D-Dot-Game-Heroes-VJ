@@ -364,7 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chestSingleton: {fileID: 0}
   probabilities:
-  - tag: 10
+  - tag: 4
     probability: 100
   - tag: 18
     probability: 30
