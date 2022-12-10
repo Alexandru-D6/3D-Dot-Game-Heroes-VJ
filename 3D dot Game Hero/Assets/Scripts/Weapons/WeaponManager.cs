@@ -44,6 +44,13 @@ public class WeaponManager : MonoBehaviour {
     bool RevealSpawnedWeapon(Tags weapon) {
         if (inventory.Count == 0) return false;
 
+        // Returning true, the selection of another weapon while boomerang is flying while be invalid
+        if (currentWeapon.transform.parent != playerHand.transform) return true;
+
+        // Reset animation and button cooldown
+        playerAnimations.toIdle();
+        playerInput.PI_resetFire();
+
         if (currentWeapon != null && currentWeapon.GetName().Equals(weapon.ToString())) {
             SelectWeapon(Tags.Hand);
             return true;
@@ -55,6 +62,7 @@ public class WeaponManager : MonoBehaviour {
 
                 currentWeapon = x;
                 currentWeapon.SetActive(true);
+                currentWeapon.RestartState();
                 return true;
             }
         }

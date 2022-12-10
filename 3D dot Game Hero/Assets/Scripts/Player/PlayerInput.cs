@@ -100,6 +100,10 @@ public class PlayerInput : MonoBehaviour {
         canFire = true;
     }
 
+    public void PI_resetFire() {
+        canFire = true;
+    }
+
     #endregion
 
     #region MonoBehaviour Methods

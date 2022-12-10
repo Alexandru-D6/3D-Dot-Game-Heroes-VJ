@@ -43,6 +43,10 @@ public abstract class WeaponScript : MonoBehaviour {
         weaponManager.AttackFinished();
     }
 
+    public virtual void RestartState() {
+        return;
+    }
+
 #endregion
 
 #region Public Methods

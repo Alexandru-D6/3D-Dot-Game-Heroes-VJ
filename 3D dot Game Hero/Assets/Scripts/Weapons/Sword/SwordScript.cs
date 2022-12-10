@@ -77,9 +77,24 @@ public class SwordScript : WeaponScript {
         swordLevelRoutine();
     }
 
-#endregion
+    public override void RestartState() {
+        LockAxis(false, true, true);
+        startAnim = false;
+        stopAnim = true;
+        restoreAnim = false;
+        emergencyStop = false;
+        deltaTime = 0.0f;
 
-#region Private Methods
+        trailBlade.SetActive(false);
+
+        bladeTransform.localScale = new Vector3(1.0f + scales.x * swordScaleCurveLenght.Evaluate(deltaTime),
+                                                    1.0f + scales.y * swordScaleCurveLenght.Evaluate(deltaTime),
+                                                    1.0f + scales.z * swordScaleCurveWidth.Evaluate(deltaTime));
+    }
+
+    #endregion
+
+    #region Private Methods
 
     private void controlAnim() {
 
@@ -124,6 +139,8 @@ public class SwordScript : WeaponScript {
             startAnim = false;
             stopAnim = true;
         }
+
+        if (deltaTime < 0.0f) deltaTime = 0.0f;
 
         emergencyStop = false;
     }

@@ -91,9 +91,20 @@ public class BoomerangScript : WeaponScript {
         }
     }
 
-#endregion
+    public override void RestartState() {
+        LockAxis(true, false, false);
 
-#region Private Methods
+        boomerangAnimations.enableFlying(false);
+        isFlying = false;
+        isReturning = false;
+
+        transform.parent = playerHand.transform;
+        followAnchorScript.enabled = true;
+    }
+
+    #endregion
+
+    #region Private Methods
 
     private void ControlBoomerang() {
         if (isFlying) {
