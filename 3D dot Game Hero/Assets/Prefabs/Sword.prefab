@@ -939,10 +939,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5780348222598730199}
-  - component: {fileID: 4982723311382552010}
   - component: {fileID: 7766095655578042760}
   - component: {fileID: 505593363159841761}
-  - component: {fileID: 7004614298030007133}
   m_Layer: 31
   m_Name: CommonComponents
   m_TagString: Untagged
@@ -968,22 +966,6 @@ Transform:
   m_Father: {fileID: 7688523148315110940}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &4982723311382552010
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643336659442072633}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 1
 --- !u!65 &7766095655578042760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -992,7 +974,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6643336659442072633}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.003242973, y: 0.01247566, z: 0.0008629689}
@@ -1015,25 +997,6 @@ MonoBehaviour:
   increasedSize: {x: 0.003242973, y: 0.01247566, z: 0.0008629689}
   originalCenter: {x: -0.000016978533, y: 0.01250152, z: 0.0000028790287}
   originalSize: {x: 0.003242973, y: 0.01119695, z: 0.0008629689}
---- !u!114 &7004614298030007133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643336659442072633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5278b37326f42f547ba0ad9634544da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 1
-  angularVelocity: 1
-  inertiaTensor: 1
-  inertiaTensorRotation: 1
-  centerMass: 1
-  rb: {fileID: 4982723311382552010}
-  initialLocalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &6881899592116037539
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,6 +52,28 @@ public class SwordCollision : MonoBehaviour {
         setBoxColliderSize(increasedCenter, increasedSize);
     }
 
+    private void OnTriggerEnter(Collider collision) {
+        if (collision.gameObject.CompareTag("Wall")) {
+            swordScript.Collided();
+            setBoxColliderSize(originalCenter, originalSize);
+
+        }
+    }
+
+    // TODO: refactor must be needed to use Layers instead of Tag.
+    private void OnTriggerStay(Collider collision) {
+        if (collision.gameObject.CompareTag("Wall")) {
+            swordScript.Collided();
+            setBoxColliderSize(originalCenter, originalSize);
+        }
+    }
+
+    // TODO: refactor must be needed to use Layers instead of Tag to
+    //          avoid false positives when colliding with mobs (?)  
+    private void OnTriggerExit(Collider collision) {
+        setBoxColliderSize(increasedCenter, increasedSize);
+    }
+
     #endregion
 
 }
