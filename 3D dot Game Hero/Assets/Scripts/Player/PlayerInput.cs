@@ -94,6 +94,18 @@ public class PlayerInput : MonoBehaviour {
 
     #endregion
 
+    #region Public Methods
+
+    public void PI_AttackReturned() {
+        canFire = true;
+    }
+
+    public void PI_resetFire() {
+        canFire = true;
+    }
+
+    #endregion
+
     #region MonoBehaviour Methods
 
     private void Awake() {
@@ -140,7 +152,6 @@ public class PlayerInput : MonoBehaviour {
         if (canFire) {
             canFire = false;
             weaponManager.UseCurrentWeapon();
-            StartCoroutine(delayedFire(fireDelay));
         }
     }
 

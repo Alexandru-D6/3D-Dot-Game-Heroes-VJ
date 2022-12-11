@@ -17,6 +17,7 @@ public class SwordScript : WeaponScript {
     [SerializeField] private float rangeLimiter;
     [Range(0.0f, 1.0f)]
     [SerializeField] private float animationDuration;
+    [SerializeField] private float returnAnimationDuration;
 
     [Header("Sword Animation Backend")]
     [SerializeField] private float deltaTime;
@@ -36,10 +37,16 @@ public class SwordScript : WeaponScript {
 
 #region IEnumerators
 
-    IEnumerator delayRestoreRoutine(float time) {
+    IEnumerator delayRestoreRoutine(float time, float time2) {
         yield return new WaitForSeconds(time);
         restoreAnim = true;
         AttackFinished();
+        StartCoroutine(delayEnableStabilizer(time2));
+    }
+
+    IEnumerator delayEnableStabilizer(float time) {
+        yield return new WaitForSeconds(time);
+        LockAxis(false, true, true);
     }
 
 #endregion
@@ -53,6 +60,9 @@ public class SwordScript : WeaponScript {
     public override void Attack() {
         LockAxis(true, false, false);
         startAnim = true;
+        stopAnim = true;
+        restoreAnim = false;
+        emergencyStop = false;
     }
 
 #endregion
@@ -67,9 +77,18 @@ public class SwordScript : WeaponScript {
         swordLevelRoutine();
     }
 
-#endregion
+    public override void RestartState() {
+        LockAxis(false, true, true);
+        startAnim = false;
+        stopAnim = true;
+        restoreAnim = true;
+        emergencyStop = false;
+        deltaTime = 0.0f;
+    }
 
-#region Private Methods
+    #endregion
+
+    #region Private Methods
 
     private void controlAnim() {
 
@@ -108,15 +127,14 @@ public class SwordScript : WeaponScript {
 
             // If the sword expanded to the maximum or collided, lock that position for the remaining time to sync with
             // the arm animation.
-            if (startAnim || emergencyStop) StartCoroutine(delayRestoreRoutine(animationDuration - (2.0f * deltaTime)));
-            else {
-                restoreAnim = false;
-                LockAxis(false, true, true);
-            }
+            if (startAnim || emergencyStop) StartCoroutine(delayRestoreRoutine(animationDuration - (2.0f * deltaTime), Mathf.Abs(returnAnimationDuration * 0.8f)));
+            else restoreAnim = false;
 
             startAnim = false;
             stopAnim = true;
         }
+
+        if (deltaTime < 0.0f) deltaTime = 0.0f;
 
         emergencyStop = false;
     }
@@ -169,14 +187,14 @@ public class SwordScript : WeaponScript {
     }
 
     private void Update() {
-        controlAnim();
-
         // Making the actual scale to the sword
         if (startAnim || restoreAnim) {
             bladeTransform.localScale = new Vector3(1.0f + scales.x * swordScaleCurveLenght.Evaluate(deltaTime),
                                                     1.0f + scales.y * swordScaleCurveLenght.Evaluate(deltaTime),
                                                     1.0f + scales.z * swordScaleCurveWidth.Evaluate(deltaTime));
         }
+
+        controlAnim();
     }
 
 #endregion
