@@ -23,6 +23,7 @@ public enum Tags {
     Skeleton,
     SkullKey,
     Vase,
+    ExplosionCreeper,
     Uknown,
 }
 

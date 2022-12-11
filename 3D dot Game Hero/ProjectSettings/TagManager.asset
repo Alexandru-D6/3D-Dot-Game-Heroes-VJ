@@ -29,6 +29,7 @@ TagManager:
   - SkullKey
   - Vase
   - ZombieArm
+  - ExplosionCreeper
   layers:
   - Default
   - TransparentFX
