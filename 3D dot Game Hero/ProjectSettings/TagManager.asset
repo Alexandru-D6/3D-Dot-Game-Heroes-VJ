@@ -11,6 +11,7 @@ TagManager:
   - Boomerang
   - SceneObjects
   - Hand
+  - Zombie
   - Chest
   - Arrow
   - Bomb
@@ -27,6 +28,7 @@ TagManager:
   - Skeleton
   - SkullKey
   - Vase
+  - ZombieArm
   layers:
   - Default
   - TransparentFX
@@ -34,7 +36,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Enemies
   - 
   - 
   - 

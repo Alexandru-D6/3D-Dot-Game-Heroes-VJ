@@ -640,6 +640,10 @@ MonoBehaviour:
     location:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 7860236232448223703, guid: cce88f849cef3d745b3778dd55d1ff1d, type: 3}
+    location:
+      position: {x: -3, y: 0, z: -10}
+      rotation: {x: 0, y: 0, z: 0}
   lightsLocations: []
 --- !u!4 &1785719905
 Transform:
