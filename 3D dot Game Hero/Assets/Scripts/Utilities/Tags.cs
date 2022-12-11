@@ -24,6 +24,7 @@ public enum Tags {
     SkullKey,
     Vase,
     ZombieArm,
+    ExplosionCreeper,
     Uknown,
 }
 
