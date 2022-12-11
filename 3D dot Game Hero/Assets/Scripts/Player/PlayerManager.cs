@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private InventorySystem inventorySystem;
     [SerializeField] private PlayerAnimations playerAnimations;
+    [SerializeField] private Collider playerCollider;
 
     #endregion
 
@@ -49,6 +50,17 @@ public class PlayerManager : MonoBehaviour {
                 // Comunicate with health system to increase or do what it's need to do
                 break;
         }
+    }
+
+    public void GetHit() {
+        playerAnimations.toHit();
+    }
+
+    public void Die() {
+        playerAnimations.toIdle();
+        playerAnimations.toDeath();
+        playerCollider.enabled = false;
+        playerInput.enabled = false;
     }
 
     #endregion

@@ -73,9 +73,9 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void setTranslation() {
-        Vector3 translation = new Vector3(  /*x*/    ((moveDirection.y != 0.0f) ? Mathf.Sign(moveDirection.y) : 0.0f) * moveSpeed.x,
+        Vector3 translation = new Vector3(  /*x*/    moveDirection.y * moveSpeed.x,
                                             /*y*/    0.0f,
-                                            /*z*/    -1.0f * ((moveDirection.x != 0.0f) ? Mathf.Sign(moveDirection.x) : 0.0f) * moveSpeed.y);
+                                            /*z*/    -1.0f * moveDirection.x * moveSpeed.y);
 
         transform.Translate(translation * Time.deltaTime, Space.World);
     }

@@ -23,6 +23,7 @@ public enum Tags {
     Skeleton,
     SkullKey,
     Vase,
+    ZombieArm,
     ExplosionCreeper,
     Uknown,
 }
@@ -35,7 +36,7 @@ public enum Layers{
     Empty3,
     Water,
     UI,
-    Empty6,
+    Enemies,
     Empty7,
     Empty8,
     Empty9,
@@ -61,4 +62,14 @@ public enum Layers{
     SceneObjects,
     Obstacles,
     Weapon
+}
+
+public class TagsUtils {
+    public static Tags GetTag(string name) {
+        return (Tags)System.Enum.Parse( typeof(Tags), name );
+    }
+
+    public static Layers GetLayers(string name) {
+        return (Layers)System.Enum.Parse( typeof(Layers), name );
+    }
 }

@@ -15,11 +15,11 @@ public class FollowAnchor : MonoBehaviour {
     #region MonoBehaviour Methods
 
     private void Start() {
-        externalAnchor = transform.parent.transform.Find(externalAnchorName).transform;
+        if(transform.parent != null) externalAnchor = transform.parent.transform.Find(externalAnchorName).transform;
     }
 
     void Update() {
-        transform.Translate(externalAnchor.position - internalAnchor.position, Space.World);
+        if (internalAnchor != null && externalAnchor != null) transform.Translate(externalAnchor.position - internalAnchor.position, Space.World);
     }
 
     #endregion
