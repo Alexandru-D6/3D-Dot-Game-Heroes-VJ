@@ -16,9 +16,12 @@ public class ZombieMov : MonoBehaviour
 
     public GameObject target;
 
+    public NavMeshAgent agent;
+    public float attack_distance;
+    public float vision_radio;
     #endregion
 
-    
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -33,8 +36,9 @@ public class ZombieMov : MonoBehaviour
 
     public void Comportamiento_Zombie()
     {
-        if(Vector3.Distance(transform.position, target.transform.position) > 5)
+        if(Vector3.Distance(transform.position, target.transform.position) > vision_radio)
         {
+            agent.enabled= false;
             crono += 1 * Time.deltaTime;
             if(crono >= 4)
             {
@@ -60,7 +64,7 @@ public class ZombieMov : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(transform.position, target.transform.position) > 1 && !attacking) 
+            /*if (Vector3.Distance(transform.position, target.transform.position) > 1 && !attacking) 
             { 
                 anim.SetBool("Running", true);
                 var lookPos = target.transform.position - transform.position;
@@ -77,14 +81,38 @@ public class ZombieMov : MonoBehaviour
                 anim.SetBool("Running", false);
                 anim.SetBool("Attack", true);
                 attacking = true;
+            }*/
+
+            var lookPos = target.transform.position - transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+
+            agent.enabled = true;
+            agent.SetDestination(target.transform.position);
+            if (Vector3.Distance(transform.position, target.transform.position) > attack_distance && !attacking)
+            {
+                anim.SetBool("Running", true);
+            }
+            else
+            {
+                if (!attacking)
+                {
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
+                    anim.SetBool("Running", false);
+                    anim.SetBool("Attack", true);
+                    attacking = true;
+                    agent.enabled = false;
+                }
+
             }
         }
+        
     }
 
     public void Final_Anim()
     {
+        
         anim.SetBool("Attack", false);
         attacking = false;
-
     }
 }

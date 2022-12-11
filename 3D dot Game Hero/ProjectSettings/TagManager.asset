@@ -28,6 +28,7 @@ TagManager:
   - Skeleton
   - SkullKey
   - Vase
+  - ZombieArm
   layers:
   - Default
   - TransparentFX
