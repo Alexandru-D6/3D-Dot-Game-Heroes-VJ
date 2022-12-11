@@ -23,6 +23,7 @@ public enum Tags {
     Skeleton,
     SkullKey,
     Vase,
+    ZombieArm,
     Uknown,
 }
 
@@ -34,7 +35,7 @@ public enum Layers{
     Empty3,
     Water,
     UI,
-    Empty6,
+    Enemies,
     Empty7,
     Empty8,
     Empty9,

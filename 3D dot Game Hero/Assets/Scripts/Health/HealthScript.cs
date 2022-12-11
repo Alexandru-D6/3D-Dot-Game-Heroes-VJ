@@ -37,6 +37,9 @@ public abstract class HealthScript : MonoBehaviour {
             case Tags.Sword:
                 damage = 50;
                 break;
+            case Tags.ZombieArm:
+                damage = 10;
+                break;
         }
 
         return damage;

@@ -11,10 +11,6 @@ public class PlayerCollisions : MonoBehaviour {
 
     #endregion
 
-    private void OnCollisionEnter(Collision collision) {
-        
-    }
-
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.layer == (int)Layers.Weapon) {
             playerHealth.DecreaseHealth(HealthScript.GetDamage(TagsUtils.GetTag(other.tag)));
