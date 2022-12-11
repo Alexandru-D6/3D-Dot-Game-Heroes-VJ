@@ -61,3 +61,13 @@ public enum Layers{
     Obstacles,
     Weapon
 }
+
+public class TagsUtils {
+    public static Tags GetTag(string name) {
+        return (Tags)System.Enum.Parse( typeof(Tags), name );
+    }
+
+    public static Layers GetLayers(string name) {
+        return (Layers)System.Enum.Parse( typeof(Layers), name );
+    }
+}

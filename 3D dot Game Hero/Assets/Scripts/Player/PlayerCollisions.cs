@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerCollisions : MonoBehaviour {
+
+    #region Parameters
+
+    [Header("References")]
+    [SerializeField] private PlayerHealth playerHealth;
+
+    #endregion
+
+    private void OnCollisionEnter(Collision collision) {
+        
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.layer == (int)Layers.Weapon) {
+            playerHealth.DecreaseHealth(HealthScript.GetDamage(TagsUtils.GetTag(other.tag)));
+        }
+    }
+}
