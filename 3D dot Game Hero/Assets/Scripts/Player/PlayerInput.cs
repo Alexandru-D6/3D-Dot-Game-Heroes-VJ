@@ -73,9 +73,9 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void setTranslation() {
-        Vector3 translation = new Vector3(  /*x*/    moveDirection.y * moveSpeed.x,
+        Vector3 translation = new Vector3(  /*x*/    moveDirection.x * moveSpeed.x,
                                             /*y*/    0.0f,
-                                            /*z*/    -1.0f * moveDirection.x * moveSpeed.y);
+                                            /*z*/    moveDirection.y * moveSpeed.y);
 
         transform.Translate(translation * Time.deltaTime, Space.World);
     }
@@ -88,7 +88,7 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void rotationRoutine() {
-        float angleDest = -90.0f + ((int)currentRotation * 45.0f);
+        float angleDest = -180.0f + ((int)currentRotation * 45.0f);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0.0f, angleDest, 0.0f), rotationSpeed);
     }
 
