@@ -10,6 +10,9 @@ public class MapTextureManager : MonoBehaviour {
     [SerializeField] private Material material;
     [SerializeField] private Mesh mesh;
 
+    [SerializeField] private Material transparentMaterial;
+    [SerializeField] private Camera _camera;
+
     private Material backupMaterial;
     private Mesh backupMesh;
 
@@ -30,7 +33,11 @@ public class MapTextureManager : MonoBehaviour {
             backupMaterial = material;
 
             foreach(var x in renderers) {
-                x.material = backupMaterial;
+                Vector3 localForward = x.transform.forward;
+                Vector3 cameraForward = _camera.transform.forward;
+
+                if (Vector3.Dot(localForward, cameraForward) <= 0) x.material = backupMaterial;
+                else x.material = transparentMaterial;
             }
         }
 
