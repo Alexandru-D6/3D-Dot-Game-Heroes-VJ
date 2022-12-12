@@ -50,7 +50,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3600758259809559726, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_Name
-      value: SimpleGround (7)
+      value: GenericGround (7)
       objectReference: {fileID: 0}
     - target: {fileID: 4229907147987680788, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_RootOrder
@@ -112,7 +112,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3600758259809559726, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_Name
-      value: SimpleGround (3)
+      value: GenericGround (3)
       objectReference: {fileID: 0}
     - target: {fileID: 4229907147987680788, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_RootOrder
@@ -174,7 +174,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3600758259809559726, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_Name
-      value: SimpleGround (1)
+      value: GenericGround (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4229907147987680788, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_RootOrder
@@ -236,7 +236,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3600758259809559726, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_Name
-      value: SimpleGround (9)
+      value: GenericGround (9)
       objectReference: {fileID: 0}
     - target: {fileID: 4229907147987680788, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_RootOrder
@@ -298,7 +298,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3600758259809559726, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_Name
-      value: SimpleGround (5)
+      value: GenericGround (5)
       objectReference: {fileID: 0}
     - target: {fileID: 4229907147987680788, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_RootOrder
@@ -360,7 +360,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3600758259809559726, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_Name
-      value: SimpleGround (0)
+      value: GenericGround (0)
       objectReference: {fileID: 0}
     - target: {fileID: 4229907147987680788, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_RootOrder
@@ -422,7 +422,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3600758259809559726, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_Name
-      value: SimpleGround (2)
+      value: GenericGround (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4229907147987680788, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_RootOrder
@@ -484,7 +484,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3600758259809559726, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_Name
-      value: SimpleGround (4)
+      value: GenericGround (4)
       objectReference: {fileID: 0}
     - target: {fileID: 4229907147987680788, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_RootOrder
@@ -546,7 +546,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3600758259809559726, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_Name
-      value: SimpleGround (8)
+      value: GenericGround (8)
       objectReference: {fileID: 0}
     - target: {fileID: 4229907147987680788, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_RootOrder
@@ -608,7 +608,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3600758259809559726, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_Name
-      value: SimpleGround (6)
+      value: GenericGround (6)
       objectReference: {fileID: 0}
     - target: {fileID: 4229907147987680788, guid: 58e883a4da9e1184386dafa585bdd171, type: 3}
       propertyPath: m_RootOrder

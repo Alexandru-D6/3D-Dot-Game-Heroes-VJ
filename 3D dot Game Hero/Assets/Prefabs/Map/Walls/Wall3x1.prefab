@@ -87,7 +87,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 974796439522299079, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
       propertyPath: m_Name
-      value: SimpleWall (1)
+      value: GenericWall (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 974796439522299079, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
       propertyPath: m_Name
-      value: SimpleWall (0)
+      value: GenericWall (0)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
@@ -211,7 +211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 974796439522299079, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
       propertyPath: m_Name
-      value: SimpleWall (2)
+      value: GenericWall (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
