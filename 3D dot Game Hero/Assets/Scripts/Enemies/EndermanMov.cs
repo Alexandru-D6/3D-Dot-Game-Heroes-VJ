@@ -7,12 +7,12 @@ using UnityEngine.AI;
 public class EndermanMov : MonoBehaviour
 {
     #region Parameters
-    public int rutina;
-    public float crono;
-    public Animator anim;
-    public Quaternion angle;
-    public float grado;
-    public bool attacking;
+    [SerializeField] int rutina;
+    [SerializeField] float crono;
+    [SerializeField] Animator anim;
+    [SerializeField] Quaternion angle;
+    [SerializeField] float grado;
+    [SerializeField] bool attacking;
     public Collider ownCollider;
 
     public GameObject target;
@@ -48,7 +48,7 @@ public class EndermanMov : MonoBehaviour
         {
             agent.enabled = false;
             crono += 1 * Time.deltaTime;
-            if (crono >= 4)
+            if (crono >= 3)
             {
                 rutina = Random.Range(0, 2);
                 crono = 0;
@@ -178,5 +178,10 @@ public class EndermanMov : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(enable);
         }
 
+    }
+
+    public void alertEnderman()
+    {
+        alert = true;
     }
 }

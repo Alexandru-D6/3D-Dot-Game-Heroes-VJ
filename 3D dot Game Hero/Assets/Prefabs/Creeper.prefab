@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6142139067995789025}
   - component: {fileID: 8646608478061900363}
   - component: {fileID: 2522550239634438395}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7630687699506708646}
   - component: {fileID: 9203995030014862760}
-  m_Layer: 31
+  m_Layer: 6
   m_Name: ExplosionCreeper
   m_TagString: ExplosionCreeper
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6872291346484087704}
   - component: {fileID: 8740460806605555633}
   - component: {fileID: 4092905828931161724}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,9 +227,9 @@ GameObject:
   - component: {fileID: 9014655281847286226}
   - component: {fileID: 8065777169386899668}
   - component: {fileID: 8032975861488864794}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Creeper
-  m_TagString: Untagged
+  m_TagString: Creeper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 2289858388887476671}
   - component: {fileID: 8570004561383095399}
   - component: {fileID: 414002102092588195}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2332546711120455720}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg 2 Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834386382686389864}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg 4 Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3151011765817395215}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg 3 Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5528660151675533684}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg 1 Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 3611543094096956788}
   - component: {fileID: 576946579157933880}
   - component: {fileID: 1196977845103930913}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 5431147758566389485}
   - component: {fileID: 3954399781081667561}
   - component: {fileID: 6944427599521835998}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 5142650996318310418}
   - component: {fileID: 7618071621591228118}
   - component: {fileID: 3506607807157509069}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

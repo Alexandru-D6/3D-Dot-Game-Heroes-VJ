@@ -10,7 +10,11 @@ public class PlayerRayCast : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hitInfo, 20f, layerMask)) 
         {
-            //hitInfo.transform;
+            if (hitInfo.transform.tag.Equals("Enderman")) 
+            {
+                transform.GetComponent<EndermanMov>().alertEnderman();
+                Debug.Log("visto");
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2424527654188258104}
   - component: {fileID: 4378775378864513889}
   - component: {fileID: 6162226650066746789}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3641078215889544637}
   - component: {fileID: 3053568580322629670}
   - component: {fileID: 1054400817624551707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 3708446400321466265}
   - component: {fileID: 5676934529382600349}
   - component: {fileID: 1763102483008484010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2084674811580722915}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg Right Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 8768700027475183576}
   - component: {fileID: 3382244314644877367}
   - component: {fileID: 4408896425459791549}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,9 +380,9 @@ GameObject:
   - component: {fileID: -2532341082811563627}
   - component: {fileID: 6059110462420720734}
   - component: {fileID: 3392937606577375328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enderman
-  m_TagString: Untagged
+  m_TagString: Enderman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 7489321617305665739}
   - component: {fileID: 1064707652804273427}
   - component: {fileID: 9049571073552612823}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 9033581501552959106}
   - component: {fileID: 3797382648992507146}
   - component: {fileID: 8276753286118673347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3548430789869047635}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm Right Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8695404742571920216}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm Left Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -777,7 +777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1221941876244494291}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg Left Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
