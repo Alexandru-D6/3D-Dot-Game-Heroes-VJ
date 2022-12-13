@@ -536,7 +536,7 @@ MonoBehaviour:
   attack_distance: 1
   alert: 0
   delay_attack: 2
-  range: 6
+  range: 10
   centrePoint: {fileID: 0}
 --- !u!1 &6263282980836109977
 GameObject:
