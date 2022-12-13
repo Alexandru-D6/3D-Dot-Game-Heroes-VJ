@@ -9,6 +9,7 @@ public class MapTextureManager : MonoBehaviour {
     [Header("Material")]
     [SerializeField] private Material material;
     [SerializeField] private Mesh mesh;
+    [SerializeField] private Tags targetTag;
 
     [SerializeField] private Material transparentMaterial;
     [SerializeField] private Camera _camera;
@@ -33,6 +34,8 @@ public class MapTextureManager : MonoBehaviour {
             backupMaterial = material;
 
             foreach(var x in renderers) {
+                if (!x.tag.Equals(targetTag.ToString())) return;
+
                 Vector3 localForward = x.transform.forward;
                 Vector3 cameraForward = _camera.transform.forward;
 
@@ -44,6 +47,8 @@ public class MapTextureManager : MonoBehaviour {
         if (backupMesh != mesh) {
             backupMesh = mesh;
             foreach(var x in meshes) {
+                if (!x.tag.Equals(targetTag.ToString())) return;
+
                 x.mesh = backupMesh;
             }
         }
