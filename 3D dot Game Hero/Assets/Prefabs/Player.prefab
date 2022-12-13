@@ -824,6 +824,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  offsetRaycast: {x: 0, y: 1, z: 0}
+  raycastLenght: 20
 --- !u!54 &1603912058711816172
 Rigidbody:
   m_ObjectHideFlags: 0
