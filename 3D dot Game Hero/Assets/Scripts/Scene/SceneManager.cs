@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour {
 
+    #region Singleton
+
+    public static SceneManager Instance { get; private set; }
+
+    private void Awake() {
+        if (Instance != null && Instance != this) Destroy(this);
+        else Instance = this;
+    }
+
+    #endregion
+
     #region Structs
 
     [System.Serializable]
@@ -23,7 +34,10 @@ public class SceneManager : MonoBehaviour {
     #region Parameters
 
     [Header("Camera Options")]
+    [SerializeField] private Camera _camera;
     [SerializeField] private Location cameraLocation;
+    [SerializeField] private Vector2 offsetRooms;
+    private GameObject currentRoom = null;
 
     [Header("Prefabs to Spawn")]
     [SerializeField] private List<PrefabSpawn> prefabs;
@@ -33,11 +47,31 @@ public class SceneManager : MonoBehaviour {
 
     #endregion
 
+    #region Public Methods
+
+    public void moveCamera(Vector2 direction, GameObject triggerRoom) {
+        if (currentRoom == null) currentRoom = triggerRoom;
+        if (currentRoom != null && triggerRoom != currentRoom) {
+            currentRoom = triggerRoom;
+            return;
+        }
+
+        Vector2 tmp = offsetRooms * direction;
+
+        Vector3 movement = new Vector3(tmp.x, 0.0f, tmp.y);
+        movement += _camera.transform.position;
+
+        _camera.transform.position = movement;
+    }
+
+    #endregion
+
     #region MonoBehaviour Methods
 
     void Start(){
-        Camera.main.transform.position = cameraLocation.position;
-        Camera.main.transform.eulerAngles = cameraLocation.rotation;
+        _camera = Camera.main;
+        _camera.transform.position = cameraLocation.position;
+        _camera.transform.eulerAngles = cameraLocation.rotation;
 
         foreach(PrefabSpawn x in prefabs) {
             Instantiate(x.prefab, x.location.position, Quaternion.Euler(x.location.rotation));
