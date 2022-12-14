@@ -8,20 +8,20 @@ public class EndermanMov : MonoBehaviour
 {
     #region Parameters
     [SerializeField] int rutina;
-    [SerializeField] float crono;
+    private float crono;
     [SerializeField] Animator anim;
     [SerializeField] Quaternion angle;
-    [SerializeField] float grado;
+    private float grado;
     [SerializeField] bool attacking;
-    public Collider ownCollider;
+    [SerializeField] Collider ownCollider;
 
-    public GameObject target;
+    [SerializeField] GameObject target;
 
-    public NavMeshAgent agent;
-    public float attack_distance;
-    public bool alert = false;
-    public float delay_attack = 2;
-    public float range = 6; //radius of sphere
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] float attack_distance;
+    [SerializeField] bool alert = false;
+    [SerializeField] float delay_attack = 2;
+    [SerializeField] float range = 6; //radius of sphere
     private bool enablebody = true;
     private bool teleporting = false;
 
@@ -102,32 +102,29 @@ public class EndermanMov : MonoBehaviour
 
                 
             }
-            if (Vector3.Distance(transform.position, target.transform.position) > attack_distance && !attacking && 2 <= delay_attack)
+            else
             {
-                teleporting = false;
+                
                 if (!enablebody)
                 {
+                    teleporting = false;
                     enablebody = true;
                     enableOrDisableBody(enablebody);
                 }
-
+            }
+            if (Vector3.Distance(transform.position, target.transform.position) > attack_distance && !attacking && !teleporting)
+            {
                 agent.enabled = true;
                 agent.SetDestination(target.transform.position);
                 anim.SetBool("Running", true);
                 
             }
-            else
+            else if ((Vector3.Distance(transform.position, target.transform.position) <= attack_distance) && !attacking && !teleporting)
             {
-                
-                if (!attacking && 2 <= delay_attack)
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
+                if (2 <= delay_attack)
                 {
-                    teleporting = false;    
-                    if (!enablebody)
-                    {
-                        enablebody = true;
-                        enableOrDisableBody(enablebody);
-                    }
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
+                    
                     anim.SetBool("Running", false);
                     anim.SetBool("Attack", true);
                     attacking = true;
@@ -138,6 +135,7 @@ public class EndermanMov : MonoBehaviour
                         teleporting = true;
                     }
                 }
+          
                 
 
             }

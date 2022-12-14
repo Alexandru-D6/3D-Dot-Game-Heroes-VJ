@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 8768700027475183576}
   - component: {fileID: 3382244314644877367}
   - component: {fileID: 4408896425459791549}
+  - component: {fileID: 7557186159208362880}
   m_Layer: 6
   m_Name: Right Arm
   m_TagString: Untagged
@@ -364,6 +365,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7557186159208362880
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4486879647553262510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.012093284, y: 0.030999994, z: 0.0020000055}
+  m_Center: {x: -0.0000466454, y: 0.024499997, z: -0.0000000037252903}
 --- !u!1 &5979412807181547424
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,10 +539,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rutina: 0
-  crono: 0
   anim: {fileID: 2318985479639805853}
   angle: {x: 0, y: 0, z: 0, w: 0}
-  grado: 0
   attacking: 0
   ownCollider: {fileID: -2532341082811563627}
   target: {fileID: 0}

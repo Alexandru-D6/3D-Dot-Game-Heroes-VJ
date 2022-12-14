@@ -1023,6 +1023,10 @@ PrefabInstance:
       propertyPath: ownCollider
       value: 
       objectReference: {fileID: 2029436415}
+    - target: {fileID: 3392937606577375328, guid: 2a27f8602880f6f418db4602cf90f6b6, type: 3}
+      propertyPath: attack_distance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5979412807181547424, guid: 2a27f8602880f6f418db4602cf90f6b6, type: 3}
       propertyPath: m_Name
       value: Enderman
