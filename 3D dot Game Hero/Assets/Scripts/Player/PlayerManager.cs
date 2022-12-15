@@ -65,6 +65,7 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public void PassDoor(Vector3 target) {
+        playerInput.RotatePlayer(target);
         playerAutomaticMovement.MoveTo(target);
     }
 

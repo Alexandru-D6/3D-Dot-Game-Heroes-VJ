@@ -16,6 +16,15 @@ public class PlayerAutomaticMovement : MonoBehaviour {
 
     #endregion
 
+    #region IEnumerators
+
+    IEnumerator delayedPlayerDisable(float time) {
+        yield return new WaitForSeconds(time);
+        playerInput.enabled = false;
+    }
+
+    #endregion
+
     #region Private Methods
 
     private void movementRoutine() {
@@ -28,7 +37,7 @@ public class PlayerAutomaticMovement : MonoBehaviour {
 
             if (Vector3.Distance(transform.position, targetPosition) < 0.5f) {
                 startMovement = false;
-                playerInput.enabled = true;
+                playerInput.disableInput(true);
             }
         }
     }
@@ -40,7 +49,7 @@ public class PlayerAutomaticMovement : MonoBehaviour {
     public void MoveTo(Vector4 target) {
         targetPosition = target;
         startMovement = true;
-        playerInput.enabled = false;
+        playerInput.disableInput(false);
     }
 
     #endregion

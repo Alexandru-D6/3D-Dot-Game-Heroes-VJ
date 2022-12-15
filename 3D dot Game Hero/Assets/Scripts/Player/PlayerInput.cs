@@ -38,6 +38,7 @@ public class PlayerInput : MonoBehaviour {
     [Space(2)]
     [SerializeField] rotationStates currentRotation = rotationStates.Forward;
     [SerializeField] private float rotationSpeed;
+    private bool inputEnabled = true;
 
     #endregion
 
@@ -57,18 +58,18 @@ public class PlayerInput : MonoBehaviour {
 
     #region Private Methods
 
-    private void setRotation() {
-        if (moveDirection.x < 0.0f) {
-            if (moveDirection.y > 0.0f) currentRotation = rotationStates.RightFront;
-            else if (moveDirection.y < 0.0f) currentRotation = rotationStates.RightBack;
+    private void setRotation(Vector2 dir) {
+        if (dir.x < 0.0f) {
+            if (dir.y > 0.0f) currentRotation = rotationStates.RightFront;
+            else if (dir.y < 0.0f) currentRotation = rotationStates.RightBack;
             else currentRotation = rotationStates.Right;
-        } else if (moveDirection.x > 0.0f) {
-            if (moveDirection.y > 0.0f) currentRotation = rotationStates.LeftFront;
-            else if (moveDirection.y < 0.0f) currentRotation = rotationStates.LeftBack;
+        } else if (dir.x > 0.0f) {
+            if (dir.y > 0.0f) currentRotation = rotationStates.LeftFront;
+            else if (dir.y < 0.0f) currentRotation = rotationStates.LeftBack;
             else currentRotation = rotationStates.Left;
         } else {
-            if (moveDirection.y > 0.0f) currentRotation = rotationStates.Forward;
-            else if (moveDirection.y < 0.0f) currentRotation = rotationStates.Backward;
+            if (dir.y > 0.0f) currentRotation = rotationStates.Forward;
+            else if (dir.y < 0.0f) currentRotation = rotationStates.Backward;
         }
     }
 
@@ -82,7 +83,7 @@ public class PlayerInput : MonoBehaviour {
 
     private void movementRoutine() {
         setTranslation();
-        setRotation();
+        setRotation(moveDirection);
 
         animationManager.enableRunning(moveDirection != Vector2.zero);
     }
@@ -106,6 +107,23 @@ public class PlayerInput : MonoBehaviour {
 
     public Vector2 GetMovementSpeed() {
         return moveSpeed;
+    }
+
+    public void RotatePlayer(Vector3 target) {
+        Vector3 dir = target - transform.position;
+        dir.y = 0.0f;
+        dir.Normalize();
+
+        setRotation(dir);
+        
+        float angleDest = -180.0f + ((int)currentRotation * 45.0f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0.0f, angleDest, 0.0f), 360.0f);
+
+        animationManager.enableRunning(true);
+    }
+
+    public void disableInput(bool value) {
+        inputEnabled = value;
     }
 
     #endregion
@@ -142,10 +160,12 @@ public class PlayerInput : MonoBehaviour {
     }
 
     void Update() {
-        moveDirection = move.ReadValue<Vector2>();
+        if (inputEnabled) {
+            moveDirection = move.ReadValue<Vector2>();
 
-        movementRoutine();
-        rotationRoutine();
+            movementRoutine();
+            rotationRoutine();
+        }
     }
 
     #endregion
