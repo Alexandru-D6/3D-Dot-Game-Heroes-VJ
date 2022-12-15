@@ -14,14 +14,15 @@ public class EndermanMov : MonoBehaviour
     private float grado;
     [SerializeField] bool attacking;
     [SerializeField] Collider ownCollider;
+    [SerializeField] GameObject particles;
 
     [SerializeField] GameObject target;
 
     [SerializeField] NavMeshAgent agent;
     [SerializeField] float attack_distance;
     [SerializeField] bool alert = false;
-    [SerializeField] float delay_attack = 2;
-    [SerializeField] float range = 6; //radius of sphere
+    [SerializeField] float delay_attack = 3;
+    [SerializeField] float range = 30; //radius of sphere
     private bool enablebody = true;
     private bool teleporting = false;
 
@@ -76,26 +77,28 @@ public class EndermanMov : MonoBehaviour
             var lookPos = target.transform.position - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
-            if (!attacking && 2 > delay_attack)
+            if (!attacking && 3 > delay_attack)
             {   
                 agent.enabled = true;
-                if (delay_attack == 0 && teleporting )
+                if (teleporting)
                 {
                     //done with path
                     if (enablebody)
                     {
+                        agent.speed = 5.0f;
                         enablebody = false;
                         enableOrDisableBody(enablebody);
+                        Instantiate(particles, transform.position,Quaternion.identity);
                     }
-
+                    if (agent.remainingDistance <= agent.stoppingDistance) //done with path
+                    {
                         Vector3 point;
                         if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
                         {
                             Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
                             agent.SetDestination(point);
                         }
-
-
+                    }
                 }
                 
                 delay_attack += 1 * Time.deltaTime;
@@ -107,6 +110,8 @@ public class EndermanMov : MonoBehaviour
                 
                 if (!enablebody)
                 {
+                    agent.speed = 2.0f;
+                    Instantiate(particles, transform.position, Quaternion.identity);
                     teleporting = false;
                     enablebody = true;
                     enableOrDisableBody(enablebody);
@@ -122,7 +127,7 @@ public class EndermanMov : MonoBehaviour
             else if ((Vector3.Distance(transform.position, target.transform.position) <= attack_distance) && !attacking && !teleporting)
             {
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
-                if (2 <= delay_attack)
+                if (3 <= delay_attack)
                 {
                     
                     anim.SetBool("Running", false);
@@ -130,9 +135,11 @@ public class EndermanMov : MonoBehaviour
                     attacking = true;
                     agent.enabled = false;
                     delay_attack = 0;
-                    if (1 == ((int)Random.Range(0, 3)))
+                    if (1 == ((int)Random.Range(0, 2)))
                     {
                         teleporting = true;
+
+                       
                     }
                 }
           
