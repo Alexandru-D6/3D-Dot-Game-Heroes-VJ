@@ -12,13 +12,13 @@ public class DoorTriggerScript : MonoBehaviour {
     private Vector2 getDirection() {
         switch(triggerPosition) {
             case Position.North:
-                return new Vector2(0.0f,1.0f);
-            case Position.East:
-                return new Vector2(1.0f,0.0f);
-            case Position.South:
                 return new Vector2(0.0f,-1.0f);
-            case Position.West:
+            case Position.East:
                 return new Vector2(-1.0f,0.0f);
+            case Position.South:
+                return new Vector2(0.0f,1.0f);
+            case Position.West:
+                return new Vector2(1.0f,0.0f);
         }
         return new Vector2(0.0f,0.0f);
     }

@@ -50,10 +50,15 @@ public class SceneManager : MonoBehaviour {
     #region Public Methods
 
     public void moveCamera(Vector2 direction, GameObject triggerRoom) {
-        if (currentRoom == null) currentRoom = triggerRoom;
-        if (currentRoom != null && triggerRoom != currentRoom) {
+        if (currentRoom == null) {
             currentRoom = triggerRoom;
             return;
+        }
+
+        if (currentRoom != null && triggerRoom == currentRoom) return;
+
+        if (currentRoom != null && triggerRoom != currentRoom) {
+            currentRoom = triggerRoom;
         }
 
         Vector2 tmp = offsetRooms * direction;
