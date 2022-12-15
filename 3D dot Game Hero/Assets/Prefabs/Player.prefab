@@ -644,6 +644,7 @@ GameObject:
   - component: {fileID: 5537726334345410472}
   - component: {fileID: 4713331758898903793}
   - component: {fileID: 8800294357765895709}
+  - component: {fileID: -2755547016933654997}
   - component: {fileID: 1603912058711816172}
   - component: {fileID: 6925475127036339142}
   - component: {fileID: 4816398731180999628}
@@ -826,6 +827,15 @@ MonoBehaviour:
   moveSpeed: {x: 0, y: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   startMovement: 0
+--- !u!114 &-2755547016933654997
+  m_Script: {fileID: 11500000, guid: 85c37a4934f0c3a41a8adce317eda160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  offsetRaycast: {x: 0, y: 1, z: 0}
+  raycastLenght: 20
 --- !u!54 &1603912058711816172
 Rigidbody:
   m_ObjectHideFlags: 0

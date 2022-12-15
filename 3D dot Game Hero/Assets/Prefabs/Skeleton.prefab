@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2440866035901211775}
   - component: {fileID: 7507794560391684087}
   - component: {fileID: 3341362490348482878}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4282187041116469814}
   - component: {fileID: 5928023270537715694}
   - component: {fileID: 2383671701137213226}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,9 +176,9 @@ GameObject:
   m_Component:
   - component: {fileID: 374639696764327911}
   - component: {fileID: 2717843879363128259}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Skeleton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,7 +233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6264669750320136985}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm Right Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1834763144986886025}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm Left Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 9018369433880439237}
   - component: {fileID: 6937374355003120028}
   - component: {fileID: 650392210256414552}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1579543390777247952}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg Left Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 2680387310791589157}
   - component: {fileID: 8246703832941308618}
   - component: {fileID: 7038426692979428416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2105655583599925582}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg Right Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 7927950944139861824}
   - component: {fileID: 8566546091112342235}
   - component: {fileID: 5918842395994827750}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 8067359134511732068}
   - component: {fileID: 1318021807383540832}
   - component: {fileID: 4969093698823112791}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -31,6 +31,8 @@ TagManager:
   - ZombieArm
   - ExplosionCreeper
   - Floor
+  - EndermanParticles
+  - CreeperParticles
   layers:
   - Default
   - TransparentFX
@@ -39,7 +41,7 @@ TagManager:
   - Water
   - UI
   - Enemies
-  - 
+  - Particles
   - 
   - 
   - 

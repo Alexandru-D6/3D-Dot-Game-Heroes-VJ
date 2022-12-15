@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2424527654188258104}
   - component: {fileID: 4378775378864513889}
   - component: {fileID: 6162226650066746789}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3641078215889544637}
   - component: {fileID: 3053568580322629670}
   - component: {fileID: 1054400817624551707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 3708446400321466265}
   - component: {fileID: 5676934529382600349}
   - component: {fileID: 1763102483008484010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2084674811580722915}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg Right Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,8 @@ GameObject:
   - component: {fileID: 8768700027475183576}
   - component: {fileID: 3382244314644877367}
   - component: {fileID: 4408896425459791549}
-  m_Layer: 0
+  - component: {fileID: 7557186159208362880}
+  m_Layer: 6
   m_Name: Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,6 +365,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7557186159208362880
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4486879647553262510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.012093284, y: 0.030999994, z: 0.0020000055}
+  m_Center: {x: -0.0000466454, y: 0.024499997, z: -0.0000000037252903}
 --- !u!1 &5979412807181547424
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,9 +388,15 @@ GameObject:
   m_Component:
   - component: {fileID: 6462934742744067354}
   - component: {fileID: 2318985479639805853}
-  m_Layer: 0
+  - component: {fileID: 1032688261102213963}
+  - component: {fileID: 2348928882866764549}
+  - component: {fileID: 8406615412241709611}
+  - component: {fileID: -2532341082811563627}
+  - component: {fileID: 6059110462420720734}
+  - component: {fileID: 3392937606577375328}
+  m_Layer: 6
   m_Name: Enderman
-  m_TagString: Untagged
+  m_TagString: Enderman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -422,6 +442,115 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1032688261102213963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979412807181547424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fc0571b5b16bb47b3f499684e238a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  running: 0
+--- !u!114 &2348928882866764549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979412807181547424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5278b37326f42f547ba0ad9634544da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 1
+  angularVelocity: 1
+  inertiaTensor: 1
+  inertiaTensorRotation: 1
+  centerMass: 0
+  rb: {fileID: 8406615412241709611}
+  initialLocalPos: {x: 0, y: 0, z: 0}
+--- !u!54 &8406615412241709611
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979412807181547424}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &-2532341082811563627
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979412807181547424}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4.7767777, z: 1}
+  m_Center: {x: 0, y: 2.407458, z: 0}
+--- !u!195 &6059110462420720734
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979412807181547424}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.6
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 5
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3392937606577375328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979412807181547424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c20f89066c6194e8677dc6c83a3389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rutina: 0
+  anim: {fileID: 2318985479639805853}
+  angle: {x: 0, y: 0, z: 0, w: 0}
+  attacking: 0
+  ownCollider: {fileID: -2532341082811563627}
+  particles: {fileID: 6120971966027891379, guid: 3d83e38db05ac494dad3aa17fdb590f3, type: 3}
+  target: {fileID: 0}
+  agent: {fileID: 6059110462420720734}
+  attack_distance: 1
+  alert: 0
+  delay_attack: 2
+  range: 10
+  centrePoint: {fileID: 6462934742744067354}
 --- !u!1 &6263282980836109977
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +562,7 @@ GameObject:
   - component: {fileID: 7489321617305665739}
   - component: {fileID: 1064707652804273427}
   - component: {fileID: 9049571073552612823}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +645,7 @@ GameObject:
   - component: {fileID: 9033581501552959106}
   - component: {fileID: 3797382648992507146}
   - component: {fileID: 8276753286118673347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,7 +726,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3548430789869047635}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm Right Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +758,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8695404742571920216}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm Left Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -661,7 +790,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1221941876244494291}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg Left Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
