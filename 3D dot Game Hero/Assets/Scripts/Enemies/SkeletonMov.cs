@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EsqueletonMov : MonoBehaviour
+public class SkeletonMov : MonoBehaviour
 {
     #region Parameters
     public int rutina;
@@ -64,33 +64,16 @@ public class EsqueletonMov : MonoBehaviour
         }
         else
         {
-            /*if (Vector3.Distance(transform.position, target.transform.position) > 1 && !attacking) 
-            { 
-                anim.SetBool("Running", true);
-                var lookPos = target.transform.position - transform.position;
-                lookPos.y = 0;
-
-                Quaternion rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
-
-                transform.Translate(Vector3.forward * 2 * Time.deltaTime);
-                anim.SetBool("Attack", false);
-            }
-            else
-            {
-                anim.SetBool("Running", false);
-                anim.SetBool("Attack", true);
-                attacking = true;
-            }*/
 
             var lookPos = target.transform.position - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
 
-            agent.enabled = true;
-            agent.SetDestination(target.transform.position);
+            
             if (Vector3.Distance(transform.position, target.transform.position) > attack_distance && !attacking)
             {
+                agent.enabled = true;
+                agent.SetDestination(target.transform.position);
                 anim.SetBool("Running", true);
             }
             else
