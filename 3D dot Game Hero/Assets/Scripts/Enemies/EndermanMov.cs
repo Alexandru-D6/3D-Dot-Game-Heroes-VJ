@@ -84,7 +84,7 @@ public class EndermanMov : MonoBehaviour
                     //done with path
                     if (enablebody)
                     {
-                        agent.speed = 5.0f;
+                        agent.speed = 7.0f;
                         enablebody = false;
                         enableOrDisableBody(enablebody);
                         Instantiate(particles, transform.position,Quaternion.identity);
@@ -105,7 +105,7 @@ public class EndermanMov : MonoBehaviour
             {  
                 if (!enablebody)
                 {
-                    agent.speed = 2.0f;
+                    agent.speed = 3.5f;
                     Instantiate(particles, transform.position, Quaternion.identity);
                     teleporting = false;
                     enablebody = true;

@@ -7,20 +7,21 @@ using UnityEngine.AI;
 public class CreeperMov : MonoBehaviour
 {
     #region Parameters
-    public int rutina;
-    public float crono;
-    public Animator anim;
-    public Quaternion angle;
-    public float grado;
-    public bool exploding;
+    [SerializeField] int rutina;
+    private float crono;
+    [SerializeField] Animator anim;
+    [SerializeField] Quaternion angle;
+    private float grado;
+    [SerializeField] bool exploding;
+    
+    [SerializeField] GameObject target;
+    [SerializeField] GameObject explosion;
 
-    public GameObject target;
-    public GameObject explosion;
-
-    public NavMeshAgent agent;
-    public float initial_explode_distance;
-    public float after_exploding_distance;
-    public float vision_radio;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] float initial_explode_distance;
+    [SerializeField] float after_exploding_distance;
+    [SerializeField] float vision_radio;
+    [SerializeField] ParticleSystem particle;
     #endregion
 
 
@@ -110,6 +111,7 @@ public class CreeperMov : MonoBehaviour
         anim.SetBool("Explosion", false);
         exploding = false;
         explosion.SetActive(true);
-        Destroy(transform.gameObject);
+        Instantiate(particle, transform.position, transform.rotation);
+        Destroy(this.gameObject);
     }
 }
