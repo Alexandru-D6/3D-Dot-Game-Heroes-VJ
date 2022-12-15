@@ -73,7 +73,6 @@ public class EndermanMov : MonoBehaviour
         }
         else
         {
-
             var lookPos = target.transform.position - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
@@ -99,15 +98,11 @@ public class EndermanMov : MonoBehaviour
                             agent.SetDestination(point);
                         }
                     }
-                }
-                
-                delay_attack += 1 * Time.deltaTime;
-
-                
+                }                
+                delay_attack += 1 * Time.deltaTime;   
             }
             else
-            {
-                
+            {  
                 if (!enablebody)
                 {
                     agent.speed = 2.0f;
@@ -122,14 +117,12 @@ public class EndermanMov : MonoBehaviour
                 agent.enabled = true;
                 agent.SetDestination(target.transform.position);
                 anim.SetBool("Running", true);
-                
             }
             else if ((Vector3.Distance(transform.position, target.transform.position) <= attack_distance) && !attacking && !teleporting)
             {
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
                 if (3 <= delay_attack)
-                {
-                    
+                {   
                     anim.SetBool("Running", false);
                     anim.SetBool("Attack", true);
                     attacking = true;
@@ -137,18 +130,11 @@ public class EndermanMov : MonoBehaviour
                     delay_attack = 0;
                     if (1 == ((int)Random.Range(0, 2)))
                     {
-                        teleporting = true;
-
-                       
+                        teleporting = true; 
                     }
                 }
-          
-                
-
-            }
-            
+            }      
         }
-
     }
 
     public void Final_Anim()
@@ -169,7 +155,6 @@ public class EndermanMov : MonoBehaviour
             result = hit.position;
             return true;
         }
-
         result = Vector3.zero;
         return false;
     }

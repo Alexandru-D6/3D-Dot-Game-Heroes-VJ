@@ -30,6 +30,7 @@ TagManager:
   - Vase
   - ZombieArm
   - ExplosionCreeper
+  - EndermanParticles
   layers:
   - Default
   - TransparentFX
@@ -38,7 +39,7 @@ TagManager:
   - Water
   - UI
   - Enemies
-  - 
+  - Particles
   - 
   - 
   - 
