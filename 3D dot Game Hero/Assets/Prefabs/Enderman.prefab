@@ -543,13 +543,14 @@ MonoBehaviour:
   angle: {x: 0, y: 0, z: 0, w: 0}
   attacking: 0
   ownCollider: {fileID: -2532341082811563627}
+  particles: {fileID: 6120971966027891379, guid: 3d83e38db05ac494dad3aa17fdb590f3, type: 3}
   target: {fileID: 0}
   agent: {fileID: 6059110462420720734}
   attack_distance: 1
   alert: 0
   delay_attack: 2
   range: 10
-  centrePoint: {fileID: 0}
+  centrePoint: {fileID: 6462934742744067354}
 --- !u!1 &6263282980836109977
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public enum Tags {
     Vase,
     ZombieArm,
     ExplosionCreeper,
+    EndermanParticles,
     Uknown,
 }
 
@@ -37,7 +38,7 @@ public enum Layers{
     Water,
     UI,
     Enemies,
-    Empty7,
+    Particles,
     Empty8,
     Empty9,
     Empty10,
