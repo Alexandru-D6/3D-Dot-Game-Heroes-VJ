@@ -643,7 +643,8 @@ GameObject:
   - component: {fileID: 3411510570702866761}
   - component: {fileID: 5537726334345410472}
   - component: {fileID: 4713331758898903793}
-  - component: {fileID: -2755547016933654997}
+  - component: {fileID: 8800294357765895709}
+  - component: {fileID: 3119554770518494729}
   - component: {fileID: 1603912058711816172}
   - component: {fileID: 6925475127036339142}
   - component: {fileID: 4816398731180999628}
@@ -693,6 +694,7 @@ MonoBehaviour:
   inventorySystem: {fileID: 505633924705408062}
   playerAnimations: {fileID: 2222480201678553054}
   playerCollider: {fileID: 6925475127036339142}
+  playerAutomaticMovement: {fileID: 8800294357765895709}
 --- !u!114 &4816398731180999629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,7 +712,7 @@ MonoBehaviour:
   fireDelay: 0.05
   numericButtonDelay: 0.15
   moveDirection: {x: 0, y: 0}
-  moveSpeed: {x: 5, y: 5}
+  moveSpeed: {x: 7, y: 7}
   currentRotation: 4
   rotationSpeed: 10
 --- !u!114 &2123637362340070481
@@ -731,7 +733,7 @@ MonoBehaviour:
   - {fileID: 6862776136738712332, guid: a427d608c30c0b2458af6df2edff7e71, type: 3}
   - {fileID: 6881899592116037539, guid: 32d3c163f020478419e278a81f328859, type: 3}
   - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
-  weaponsAvailable: 0600000000000000
+  weaponsAvailable: 0700000001000000
   inventory: []
   playerHand: {fileID: 2497701129174850206}
   currentWeapon: {fileID: 0}
@@ -774,9 +776,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5278b37326f42f547ba0ad9634544da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 1
+  velocity: 0
   angularVelocity: 1
-  inertiaTensor: 1
+  inertiaTensor: 0
   inertiaTensorRotation: 1
   centerMass: 0
   rb: {fileID: 1603912058711816172}
@@ -809,7 +811,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 5537726334345410472}
---- !u!114 &-2755547016933654997
+--- !u!114 &8800294357765895709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626721005123845776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e272da340c7f3746817bbe408abc89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 4816398731180999629}
+  moveSpeed: {x: 0, y: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  startMovement: 0
+--- !u!114 &3119554770518494729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -834,13 +852,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5626721005123845776}
   serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
+  m_Mass: 200
+  m_Drag: 1
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!136 &6925475127036339142
 CapsuleCollider:
@@ -852,10 +870,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.62328035
   m_Height: 3.3369038
   m_Direction: 1
-  m_Center: {x: 0, y: 1.6584519, z: 0}
+  m_Center: {x: -0.006205857, y: 1.6584519, z: 0.036397457}
 --- !u!95 &4816398731180999628
 Animator:
   serializedVersion: 4

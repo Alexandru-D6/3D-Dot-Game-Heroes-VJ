@@ -56,7 +56,7 @@ public class DebugControls : MonoBehaviour {
     public void Key_7_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            weaponScript = GameObject.FindGameObjectWithTag("Sword").GetComponent<WeaponScript>();
+            weaponScript = GameObject.FindGameObjectWithTag(Tags.Sword.ToString()).GetComponent<WeaponScript>();
         }
     }
     public void Key_8_Pressed(InputAction.CallbackContext context) {
