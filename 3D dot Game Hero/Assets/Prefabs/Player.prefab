@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 5537726334345410472}
   - component: {fileID: 4713331758898903793}
   - component: {fileID: 8800294357765895709}
-  - component: {fileID: -2755547016933654997}
+  - component: {fileID: 3119554770518494729}
   - component: {fileID: 1603912058711816172}
   - component: {fileID: 6925475127036339142}
   - component: {fileID: 4816398731180999628}
@@ -733,7 +733,7 @@ MonoBehaviour:
   - {fileID: 6862776136738712332, guid: a427d608c30c0b2458af6df2edff7e71, type: 3}
   - {fileID: 6881899592116037539, guid: 32d3c163f020478419e278a81f328859, type: 3}
   - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
-  weaponsAvailable: 0600000000000000
+  weaponsAvailable: 0700000001000000
   inventory: []
   playerHand: {fileID: 2497701129174850206}
   currentWeapon: {fileID: 0}
@@ -827,7 +827,15 @@ MonoBehaviour:
   moveSpeed: {x: 0, y: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   startMovement: 0
---- !u!114 &-2755547016933654997
+--- !u!114 &3119554770518494729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626721005123845776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85c37a4934f0c3a41a8adce317eda160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
