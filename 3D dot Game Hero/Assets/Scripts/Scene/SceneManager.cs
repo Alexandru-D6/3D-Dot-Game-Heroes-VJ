@@ -36,8 +36,6 @@ public class SceneManager : MonoBehaviour {
     [Header("Camera Options")]
     [SerializeField] private Camera _camera;
     [SerializeField] private Location cameraLocation;
-    [SerializeField] private Vector2 offsetRooms;
-    private GameObject currentRoom = null;
 
     [Header("Prefabs to Spawn")]
     [SerializeField] private List<PrefabSpawn> prefabs;
@@ -45,28 +43,30 @@ public class SceneManager : MonoBehaviour {
     [Header("Light")]
     [SerializeField] private List<Location> lightsLocations;
 
+    [Header("Room Change")]
+    [SerializeField] private Vector2 offsetRooms;
+    [SerializeField] private Vector2 offsetDoor;
+    private GameObject currentRoom = null;
+
     #endregion
 
     #region Public Methods
 
-    public void moveCamera(Vector2 direction, GameObject triggerRoom) {
-        if (currentRoom == null) {
+    public void ChangeRoom(Vector2 direction, GameObject triggerRoom) {
+        if (currentRoom != null && triggerRoom != currentRoom) {
             currentRoom = triggerRoom;
             return;
         }
 
-        if (currentRoom != null && triggerRoom == currentRoom) return;
+        currentRoom = triggerRoom;
 
-        if (currentRoom != null && triggerRoom != currentRoom) {
-            currentRoom = triggerRoom;
-        }
+        Transform player = PlayerManager.Instance.transform;
+        PlayerManager.Instance.PassDoor(player.position + new Vector3(direction.x * offsetDoor.x, 0.0f, direction.y * offsetDoor.y));
 
         Vector2 tmp = offsetRooms * direction;
-
         Vector3 movement = new Vector3(tmp.x, 0.0f, tmp.y);
         movement += _camera.transform.position;
-
-        _camera.transform.position = movement;
+        _camera.GetComponent<CameraSmoothMovement>().MoveTo(movement);
     }
 
     #endregion

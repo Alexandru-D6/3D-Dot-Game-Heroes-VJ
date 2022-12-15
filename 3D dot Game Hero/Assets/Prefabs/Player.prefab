@@ -643,6 +643,7 @@ GameObject:
   - component: {fileID: 3411510570702866761}
   - component: {fileID: 5537726334345410472}
   - component: {fileID: 4713331758898903793}
+  - component: {fileID: 8800294357765895709}
   - component: {fileID: 1603912058711816172}
   - component: {fileID: 6925475127036339142}
   - component: {fileID: 4816398731180999628}
@@ -692,6 +693,7 @@ MonoBehaviour:
   inventorySystem: {fileID: 505633924705408062}
   playerAnimations: {fileID: 2222480201678553054}
   playerCollider: {fileID: 6925475127036339142}
+  playerAutomaticMovement: {fileID: 8800294357765895709}
 --- !u!114 &4816398731180999629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,7 +711,7 @@ MonoBehaviour:
   fireDelay: 0.05
   numericButtonDelay: 0.15
   moveDirection: {x: 0, y: 0}
-  moveSpeed: {x: 5, y: 5}
+  moveSpeed: {x: 7, y: 7}
   currentRotation: 4
   rotationSpeed: 10
 --- !u!114 &2123637362340070481
@@ -808,6 +810,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 5537726334345410472}
+--- !u!114 &8800294357765895709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626721005123845776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e272da340c7f3746817bbe408abc89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 4816398731180999629}
+  moveSpeed: {x: 0, y: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  startMovement: 0
 --- !u!54 &1603912058711816172
 Rigidbody:
   m_ObjectHideFlags: 0

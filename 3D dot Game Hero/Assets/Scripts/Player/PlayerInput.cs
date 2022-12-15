@@ -104,6 +104,10 @@ public class PlayerInput : MonoBehaviour {
         canFire = true;
     }
 
+    public Vector2 GetMovementSpeed() {
+        return moveSpeed;
+    }
+
     #endregion
 
     #region MonoBehaviour Methods

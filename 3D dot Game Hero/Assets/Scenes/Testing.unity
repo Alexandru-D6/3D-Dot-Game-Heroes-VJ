@@ -3046,6 +3046,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: -8469494145858465668, guid: 7f825e89d8d300440b5f212f4d3d6679, type: 3}
+    - target: {fileID: 7156648499687579115, guid: d42a686e1c34ee746aa38240cca0cb49, type: 3}
+      propertyPath: m_Size.x
+      value: 0.83388424
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156648499687579115, guid: d42a686e1c34ee746aa38240cca0cb49, type: 3}
+      propertyPath: m_Center.x
+      value: -0.08305788
+      objectReference: {fileID: 0}
     - target: {fileID: 7161032228840821840, guid: d42a686e1c34ee746aa38240cca0cb49, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6984,6 +6992,7 @@ GameObject:
   - component: {fileID: 1584391770}
   - component: {fileID: 1584391769}
   - component: {fileID: 1584391768}
+  - component: {fileID: 1584391771}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -7057,6 +7066,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+--- !u!114 &1584391771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584391767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff9c45f7dad67446a43a29405e8b4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: {x: 30, y: 30}
+  targetPosition: {x: 0, y: 0, z: 0}
+  startMovement: 0
 --- !u!1 &1785719903
 GameObject:
   m_ObjectHideFlags: 0
@@ -7091,7 +7115,6 @@ MonoBehaviour:
   cameraLocation:
     position: {x: 0, y: 18.5, z: -12.5}
     rotation: {x: 55, y: 0, z: 0}
-  offsetRooms: {x: 32.2, y: 24.125}
   prefabs:
   - prefab: {fileID: 5626721005123845776, guid: 82a897325f129734ba49e57ccd586349, type: 3}
     location:
@@ -7106,6 +7129,8 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
   lightsLocations: []
+  offsetRooms: {x: 32.2, y: 24.125}
+  offsetDoor: {x: 7, y: 7}
 --- !u!4 &1785719905
 Transform:
   m_ObjectHideFlags: 0
@@ -7173,6 +7198,18 @@ PrefabInstance:
     - target: {fileID: 2324316927466283812, guid: d42a686e1c34ee746aa38240cca0cb49, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969169183290334817, guid: d42a686e1c34ee746aa38240cca0cb49, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8340111
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969169183290334817, guid: d42a686e1c34ee746aa38240cca0cb49, type: 3}
+      propertyPath: m_Center.x
+      value: -0.12665558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969169183290334817, guid: d42a686e1c34ee746aa38240cca0cb49, type: 3}
+      propertyPath: m_Center.z
+      value: -0.004878998
       objectReference: {fileID: 0}
     - target: {fileID: 3203347799979023600, guid: d42a686e1c34ee746aa38240cca0cb49, type: 3}
       propertyPath: m_IsActive

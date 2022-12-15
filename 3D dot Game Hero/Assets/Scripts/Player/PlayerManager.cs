@@ -27,6 +27,7 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private InventorySystem inventorySystem;
     [SerializeField] private PlayerAnimations playerAnimations;
     [SerializeField] private Collider playerCollider;
+    [SerializeField] private PlayerAutomaticMovement playerAutomaticMovement;
 
     #endregion
 
@@ -61,6 +62,10 @@ public class PlayerManager : MonoBehaviour {
         playerAnimations.toDeath();
         playerCollider.enabled = false;
         playerInput.enabled = false;
+    }
+
+    public void PassDoor(Vector3 target) {
+        playerAutomaticMovement.MoveTo(target);
     }
 
     #endregion
