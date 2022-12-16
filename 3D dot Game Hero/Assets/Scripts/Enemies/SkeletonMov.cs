@@ -17,24 +17,27 @@ public class SkeletonMov : MonoBehaviour
     public GameObject target;
 
     public NavMeshAgent agent;
-    public float attack_distance;
-    public float vision_radio;
+    [SerializeField] float attack_distance;
+    [SerializeField] float vision_radio;
+    [SerializeField] SkeletonRayCast checkerWall;
+
     #endregion
 
-
+        
     void Start()
     {
         anim = GetComponent<Animator>();
+        checkerWall= GetComponent<SkeletonRayCast>();
         target = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Comportamiento_Zombie();
+        Comportamiento_Skeleton();
     }
 
-    public void Comportamiento_Zombie()
+    public void Comportamiento_Skeleton()
     {
         if(Vector3.Distance(transform.position, target.transform.position) > vision_radio)
         {
@@ -70,7 +73,7 @@ public class SkeletonMov : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(lookPos);
 
             
-            if (Vector3.Distance(transform.position, target.transform.position) > attack_distance && !attacking)
+            if ((Vector3.Distance(transform.position, target.transform.position) > attack_distance && !attacking) || checkerWall.isSeeingTheObjective(target.transform.position))
             {
                 agent.enabled = true;
                 agent.SetDestination(target.transform.position);
@@ -82,7 +85,7 @@ public class SkeletonMov : MonoBehaviour
                 {
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
                     anim.SetBool("Running", false);
-                    anim.SetBool("Attack", true);
+                    anim.SetBool("Aim", true);
                     attacking = true;
                     agent.enabled = false;
                 }
@@ -95,8 +98,8 @@ public class SkeletonMov : MonoBehaviour
     public void Final_Anim()
     {
         
-        anim.SetBool("Attack", false);
+        anim.SetBool("Aim", false);
         attacking = false;
-        Debug.Log("Soy Creeper");
+        Debug.Log("Shoot");
     }
 }

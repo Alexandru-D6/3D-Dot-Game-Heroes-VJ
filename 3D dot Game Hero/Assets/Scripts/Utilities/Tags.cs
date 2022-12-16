@@ -1,5 +1,6 @@
 [System.Serializable]
 public enum Tags {
+    Player,
     Sword,
     Wall,
     GiroCoconut,
