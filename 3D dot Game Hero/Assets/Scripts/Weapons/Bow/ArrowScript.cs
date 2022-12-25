@@ -13,6 +13,7 @@ public class ArrowScript : MonoBehaviour {
     [Header("Parameters")]
     private Vector3 direction = Vector3.zero;
     [SerializeField] private float speed = 1.0f;
+    [SerializeField] private Layers originalLayer;
 
     #endregion
 
@@ -24,6 +25,10 @@ public class ArrowScript : MonoBehaviour {
     public void ShootArrow(Vector3 dir) {
         transform.parent = sceneObjects.transform;
         direction = dir.normalized;
+    }
+
+    public void SetLayer(Layers layer) {
+        originalLayer = layer;
     }
 
     private void Start() {

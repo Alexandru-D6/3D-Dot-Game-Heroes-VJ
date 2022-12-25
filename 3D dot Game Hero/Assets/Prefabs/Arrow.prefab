@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  originalLayer: 0
 --- !u!65 &4383389351704863614
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58,8 +59,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.094671965, y: 0.43330604, z: 1}
+  m_Center: {x: 0.00345546, y: 0.055287212, z: 0}
 --- !u!1001 &2507890483309579107
 PrefabInstance:
   m_ObjectHideFlags: 0

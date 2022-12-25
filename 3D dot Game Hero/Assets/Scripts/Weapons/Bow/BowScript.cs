@@ -60,6 +60,7 @@ public class BowScript : WeaponScript {
         arrow.transform.parent = transform;
         arrow.transform.localPosition = new Vector3(0,0,0);
         arrow.transform.localEulerAngles = new Vector3(0,0,0);
+        arrow.GetComponent<ArrowScript>().SetLayer(transform.parent.gameObject.layer == (int)Layers.Player ? Layers.Player : Layers.Enemies);
     }
 
     private void dispawnArrow() {
