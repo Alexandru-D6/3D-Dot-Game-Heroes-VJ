@@ -17,6 +17,24 @@ public class ArrowScript : MonoBehaviour {
 
     #endregion
 
+    private void OnTriggerEnter(Collider other) {
+        if (originalLayer == Layers.Player) {
+            if (other.gameObject.layer == (int)Layers.Enemies) {
+                // TODO: Damage that enemy
+                DestroyArrow();
+            }
+        }else if (originalLayer == Layers.Enemies) {
+            if(other.gameObject.layer == (int)Layers.Player) {
+                PlayerManager.Instance.GetHit();
+                DestroyArrow();
+            }
+        }
+
+        if (other.gameObject.layer == (int)Layers.Obstacles) {
+            DestroyArrow();
+        }
+    }
+
     public void DestroyArrow() {
         transform.parent = null;
         Destroy(gameObject);
