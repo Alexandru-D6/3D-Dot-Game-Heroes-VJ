@@ -141,11 +141,12 @@ public class PlayerInput : MonoBehaviour {
 
         fire = playerControls.Player.Fire;
         fire.Enable();
-        fire.performed += Fire;
+        fire.started += Fire;
+        fire.canceled += Release;
 
         numericButtons = playerControls.Player.NumericButtons;
         numericButtons.Enable();
-        numericButtons.performed += NumericalButtons;
+        numericButtons.started += NumericalButtons;
     }
 
     private void OnDisable() {
@@ -177,6 +178,11 @@ public class PlayerInput : MonoBehaviour {
             canFire = false;
             weaponManager.UseCurrentWeapon();
         }
+    }
+
+    public void Release(InputAction.CallbackContext context) {
+        Debug.Log("Fire Released");
+        weaponManager.ReleaseCurrentWeapon();
     }
 
     public void NumericalButtons(InputAction.CallbackContext context) {

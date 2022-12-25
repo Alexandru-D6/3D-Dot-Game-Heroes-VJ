@@ -54,10 +54,6 @@ public class BoomerangScript : WeaponScript {
 
 #region Abstract Methods
 
-    public override void Collided() {
-        if (isFlying) isReturning = true;
-    }
-
     public override void Attack() {
         // Change parent of boomerang, set new height and disable stabilizer
         transform.parent = sceneObjects.transform;
@@ -75,9 +71,17 @@ public class BoomerangScript : WeaponScript {
         LockAxis(true, true, true);
     }
 
-#endregion
+    public override void Release() {
+        // DO NOTHING
+    }
 
-#region Virtual Methods
+    public override void Collided() {
+        if(isFlying) isReturning = true;
+    }
+
+    #endregion
+
+    #region Virtual Methods
 
     public override void AttackFinished() {
         base.AttackFinished();
