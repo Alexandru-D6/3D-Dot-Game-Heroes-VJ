@@ -11,7 +11,8 @@ public class ArrowScript : MonoBehaviour {
     private GameObject sceneObjects;
 
     [Header("Parameters")]
-    [SerializeField] private Vector3 direction = Vector3.zero;
+    private Vector3 direction = Vector3.zero;
+    [SerializeField] private float speed = 1.0f;
 
     #endregion
 
@@ -20,9 +21,9 @@ public class ArrowScript : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public void ShootArrow(Vector3 direction) {
+    public void ShootArrow(Vector3 dir) {
         transform.parent = sceneObjects.transform;
-        direction = direction.normalized;
+        direction = dir.normalized;
     }
 
     private void Start() {
@@ -30,6 +31,6 @@ public class ArrowScript : MonoBehaviour {
     }
 
     private void Update() {
-        transform.Translate(direction * Time.deltaTime, Space.World);
+        transform.Translate(direction * speed * Time.deltaTime, Space.Self);
     }
 }

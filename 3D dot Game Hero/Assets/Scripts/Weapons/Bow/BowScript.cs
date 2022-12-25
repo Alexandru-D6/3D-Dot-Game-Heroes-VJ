@@ -13,9 +13,9 @@ public class BowScript : WeaponScript {
     [SerializeField] private Vector3 arrowSpawnRotation;
 
     [Header("Bow states")]
-    [SerializeField] private float arrowPrepTime = 0.5f;
+    [SerializeField] private float arrowPrepTime = 1.5f;
     private bool armed = false;
-    private GameObject arrow;
+    private GameObject arrow = null;
 
     #endregion
 
@@ -23,7 +23,7 @@ public class BowScript : WeaponScript {
 
     IEnumerator delayArrowPrepRoutine(float time) {
         yield return new WaitForSeconds(time);
-        armed = true;
+        if (arrow != null) armed = true;
     }
 
     #endregion
@@ -36,7 +36,7 @@ public class BowScript : WeaponScript {
     }
 
     public override void Release() {
-        if(armed) shootArrow();
+        if (armed) shootArrow();
         else dispawnArrow();
 
         AttackFinished();
@@ -50,8 +50,9 @@ public class BowScript : WeaponScript {
     #region Private Methods
 
     private void shootArrow() {
-        Debug.Log("Shoot");
+        armed = false;
         arrow.GetComponent<ArrowScript>().ShootArrow(transform.worldToLocalMatrix.MultiplyVector(transform.forward));
+        arrow = null;
     }
 
     private void spawnArrow() {
@@ -62,7 +63,9 @@ public class BowScript : WeaponScript {
     }
 
     private void dispawnArrow() {
-        arrow.GetComponent<ArrowScript>().DestroyArrow();
+        armed = false;
+        if (arrow != null) arrow.GetComponent<ArrowScript>().DestroyArrow();
+        arrow = null;
     }
 
     #endregion
@@ -81,9 +84,6 @@ public class BowScript : WeaponScript {
 
         transform.GetComponent<RotationConstraint>().enabled = false;
         transform.localEulerAngles = arrowSpawnRotation;
-    }
-
-    void Update() {
     }
 
     #endregion
