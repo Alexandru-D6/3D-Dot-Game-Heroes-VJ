@@ -88,7 +88,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 8236491782729049987, guid: 7578a3f539c4d9943bac0bd912be3686, type: 3}
   arrowSpawnPoint: {x: 0, y: 0, z: 0}
   arrowSpawnRotation: {x: 90, y: 0, z: 0}
-  arrowPrepTime: 1.5
+  arrowPrepTime: 1
 --- !u!1818360609 &825695878372364814
 RotationConstraint:
   m_ObjectHideFlags: 0
