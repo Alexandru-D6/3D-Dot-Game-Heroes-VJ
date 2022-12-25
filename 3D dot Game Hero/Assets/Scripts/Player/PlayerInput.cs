@@ -181,7 +181,6 @@ public class PlayerInput : MonoBehaviour {
     }
 
     public void Release(InputAction.CallbackContext context) {
-        Debug.Log("Fire Released");
         weaponManager.ReleaseCurrentWeapon();
     }
 
@@ -197,6 +196,8 @@ public class PlayerInput : MonoBehaviour {
                     weaponManager.SelectWeapon(Tags.Boomerang);
                     break;
                 case "/Keyboard/3":
+                    weaponManager.SelectWeapon(Tags.Bow);
+                    break;
                 case "/Keyboard/4":
                 case "/Keyboard/5":
                 case "/Keyboard/6":
