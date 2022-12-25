@@ -141,11 +141,12 @@ public class PlayerInput : MonoBehaviour {
 
         fire = playerControls.Player.Fire;
         fire.Enable();
-        fire.performed += Fire;
+        fire.started += Fire;
+        fire.canceled += Release;
 
         numericButtons = playerControls.Player.NumericButtons;
         numericButtons.Enable();
-        numericButtons.performed += NumericalButtons;
+        numericButtons.started += NumericalButtons;
     }
 
     private void OnDisable() {
@@ -179,6 +180,10 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
+    public void Release(InputAction.CallbackContext context) {
+        weaponManager.ReleaseCurrentWeapon();
+    }
+
     public void NumericalButtons(InputAction.CallbackContext context) {
         if (canNumericButton) {
             canNumericButton = false;
@@ -191,6 +196,8 @@ public class PlayerInput : MonoBehaviour {
                     weaponManager.SelectWeapon(Tags.Boomerang);
                     break;
                 case "/Keyboard/3":
+                    weaponManager.SelectWeapon(Tags.Bow);
+                    break;
                 case "/Keyboard/4":
                 case "/Keyboard/5":
                 case "/Keyboard/6":

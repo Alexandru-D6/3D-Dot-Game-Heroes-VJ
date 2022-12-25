@@ -53,10 +53,6 @@ public class SwordScript : WeaponScript {
 
 #region Abstract Methods
 
-    public override void Collided() {
-        emergencyStop = true;
-    }
-
     public override void Attack() {
         LockAxis(true, false, false);
         startAnim = true;
@@ -65,9 +61,17 @@ public class SwordScript : WeaponScript {
         emergencyStop = false;
     }
 
-#endregion
+    public override void Release() {
+        // DO NOTHING
+    }
 
-#region Virtual Methods
+    public override void Collided() {
+        emergencyStop = true;
+    }
+
+    #endregion
+
+    #region Virtual Methods
 
     public override void SetLevelOfPower(int level) {
         if (level < 0 || level > 2) return;
@@ -88,7 +92,7 @@ public class SwordScript : WeaponScript {
 
     #endregion
 
-    #region Private Methods
+#region Private Methods
 
     private void controlAnim() {
 

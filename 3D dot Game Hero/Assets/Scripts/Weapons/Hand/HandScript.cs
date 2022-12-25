@@ -26,6 +26,10 @@ public class HandScript : WeaponScript {
         StartCoroutine(delayAttackFinished(delayAttack));
     }
 
+    public override void Release() {
+        // DO NOTHING
+    }
+
     public override void Collided() {
     }
 

@@ -733,7 +733,8 @@ MonoBehaviour:
   - {fileID: 6862776136738712332, guid: a427d608c30c0b2458af6df2edff7e71, type: 3}
   - {fileID: 6881899592116037539, guid: 32d3c163f020478419e278a81f328859, type: 3}
   - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
-  weaponsAvailable: 0700000001000000
+  - {fileID: 5882221031244944910, guid: 72573004f758d7f42a5ea74db98ebf2e, type: 3}
+  weaponsAvailable: 0700000001000000050000000c000000
   inventory: []
   playerHand: {fileID: 2497701129174850206}
   currentWeapon: {fileID: 0}
