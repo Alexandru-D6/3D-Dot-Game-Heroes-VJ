@@ -142,6 +142,12 @@ public class WeaponManager : MonoBehaviour {
         }
     }
 
+    public void ReleaseCurrentWeapon() {
+        if (currentWeapon != null) {
+            currentWeapon.GetComponent<WeaponScript>().Release();
+        }
+    }
+
     public void AttackFinished() {
         playerAnimations.AttackReturn();
     }

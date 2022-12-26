@@ -30,6 +30,7 @@ TagManager:
   - Vase
   - ZombieArm
   - ExplosionCreeper
+  - Floor
   - EndermanParticles
   - CreeperParticles
   layers:

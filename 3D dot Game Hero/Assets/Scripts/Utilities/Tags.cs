@@ -26,6 +26,7 @@ public enum Tags {
     Vase,
     ZombieArm,
     ExplosionCreeper,
+    Floor,
     EndermanParticles,
     Uknown,
 }
