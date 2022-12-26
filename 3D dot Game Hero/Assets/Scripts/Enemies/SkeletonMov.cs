@@ -13,11 +13,13 @@ public class SkeletonMov : MonoBehaviour
     public Quaternion angle;
     public float grado;
     public bool attacking;
+    public bool stay_Attacking;
 
     public GameObject target;
 
     public NavMeshAgent agent;
     [SerializeField] float attack_distance;
+    [SerializeField] float distance_search_again;
     [SerializeField] float vision_radio;
     [SerializeField] SkeletonRayCast checkerWall;
 
@@ -72,22 +74,25 @@ public class SkeletonMov : MonoBehaviour
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
 
-            
-            if ((Vector3.Distance(transform.position, target.transform.position) > attack_distance && !attacking) || checkerWall.isSeeingTheObjective(target.transform.position))
+            float distance = Vector3.Distance(transform.position, target.transform.position);
+            if ((distance > attack_distance && !attacking && !stay_Attacking) || checkerWall.isSeeingTheObjective(target.transform.position) || ((distance > distance_search_again && !attacking && stay_Attacking)))
             {
+                stay_Attacking = false;
                 agent.enabled = true;
                 agent.SetDestination(target.transform.position);
                 anim.SetBool("Running", true);
+
             }
             else
             {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
                 if (!attacking)
                 {
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
                     anim.SetBool("Running", false);
                     anim.SetBool("Aim", true);
                     attacking = true;
                     agent.enabled = false;
+                    stay_Attacking= true;
                 }
 
             }
@@ -99,7 +104,7 @@ public class SkeletonMov : MonoBehaviour
     {
         
         anim.SetBool("Aim", false);
-        attacking = false;
+// anim.SetBool(,false);
         Debug.Log("Shoot");
     }
 }
