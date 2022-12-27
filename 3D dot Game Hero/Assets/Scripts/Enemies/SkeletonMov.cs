@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -88,8 +89,8 @@ public class SkeletonMov : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
                 if (!attacking)
                 {
-                    anim.SetBool("Running", false);
                     anim.SetBool("Aim", true);
+                    anim.Play("Aim");
                     attacking = true;
                     agent.enabled = false;
                     stay_Attacking= true;
@@ -100,11 +101,17 @@ public class SkeletonMov : MonoBehaviour
         
     }
 
-    public void Final_Anim()
+    public void Shoot()
     {
-        
-        anim.SetBool("Aim", false);
-// anim.SetBool(,false);
+        anim.Play("AimReturn");
         Debug.Log("Shoot");
     }
+
+    public void End_Attack() {
+        attacking = false;
+        Debug.Log("Finish");
+        anim.SetBool("Aim", false);
+    }
+
+
 }
