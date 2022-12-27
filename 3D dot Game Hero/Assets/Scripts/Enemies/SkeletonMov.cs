@@ -89,7 +89,6 @@ public class SkeletonMov : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
                 if (!attacking)
                 {
-                    anim.SetBool("Aim", true);
                     anim.Play("Aim");
                     attacking = true;
                     agent.enabled = false;
