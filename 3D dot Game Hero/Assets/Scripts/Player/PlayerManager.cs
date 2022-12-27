@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(WeaponManager))]
+[RequireComponent(typeof(PlayerWeaponManager))]
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(InventorySystem))]
 [RequireComponent(typeof(PlayerAnimations))]
@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour {
     #region Parameters
 
     [Header("References")]
-    [SerializeField] private WeaponManager weaponManager;
+    [SerializeField] private PlayerWeaponManager playerWeaponManager;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private InventorySystem inventorySystem;
     [SerializeField] private PlayerAnimations playerAnimations;
@@ -42,7 +42,7 @@ public class PlayerManager : MonoBehaviour {
     public void ReceiveItem(Tags tag) {
         switch(GetInventory(tag)) {
             case OutputInventory.Weapon:
-                weaponManager.AddToAvailables(tag);
+                playerWeaponManager.AddToAvailables(tag);
                 break;
             case OutputInventory.Items:
                 inventorySystem.AddToAvailables(tag);

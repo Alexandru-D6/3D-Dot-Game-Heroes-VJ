@@ -1,10 +1,11 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EsqueletonMov : MonoBehaviour
+public class SkeletonMov : MonoBehaviour
 {
     #region Parameters
     public int rutina;
@@ -13,28 +14,34 @@ public class EsqueletonMov : MonoBehaviour
     public Quaternion angle;
     public float grado;
     public bool attacking;
+    public bool stay_Attacking;
 
     public GameObject target;
 
     public NavMeshAgent agent;
-    public float attack_distance;
-    public float vision_radio;
+    [SerializeField] float attack_distance;
+    [SerializeField] float distance_search_again;
+    [SerializeField] float vision_radio;
+    [SerializeField] SkeletonRayCast checkerWall;
+    [SerializeField] SkeletonWeaponManager SkeletonWeaponManager;
+
     #endregion
 
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        checkerWall= GetComponent<SkeletonRayCast>();
         target = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Comportamiento_Zombie();
+        Comportamiento_Skeleton();
     }
 
-    public void Comportamiento_Zombie()
+    public void Comportamiento_Skeleton()
     {
         if(Vector3.Distance(transform.position, target.transform.position) > vision_radio)
         {
@@ -64,44 +71,29 @@ public class EsqueletonMov : MonoBehaviour
         }
         else
         {
-            /*if (Vector3.Distance(transform.position, target.transform.position) > 1 && !attacking) 
-            { 
-                anim.SetBool("Running", true);
-                var lookPos = target.transform.position - transform.position;
-                lookPos.y = 0;
-
-                Quaternion rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
-
-                transform.Translate(Vector3.forward * 2 * Time.deltaTime);
-                anim.SetBool("Attack", false);
-            }
-            else
-            {
-                anim.SetBool("Running", false);
-                anim.SetBool("Attack", true);
-                attacking = true;
-            }*/
 
             var lookPos = target.transform.position - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
 
-            agent.enabled = true;
-            agent.SetDestination(target.transform.position);
-            if (Vector3.Distance(transform.position, target.transform.position) > attack_distance && !attacking)
+            float distance = Vector3.Distance(transform.position, target.transform.position);
+            if (!attacking && ((distance > attack_distance && !stay_Attacking) || checkerWall.isSeeingTheObjective(target.transform.position) || (distance > distance_search_again && stay_Attacking)))
             {
+                stay_Attacking = false;
+                agent.enabled = true;
+                agent.SetDestination(target.transform.position);
                 anim.SetBool("Running", true);
+
             }
             else
             {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
                 if (!attacking)
                 {
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
-                    anim.SetBool("Running", false);
-                    anim.SetBool("Attack", true);
+                    anim.Play("Aim");
                     attacking = true;
                     agent.enabled = false;
+                    stay_Attacking= true;
                 }
 
             }
@@ -109,11 +101,25 @@ public class EsqueletonMov : MonoBehaviour
         
     }
 
-    public void Final_Anim()
+    public void Shoot()
     {
         
-        anim.SetBool("Attack", false);
+        Debug.Log("Shoot");
+        SkeletonWeaponManager.UseCurrentWeapon();
+        StartCoroutine (ExecuteAfterTime());
+    }
+
+    public void End_Attack() {
         attacking = false;
-        Debug.Log("Soy Creeper");
+        Debug.Log("Finish");
+        
+    }
+
+    IEnumerator ExecuteAfterTime()
+    {
+        yield return new WaitForSeconds(1f);
+        SkeletonWeaponManager.ReleaseCurrentWeapon();
+        anim.SetTrigger("Shoot");
+        // Code to execute after the delay
     }
 }
