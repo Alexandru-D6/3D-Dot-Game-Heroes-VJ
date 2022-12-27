@@ -23,10 +23,11 @@ public class SkeletonMov : MonoBehaviour
     [SerializeField] float distance_search_again;
     [SerializeField] float vision_radio;
     [SerializeField] SkeletonRayCast checkerWall;
+    [SerializeField] SkeletonWeaponManager SkeletonWeaponManager;
 
     #endregion
 
-        
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -76,7 +77,7 @@ public class SkeletonMov : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(lookPos);
 
             float distance = Vector3.Distance(transform.position, target.transform.position);
-            if ((distance > attack_distance && !attacking && !stay_Attacking) || checkerWall.isSeeingTheObjective(target.transform.position) || ((distance > distance_search_again && !attacking && stay_Attacking)))
+            if (!attacking && ((distance > attack_distance && !stay_Attacking) || checkerWall.isSeeingTheObjective(target.transform.position) || (distance > distance_search_again && stay_Attacking)))
             {
                 stay_Attacking = false;
                 agent.enabled = true;
@@ -102,15 +103,23 @@ public class SkeletonMov : MonoBehaviour
 
     public void Shoot()
     {
-        anim.Play("AimReturn");
+        
         Debug.Log("Shoot");
+        SkeletonWeaponManager.UseCurrentWeapon();
+        StartCoroutine (ExecuteAfterTime());
     }
 
     public void End_Attack() {
         attacking = false;
         Debug.Log("Finish");
-        anim.SetBool("Aim", false);
+        
     }
 
-
+    IEnumerator ExecuteAfterTime()
+    {
+        yield return new WaitForSeconds(1f);
+        SkeletonWeaponManager.ReleaseCurrentWeapon();
+        anim.SetTrigger("Shoot");
+        // Code to execute after the delay
+    }
 }
