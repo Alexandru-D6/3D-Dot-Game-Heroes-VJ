@@ -14,7 +14,7 @@ public class PlayerInput : MonoBehaviour {
     enum rotationStates { Backward, RightBack, Right, RightFront, Forward, LeftFront, Left, LeftBack };
 
     [Header("Managers")]
-    [SerializeField] private WeaponManager weaponManager;
+    [SerializeField] private PlayerWeaponManager playerWeaponManager;
     [SerializeField] private AnimationManager animationManager;
 
     [Space(10)]
@@ -176,12 +176,12 @@ public class PlayerInput : MonoBehaviour {
     public void Fire(InputAction.CallbackContext context) {
         if (canFire) {
             canFire = false;
-            weaponManager.UseCurrentWeapon();
+            playerWeaponManager.UseCurrentWeapon();
         }
     }
 
     public void Release(InputAction.CallbackContext context) {
-        weaponManager.ReleaseCurrentWeapon();
+        playerWeaponManager.ReleaseCurrentWeapon();
     }
 
     public void NumericalButtons(InputAction.CallbackContext context) {
@@ -190,13 +190,13 @@ public class PlayerInput : MonoBehaviour {
 
             switch(context.control.path) {
                 case "/Keyboard/1":
-                    weaponManager.SelectWeapon(Tags.Sword);
+                    playerWeaponManager.SelectWeapon(Tags.Sword);
                     break;
                 case "/Keyboard/2":
-                    weaponManager.SelectWeapon(Tags.Boomerang);
+                    playerWeaponManager.SelectWeapon(Tags.Boomerang);
                     break;
                 case "/Keyboard/3":
-                    weaponManager.SelectWeapon(Tags.Bow);
+                    playerWeaponManager.SelectWeapon(Tags.Bow);
                     break;
                 case "/Keyboard/4":
                 case "/Keyboard/5":

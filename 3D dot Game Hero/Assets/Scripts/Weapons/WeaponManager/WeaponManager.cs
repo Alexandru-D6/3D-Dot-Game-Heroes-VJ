@@ -2,32 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour {
+public abstract class WeaponManager : MonoBehaviour {
 
 #region Parameters
 
     [Header("Managers")]
-    [SerializeField] private PlayerAnimations playerAnimations;
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] protected AnimationManager animationManager;
 
     [Space(10)]
 
     [Header("Inventory Management")]
-    [SerializeField] private List<GameObject> weaponsPrefabs;
-    [SerializeField] private List<Tags> weaponsAvailable;
-    [SerializeField] private List<WeaponScript> inventory;
+    [SerializeField] protected List<GameObject> weaponsPrefabs;
+    [SerializeField] protected List<Tags> weaponsAvailable;
+    [SerializeField] protected List<WeaponScript> inventory;
 
     [Space(10)]
 
     [Header("References")]
-    [SerializeField] private GameObject playerHand;
-    [SerializeField] private WeaponScript currentWeapon = null;
+    [SerializeField] protected GameObject hand;
+    [SerializeField] protected WeaponScript currentWeapon = null;
 
 #endregion
 
 #region Inventory Management
 
-    bool IsWeaponAvailable(Tags weapon) {
+    protected virtual bool IsWeaponAvailable(Tags weapon) {
         // Search if it's spawned
         foreach(WeaponScript x in inventory) {
             if (x.GetName().Equals(weapon.ToString())) return true;
@@ -41,15 +40,14 @@ public class WeaponManager : MonoBehaviour {
         return false;
     }
 
-    bool RevealSpawnedWeapon(Tags weapon) {
+    protected virtual bool RevealSpawnedWeapon(Tags weapon) {
         if (inventory.Count == 0) return false;
 
         // Returning true, the selection of another weapon while boomerang is flying while be invalid
-        if (currentWeapon.transform.parent != playerHand.transform) return true;
+        if (currentWeapon.transform.parent != hand.transform) return true;
 
         // Reset animation and button cooldown
-        playerAnimations.toIdle();
-        playerInput.PI_resetFire();
+        animationManager.toIdle();
 
         if (currentWeapon != null && currentWeapon.GetName().Equals(weapon.ToString())) {
             SelectWeapon(Tags.Hand);
@@ -69,19 +67,19 @@ public class WeaponManager : MonoBehaviour {
         return false;
     }
 
-    GameObject GetObjectPrefab(Tags weapon) {
+    protected virtual GameObject GetObjectPrefab(Tags weapon) {
         foreach(GameObject x in weaponsPrefabs) {
             if(x.tag.Equals(weapon.ToString())) return x; 
         }
         return null;
     }
 
-    void InstantiateWeapon(Tags weapon) {
+    protected virtual void InstantiateWeapon(Tags weapon) {
         GameObject prefab = GetObjectPrefab(weapon);
         GameObject obj = Instantiate(prefab, new UnityEngine.Vector3(), new UnityEngine.Quaternion());
 
         obj.SetActive(false);
-        obj.transform.parent = playerHand.transform;
+        obj.transform.parent = hand.transform;
 
         UnselectCurrentWeapon();
         currentWeapon = obj.GetComponent<WeaponScript>();
@@ -91,7 +89,7 @@ public class WeaponManager : MonoBehaviour {
         obj.SetActive(true);
     }
 
-    void UnselectCurrentWeapon() {
+    protected virtual void UnselectCurrentWeapon() {
         if (currentWeapon != null) {
             currentWeapon.SetActive(false);
             currentWeapon = null;
@@ -102,7 +100,7 @@ public class WeaponManager : MonoBehaviour {
 
 #region Public Methods
 
-    public void DestroyWeapon(Tags weapon) {
+    public virtual void DestroyWeapon(Tags weapon) {
         for (int i = 0; i < inventory.Count; ++i) {
             if (inventory[i].GetName().Equals(weapon.ToString())) {
                 inventory[i].SetActive(false);
@@ -115,7 +113,7 @@ public class WeaponManager : MonoBehaviour {
         }
     }
 
-    public void AddToAvailables(Tags weapon) {
+    public virtual void AddToAvailables(Tags weapon) {
         // Search if it's already exists
         foreach(Tags x in weaponsAvailable) {
             if (x.Equals(weapon)) return;
@@ -124,7 +122,7 @@ public class WeaponManager : MonoBehaviour {
         weaponsAvailable.Add(weapon);
     }
 
-    public void SelectWeapon(Tags weapon) {
+    public virtual void SelectWeapon(Tags weapon) {
         if (IsWeaponAvailable(weapon)) {
             if (RevealSpawnedWeapon(weapon)) return;
 
@@ -135,31 +133,24 @@ public class WeaponManager : MonoBehaviour {
         }
     }
 
-    public void UseCurrentWeapon() {
-        if (currentWeapon != null) {
-            playerAnimations.AttackStart();
-            currentWeapon.GetComponent<WeaponScript>().Attack();
-        }
-    }
-
-    public void ReleaseCurrentWeapon() {
+    public virtual void ReleaseCurrentWeapon() {
         if (currentWeapon != null) {
             currentWeapon.GetComponent<WeaponScript>().Release();
         }
     }
 
-    public void AttackFinished() {
-        playerAnimations.AttackReturn();
-    }
+    #endregion
 
-#endregion
+    #region Abstract Methods
 
-#region MonoBehaviour Methods
+    public abstract void UseCurrentWeapon();
 
-    void Start() {
-        SelectWeapon(Tags.Hand);
-    }
+    public abstract void AttackFinished();
 
-#endregion
+    #endregion
+
+    #region MonoBehaviour Methods
+
+    #endregion
 
 }

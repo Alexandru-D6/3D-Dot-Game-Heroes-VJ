@@ -637,7 +637,6 @@ GameObject:
   - component: {fileID: 4998415447198196778}
   - component: {fileID: 8215279082758402672}
   - component: {fileID: 4816398731180999629}
-  - component: {fileID: 2123637362340070481}
   - component: {fileID: 505633924705408062}
   - component: {fileID: 2222480201678553054}
   - component: {fileID: 3411510570702866761}
@@ -645,6 +644,7 @@ GameObject:
   - component: {fileID: 4713331758898903793}
   - component: {fileID: 8800294357765895709}
   - component: {fileID: 3119554770518494729}
+  - component: {fileID: 448156431308847209}
   - component: {fileID: 1603912058711816172}
   - component: {fileID: 6925475127036339142}
   - component: {fileID: 4816398731180999628}
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b9a3c0c7642ff43b267520bd480138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponManager: {fileID: 2123637362340070481}
+  playerWeaponManager: {fileID: 448156431308847209}
   playerInput: {fileID: 4816398731180999629}
   inventorySystem: {fileID: 505633924705408062}
   playerAnimations: {fileID: 2222480201678553054}
@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5200cdbc829e8c479065fdf91c26cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponManager: {fileID: 2123637362340070481}
+  playerWeaponManager: {fileID: 448156431308847209}
   animationManager: {fileID: 2222480201678553054}
   fireDelay: 0.05
   numericButtonDelay: 0.15
@@ -715,29 +715,6 @@ MonoBehaviour:
   moveSpeed: {x: 7, y: 7}
   currentRotation: 4
   rotationSpeed: 10
---- !u!114 &2123637362340070481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626721005123845776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b955e6a7fbbdf9c439d7ded6d55fdce7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimations: {fileID: 2222480201678553054}
-  playerInput: {fileID: 4816398731180999629}
-  weaponsPrefabs:
-  - {fileID: 6862776136738712332, guid: a427d608c30c0b2458af6df2edff7e71, type: 3}
-  - {fileID: 6881899592116037539, guid: 32d3c163f020478419e278a81f328859, type: 3}
-  - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
-  - {fileID: 5882221031244944910, guid: 72573004f758d7f42a5ea74db98ebf2e, type: 3}
-  weaponsAvailable: 0700000001000000050000000c000000
-  inventory: []
-  playerHand: {fileID: 2497701129174850206}
-  currentWeapon: {fileID: 0}
 --- !u!114 &505633924705408062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,11 +817,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c37a4934f0c3a41a8adce317eda160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
   offsetRaycast: {x: 0, y: 1, z: 0}
   raycastLenght: 20
+--- !u!114 &448156431308847209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626721005123845776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf6edbae4a4d704e88922f8463da9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationManager: {fileID: 2222480201678553054}
+  weaponsPrefabs:
+  - {fileID: 6862776136738712332, guid: a427d608c30c0b2458af6df2edff7e71, type: 3}
+  - {fileID: 6881899592116037539, guid: 32d3c163f020478419e278a81f328859, type: 3}
+  - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
+  - {fileID: 5882221031244944910, guid: 72573004f758d7f42a5ea74db98ebf2e, type: 3}
+  weaponsAvailable: 0700000001000000050000000c000000
+  inventory: []
+  hand: {fileID: 2497701129174850206}
+  currentWeapon: {fileID: 0}
+  playerInput: {fileID: 4816398731180999629}
 --- !u!54 &1603912058711816172
 Rigidbody:
   m_ObjectHideFlags: 0
