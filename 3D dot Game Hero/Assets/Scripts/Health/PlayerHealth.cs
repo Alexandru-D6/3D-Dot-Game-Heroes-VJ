@@ -11,6 +11,26 @@ public class PlayerHealth : HealthScript {
 
     #endregion
 
+    #region Collision Methods
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.layer == (int)Layers.Weapon) {
+
+            // Exclude weapon List
+            switch(TagsUtils.GetTag(other.tag)) {
+                case Tags.Hand:
+                case Tags.Shield:
+                case Tags.Sword:
+                case Tags.Boomerang:
+                    return;
+            }
+
+            DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
+        }
+    }
+
+    #endregion
+
     #region Abstract Methods
 
     protected override void Die() {

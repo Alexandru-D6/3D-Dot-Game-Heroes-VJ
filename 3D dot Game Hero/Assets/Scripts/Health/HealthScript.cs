@@ -4,6 +4,17 @@ using UnityEngine;
 
 public abstract class HealthScript : MonoBehaviour {
 
+    [System.Serializable]
+    public struct DamageStat {
+        public Tags weapon;
+        public int value;
+
+        public DamageStat(Tags weapon, int value) {
+            this.weapon = weapon;
+            this.value = value;
+        }
+    };
+
     #region Parameters
 
     [Header("Information")]
@@ -11,35 +22,26 @@ public abstract class HealthScript : MonoBehaviour {
     [SerializeField] protected int currentHealth;
     [Range(0,300)]
     [SerializeField] protected int maxHealth;
+    [Space(10)]
+    [SerializeField] List<DamageStat> damageStats = new List<DamageStat>{ 
+        new DamageStat(Tags.Arrow, 10),
+        new DamageStat(Tags.Bomb, 10),
+        new DamageStat(Tags.Boomerang, 10),
+        new DamageStat(Tags.Hand, 10),
+        new DamageStat(Tags.Shield, 10),
+        new DamageStat(Tags.Sword, 10),
+        new DamageStat(Tags.ZombieArm, 10),
+    };
 
     #endregion
 
     #region Static Methods
 
-    public static int GetDamage(Tags tag) {
+    public int GetDamage(Tags tag) {
         int damage = 0;
-        switch(tag) {
-            case Tags.Arrow:
-                damage = 10;
-                break;
-            case Tags.Bomb:
-                damage = 10;
-                break;
-            case Tags.Boomerang:
-                damage = 10;
-                break;
-            case Tags.Hand:
-                damage = 10;
-                break;
-            case Tags.Shield:
-                damage = 10;
-                break;
-            case Tags.Sword:
-                damage = 50;
-                break;
-            case Tags.ZombieArm:
-                damage = 10;
-                break;
+
+        foreach (DamageStat damageStat in damageStats) {
+            if (damageStat.weapon == tag) damage = damageStat.value;
         }
 
         return damage;
@@ -70,8 +72,10 @@ public abstract class HealthScript : MonoBehaviour {
     }
 
     public void DecreaseHealth(int value) {
-        currentHealth -= value;
-        GetHit();
+        if (value > 0) {
+            currentHealth -= value;
+            GetHit();
+        }
     }
 
     #endregion
