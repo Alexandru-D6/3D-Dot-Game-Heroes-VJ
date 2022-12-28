@@ -9,6 +9,7 @@ public class DebugControls : MonoBehaviour {
 
     public WeaponManager weaponManager;
     public WeaponScript weaponScript;
+    public GameObject sword;
 
     [SerializeField] private bool buttonAvailability;
     [SerializeField] private float buttonDelay;
@@ -56,7 +57,10 @@ public class DebugControls : MonoBehaviour {
     public void Key_7_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
-            weaponScript = GameObject.FindGameObjectWithTag(Tags.Sword.ToString()).GetComponent<WeaponScript>();
+            var tmp = GameObject.FindGameObjectsWithTag(Tags.Sword.ToString());
+
+            foreach (var c in tmp) if (c.name.Contains("Sword(Clone)")) sword = c;
+            weaponScript = sword.GetComponent<WeaponScript>();
         }
     }
     public void Key_8_Pressed(InputAction.CallbackContext context) {
