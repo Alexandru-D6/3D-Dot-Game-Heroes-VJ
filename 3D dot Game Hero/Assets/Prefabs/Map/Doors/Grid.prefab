@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5391296266948277987}
+  - component: {fileID: 7595129221068617027}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -24,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7593029975634718135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 62.288696, y: -78.91827, z: -139.63826}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7595129221068617027
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7593029975634718135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.0800467, y: 6.0529785, z: 0.5599934}
+  m_Center: {x: -0.035484314, y: 2.9948835, z: 0.007096842}
 --- !u!1001 &5544087280044203556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44,16 +58,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c64282d3692a374aabfb917a9ac9a4b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c64282d3692a374aabfb917a9ac9a4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -64.12073
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c64282d3692a374aabfb917a9ac9a4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 78.91827
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c64282d3692a374aabfb917a9ac9a4b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 139.22757
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c64282d3692a374aabfb917a9ac9a4b, type: 3}
       propertyPath: m_LocalRotation.w
