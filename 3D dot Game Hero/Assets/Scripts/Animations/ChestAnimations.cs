@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChestAnimations : AnimationManager {
-
+    [SerializeField] GameObject chestParticles;
     public void open() {
         running = true;
         animator.SetBool("Opened", true);
+        chestParticles.GetComponent<ParticlesChest>().chestIsOpened();
     }
 
     public void close() {
