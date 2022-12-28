@@ -33,6 +33,7 @@ TagManager:
   - Floor
   - EndermanParticles
   - CreeperParticles
+  - RunningParticles
   layers:
   - Default
   - TransparentFX
