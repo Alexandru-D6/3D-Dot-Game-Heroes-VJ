@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4651895679804869464}
   - component: {fileID: 3929981558379446195}
   m_Layer: 7
-  m_Name: ParticlesCreeper
+  m_Name: BombPlayer
   m_TagString: CreeperParticles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225702381336473600}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 9.392234, y: 7.230766, z: -8.50897}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -226,8 +226,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 0.18360198, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.2737233, b: 0, a: 1}
-        key1: {r: 1, g: 0.60513335, b: 0.39999998, a: 0.5019608}
+        key0: {r: 1, g: 0.96274924, b: 0, a: 1}
+        key1: {r: 1, g: 0.9022491, b: 0.39999998, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -255,8 +255,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.7902898, b: 0, a: 1}
-        key1: {r: 0.9315553, g: 0.9716981, b: 0.50784975, a: 0.5686275}
+        key0: {r: 0.990566, g: 0.4761987, b: 0, a: 1}
+        key1: {r: 1, g: 0.5641201, b: 0.29622638, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -977,7 +977,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 200
+        scalar: 300
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1041,8 +1041,8 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.36363602
-          value: 0.9977455
+          time: 0
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1050,13 +1050,13 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 0.3552903
-          inSlope: -0.99414384
-          outSlope: -0.99414384
+          time: 0.9878788
+          value: 0.3155996
+          inSlope: -1.0485636
+          outSlope: -1.0485636
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.13333338
+          inWeight: 0.2545455
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -1364,22 +1364,22 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 0.99139845, g: 0.9869296, b: 0.9869296, a: 0.827451}
-        key2: {r: 0.26415092, g: 0.025916686, b: 0.025916686, a: 0}
+        key1: {r: 0.9056604, g: 0.41352794, b: 0.41352794, a: 0.75686276}
+        key2: {r: 0.49056602, g: 0.20085439, b: 0.20085439, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 35659
-        ctime2: 65535
+        ctime1: 55512
+        ctime2: 63029
         ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 29298
+        atime0: 0
         atime1: 65535
         atime2: 0
         atime3: 0
