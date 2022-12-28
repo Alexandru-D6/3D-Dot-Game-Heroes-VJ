@@ -28,6 +28,9 @@ public class EndermanMov : MonoBehaviour
 
     public Transform centrePoint; //centre of the area the agent wants to move around in
     //instead of centrePoint you can set it as the transform of the agent if you don't care about a specific area
+
+    private bool runactive = false;
+    [SerializeField] GameObject runningparticles;
     #endregion
 
 
@@ -58,6 +61,11 @@ public class EndermanMov : MonoBehaviour
             {
                 case 0:
                     anim.SetBool("Running", false);
+                    if (runactive)
+                    {
+                        runningparticles.SetActive(false);
+                        runactive = false;
+                    }
                     break;
                 case 1:
                     grado = Random.Range(0, 360);
@@ -68,6 +76,11 @@ public class EndermanMov : MonoBehaviour
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, 0.5f);
                     transform.Translate(Vector3.forward * 1 * Time.deltaTime);
                     anim.SetBool("Running", true);
+                    if (!runactive)
+                    {
+                        runningparticles.SetActive(true);
+                        runactive = true;
+                    }
                     break;
             }
         }
@@ -78,16 +91,21 @@ public class EndermanMov : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(lookPos);
             if (!attacking && 3 > delay_attack)
             {   
-                agent.enabled = true;
+              
                 if (teleporting)
-                {
+                {  agent.enabled = true;
+                    if (runactive)
+                    {
+                        runningparticles.SetActive(false);
+                        runactive = false;
+                    }
                     //done with path
                     if (enablebody)
                     {
                         agent.speed = 7.0f;
                         enablebody = false;
                         enableOrDisableBody(enablebody);
-                        Instantiate(particles, transform.position,Quaternion.identity);
+                        Instantiate(particles, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
                     }
                     if (agent.remainingDistance <= agent.stoppingDistance) //done with path
                     {
@@ -106,7 +124,7 @@ public class EndermanMov : MonoBehaviour
                 if (!enablebody)
                 {
                     agent.speed = 3.5f;
-                    Instantiate(particles, transform.position, Quaternion.identity);
+                    Instantiate(particles,new Vector3(transform.position.x, transform.position.y +2f, transform.position.z), Quaternion.identity);
                     teleporting = false;
                     enablebody = true;
                     enableOrDisableBody(enablebody);
@@ -117,6 +135,11 @@ public class EndermanMov : MonoBehaviour
                 agent.enabled = true;
                 agent.SetDestination(target.transform.position);
                 anim.SetBool("Running", true);
+                if (!runactive)
+                {
+                    runningparticles.SetActive(true);
+                    runactive = true;
+                }
             }
             else if ((Vector3.Distance(transform.position, target.transform.position) <= attack_distance) && !attacking && !teleporting)
             {
@@ -124,6 +147,11 @@ public class EndermanMov : MonoBehaviour
                 if (3 <= delay_attack)
                 {   
                     anim.SetBool("Running", false);
+                    if (runactive)
+                    {
+                        runningparticles.SetActive(false);
+                        runactive = false;
+                    }
                     anim.SetBool("Attack", true);
                     attacking = true;
                     agent.enabled = false;

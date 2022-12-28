@@ -7,18 +7,20 @@ using UnityEngine.AI;
 public class ZombieMov : MonoBehaviour
 {
     #region Parameters
-    public int rutina;
-    public float crono;
-    public Animator anim;
-    public Quaternion angle;
-    public float grado;
-    public bool attacking;
+    private int rutina;
+    private float crono;
+    [SerializeField] Animator anim;
+    private Quaternion angle;
+    private float grado;
+    private bool attacking;
 
-    public GameObject target;
+    [SerializeField] GameObject target;
 
-    public NavMeshAgent agent;
-    public float attack_distance;
-    public float vision_radio;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] float attack_distance;
+    [SerializeField] float vision_radio;
+    private bool runactive = false;
+    [SerializeField] GameObject runningparticles;
     #endregion
 
 
@@ -49,6 +51,11 @@ public class ZombieMov : MonoBehaviour
             {
                 case 0:
                     anim.SetBool("Running", false);
+                    if (runactive)
+                    {
+                        runningparticles.SetActive(false);
+                        runactive = false;
+                    }
                     break;
                 case 1:
                     grado = Random.Range(0, 360);
@@ -59,42 +66,41 @@ public class ZombieMov : MonoBehaviour
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, 0.5f);
                     transform.Translate(Vector3.forward * 1 * Time.deltaTime);
                     anim.SetBool("Running", true);
+                    if (!runactive)
+                    {
+                        runningparticles.SetActive(true);
+                        runactive = true;
+                    }
                     break;
             }
         }
         else
         {
-            /*if (Vector3.Distance(transform.position, target.transform.position) > 1 && !attacking) 
-            { 
-                anim.SetBool("Running", true);
-                var lookPos = target.transform.position - transform.position;
-                lookPos.y = 0;
-
-                Quaternion rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
-
-                transform.Translate(Vector3.forward * 2 * Time.deltaTime);
-                anim.SetBool("Attack", false);
-            }
-            else
-            {
-                anim.SetBool("Running", false);
-                anim.SetBool("Attack", true);
-                attacking = true;
-            }*/
 
             var lookPos = target.transform.position - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
 
-            agent.enabled = true;
-            agent.SetDestination(target.transform.position);
+            
             if (Vector3.Distance(transform.position, target.transform.position) > attack_distance && !attacking)
             {
+                agent.enabled = true;
+                agent.speed = 1.5f;
+                agent.SetDestination(target.transform.position);
                 anim.SetBool("Running", true);
+                if (!runactive)
+                {
+                    runningparticles.SetActive(true);
+                    runactive = true;
+                }
             }
             else
             {
+                if (runactive)
+                {
+                    runningparticles.SetActive(false);
+                    runactive = false;
+                }
                 if (!attacking)
                 {
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
