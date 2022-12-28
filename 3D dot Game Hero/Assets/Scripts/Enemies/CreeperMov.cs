@@ -22,6 +22,8 @@ public class CreeperMov : MonoBehaviour
     [SerializeField] float after_exploding_distance;
     [SerializeField] float vision_radio;
     [SerializeField] ParticleSystem particle;
+    private bool runactive = false;
+    [SerializeField] GameObject runningparticles;
     #endregion
 
 
@@ -52,6 +54,11 @@ public class CreeperMov : MonoBehaviour
             {
                 case 0:
                     anim.SetBool("Running", false);
+                    if (runactive)
+                    {
+                        runningparticles.SetActive(false);
+                        runactive = false;
+                    }
                     break;
                 case 1:
                     grado = Random.Range(0, 360);
@@ -62,6 +69,11 @@ public class CreeperMov : MonoBehaviour
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, 0.5f);
                     transform.Translate(Vector3.forward * 1 * Time.deltaTime);
                     anim.SetBool("Running", true);
+                    if (!runactive)
+                    {
+                        runningparticles.SetActive(true);
+                        runactive = true;
+                    }
                     break;
             }
         }
@@ -77,7 +89,12 @@ public class CreeperMov : MonoBehaviour
                 agent.enabled = true;
                 agent.SetDestination(target.transform.position);
                 anim.SetBool("Running", true);
-                
+                if (!runactive)
+                {
+                    runningparticles.SetActive(true);
+                    runactive = true;
+                }
+
             }
             else if (Vector3.Distance(transform.position, target.transform.position) > after_exploding_distance && exploding)
             {
@@ -85,6 +102,11 @@ public class CreeperMov : MonoBehaviour
                 agent.SetDestination(target.transform.position);
                 anim.SetBool("Explosion", false);
                 anim.SetBool("Running", true);
+                if (!runactive)
+                {
+                    runningparticles.SetActive(true);
+                    runactive = true;
+                }
                 exploding = false;
                 
             }
@@ -95,6 +117,11 @@ public class CreeperMov : MonoBehaviour
                     
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
                     anim.SetBool("Running", false);
+                    if (runactive)
+                    {
+                        runningparticles.SetActive(false);
+                        runactive = false;
+                    }
                     anim.SetBool("Explosion", true);
                     exploding = true;
                     agent.enabled = false;
