@@ -61,6 +61,7 @@ public class DoorScript : MonoBehaviour {
 
     public void UnlockDoor(InputAction.CallbackContext context) {
         if (canOpen && playerNearby) {
+            PlayerManager.Instance.MoveTo(transform.position, transform.forward, 3.0f);
             canOpen = false;
             padlockScript.UnlockPadlock();
         }
