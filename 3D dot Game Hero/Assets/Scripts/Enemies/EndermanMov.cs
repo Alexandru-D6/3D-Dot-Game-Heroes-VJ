@@ -105,7 +105,7 @@ public class EndermanMov : MonoBehaviour
                         agent.speed = 7.0f;
                         enablebody = false;
                         enableOrDisableBody(enablebody);
-                        Instantiate(particles, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.identity);
+                        Instantiate(particles, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
                     }
                     if (agent.remainingDistance <= agent.stoppingDistance) //done with path
                     {
@@ -124,7 +124,7 @@ public class EndermanMov : MonoBehaviour
                 if (!enablebody)
                 {
                     agent.speed = 3.5f;
-                    Instantiate(particles,new Vector3(transform.position.x, transform.position.y +1.5f, transform.position.z), Quaternion.identity);
+                    Instantiate(particles,new Vector3(transform.position.x, transform.position.y +2f, transform.position.z), Quaternion.identity);
                     teleporting = false;
                     enablebody = true;
                     enableOrDisableBody(enablebody);
