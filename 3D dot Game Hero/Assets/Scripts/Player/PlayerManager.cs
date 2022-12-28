@@ -54,6 +54,14 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
+    public bool IsItemAvailable(Tags tag) {
+        if (OutputInventory.Items == GetInventory(tag)) {
+            return inventorySystem.IsItemAvailable(tag);
+        }
+
+        return false;
+    }
+
     public void GetHit() {
         playerAnimations.toHit();
     }

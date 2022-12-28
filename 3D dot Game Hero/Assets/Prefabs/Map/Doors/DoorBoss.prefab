@@ -54,7 +54,7 @@ MonoBehaviour:
   padlockScript: {fileID: 2229238976178417260}
   canOpen: 1
   playerNearby: 0
-  doorType: 0
+  doorType: 2
 --- !u!95 &4968754969812703229
 Animator:
   serializedVersion: 4

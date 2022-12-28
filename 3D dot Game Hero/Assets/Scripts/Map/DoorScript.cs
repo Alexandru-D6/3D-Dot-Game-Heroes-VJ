@@ -18,7 +18,7 @@ public class DoorScript : MonoBehaviour {
     [Header("Configuration")]
 
     [Header("States")]
-    [SerializeField] private bool canOpen = true;
+    [SerializeField] private bool canOpen = false;
     [SerializeField] private bool playerNearby = false;
     [SerializeField] private DoorType doorType;
 
@@ -38,7 +38,23 @@ public class DoorScript : MonoBehaviour {
 
 #region Private Methods
 
+    bool CheckKey() {
+        Tags keyToAsk = Tags.Uknown;
 
+        switch(doorType) {
+            case DoorType.BossDoor:
+                keyToAsk = Tags.BossKey;
+                break;
+            case DoorType.CaveDoor:
+                keyToAsk = Tags.SkullKey;
+                break;
+            case DoorType.EnderDoor:
+                keyToAsk = Tags.EnderKey;
+                break;
+        }
+
+        return PlayerManager.Instance.IsItemAvailable(keyToAsk);
+    }
 
 #endregion
 
@@ -50,16 +66,11 @@ public class DoorScript : MonoBehaviour {
 
 #endregion
 
-#region MonoBehaviour Methods
-
-    private void Update() {
-    }
-
-#endregion MonoBehaviour Methods
-
 #region Callbacks Functions
 
     public void UnlockDoor(InputAction.CallbackContext context) {
+        canOpen = CheckKey();
+
         if (canOpen && playerNearby) {
             PlayerManager.Instance.MoveTo(transform.position, transform.forward, 3.0f);
             canOpen = false;
