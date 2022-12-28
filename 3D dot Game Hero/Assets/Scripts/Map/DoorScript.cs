@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DoorScript : MonoBehaviour {
+
+    private enum DoorType { EnderDoor, CaveDoor, BossDoor };
 
 #region Parameters
 
     [Header("References")]
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator doorAnimator;
 
     [Header("Objects")]
-    [SerializeField] private GameObject padlock;
+    [SerializeField] private PadlockScript padlockScript;
 
     [Header("Configuration")]
-    // Maybe remove it?
-    [SerializeField] private Vector3 padlockPosition;
-    [SerializeField] private Vector3 padlockRotation;
 
     [Header("States")]
-    [SerializeField] private bool doorOpened = false;
+    [SerializeField] private bool canOpen = true;
     [SerializeField] private bool playerNearby = false;
+    [SerializeField] private DoorType doorType;
 
 #endregion Parameters
 
@@ -41,19 +42,30 @@ public class DoorScript : MonoBehaviour {
 
 #endregion
 
-#region Private Methods
+#region Public Methods
 
-
+    public void OpenDoor() {
+        doorAnimator.SetTrigger("Open");
+    }
 
 #endregion
 
 #region MonoBehaviour Methods
 
     private void Update() {
-        animator.SetBool("Open", doorOpened);
-        padlock.SetActive(!doorOpened);
     }
 
 #endregion MonoBehaviour Methods
+
+#region Callbacks Functions
+
+    public void UnlockDoor(InputAction.CallbackContext context) {
+        if (canOpen && playerNearby) {
+            canOpen = false;
+            padlockScript.UnlockPadlock();
+        }
+    }
+
+#endregion
 
 }

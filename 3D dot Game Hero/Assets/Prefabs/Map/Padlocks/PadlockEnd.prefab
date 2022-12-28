@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4045223184878725947}
+  - component: {fileID: 8471161519877594970}
   - component: {fileID: 4057413207946550054}
   m_Layer: 0
   m_Name: PadlockEnd
@@ -35,6 +36,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8471161519877594970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698910795573877529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0830f0a86b0a99b45be68e887f10abe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  padlockAnimator: {fileID: 4057413207946550054}
+  doorScript: {fileID: 0}
+  padlock: {fileID: 3126614846413038100}
+  key: {fileID: 31275483623759085}
+  padlockCamera: {fileID: 3364425727156463405}
+  mainCamera: {fileID: 0}
 --- !u!95 &4057413207946550054
 Animator:
   serializedVersion: 4
@@ -96,7 +115,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7550116392900112147}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -139,7 +158,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7550116392900112147}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &134033794889232719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +202,10 @@ PrefabInstance:
     - target: {fileID: 1409404105495222231, guid: b84f1a21184e07745ac311627c76fd02, type: 3}
       propertyPath: m_Name
       value: EnderKey
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409404105495222231, guid: b84f1a21184e07745ac311627c76fd02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6822950109458029850, guid: b84f1a21184e07745ac311627c76fd02, type: 3}
       propertyPath: m_LocalPosition.y
@@ -238,6 +261,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b84f1a21184e07745ac311627c76fd02, type: 3}
+--- !u!1 &31275483623759085 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1409404105495222231, guid: b84f1a21184e07745ac311627c76fd02, type: 3}
+  m_PrefabInstance: {fileID: 1432190259538922298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7863095720341029680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9151167754035120138, guid: b84f1a21184e07745ac311627c76fd02, type: 3}
@@ -298,10 +326,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: PadlockEnd
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a3cf99e5083fd4846bf87657a602d4c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3cf99e5083fd4846bf87657a602d4c9, type: 3}
 --- !u!4 &2317144956870408366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a3cf99e5083fd4846bf87657a602d4c9, type: 3}
+  m_PrefabInstance: {fileID: 2856019329422745413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3126614846413038100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a3cf99e5083fd4846bf87657a602d4c9, type: 3}
   m_PrefabInstance: {fileID: 2856019329422745413}
   m_PrefabAsset: {fileID: 0}
