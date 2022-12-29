@@ -11,6 +11,8 @@ public class ZombieHealth : HealthScript {
     [SerializeField] private Animator animator;
     [SerializeField] private Collider zombieCollider;
 
+    private bool isDead = false;
+
     #endregion
 
     #region Collision Methods
@@ -37,7 +39,7 @@ public class ZombieHealth : HealthScript {
         animator.SetBool("Running", false);
         animator.SetBool("Attack", false);
         animator.Play("Idle");
-        animator.Play("Death");
+        animator.SetTrigger("Dead");
     }
 
     protected override void GetHit() {
@@ -46,7 +48,7 @@ public class ZombieHealth : HealthScript {
         zombieMov.Hitted();
         zombieMov.enabled = false;
         animator.Play("Idle");
-        animator.Play("Hit");
+        animator.SetTrigger("getHit");
     }
 
     public void EndHitAnimation()
@@ -59,7 +61,8 @@ public class ZombieHealth : HealthScript {
     #region MonoBehaviour Methods
 
     void Update() {
-        if (currentHealth <= 0) {
+        if (currentHealth <= 0 && !isDead) {
+            isDead = true;
             Die();
         }
     }

@@ -27,6 +27,8 @@ public class ArrowScript : MonoBehaviour {
             if(other.gameObject.layer == (int)Layers.Player) {
                 PlayerManager.Instance.GetHit();
                 DestroyArrow();
+            }else {
+                DestroyArrow();
             }
         }
 

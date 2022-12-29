@@ -695,6 +695,7 @@ MonoBehaviour:
   inventorySystem: {fileID: 505633924705408062}
   playerAnimations: {fileID: 2222480201678553054}
   playerCollider: {fileID: 6925475127036339142}
+  playerRigidBody: {fileID: 1603912058711816172}
   playerAutomaticMovement: {fileID: 8800294357765895709}
 --- !u!114 &4816398731180999629
 MonoBehaviour:
@@ -775,8 +776,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b8b11a6c4d47c4d8c4f16014243e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 90
+  currentHealth: 100
   maxHealth: 100
+  damageStats:
+  - weapon: 9
+    value: 10
+  - weapon: 10
+    value: 10
+  - weapon: 5
+    value: 10
+  - weapon: 7
+    value: 10
+  - weapon: 20
+    value: 10
+  - weapon: 1
+    value: 10
+  - weapon: 24
+    value: 10
+  - weapon: 25
+    value: 10
   playerManager: {fileID: 8215279082758402672}
 --- !u!114 &4713331758898903793
 MonoBehaviour:
@@ -790,7 +808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b558e7ebe46383e4abbace11506bd25d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 5537726334345410472}
 --- !u!114 &8800294357765895709
 MonoBehaviour:
   m_ObjectHideFlags: 0
