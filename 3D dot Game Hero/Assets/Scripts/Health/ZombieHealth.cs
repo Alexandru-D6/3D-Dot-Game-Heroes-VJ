@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class ZombieHealth : HealthScript {
 
@@ -10,6 +11,7 @@ public class ZombieHealth : HealthScript {
     [SerializeField] private ZombieMov zombieMov;
     [SerializeField] private Animator animator;
     [SerializeField] private Collider zombieCollider;
+    [SerializeField] private GameObject disappearParticles;
 
     private bool isDead = false;
 
@@ -18,7 +20,7 @@ public class ZombieHealth : HealthScript {
     #region Collision Methods
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.layer == (int)Layers.Weapon) {
+        if (other.gameObject.layer == (int)Layers.Weapon && !isDead) {
 
             // Exclude weapon List
             switch(TagsUtils.GetTag(other.tag)) {
@@ -54,13 +56,27 @@ public class ZombieHealth : HealthScript {
     public void EndHitAnimation()
     {
         zombieMov.enabled = true;
+
     }
 
-    #endregion
+   public void readyToDestroy()
+    {
+        StartCoroutine (destroyObject());
+        Instantiate(disappearParticles, transform.position, transform.rotation);
+    }
 
-    #region MonoBehaviour Methods
+   IEnumerator destroyObject()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(this.gameObject);
 
-    void Update() {
+    }
+
+        #endregion
+
+        #region MonoBehaviour Methods
+
+        void Update() {
         if (currentHealth <= 0 && !isDead) {
             isDead = true;
             Die();

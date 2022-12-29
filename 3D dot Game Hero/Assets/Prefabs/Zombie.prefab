@@ -843,6 +843,7 @@ MonoBehaviour:
   zombieMov: {fileID: 5072185551581666535}
   animator: {fileID: 6617030023809101826}
   zombieCollider: {fileID: 7320515222127249657}
+  disappearParticles: {fileID: 3023261532592782735, guid: e9d558bd4747daf4dabc5171e1e7f9db, type: 3}
 --- !u!1001 &1258083725041793641
 PrefabInstance:
   m_ObjectHideFlags: 0
