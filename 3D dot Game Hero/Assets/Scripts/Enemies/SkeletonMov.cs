@@ -24,6 +24,8 @@ public class SkeletonMov : MonoBehaviour
     [SerializeField] float vision_radio;
     [SerializeField] SkeletonRayCast checkerWall;
     [SerializeField] SkeletonWeaponManager SkeletonWeaponManager;
+    bool runactive = false;
+    [SerializeField] GameObject runningparticles;
 
     #endregion
 
@@ -56,6 +58,11 @@ public class SkeletonMov : MonoBehaviour
             {
                 case 0:
                     anim.SetBool("Running", false);
+                    if (runactive)
+                    {
+                        runningparticles.SetActive(false);
+                        runactive = false;
+                    }
                     break;
                 case 1:
                     grado = Random.Range(0, 360);
@@ -65,6 +72,11 @@ public class SkeletonMov : MonoBehaviour
                 case 2:
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, 0.5f);
                     transform.Translate(Vector3.forward * 1 * Time.deltaTime);
+                    if (!runactive)
+                    {
+                        runningparticles.SetActive(true);
+                        runactive = true;
+                    }
                     anim.SetBool("Running", true);
                     break;
             }
@@ -83,19 +95,30 @@ public class SkeletonMov : MonoBehaviour
                 agent.enabled = true;
                 agent.SetDestination(target.transform.position);
                 anim.SetBool("Running", true);
+                if (!runactive)
+                {
+                    runningparticles.SetActive(true);
+                    runactive = true;
+                }
 
             }
             else
             {
+                if (runactive)
+                {
+                    runningparticles.SetActive(false);
+                    runactive = false;
+                }
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 1);
                 if (!attacking)
                 {
+                    runningparticles.SetActive(false);
                     anim.Play("Aim");
                     attacking = true;
                     agent.enabled = false;
                     stay_Attacking= true;
                 }
-
+                
             }
         }
         

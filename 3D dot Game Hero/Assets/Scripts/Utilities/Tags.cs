@@ -28,6 +28,9 @@ public enum Tags {
     ExplosionCreeper,
     Floor,
     EndermanParticles,
+    CreeperParticles,
+    RunningParticles,
+    SpawnParticles,
     Uknown,
 }
 
