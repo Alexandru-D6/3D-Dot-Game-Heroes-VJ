@@ -15,18 +15,18 @@ public class RoomManager : MonoBehaviour {
 
     private void UnlockGrids() {
         foreach(var grid in gridsInsideTheRoom) {
-            grid.OpenGrid();
+            if (grid != null && grid.gameObject.activeInHierarchy) grid.OpenGrid();
         }
     }
 
     private void LockGrids() {
         foreach(var grid in gridsInsideTheRoom) {
-            grid.CloseGrid();
+            if (grid != null && grid.gameObject.activeInHierarchy) grid.CloseGrid();
         }
     }
 
-    void Start() {
-        
+    public void ChangePlayerPresence() {
+        isPlayerInsideTheRoom = !isPlayerInsideTheRoom;
     }
 
     void Update() {

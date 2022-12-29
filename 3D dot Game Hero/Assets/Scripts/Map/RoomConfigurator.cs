@@ -22,6 +22,9 @@ public class RoomConfigurator : MonoBehaviour {
     [Header("Doors GameObjects")]
     [SerializeField] private List<GameObject> doorsGameObjects;
 
+    [Header("Doors GameObjects")]
+    [SerializeField] private List<GameObject> gridsGameObjects;
+
     [Header("Doors Trigger GameObjects")]
     [SerializeField] private List<GameObject> doorsTriggerGameObjects;
 
@@ -35,6 +38,7 @@ public class RoomConfigurator : MonoBehaviour {
     public void UpdateDoor(int index) {
         doorsGameObjects[index % doorsGameObjects.Count].SetActive(!doorsGameObjects[index % doorsGameObjects.Count].activeInHierarchy);
         doorsTriggerGameObjects[index % doorsTriggerGameObjects.Count].SetActive(!doorsGameObjects[index % doorsGameObjects.Count].activeInHierarchy);
+        gridsGameObjects[index % gridsGameObjects.Count].SetActive(!gridsGameObjects[index % gridsGameObjects.Count].activeInHierarchy);
     }
 
     public void UpdatePilars(int index) {
