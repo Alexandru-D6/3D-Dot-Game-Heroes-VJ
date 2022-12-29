@@ -117,8 +117,19 @@ public class ZombieMov : MonoBehaviour
 
     public void Final_Anim()
     {
-        
         anim.SetBool("Attack", false);
         attacking = false;
+    }
+
+    public void Hitted()
+    {
+        attacking = false;
+        if (runactive)
+        {
+            runningparticles.SetActive(false);
+            runactive = false;
+        }
+        agent.enabled = false;
+
     }
 }
