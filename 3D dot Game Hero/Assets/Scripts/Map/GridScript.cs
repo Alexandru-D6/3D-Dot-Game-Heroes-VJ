@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridScript : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class GridScript : MonoBehaviour {
+
+    [SerializeField] private Animator gridAnimator;
+    public void OpenGrid() {
+        gridAnimator.SetBool("Open", true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void CloseGrid() {
+        gridAnimator.SetBool("Open", false);
     }
 }
