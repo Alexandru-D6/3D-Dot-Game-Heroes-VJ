@@ -9,6 +9,15 @@ public class DoorTriggerScript : MonoBehaviour {
     [SerializeField] private Position triggerPosition;
     [SerializeField] private GameObject room;
 
+    [SerializeField] private RoomManager roomManager;
+    [SerializeField] private float delay = 0.5f;
+
+    IEnumerator delayedPlayerPresence(float time) {
+        yield return new WaitForSeconds(time);
+
+        roomManager.ChangePlayerPresence();
+    }
+
     private Vector2 getDirection() {
         switch(triggerPosition) {
             case Position.North:
@@ -26,6 +35,8 @@ public class DoorTriggerScript : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag.Equals(Tags.Player.ToString())) {
             SceneManager.Instance.ChangeRoom(getDirection(), room);
+
+            StartCoroutine(delayedPlayerPresence(delay));
         }
     }
 

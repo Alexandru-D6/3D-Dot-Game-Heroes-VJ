@@ -1066,7 +1066,7 @@ MonoBehaviour:
   rotationConstraint: {fileID: 7166521443520201675}
   weaponName: 
   usesLeft: 0
-  levelOfPower: 0
+  levelOfPower: 2
   scales: {x: 5, y: 10, z: 3}
   swordScaleCurveLenght:
     serializedVersion: 2
