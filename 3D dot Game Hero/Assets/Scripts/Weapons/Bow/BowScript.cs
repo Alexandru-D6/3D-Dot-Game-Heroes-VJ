@@ -42,6 +42,10 @@ public class BowScript : WeaponScript {
         AttackFinished();
     }
 
+    public override void Abort() {
+        dispawnArrow();
+    }
+
     public override void Collided() {
     }
 

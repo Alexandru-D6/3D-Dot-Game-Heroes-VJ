@@ -67,6 +67,10 @@ public class SwordScript : WeaponScript {
         // DO NOTHING
     }
 
+    public override void Abort() {
+        // DO NOTHING
+    }
+
     public override void Collided() {
         emergencyStop = true;
     }

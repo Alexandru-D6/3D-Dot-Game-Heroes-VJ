@@ -30,6 +30,10 @@ public class HandScript : WeaponScript {
         // DO NOTHING
     }
 
+    public override void Abort() {
+        // DO NOTHING
+    }
+
     public override void Collided() {
     }
 

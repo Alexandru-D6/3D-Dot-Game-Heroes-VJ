@@ -75,6 +75,10 @@ public class BoomerangScript : WeaponScript {
         // DO NOTHING
     }
 
+    public override void Abort() {
+        // DO NOTHING
+    }
+
     public override void Collided() {
         if(isFlying) isReturning = true;
     }
