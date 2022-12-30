@@ -26,6 +26,7 @@ public class SkeletonMov : MonoBehaviour
     [SerializeField] SkeletonWeaponManager SkeletonWeaponManager;
     bool runactive = false;
     [SerializeField] GameObject runningparticles;
+    private bool hit = false;
 
     #endregion
 
@@ -45,6 +46,7 @@ public class SkeletonMov : MonoBehaviour
 
     public void Comportamiento_Skeleton()
     {
+        if (hit) hit = false;
         if(Vector3.Distance(transform.position, target.transform.position) > vision_radio)
         {
             agent.enabled= false;
@@ -141,8 +143,26 @@ public class SkeletonMov : MonoBehaviour
     IEnumerator ExecuteAfterTime()
     {
         yield return new WaitForSeconds(1f);
-        SkeletonWeaponManager.ReleaseCurrentWeapon();
-        anim.SetTrigger("Shoot");
+
+        if (!hit)
+        {
+            SkeletonWeaponManager.ReleaseCurrentWeapon();
+            anim.SetTrigger("Shoot");
+        }
         // Code to execute after the delay
+    }
+
+
+    public void Hitted()
+    {
+        attacking = false;
+        if (runactive)
+        {
+            runningparticles.SetActive(false);
+            runactive = false;
+        }
+        agent.enabled = false;
+        hit = true;
+
     }
 }
