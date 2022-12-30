@@ -48,6 +48,9 @@ public class SceneManager : MonoBehaviour {
     [SerializeField] private Vector2 offsetDoor;
     private GameObject currentRoom = null;
 
+    [Header("Others")]
+    [SerializeField] bool restart = false;
+
     #endregion
 
     #region Public Methods
@@ -71,9 +74,9 @@ public class SceneManager : MonoBehaviour {
 
     #endregion
 
-    #region MonoBehaviour Methods
+    #region Private Methods
 
-    void Start(){
+    private void initScene() {
         _camera = Camera.main;
         _camera.transform.position = cameraLocation.position;
         _camera.transform.eulerAngles = cameraLocation.rotation;
@@ -83,9 +86,29 @@ public class SceneManager : MonoBehaviour {
         }
     }
 
-    void Update()
-    {
-        
+    private void destroyAllScene() {
+        foreach(PrefabSpawn x in prefabs) {
+            GameObject[] objs = GameObject.FindGameObjectsWithTag(x.prefab.tag);
+            
+            foreach(var i in objs) Destroy(i);
+        }
+    }
+
+    #endregion
+
+    #region MonoBehaviour Methods
+
+    void Start(){
+        initScene();
+    }
+
+    void Update() {
+        if (restart) {
+            restart = false;
+
+            destroyAllScene();
+            initScene();
+        }
     }
 
     #endregion

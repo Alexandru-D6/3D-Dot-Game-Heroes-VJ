@@ -34,6 +34,8 @@ TagManager:
   - EndermanParticles
   - CreeperParticles
   - RunningParticles
+  - SpawnParticles
+  - Debug
   layers:
   - Default
   - TransparentFX
@@ -61,7 +63,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Debug
   - Key
   - Player
   - SceneObjects

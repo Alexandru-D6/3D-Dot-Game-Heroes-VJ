@@ -31,6 +31,7 @@ public enum Tags {
     CreeperParticles,
     RunningParticles,
     SpawnParticles,
+    Debug,
     Uknown,
 }
 
@@ -62,7 +63,7 @@ public enum Layers{
     Empty23,
     Empty24,
     Empty25,
-    Empty26,
+    Debug,
     Key,
     Player,
     SceneObjects,
