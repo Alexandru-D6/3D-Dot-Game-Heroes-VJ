@@ -34,6 +34,9 @@ public class PlayerManager : MonoBehaviour {
     [Header("States")]
     private bool dead = false;
 
+    [Header("Values")]
+    [SerializeField] private float deathDelay = 2.0f;
+
     #endregion
 
     #region Enumerators
@@ -70,6 +73,12 @@ public class PlayerManager : MonoBehaviour {
         playerAnimations.toHit();
     }
 
+    IEnumerator DelayedReset(float time) {
+        yield return new WaitForSeconds(time);
+
+        SceneEvents.Instance.PlayerDeath();
+    }
+
     public void Die() {
         playerAnimations.toIdle();
         playerAnimations.toDeath();
@@ -77,6 +86,8 @@ public class PlayerManager : MonoBehaviour {
         playerRigidBody.isKinematic = true;
         playerInput.enabled = false;
         dead = true;
+
+        StartCoroutine(DelayedReset(deathDelay));
     }
 
     public bool isDead() {

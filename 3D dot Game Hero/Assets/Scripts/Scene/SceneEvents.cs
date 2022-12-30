@@ -11,7 +11,8 @@ public class SceneEvents : MonoBehaviour {
         Instance = this;
     }
 
-    public event Action onPlayerDeath;
+    public delegate void PlayerDeathAction();
+    public static event PlayerDeathAction onPlayerDeath;
     public void PlayerDeath() {
         if (onPlayerDeath != null) {
             onPlayerDeath();

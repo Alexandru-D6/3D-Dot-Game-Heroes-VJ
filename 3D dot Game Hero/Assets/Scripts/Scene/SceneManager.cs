@@ -48,9 +48,6 @@ public class SceneManager : MonoBehaviour {
     [SerializeField] private Vector2 offsetDoor;
     private GameObject currentRoom = null;
 
-    [Header("Others")]
-    [SerializeField] bool restart = false;
-
     #endregion
 
     #region Public Methods
@@ -76,7 +73,7 @@ public class SceneManager : MonoBehaviour {
 
     #region Private Methods
 
-    private void initScene() {
+    private void InitScene() {
         _camera = Camera.main;
         _camera.transform.position = cameraLocation.position;
         _camera.transform.eulerAngles = cameraLocation.rotation;
@@ -86,7 +83,7 @@ public class SceneManager : MonoBehaviour {
         }
     }
 
-    private void destroyAllScene() {
+    private void CleanScene() {
         foreach(PrefabSpawn x in prefabs) {
             GameObject[] objs = GameObject.FindGameObjectsWithTag(x.prefab.tag);
             
@@ -99,18 +96,22 @@ public class SceneManager : MonoBehaviour {
     #region MonoBehaviour Methods
 
     void Start(){
-        initScene();
+        InitScene();
+        SceneEvents.onPlayerDeath += OnPlayerDeath;
     }
 
     void Update() {
-        if (restart) {
-            restart = false;
+    }
 
-            destroyAllScene();
-            initScene();
-        }
+    private void OnDestroy() {
+        SceneEvents.onPlayerDeath -= OnPlayerDeath;
     }
 
     #endregion
+
+    public void OnPlayerDeath() {
+        CleanScene();
+        InitScene();
+    }
 
 }
