@@ -22,13 +22,14 @@ public class SkeletonHealth : HealthScript {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.layer == (int)Layers.Weapon && !isDead) {
-            //if (other.gameObject.GetComponent<ArrowScript>().getOriginallayer == (int)Layers.Enemies) return;
             // Exclude weapon List
             switch(TagsUtils.GetTag(other.tag)) {
                 case Tags.ZombieArm:
                 case Tags.Bow:
                     return;
             }
+
+            if (other.tag == Tags.Arrow.ToString() && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Enemies) return;
 
             DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
         }

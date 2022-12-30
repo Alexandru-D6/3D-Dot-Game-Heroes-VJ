@@ -18,6 +18,7 @@ public class SwordScript : WeaponScript {
     [Range(0.0f, 1.0f)]
     [SerializeField] private float animationDuration;
     [SerializeField] private float returnAnimationDuration;
+    [SerializeField] private BoxCollider boxCollider;
 
     [Header("Sword Animation Backend")]
     [SerializeField] private float deltaTime;
@@ -59,6 +60,7 @@ public class SwordScript : WeaponScript {
         stopAnim = true;
         restoreAnim = false;
         emergencyStop = false;
+        boxCollider.enabled = true;
     }
 
     public override void Release() {
@@ -79,6 +81,11 @@ public class SwordScript : WeaponScript {
         levelOfPower = level;
 
         swordLevelRoutine();
+    }
+
+    public override void AttackFinished() {
+        base.AttackFinished();
+        boxCollider.enabled = false;
     }
 
     public override void RestartState() {
