@@ -34,6 +34,8 @@ TagManager:
   - EndermanParticles
   - CreeperParticles
   - RunningParticles
+  - SpawnParticles
+  - EndermanArm
   layers:
   - Default
   - TransparentFX

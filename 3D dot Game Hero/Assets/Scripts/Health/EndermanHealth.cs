@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
-public class ZombieHealth : HealthScript {
+public class EndermanHealth : HealthScript {
 
     #region Parameters
 
     [Header("Managers")]
-    [SerializeField] private ZombieMov zombieMov;
+    [SerializeField] private EndermanMov endermanMov;
     [SerializeField] private Animator animator;
-    [SerializeField] private Collider zombieCollider;
+    [SerializeField] private Collider endermanCollider;
     [SerializeField] private GameObject disappearParticles;
 
     private bool isDead = false;
@@ -24,10 +24,11 @@ public class ZombieHealth : HealthScript {
 
             // Exclude weapon List
             switch(TagsUtils.GetTag(other.tag)) {
+                case Tags.EndermanArm:
                 case Tags.ZombieArm:
                     return;
             }
-
+            if (other.tag == Tags.Arrow.ToString() && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Enemies) return;
             DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
         }
     }
@@ -37,7 +38,7 @@ public class ZombieHealth : HealthScript {
     #region Abstract Methods
 
     protected override void Die() {
-        zombieMov.enabled = false;
+        endermanMov.enabled = false;
         animator.SetBool("Running", false);
         animator.SetBool("Attack", false);
         animator.Play("Idle");
@@ -47,15 +48,15 @@ public class ZombieHealth : HealthScript {
     protected override void GetHit() {
         animator.SetBool("Running", false);
         animator.SetBool("Attack", false);
-        zombieMov.Hitted();
-        zombieMov.enabled = false;
+        endermanMov.Hitted();
+        endermanMov.enabled = false;
         animator.Play("Idle");
-        animator.SetTrigger("getHit");
+        animator.SetTrigger("Hit");
     }
 
     public void EndHitAnimation()
     {
-        if(currentHealth >0)zombieMov.enabled = true;
+        if(currentHealth>0)endermanMov.enabled = true;
     }
 
    public void readyToDestroy()

@@ -31,6 +31,7 @@ public abstract class HealthScript : MonoBehaviour {
         new DamageStat(Tags.Shield, 10),
         new DamageStat(Tags.Sword, 10),
         new DamageStat(Tags.ZombieArm, 10),
+        new DamageStat(Tags.EndermanArm, 10),
         new DamageStat(Tags.ExplosionCreeper, 10),  
     };
 
