@@ -39,6 +39,7 @@ public class ArrowScript : MonoBehaviour {
     public void ShootArrow(Vector3 dir) {
         transform.parent = sceneObjects.transform;
         direction = dir.normalized;
+        SetColliderState(true);
     }
 
     public void SetLayer(Layers layer) {
@@ -47,6 +48,10 @@ public class ArrowScript : MonoBehaviour {
 
     public Layers GetOriginalLayer() {
         return originalLayer;
+    }
+
+    public void SetColliderState(bool value) {
+        transform.GetComponent<BoxCollider>().enabled = value;
     }
 
     private void Start() {
