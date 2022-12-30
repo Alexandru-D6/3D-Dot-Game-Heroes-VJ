@@ -40,16 +40,17 @@ public class SkeletonHealth : HealthScript {
     #region Abstract Methods
 
     protected override void Die() {
+        
         skeletonMov.enabled = false;
         animator.SetBool("Running", false);
-        animator.SetBool("Aim", false);
+        animator.SetBool("Shoot",false);
         animator.Play("Idle");
         animator.SetTrigger("Dead");
     }
 
     protected override void GetHit() {
         animator.SetBool("Running", false);
-        animator.SetBool("Aim", false);
+        animator.SetBool("Shoot",false);
         skeletonMov.Hitted();
         skeletonMov.enabled = false;
         animator.Play("Idle");
@@ -58,7 +59,10 @@ public class SkeletonHealth : HealthScript {
 
     public void EndHitAnimation()
     {
-        skeletonMov.enabled = true;
+        if (currentHealth > 0) {
+            skeletonMov.enabled = true;
+            skeletonMov.isEnabled();
+        }
 
     }
 
