@@ -30,6 +30,9 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private Rigidbody playerRigidBody;
     [SerializeField] private PlayerAutomaticMovement playerAutomaticMovement;
 
+    [Header("States")]
+    private bool dead = false;
+
     #endregion
 
     #region Enumerators
@@ -64,6 +67,11 @@ public class PlayerManager : MonoBehaviour {
         playerCollider.enabled = false;
         playerRigidBody.isKinematic = true;
         playerInput.enabled = false;
+        dead = true;
+    }
+
+    public bool isDead() {
+        return dead;
     }
 
     public void PassDoor(Vector3 target) {

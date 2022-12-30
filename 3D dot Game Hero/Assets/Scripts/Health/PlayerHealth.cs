@@ -54,7 +54,7 @@ public class PlayerHealth : HealthScript {
     #region MonoBehaviour Methods
 
     void Update() {
-        if (currentHealth <= 0) {
+        if (currentHealth <= 0 && !playerManager.isDead()) {
             Die();
         }
     }
