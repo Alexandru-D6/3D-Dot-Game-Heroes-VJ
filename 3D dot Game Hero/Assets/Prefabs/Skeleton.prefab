@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 7615001068383725081}
   - component: {fileID: 1148804310382969382}
   - component: {fileID: 5213939552130626042}
+  - component: {fileID: 382255032364141858}
   m_Layer: 6
   m_Name: Skeleton
   m_TagString: Skeleton
@@ -444,6 +445,21 @@ MonoBehaviour:
   skeletonCollider: {fileID: 5320408901920540910}
   disappearParticles: {fileID: 3023261532592782735, guid: e9d558bd4747daf4dabc5171e1e7f9db, type: 3}
   impactParticles: {fileID: 7197067429383718148, guid: dfb3b8cfbf8d7e245ad42331ab9c0927, type: 3}
+--- !u!114 &382255032364141858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042913704747044189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5391586975f38c04192981629973ab35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootList:
+  - {fileID: 11400000, guid: 7d5bd93eb168c8543a2a72681f21fa67, type: 2}
+  - {fileID: 11400000, guid: 87679e6bb8de41c499bc7ecef6dc7eb9, type: 2}
 --- !u!1 &2345234867961923175
 GameObject:
   m_ObjectHideFlags: 0

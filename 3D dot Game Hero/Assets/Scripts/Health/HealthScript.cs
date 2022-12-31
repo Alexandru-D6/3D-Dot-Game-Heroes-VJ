@@ -48,6 +48,14 @@ public abstract class HealthScript : MonoBehaviour {
 
         return damage;
     }
+    public void increaseHealth(int quantiti)
+    {
+        currentHealth += quantiti;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
 
     #endregion
 
