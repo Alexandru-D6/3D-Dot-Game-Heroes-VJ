@@ -585,10 +585,11 @@ MonoBehaviour:
     value: 10
   - weapon: 25
     value: 10
-  zombieMov: {fileID: 0}
-  animator: {fileID: 0}
-  zombieCollider: {fileID: 0}
-  disappearParticles: {fileID: 0}
+  endermanMov: {fileID: 3392937606577375328}
+  animator: {fileID: 2318985479639805853}
+  endermanCollider: {fileID: -2532341082811563627}
+  disappearParticles: {fileID: 3023261532592782735, guid: 58b133e984c8cc14e9f91b87f4ecd124, type: 3}
+  impactParticles: {fileID: 7197067429383718148, guid: dfb3b8cfbf8d7e245ad42331ab9c0927, type: 3}
 --- !u!1 &6263282980836109977
 GameObject:
   m_ObjectHideFlags: 0

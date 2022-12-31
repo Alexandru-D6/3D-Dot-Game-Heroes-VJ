@@ -12,6 +12,7 @@ public class EndermanHealth : HealthScript {
     [SerializeField] private Animator animator;
     [SerializeField] private Collider endermanCollider;
     [SerializeField] private GameObject disappearParticles;
+    [SerializeField] private GameObject impactParticles;
 
     private bool isDead = false;
 
@@ -30,6 +31,8 @@ public class EndermanHealth : HealthScript {
             }
             if (other.tag == Tags.Arrow.ToString() && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Enemies) return;
             DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
+            Quaternion aux = Quaternion.AngleAxis(-90, Vector3.right);
+            Instantiate(impactParticles, transform.position, aux, transform);
         }
     }
 
@@ -38,6 +41,7 @@ public class EndermanHealth : HealthScript {
     #region Abstract Methods
 
     protected override void Die() {
+        endermanMov.Hitted();
         endermanMov.enabled = false;
         animator.SetBool("Running", false);
         animator.SetBool("Attack", false);
@@ -62,7 +66,7 @@ public class EndermanHealth : HealthScript {
    public void readyToDestroy()
     {
         StartCoroutine (destroyObject());
-        Instantiate(disappearParticles, transform.position, transform.rotation);
+        Instantiate(disappearParticles, transform.position, transform.rotation, transform);
     }
 
    IEnumerator destroyObject()

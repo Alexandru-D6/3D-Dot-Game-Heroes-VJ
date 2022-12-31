@@ -12,6 +12,7 @@ public class ZombieHealth : HealthScript {
     [SerializeField] private Animator animator;
     [SerializeField] private Collider zombieCollider;
     [SerializeField] private GameObject disappearParticles;
+    [SerializeField] private GameObject impactParticles;
 
     private bool isDead = false;
 
@@ -29,6 +30,8 @@ public class ZombieHealth : HealthScript {
             }
 
             DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
+            Quaternion aux = Quaternion.AngleAxis(-90, Vector3.right);
+            Instantiate(impactParticles, transform.position, aux, transform);
         }
     }
 
@@ -37,6 +40,7 @@ public class ZombieHealth : HealthScript {
     #region Abstract Methods
 
     protected override void Die() {
+        zombieMov.Hitted();
         zombieMov.enabled = false;
         animator.SetBool("Running", false);
         animator.SetBool("Attack", false);
@@ -61,7 +65,7 @@ public class ZombieHealth : HealthScript {
    public void readyToDestroy()
     {
         StartCoroutine (destroyObject());
-        Instantiate(disappearParticles, transform.position, transform.rotation);
+        Instantiate(disappearParticles, transform.position, transform.rotation, transform);
     }
 
    IEnumerator destroyObject()

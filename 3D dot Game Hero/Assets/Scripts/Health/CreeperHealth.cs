@@ -31,9 +31,8 @@ public class CreeperHealth : HealthScript {
                     return;
             }
             if (other.tag == Tags.Arrow.ToString() && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Enemies) return;
-            DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
-            Quaternion aux = transform.rotation;
-            aux = Quaternion.AngleAxis(-90, Vector3.right);
+            DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));    
+            Quaternion aux = Quaternion.AngleAxis(-90, Vector3.right);
             Instantiate(impactParticles, transform.position, aux, transform);
         }
     }
@@ -43,6 +42,7 @@ public class CreeperHealth : HealthScript {
     #region Abstract Methods
 
     protected override void Die() {
+        creeperMov.Hitted();
         creeperMov.enabled = false;
         animator.SetBool("Running", false);
         animator.SetBool("Explosion", false);

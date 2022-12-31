@@ -13,6 +13,7 @@ public class SkeletonHealth : HealthScript {
     [SerializeField] private Animator animator;
     [SerializeField] private Collider skeletonCollider;
     [SerializeField] private GameObject disappearParticles;
+    [SerializeField] private GameObject impactParticles;
 
     private bool isDead = false;
 
@@ -32,6 +33,8 @@ public class SkeletonHealth : HealthScript {
             if (other.tag == Tags.Arrow.ToString() && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Enemies) return;
 
             DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
+            Quaternion aux = Quaternion.AngleAxis(-90, Vector3.right);
+            Instantiate(impactParticles, transform.position, aux, transform);
         }
     }
 
@@ -40,7 +43,7 @@ public class SkeletonHealth : HealthScript {
     #region Abstract Methods
 
     protected override void Die() {
-        
+        skeletonMov.Hitted();
         skeletonMov.enabled = false;
         animator.SetBool("Running", false);
         animator.SetBool("Shoot",false);
@@ -69,7 +72,7 @@ public class SkeletonHealth : HealthScript {
    public void readyToDestroy()
     {
         StartCoroutine (destroyObject());
-        Instantiate(disappearParticles, transform.position, transform.rotation);
+        Instantiate(disappearParticles, transform.position, transform.rotation, transform);
     }
 
    IEnumerator destroyObject()

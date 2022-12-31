@@ -443,6 +443,7 @@ MonoBehaviour:
   animator: {fileID: 2717843879363128259}
   skeletonCollider: {fileID: 5320408901920540910}
   disappearParticles: {fileID: 3023261532592782735, guid: e9d558bd4747daf4dabc5171e1e7f9db, type: 3}
+  impactParticles: {fileID: 7197067429383718148, guid: dfb3b8cfbf8d7e245ad42331ab9c0927, type: 3}
 --- !u!1 &2345234867961923175
 GameObject:
   m_ObjectHideFlags: 0
