@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8128472570927129729}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponAnchor
   m_TagString: ExternalAnchor
   m_Icon: {fileID: 0}
@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 2863543732854746102}
   - component: {fileID: 7615001068383725081}
   - component: {fileID: 1148804310382969382}
+  - component: {fileID: 5213939552130626042}
   m_Layer: 6
   m_Name: Skeleton
   m_TagString: Skeleton
@@ -407,6 +408,42 @@ MonoBehaviour:
   inventory: []
   hand: {fileID: 7117536230953724243}
   currentWeapon: {fileID: 0}
+--- !u!114 &5213939552130626042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042913704747044189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f939a0110597b3440894789824b960d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 28
+  maxHealth: 28
+  damageStats:
+  - weapon: 9
+    value: 10
+  - weapon: 10
+    value: 10
+  - weapon: 5
+    value: 10
+  - weapon: 7
+    value: 10
+  - weapon: 20
+    value: 10
+  - weapon: 1
+    value: 10
+  - weapon: 24
+    value: 10
+  - weapon: 25
+    value: 10
+  skeletonMov: {fileID: 2863543732854746102}
+  animator: {fileID: 2717843879363128259}
+  skeletonCollider: {fileID: 5320408901920540910}
+  disappearParticles: {fileID: 3023261532592782735, guid: e9d558bd4747daf4dabc5171e1e7f9db, type: 3}
+  impactParticles: {fileID: 7197067429383718148, guid: dfb3b8cfbf8d7e245ad42331ab9c0927, type: 3}
 --- !u!1 &2345234867961923175
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +636,7 @@ GameObject:
   - component: {fileID: 7038426692979428416}
   m_Layer: 6
   m_Name: Right Arm
-  m_TagString: Untagged
+  m_TagString: Skeleton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

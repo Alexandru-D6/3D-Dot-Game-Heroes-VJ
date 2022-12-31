@@ -202,4 +202,16 @@ public class EndermanMov : MonoBehaviour
     {
         alert = true;
     }
+
+    public void Hitted()
+    {
+        attacking = false;
+        if (runactive)
+        {
+            runningparticles.SetActive(false);
+            runactive = false;
+        }
+        agent.enabled = false;
+
+    }
 }

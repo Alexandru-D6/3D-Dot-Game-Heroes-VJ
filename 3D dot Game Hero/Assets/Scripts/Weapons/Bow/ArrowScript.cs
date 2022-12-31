@@ -14,25 +14,21 @@ public class ArrowScript : MonoBehaviour {
     private Vector3 direction = Vector3.zero;
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private Layers originalLayer;
+    private float delayedDestroyTime = 0.01f;
 
     #endregion
 
-    private void OnTriggerEnter(Collider other) {
-        if (originalLayer == Layers.Player) {
-            if (other.gameObject.layer == (int)Layers.Enemies) {
-                // TODO: Damage that enemy
-                DestroyArrow();
-            }
-        }else if (originalLayer == Layers.Enemies) {
-            if(other.gameObject.layer == (int)Layers.Player) {
-                PlayerManager.Instance.GetHit();
-                DestroyArrow();
-            }
-        }
+    IEnumerator delayedDestroy(float time) {
+        yield return new WaitForSeconds(time);
+        DestroyArrow();
+    }
 
-        if (other.gameObject.layer == (int)Layers.Obstacles) {
-            DestroyArrow();
-        }
+    private void OnTriggerEnter(Collider other) {
+
+        if (other.gameObject.layer == (int)Layers.Weapon) return;
+        if (other.gameObject.layer == (int)originalLayer) return;
+
+        StartCoroutine(delayedDestroy(delayedDestroyTime));
     }
 
     public void DestroyArrow() {
@@ -43,10 +39,19 @@ public class ArrowScript : MonoBehaviour {
     public void ShootArrow(Vector3 dir) {
         transform.parent = sceneObjects.transform;
         direction = dir.normalized;
+        SetColliderState(true);
     }
 
     public void SetLayer(Layers layer) {
         originalLayer = layer;
+    }
+
+    public Layers GetOriginalLayer() {
+        return originalLayer;
+    }
+
+    public void SetColliderState(bool value) {
+        transform.GetComponent<BoxCollider>().enabled = value;
     }
 
     private void Start() {

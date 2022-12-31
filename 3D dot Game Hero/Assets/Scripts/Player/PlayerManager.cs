@@ -28,7 +28,11 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private InventorySystem inventorySystem;
     [SerializeField] private PlayerAnimations playerAnimations;
     [SerializeField] private Collider playerCollider;
+    [SerializeField] private Rigidbody playerRigidBody;
     [SerializeField] private PlayerAutomaticMovement playerAutomaticMovement;
+
+    [Header("States")]
+    private bool dead = false;
 
     #endregion
 
@@ -70,7 +74,13 @@ public class PlayerManager : MonoBehaviour {
         playerAnimations.toIdle();
         playerAnimations.toDeath();
         playerCollider.enabled = false;
+        playerRigidBody.isKinematic = true;
         playerInput.enabled = false;
+        dead = true;
+    }
+
+    public bool isDead() {
+        return dead;
     }
 
     public void PassDoor(Vector3 target) {

@@ -26,6 +26,7 @@ public class SkeletonMov : MonoBehaviour
     [SerializeField] SkeletonWeaponManager SkeletonWeaponManager;
     bool runactive = false;
     [SerializeField] GameObject runningparticles;
+    private bool disabled = false;
 
     #endregion
 
@@ -40,12 +41,16 @@ public class SkeletonMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Comportamiento_Skeleton();
+        if(!target.GetComponent<PlayerManager>().isDead())Comportamiento_Skeleton();
     }
 
     public void Comportamiento_Skeleton()
     {
-        if(Vector3.Distance(transform.position, target.transform.position) > vision_radio)
+        if (disabled)
+        {
+            this.enabled = false;
+        }
+        else if (Vector3.Distance(transform.position, target.transform.position) > vision_radio)
         {
             agent.enabled= false;
             crono += 1 * Time.deltaTime;
@@ -113,7 +118,7 @@ public class SkeletonMov : MonoBehaviour
                 if (!attacking)
                 {
                     runningparticles.SetActive(false);
-                    anim.Play("Aim");
+                    anim.SetTrigger("Aim");
                     attacking = true;
                     agent.enabled = false;
                     stay_Attacking= true;
@@ -126,23 +131,67 @@ public class SkeletonMov : MonoBehaviour
 
     public void Shoot()
     {
-        
-        Debug.Log("Shoot");
-        SkeletonWeaponManager.UseCurrentWeapon();
-        StartCoroutine (ExecuteAfterTime());
+        if (disabled)
+        {
+            this.enabled = false;
+        }
+        else
+        {
+            Debug.Log("Shoot");
+            anim.SetBool("Shoot", false);
+            SkeletonWeaponManager.UseCurrentWeapon();
+            StartCoroutine(ExecuteAfterTime());
+        }
     }
 
     public void End_Attack() {
-        attacking = false;
-        Debug.Log("Finish");
-        
+        if (disabled)
+        {
+            this.enabled = false;
+        }
+        else
+        {
+            attacking = false;
+            Debug.Log("Finish");
+            
+        }
+
     }
 
     IEnumerator ExecuteAfterTime()
     {
         yield return new WaitForSeconds(1f);
-        SkeletonWeaponManager.ReleaseCurrentWeapon();
-        anim.SetTrigger("Shoot");
+
+        if (!disabled)
+        {
+            SkeletonWeaponManager.ReleaseCurrentWeapon();
+            anim.SetBool("Shoot",true);
+
+        }
+        else this.enabled = false;
         // Code to execute after the delay
     }
+
+
+    public void Hitted()
+    {
+        disabled = true;
+        attacking = false;
+        if (runactive)
+        {
+            runningparticles.SetActive(false);
+            runactive = false;
+        }
+        agent.enabled = false;
+        anim.SetBool("Shoot", false);
+        SkeletonWeaponManager.AbortAttack();
+
+    }
+
+    public void isEnabled()
+    {
+        disabled = false;
+        
+    }
+ 
 }

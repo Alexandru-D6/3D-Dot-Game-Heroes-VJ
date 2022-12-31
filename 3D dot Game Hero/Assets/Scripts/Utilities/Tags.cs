@@ -31,6 +31,7 @@ public enum Tags {
     CreeperParticles,
     RunningParticles,
     SpawnParticles,
+    EndermanArm,
     Uknown,
 }
 

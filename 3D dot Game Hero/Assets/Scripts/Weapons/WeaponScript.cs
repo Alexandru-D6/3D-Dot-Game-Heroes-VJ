@@ -26,6 +26,7 @@ public abstract class WeaponScript : MonoBehaviour {
 
     public abstract void Attack();
     public abstract void Release();
+    public abstract void Abort();
     public abstract void Collided();
 
 #endregion

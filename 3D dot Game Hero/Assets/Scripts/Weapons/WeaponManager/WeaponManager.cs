@@ -139,6 +139,11 @@ public abstract class WeaponManager : MonoBehaviour {
         }
     }
 
+    public virtual void AbortAttack()
+    {
+        currentWeapon.Abort();
+    }
+
     #endregion
 
     #region Abstract Methods
