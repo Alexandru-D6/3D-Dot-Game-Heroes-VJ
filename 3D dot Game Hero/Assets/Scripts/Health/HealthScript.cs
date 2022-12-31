@@ -84,7 +84,7 @@ public abstract class HealthScript : MonoBehaviour {
     public void DecreaseHealth(int value) {
         if (value > 0) {
             currentHealth -= value;
-            if(currentHealth>0)GetHit();
+            if (currentHealth > 0) GetHit();
         }
     }
 

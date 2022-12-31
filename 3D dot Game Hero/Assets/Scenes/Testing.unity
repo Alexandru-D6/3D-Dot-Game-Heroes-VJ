@@ -3860,6 +3860,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -8469494145858465668, guid: 7f825e89d8d300440b5f212f4d3d6679, type: 3}
     - target: {fileID: 8408583657115010051, guid: d42a686e1c34ee746aa38240cca0cb49, type: 3}
+      propertyPath: isSpawnRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408583657115010051, guid: d42a686e1c34ee746aa38240cca0cb49, type: 3}
       propertyPath: isPlayerInsideTheRoom
       value: 1
       objectReference: {fileID: 0}
@@ -4172,7 +4176,7 @@ PrefabInstance:
     - target: {fileID: 1320336253940215270, guid: 9c17f6369260ea84fb9d0046e23d3dd3, type: 3}
       propertyPath: chestSingleton
       value: 
-      objectReference: {fileID: 1785719906}
+      objectReference: {fileID: 0}
     - target: {fileID: 1320336253940215270, guid: 9c17f6369260ea84fb9d0046e23d3dd3, type: 3}
       propertyPath: totalProbability
       value: 100
@@ -7656,7 +7660,7 @@ PrefabInstance:
     - target: {fileID: 1320336253940215270, guid: 9c17f6369260ea84fb9d0046e23d3dd3, type: 3}
       propertyPath: chestSingleton
       value: 
-      objectReference: {fileID: 1785719906}
+      objectReference: {fileID: 0}
     - target: {fileID: 1320336253940215270, guid: 9c17f6369260ea84fb9d0046e23d3dd3, type: 3}
       propertyPath: totalProbability
       value: 100
@@ -7750,6 +7754,7 @@ GameObject:
   - component: {fileID: 1584391769}
   - component: {fileID: 1584391768}
   - component: {fileID: 1584391771}
+  - component: {fileID: 1584391772}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -7838,6 +7843,39 @@ MonoBehaviour:
   moveSpeed: {x: 30, y: 30}
   targetPosition: {x: 0, y: 0, z: 0}
   startMovement: 0
+--- !u!114 &1584391772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584391767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!4 &1590780638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4138477006264906789, guid: f86d685908b47d445bf4412bd724b679, type: 3}
@@ -7888,7 +7926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1785719905}
   - component: {fileID: 1785719904}
-  - component: {fileID: 1785719906}
+  - component: {fileID: 1785719907}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -7935,7 +7973,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785719903}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.6173626, y: 3.0198622, z: -0.7930688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7943,7 +7981,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1785719906
+--- !u!114 &1785719907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7952,31 +7990,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1785719903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b9f92dd2e06b14cbf0ed2f6f210b1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 54437986fa6f5a44eabc7952b93678e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableObjectsList:
-  - tag: 5
-    usesLeft: 1
-  - tag: 10
-    usesLeft: 10
-  - tag: 11
-    usesLeft: 1
-  - tag: 12
-    usesLeft: 1
-  - tag: 13
-    usesLeft: 20
-  - tag: 16
-    usesLeft: 1
-  - tag: 18
-    usesLeft: 1
-  - tag: 19
-    usesLeft: 20
-  - tag: 20
-    usesLeft: 1
-  - tag: 22
-    usesLeft: 1
-  syncListState: 1
 --- !u!4 &1805795301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4138477006264906789, guid: f86d685908b47d445bf4412bd724b679, type: 3}
@@ -14740,6 +14756,7 @@ MonoBehaviour:
   gridsOpen: 1
   isRoomCleared: 0
   isPlayerInsideTheRoom: 0
+  isSpawnRoom: 0
 --- !u!1001 &8417960550115340325
 PrefabInstance:
   m_ObjectHideFlags: 0

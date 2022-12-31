@@ -58,8 +58,8 @@ public class ChestProbabilities : MonoBehaviour {
         int aux = 0;
         foreach(var x in probabilities) {
             if (value < aux + x.probability && value >= aux) {
-                if (chestSingleton.IsAvailable(x.tag)) {
-                    chestSingleton.UseTag(x.tag);
+                if (ChestSingleton.GetInstance().IsAvailable(x.tag)) {
+                    ChestSingleton.GetInstance().UseTag(x.tag);
                     return x.tag;
                 }else {
                     return Tags.Uknown;
@@ -74,7 +74,6 @@ public class ChestProbabilities : MonoBehaviour {
     #region MonoBehaviour Methods
 
     void Start() {
-        chestSingleton = ChestSingleton.Instance;
     }
 
     #endregion
