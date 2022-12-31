@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7630687699506708646}
   - component: {fileID: 9203995030014862760}
-  m_Layer: 6
+  m_Layer: 31
   m_Name: ExplosionCreeper
   m_TagString: ExplosionCreeper
   m_Icon: {fileID: 0}
@@ -227,6 +227,8 @@ GameObject:
   - component: {fileID: 9014655281847286226}
   - component: {fileID: 8065777169386899668}
   - component: {fileID: 8032975861488864794}
+  - component: {fileID: 2980120660700385613}
+  - component: {fileID: 7971566982567755802}
   m_Layer: 6
   m_Name: Creeper
   m_TagString: Creeper
@@ -385,6 +387,59 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.636156, z: 0.66651607}
   m_Center: {x: 0, y: 1.3078828, z: -0.00000011920929}
+--- !u!114 &2980120660700385613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085942122596314836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e940db2584b484c877263c218db76f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 16
+  maxHealth: 66
+  damageStats:
+  - weapon: 9
+    value: 10
+  - weapon: 10
+    value: 10
+  - weapon: 5
+    value: 10
+  - weapon: 7
+    value: 10
+  - weapon: 20
+    value: 10
+  - weapon: 1
+    value: 10
+  - weapon: 24
+    value: 10
+  - weapon: 31
+    value: 10
+  - weapon: 25
+    value: 10
+  creeperMov: {fileID: 9145281206296212765}
+  animator: {fileID: 1899036119892083257}
+  creeperCollider: {fileID: 8032975861488864794}
+  disappearParticles: {fileID: 3023261532592782735, guid: e9d558bd4747daf4dabc5171e1e7f9db, type: 3}
+  impactParticles: {fileID: 7197067429383718148, guid: dfb3b8cfbf8d7e245ad42331ab9c0927, type: 3}
+--- !u!114 &7971566982567755802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085942122596314836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5391586975f38c04192981629973ab35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootList:
+  - {fileID: 11400000, guid: 7d5bd93eb168c8543a2a72681f21fa67, type: 2}
+  - {fileID: 11400000, guid: 87679e6bb8de41c499bc7ecef6dc7eb9, type: 2}
 --- !u!1 &3369812828860119021
 GameObject:
   m_ObjectHideFlags: 0

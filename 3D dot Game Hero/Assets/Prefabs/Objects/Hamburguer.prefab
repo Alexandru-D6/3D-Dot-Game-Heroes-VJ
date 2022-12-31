@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3028850025591114636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2914433513033377776}
+  - component: {fileID: 6243927541847491767}
+  - component: {fileID: 5079147884728454031}
+  - component: {fileID: -1541459373501186764}
+  m_Layer: 29
+  m_Name: Hamburguer
+  m_TagString: Hamburguer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2914433513033377776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3028850025591114636}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3171756, y: 3.86, z: -1.4428197}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4018931959176356462}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6243927541847491767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3028850025591114636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ff78a5dd5f90246a448d334c4c6770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: 0.6
+  incrementrot: 0
+  cont: 0
+  weight: 0.2
+  freq: 1
+--- !u!65 &5079147884728454031
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3028850025591114636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37705255, y: 0.36290932, z: 0.36322606}
+  m_Center: {x: -0.00019180775, y: 0.18015599, z: -0.0007875562}
+--- !u!114 &-1541459373501186764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3028850025591114636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e7a6deb8acdc94f8b28999373f8816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &3480337136599074181
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2914433513033377776}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000081460335
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_Name
+      value: Hamburguer
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+      propertyPath: m_Layer
+      value: 29
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+--- !u!4 &4018931959176356462 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9b5ab21fceb891a43ab6d9a4c50fd955, type: 3}
+  m_PrefabInstance: {fileID: 3480337136599074181}
+  m_PrefabAsset: {fileID: 0}

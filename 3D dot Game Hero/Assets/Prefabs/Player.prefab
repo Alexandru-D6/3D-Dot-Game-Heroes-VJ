@@ -776,8 +776,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b8b11a6c4d47c4d8c4f16014243e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  maxHealth: 100
+  currentHealth: 49
+  maxHealth: 56
   damageStats:
   - weapon: 9
     value: 10
@@ -793,9 +793,12 @@ MonoBehaviour:
     value: 10
   - weapon: 24
     value: 10
+  - weapon: 31
+    value: 10
   - weapon: 25
     value: 10
   playerManager: {fileID: 8215279082758402672}
+  blood: {fileID: 1153182194385908334, guid: a34346b2a5b5e6744937e9ecbd0d6413, type: 3}
 --- !u!114 &4713331758898903793
 MonoBehaviour:
   m_ObjectHideFlags: 0

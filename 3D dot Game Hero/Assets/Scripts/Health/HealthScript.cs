@@ -31,6 +31,7 @@ public abstract class HealthScript : MonoBehaviour {
         new DamageStat(Tags.Shield, 10),
         new DamageStat(Tags.Sword, 10),
         new DamageStat(Tags.ZombieArm, 10),
+        new DamageStat(Tags.EndermanArm, 10),
         new DamageStat(Tags.ExplosionCreeper, 10),  
     };
 
@@ -46,6 +47,14 @@ public abstract class HealthScript : MonoBehaviour {
         }
 
         return damage;
+    }
+    public void increaseHealth(int quantiti)
+    {
+        currentHealth += quantiti;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     #endregion
@@ -75,7 +84,7 @@ public abstract class HealthScript : MonoBehaviour {
     public void DecreaseHealth(int value) {
         if (value > 0) {
             currentHealth -= value;
-            GetHit();
+            if (currentHealth > 0) GetHit();
         }
     }
 

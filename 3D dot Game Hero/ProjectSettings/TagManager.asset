@@ -35,6 +35,7 @@ TagManager:
   - CreeperParticles
   - RunningParticles
   - SpawnParticles
+  - EndermanArm
   - Debug
   layers:
   - Default

@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
-public class SkeletonHealth : HealthScript {
+public class CreeperHealth : HealthScript {
 
     #region Parameters
 
     [Header("Managers")]
-    [SerializeField] private SkeletonMov skeletonMov;
+    [SerializeField] private CreeperMov creeperMov;
     [SerializeField] private Animator animator;
-    [SerializeField] private Collider skeletonCollider;
+    [SerializeField] private Collider creeperCollider;
     [SerializeField] private GameObject disappearParticles;
     [SerializeField] private GameObject impactParticles;
 
@@ -23,16 +22,16 @@ public class SkeletonHealth : HealthScript {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.layer == (int)Layers.Weapon && !isDead) {
+
             // Exclude weapon List
             switch(TagsUtils.GetTag(other.tag)) {
+                case Tags.EndermanArm:
                 case Tags.ZombieArm:
-                case Tags.Bow:
+                case Tags.ExplosionCreeper:
                     return;
             }
-
             if (other.tag == Tags.Arrow.ToString() && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Enemies) return;
-
-            DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
+            DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));    
             Quaternion aux = Quaternion.AngleAxis(-90, Vector3.right);
             Instantiate(impactParticles, transform.position, aux, transform);
         }
@@ -43,36 +42,32 @@ public class SkeletonHealth : HealthScript {
     #region Abstract Methods
 
     protected override void Die() {
-        skeletonMov.Hitted();
-        skeletonMov.enabled = false;
+        creeperMov.Hitted();
+        creeperMov.enabled = false;
         animator.SetBool("Running", false);
-        animator.SetBool("Shoot",false);
+        animator.SetBool("Explosion", false);
         animator.Play("Idle");
         animator.SetTrigger("Dead");
     }
 
     protected override void GetHit() {
-        animator.SetBool("Running", false);
-        animator.SetBool("Shoot",false);
-        skeletonMov.Hitted();
-        skeletonMov.enabled = false;
-        animator.Play("Idle");
-        animator.SetTrigger("Hit");
+       // creeperMov.Hitted();
+       // creeperMov.enabled = false;
+       // animator.Play("Idle");
+       // animator.SetTrigger("Hit");
     }
 
     public void EndHitAnimation()
     {
-        if (currentHealth > 0) {
-            skeletonMov.enabled = true;
-            skeletonMov.isEnabled();
-        }
-
+       // if(currentHealth>0)creeperMov.enabled = true;
     }
 
    public void readyToDestroy()
     {
         StartCoroutine (destroyObject());
-        Instantiate(disappearParticles, transform.position, transform.rotation, transform);
+        Quaternion aux = transform.rotation;
+        aux = Quaternion.AngleAxis(transform.eulerAngles.y + 90, Vector3.up);
+        Instantiate(disappearParticles, transform.position, aux, transform);
     }
 
    IEnumerator destroyObject()
@@ -80,6 +75,7 @@ public class SkeletonHealth : HealthScript {
         yield return new WaitForSeconds(1f);
         this.gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
         Destroy(this.gameObject);
+        
 
     }
 
