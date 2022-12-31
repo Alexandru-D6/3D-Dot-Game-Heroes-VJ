@@ -29,6 +29,7 @@ public class PlayerHealth : HealthScript {
                 case Tags.Shield:
                 case Tags.Sword:
                 case Tags.Boomerang:
+                case Tags.Bomb:
                     return;
             }
 

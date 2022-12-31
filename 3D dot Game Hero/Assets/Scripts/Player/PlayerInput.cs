@@ -199,6 +199,8 @@ public class PlayerInput : MonoBehaviour {
                     playerWeaponManager.SelectWeapon(Tags.Bow);
                     break;
                 case "/Keyboard/4":
+                    playerWeaponManager.SelectWeapon(Tags.Bomb);
+                    break;
                 case "/Keyboard/5":
                 case "/Keyboard/6":
                 case "/Keyboard/7":
