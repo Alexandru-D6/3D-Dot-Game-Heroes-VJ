@@ -33,8 +33,8 @@ public class CreeperHealth : HealthScript {
             if (other.tag == Tags.Arrow.ToString() && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Enemies) return;
             DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
             Quaternion aux = transform.rotation;
-            aux = Quaternion.AngleAxis(-90, Vector3.forward);
-            Instantiate(impactParticles, transform.position, transform.rotation);
+            aux = Quaternion.AngleAxis(-90, Vector3.right);
+            Instantiate(impactParticles, transform.position, aux, transform);
         }
     }
 
@@ -66,8 +66,8 @@ public class CreeperHealth : HealthScript {
     {
         StartCoroutine (destroyObject());
         Quaternion aux = transform.rotation;
-        aux = Quaternion.AngleAxis(90, Vector3.up);
-        Instantiate(disappearParticles, transform.position, aux);
+        aux = Quaternion.AngleAxis(transform.eulerAngles.y + 90, Vector3.up);
+        Instantiate(disappearParticles, transform.position, aux, transform);
     }
 
    IEnumerator destroyObject()
