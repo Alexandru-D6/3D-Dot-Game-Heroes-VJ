@@ -73,7 +73,9 @@ public class CreeperHealth : HealthScript {
    IEnumerator destroyObject()
     {
         yield return new WaitForSeconds(1f);
+        this.gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
         Destroy(this.gameObject);
+        
 
     }
 
