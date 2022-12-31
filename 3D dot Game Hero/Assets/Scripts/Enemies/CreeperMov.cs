@@ -141,4 +141,19 @@ public class CreeperMov : MonoBehaviour
         Instantiate(particle, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
+
+
+    public void Hitted()
+    {
+        anim.SetBool("Running", false);
+        exploding = false;
+        anim.SetBool("Explosion", false);
+        if (runactive)
+        {
+            runningparticles.SetActive(false);
+            runactive = false;
+        }
+        agent.enabled = false;
+
+    }
 }

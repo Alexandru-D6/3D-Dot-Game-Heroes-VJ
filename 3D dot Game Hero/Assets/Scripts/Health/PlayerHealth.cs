@@ -8,6 +8,7 @@ public class PlayerHealth : HealthScript {
 
     [Header("Managers")]
     [SerializeField] private PlayerManager playerManager;
+    [SerializeField] private ParticleSystem blood;
 
     #endregion
 
@@ -47,6 +48,7 @@ public class PlayerHealth : HealthScript {
 
     protected override void GetHit() {
         playerManager.GetHit();
+        Instantiate(blood, new Vector3(transform.position.x, transform.position.y+1.5f, transform.position.z), transform.rotation);
     }
 
     #endregion
