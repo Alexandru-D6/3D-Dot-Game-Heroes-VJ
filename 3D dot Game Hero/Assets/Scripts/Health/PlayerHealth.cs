@@ -40,34 +40,6 @@ public class PlayerHealth : HealthScript {
 
     #endregion
 
-    #region Collision Methods
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.layer == (int)Layers.Weapon) {
-
-            Collider[] colliders = Physics.OverlapSphere(other.transform.position, Vector3.Distance(other.bounds.max, other.bounds.min) * 0.75f);
-
-            foreach (var collider in colliders) {
-                if (collider != other && collider.gameObject.layer == (int)Layers.Weapon) return;
-            }
-
-            // Exclude weapon List
-            switch(TagsUtils.GetTag(other.tag)) {
-                case Tags.Hand:
-                case Tags.Shield:
-                case Tags.Sword:
-                case Tags.Boomerang:
-                    return;
-            }
-
-            if (other.tag == Tags.Arrow.ToString() && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Player) return;
-
-            DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
-        }
-    }
-
-    #endregion
-
     #region Abstract Methods
 
     protected override void Die() {
