@@ -37,7 +37,7 @@ public class ChestScript : MonoBehaviour {
 
     IEnumerator DelayedDestroy(float time) {
         yield return new WaitForSeconds(time);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 #endregion
@@ -48,16 +48,28 @@ public class ChestScript : MonoBehaviour {
         isPlayerNear = value;
     }
 
+    public void RestoreChest() {
+        canOpen = true;
+        chestAnimations.toIdle();
+
+        gameObject.SetActive(true);
+    }
+
 #endregion
 
 #region MonoBehaviour Methods
 
     void Start() {
         canOpen = true;
+        SceneEvents.onPlayerDeath += OnPlayerDeath;
     }
 
     void Update() {
         
+    }
+
+    private void OnDestroy() {
+        SceneEvents.onPlayerDeath -= OnPlayerDeath;
     }
 
 #endregion
@@ -72,6 +84,10 @@ public class ChestScript : MonoBehaviour {
             StartCoroutine(DelayedOpenButton(openDelay));
             StartCoroutine(DelayedCloseChest(closeChestDelay));
         }
+    }
+
+    public void OnPlayerDeath() {
+        RestoreChest();
     }
 
     #endregion

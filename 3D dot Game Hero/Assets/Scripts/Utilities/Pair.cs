@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
 public class Pair<T, U> {
     public Pair() { }
 

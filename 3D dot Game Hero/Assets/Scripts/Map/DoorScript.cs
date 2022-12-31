@@ -64,18 +64,46 @@ public class DoorScript : MonoBehaviour {
         doorAnimator.SetTrigger("Open");
     }
 
-#endregion
+    public void RestoreDoor() {
+        canOpen = false;
+        playerNearby = false;
 
-#region Callbacks Functions
+        doorAnimator.Play("Idle");
+
+        padlockScript.RestorePadlock();
+    }
+
+    #endregion
+
+    #region MonoBehaviour Methods
+
+    private void Start() {
+        RestoreDoor();
+        SceneEvents.onPlayerDeath += OnPlayerDeath;
+    }
+
+    private void OnDestroy() {
+        SceneEvents.onPlayerDeath -= OnPlayerDeath;
+    }
+
+    #endregion
+
+    #region Callbacks Functions
 
     public void UnlockDoor(InputAction.CallbackContext context) {
-        canOpen = CheckKey();
+        if (playerNearby) {
+            canOpen = CheckKey();
 
-        if (canOpen && playerNearby) {
-            PlayerManager.Instance.MoveTo(transform.position, transform.forward, 3.0f);
-            canOpen = false;
-            padlockScript.UnlockPadlock();
+            if (canOpen) {
+                PlayerManager.Instance.MoveTo(transform.position, transform.forward, 3.0f);
+                canOpen = false;
+                padlockScript.UnlockPadlock();
+            }
         }
+    }
+
+    public void OnPlayerDeath() {
+        RestoreDoor();
     }
 
 #endregion

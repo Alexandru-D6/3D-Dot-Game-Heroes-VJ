@@ -77,6 +77,9 @@ public class SceneManager : MonoBehaviour {
         _camera = Camera.main;
         _camera.transform.position = cameraLocation.position;
         _camera.transform.eulerAngles = cameraLocation.rotation;
+        currentRoom = null;
+
+        ChestSingleton.GetInstance().RestoreObject();
 
         foreach(PrefabSpawn x in prefabs) {
             Instantiate(x.prefab, x.location.position, Quaternion.Euler(x.location.rotation));
