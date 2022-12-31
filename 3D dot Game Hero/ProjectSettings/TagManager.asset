@@ -36,6 +36,7 @@ TagManager:
   - RunningParticles
   - SpawnParticles
   - EndermanArm
+  - Debug
   layers:
   - Default
   - TransparentFX
@@ -63,7 +64,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Debug
   - Key
   - Player
   - SceneObjects

@@ -10,6 +10,7 @@ public class RoomManager : MonoBehaviour {
     [SerializeField] private bool gridsOpen = true;
     [SerializeField] private bool isRoomCleared = false;
     [SerializeField] private bool isPlayerInsideTheRoom = true;
+    [SerializeField] private bool isSpawnRoom = false;
 
     #endregion
 
@@ -29,6 +30,19 @@ public class RoomManager : MonoBehaviour {
         isPlayerInsideTheRoom = !isPlayerInsideTheRoom;
     }
 
+    public void InitRoom() {
+        gridsOpen = true;
+        isRoomCleared = false;
+        isPlayerInsideTheRoom = isSpawnRoom;
+
+        UnlockGrids();
+    }
+
+    public void Start() {
+        InitRoom();
+        SceneEvents.onPlayerDeath += OnPlayerDeath;
+    }
+
     void Update() {
         if (!gridsOpen && isRoomCleared && isPlayerInsideTheRoom) {
             gridsOpen = true;
@@ -37,5 +51,13 @@ public class RoomManager : MonoBehaviour {
             gridsOpen = false;
             LockGrids();
         }
+    }
+
+    private void OnDestroy() {
+        SceneEvents.onPlayerDeath -= OnPlayerDeath;
+    }
+
+    public void OnPlayerDeath() {
+        InitRoom();
     }
 }

@@ -71,23 +71,50 @@ public class SceneManager : MonoBehaviour {
 
     #endregion
 
-    #region MonoBehaviour Methods
+    #region Private Methods
 
-    void Start(){
+    private void InitScene() {
         _camera = Camera.main;
         _camera.transform.position = cameraLocation.position;
         _camera.transform.eulerAngles = cameraLocation.rotation;
+        currentRoom = null;
+
+        ChestSingleton.GetInstance().RestoreObject();
 
         foreach(PrefabSpawn x in prefabs) {
             Instantiate(x.prefab, x.location.position, Quaternion.Euler(x.location.rotation));
         }
     }
 
-    void Update()
-    {
-        
+    private void CleanScene() {
+        foreach(PrefabSpawn x in prefabs) {
+            GameObject[] objs = GameObject.FindGameObjectsWithTag(x.prefab.tag);
+            
+            foreach(var i in objs) Destroy(i);
+        }
     }
 
     #endregion
+
+    #region MonoBehaviour Methods
+
+    void Start(){
+        InitScene();
+        SceneEvents.onPlayerDeath += OnPlayerDeath;
+    }
+
+    void Update() {
+    }
+
+    private void OnDestroy() {
+        SceneEvents.onPlayerDeath -= OnPlayerDeath;
+    }
+
+    #endregion
+
+    public void OnPlayerDeath() {
+        CleanScene();
+        InitScene();
+    }
 
 }

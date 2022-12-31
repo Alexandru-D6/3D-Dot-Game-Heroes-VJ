@@ -6,6 +6,7 @@ public class PadlockScript : MonoBehaviour {
     
     [SerializeField] private Animator padlockAnimator;
     [SerializeField] private DoorScript doorScript;
+    private bool canUnlock = true;
 
     [SerializeField] private GameObject padlock;
     [SerializeField] private GameObject key;
@@ -14,10 +15,14 @@ public class PadlockScript : MonoBehaviour {
 
     // TODO: Instead of jsut enable the camera make somekind of transition
     public void UnlockPadlock() {
-        mainCamera.enabled = false;
-        padlockCamera.enabled = true;
+        if (canUnlock) {
+            canUnlock = false;
 
-        padlockAnimator.SetTrigger("Unlock");
+            mainCamera.enabled = false;
+            padlockCamera.enabled = true;
+
+            padlockAnimator.SetTrigger("Unlock");
+        }
     }
 
     public void HidePadlock() {
@@ -30,7 +35,17 @@ public class PadlockScript : MonoBehaviour {
         doorScript.OpenDoor();
     }
 
+    public void RestorePadlock() {
+        padlock.SetActive(true);
+        key.SetActive(false);
+
+        padlockAnimator.Play("Idle");
+        canUnlock = true;
+    }
+
     private void Start() {
         mainCamera = Camera.main;
+
+        RestorePadlock();
     }
 }
