@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(PlayerWeaponManager))]
 [RequireComponent(typeof(PlayerInput))]
@@ -57,6 +58,14 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
+    public bool IsItemAvailable(Tags tag) {
+        if (OutputInventory.Items == GetInventory(tag)) {
+            return inventorySystem.IsItemAvailable(tag);
+        }
+
+        return false;
+    }
+
     public void GetHit() {
         playerAnimations.toHit();
     }
@@ -77,6 +86,10 @@ public class PlayerManager : MonoBehaviour {
     public void PassDoor(Vector3 target) {
         playerInput.RotatePlayer(target);
         playerAutomaticMovement.MoveTo(target);
+    }
+
+    public void MoveTo(Vector3 doorPosition, Vector3 doorForward, float distance) {
+        playerAutomaticMovement.MoveTo(doorPosition + doorForward * distance);
     }
 
     #endregion
