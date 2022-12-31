@@ -54,6 +54,7 @@ MonoBehaviour:
   key: {fileID: 0}
   padlockCamera: {fileID: 0}
   mainCamera: {fileID: 0}
+  vanishParticles: {fileID: 6129890895064636369, guid: 61c4021d97bac5745b1d6e046e0d8f79, type: 3}
 --- !u!95 &5133092437817878461
 Animator:
   serializedVersion: 4

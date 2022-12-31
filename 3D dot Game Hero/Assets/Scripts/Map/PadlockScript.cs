@@ -12,6 +12,7 @@ public class PadlockScript : MonoBehaviour {
     [SerializeField] private GameObject key;
     [SerializeField] private Camera padlockCamera;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private GameObject vanishParticles;
 
     // TODO: Instead of jsut enable the camera make somekind of transition
     public void UnlockPadlock() {
@@ -31,6 +32,7 @@ public class PadlockScript : MonoBehaviour {
 
         padlock.SetActive(false);
         key.SetActive(false);
+        Instantiate(vanishParticles, transform.position, transform.rotation);
 
         doorScript.OpenDoor();
     }
