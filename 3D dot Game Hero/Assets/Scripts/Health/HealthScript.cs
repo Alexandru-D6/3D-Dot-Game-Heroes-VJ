@@ -37,28 +37,6 @@ public abstract class HealthScript : MonoBehaviour {
 
     #endregion
 
-    #region Static Methods
-
-    public int GetDamage(Tags tag) {
-        int damage = 0;
-
-        foreach (DamageStat damageStat in damageStats) {
-            if (damageStat.weapon == tag) damage = damageStat.value;
-        }
-
-        return damage;
-    }
-    public void increaseHealth(int quantiti)
-    {
-        currentHealth += quantiti;
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
-    }
-
-    #endregion
-
     #region Abstract Methods
 
     protected abstract void GetHit();
@@ -79,6 +57,19 @@ public abstract class HealthScript : MonoBehaviour {
 
     public void IncreaseHealth(int value) {
         currentHealth += value;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
+    public int GetDamage(Tags tag) {
+        int damage = 0;
+
+        foreach (DamageStat damageStat in damageStats) {
+            if (damageStat.weapon == tag) damage = damageStat.value;
+        }
+
+        return damage;
     }
 
     public void DecreaseHealth(int value) {
