@@ -697,6 +697,7 @@ MonoBehaviour:
   playerCollider: {fileID: 6925475127036339142}
   playerRigidBody: {fileID: 1603912058711816172}
   playerAutomaticMovement: {fileID: 8800294357765895709}
+  deathDelay: 2
 --- !u!114 &4816398731180999629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,7 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a462184b13954cc4b919e87788be27fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsAvailable: 
+  itemsAvailable: []
 --- !u!114 &2222480201678553054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,8 +777,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b8b11a6c4d47c4d8c4f16014243e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 49
-  maxHealth: 56
+  currentHealth: 0
+  maxHealth: 0
   damageStats:
   - weapon: 9
     value: 10
@@ -797,6 +798,8 @@ MonoBehaviour:
     value: 10
   - weapon: 25
     value: 10
+  - weapon: 33
+    value: 100
   playerManager: {fileID: 8215279082758402672}
   blood: {fileID: 1153182194385908334, guid: a34346b2a5b5e6744937e9ecbd0d6413, type: 3}
 --- !u!114 &4713331758898903793
@@ -859,7 +862,8 @@ MonoBehaviour:
   - {fileID: 6881899592116037539, guid: 32d3c163f020478419e278a81f328859, type: 3}
   - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
   - {fileID: 5882221031244944910, guid: 72573004f758d7f42a5ea74db98ebf2e, type: 3}
-  weaponsAvailable: 0700000001000000050000000c000000
+  - {fileID: 4224969745914348796, guid: 892efaefcd99cc542992bc5a2f951c5a, type: 3}
+  weaponsAvailable: 0700000001000000050000000c0000000a000000
   inventory: []
   hand: {fileID: 2497701129174850206}
   currentWeapon: {fileID: 0}

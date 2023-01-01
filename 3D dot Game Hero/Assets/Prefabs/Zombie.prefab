@@ -841,6 +841,8 @@ MonoBehaviour:
     value: 10
   - weapon: 25
     value: 10
+  - weapon: 33
+    value: 100
   zombieMov: {fileID: 5072185551581666535}
   animator: {fileID: 6617030023809101826}
   zombieCollider: {fileID: 7320515222127249657}

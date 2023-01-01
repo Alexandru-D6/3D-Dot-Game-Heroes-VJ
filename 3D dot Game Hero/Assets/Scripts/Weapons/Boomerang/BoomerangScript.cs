@@ -91,12 +91,6 @@ public class BoomerangScript : WeaponScript {
         base.AttackFinished();
 
         LockAxis(true, false, false);
-
-        DecrementUses();
-
-        if (GetLeftUses() == 0) {
-            weaponManager.DestroyWeapon((Tags)System.Enum.Parse(typeof(Tags), GetName()));
-        }
     }
 
     public override void RestartState() {
