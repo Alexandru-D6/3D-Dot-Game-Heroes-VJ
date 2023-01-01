@@ -37,6 +37,7 @@ TagManager:
   - SpawnParticles
   - EndermanArm
   - Debug
+  - Obstacle
   - ExplotionBomb
   layers:
   - Default
