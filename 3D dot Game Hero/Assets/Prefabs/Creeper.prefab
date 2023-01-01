@@ -420,6 +420,8 @@ MonoBehaviour:
     value: 10
   - weapon: 25
     value: 10
+  - weapon: 33
+    value: 100
   creeperMov: {fileID: 9145281206296212765}
   animator: {fileID: 1899036119892083257}
   creeperCollider: {fileID: 8032975861488864794}

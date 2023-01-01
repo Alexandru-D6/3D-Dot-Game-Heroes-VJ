@@ -440,6 +440,8 @@ MonoBehaviour:
     value: 10
   - weapon: 25
     value: 10
+  - weapon: 33
+    value: 100
   skeletonMov: {fileID: 2863543732854746102}
   animator: {fileID: 2717843879363128259}
   skeletonCollider: {fileID: 5320408901920540910}

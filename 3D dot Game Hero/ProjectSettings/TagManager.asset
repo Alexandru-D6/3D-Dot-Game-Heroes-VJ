@@ -38,6 +38,7 @@ TagManager:
   - EndermanArm
   - Debug
   - Obstacle
+  - ExplotionBomb
   layers:
   - Default
   - TransparentFX

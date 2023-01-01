@@ -586,6 +586,8 @@ MonoBehaviour:
     value: 10
   - weapon: 25
     value: 10
+  - weapon: 33
+    value: 100
   endermanMov: {fileID: 3392937606577375328}
   animator: {fileID: 2318985479639805853}
   endermanCollider: {fileID: -2532341082811563627}

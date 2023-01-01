@@ -34,6 +34,7 @@ public enum Tags {
     EndermanArm,
     Debug,
     Obstacle,
+    ExplotionBomb,
     Uknown,
 }
 
