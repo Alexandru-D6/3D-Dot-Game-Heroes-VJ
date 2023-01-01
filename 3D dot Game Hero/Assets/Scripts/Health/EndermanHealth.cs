@@ -27,6 +27,7 @@ public class EndermanHealth : HealthScript {
             switch(TagsUtils.GetTag(other.tag)) {
                 case Tags.EndermanArm:
                 case Tags.ZombieArm:
+                case Tags.Bomb:
                     return;
             }
             if (other.tag == Tags.Arrow.ToString() && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Enemies) return;

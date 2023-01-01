@@ -27,6 +27,7 @@ public class SkeletonHealth : HealthScript {
             switch(TagsUtils.GetTag(other.tag)) {
                 case Tags.ZombieArm:
                 case Tags.Bow:
+                case Tags.Bomb:
                     return;
             }
 

@@ -28,6 +28,7 @@ public class CreeperHealth : HealthScript {
                 case Tags.EndermanArm:
                 case Tags.ZombieArm:
                 case Tags.ExplosionCreeper:
+                case Tags.Bomb:
                     return;
             }
             if (other.tag == Tags.Arrow.ToString() && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Enemies) return;

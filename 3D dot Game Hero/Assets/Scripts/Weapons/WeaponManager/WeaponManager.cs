@@ -103,6 +103,8 @@ public abstract class WeaponManager : MonoBehaviour {
     public virtual void DestroyWeapon(Tags weapon) {
         for (int i = 0; i < inventory.Count; ++i) {
             if (inventory[i].GetName().Equals(weapon.ToString())) {
+                UnselectCurrentWeapon();
+
                 inventory[i].SetActive(false);
                 inventory[i].transform.parent = null;
 

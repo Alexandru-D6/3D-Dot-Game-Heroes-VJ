@@ -33,6 +33,7 @@ public enum Tags {
     SpawnParticles,
     EndermanArm,
     Debug,
+    ExplotionBomb,
     Uknown,
 }
 

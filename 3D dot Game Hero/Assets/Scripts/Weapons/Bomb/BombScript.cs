@@ -13,6 +13,7 @@ public class BombScript : WeaponScript {
     [SerializeField] private FollowAnchor followAnchorScript;
     [SerializeField] private GameObject bombPrefab;
     [SerializeField] private GameObject explotionParticles;
+    [SerializeField] private GameObject explotionCollider;
 
     [Header("Bomb Parameters")]
     [Range(0.0f,1.0f)]
@@ -43,6 +44,12 @@ public class BombScript : WeaponScript {
         yield return new WaitForSeconds(time);
 
         Explode();
+    }
+
+    IEnumerator delayedDestroyRoutine(float time) {
+        yield return new WaitForSeconds(time);
+
+        Destroy(gameObject);
     }
 
 #endregion
@@ -109,7 +116,9 @@ public class BombScript : WeaponScript {
 
     private void Explode() {
         Instantiate(explotionParticles, transform.position, transform.rotation, sceneObjects.transform);
-        Destroy(gameObject);
+        explotionCollider.SetActive(true);
+
+        StartCoroutine(delayedDestroyRoutine(0.01f));
     }
 
     #endregion
