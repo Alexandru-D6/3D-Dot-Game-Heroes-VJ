@@ -53,6 +53,7 @@ public class PlayerManager : MonoBehaviour {
         switch(GetInventory(tag)) {
             case OutputInventory.Weapon:
                 playerWeaponManager.AddToAvailables(tag);
+                UIPlayer.Instance.UnlockedWeapon(tag);
                 break;
             case OutputInventory.Items:
                 inventorySystem.AddToAvailables(tag);
@@ -61,6 +62,7 @@ public class PlayerManager : MonoBehaviour {
                 // Comunicate with health system to increase or do what it's need to do
                 break;
         }
+        
     }
 
     public bool IsItemAvailable(Tags tag) {
