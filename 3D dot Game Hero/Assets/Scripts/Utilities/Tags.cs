@@ -36,6 +36,7 @@ public enum Tags {
     ExplotionBomb,
     DragonLeftFoot,
     DragonRightFoot,
+    FlamethrowerParticles,
     Uknown,
 }
 

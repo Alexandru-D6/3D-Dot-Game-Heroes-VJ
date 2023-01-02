@@ -14,6 +14,12 @@ public class PlayerHealth : HealthScript {
 
     #region Collision Methods
 
+    private void OnParticleCollision(GameObject other) {
+        if (other.tag == Tags.FlamethrowerParticles.ToString()) {
+            Debug.Log("AAAAAAAAAAAAA");
+        }
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.layer == (int)Layers.Weapon) {
 

@@ -434,7 +434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4998415447198196778, guid: 82a897325f129734ba49e57ccd586349, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.104501
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 4998415447198196778, guid: 82a897325f129734ba49e57ccd586349, type: 3}
       propertyPath: m_LocalPosition.y
@@ -442,7 +442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4998415447198196778, guid: 82a897325f129734ba49e57ccd586349, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.97
+      value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: 4998415447198196778, guid: 82a897325f129734ba49e57ccd586349, type: 3}
       propertyPath: m_LocalRotation.w
@@ -484,7 +484,8 @@ PrefabInstance:
       propertyPath: dragonThrowback.z
       value: 15
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4713331758898903793, guid: 82a897325f129734ba49e57ccd586349, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 82a897325f129734ba49e57ccd586349, type: 3}
 --- !u!1 &963194225
 GameObject:
@@ -1857,12 +1858,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5490055727977711471, guid: 120c2d334dfac2941a8058b1d1e2c7e9, type: 3}
     - target: {fileID: 5431272053549611940, guid: 89822055dc28f2d498973ac980cf0505, type: 3}
+      propertyPath: speed
+      value: 56.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431272053549611940, guid: 89822055dc28f2d498973ac980cf0505, type: 3}
       propertyPath: currentPathFollower
       value: 
       objectReference: {fileID: 609112694}
     - target: {fileID: 5431272053549611940, guid: 89822055dc28f2d498973ac980cf0505, type: 3}
-      propertyPath: startFlyingProbability
+      propertyPath: changePathProbability
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431272053549611940, guid: 89822055dc28f2d498973ac980cf0505, type: 3}
+      propertyPath: startFlyingProbability
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5431272053549611940, guid: 89822055dc28f2d498973ac980cf0505, type: 3}
       propertyPath: leftFootKickProbability
