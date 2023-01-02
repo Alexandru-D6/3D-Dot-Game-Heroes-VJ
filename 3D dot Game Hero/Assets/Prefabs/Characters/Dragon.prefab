@@ -46,14 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11e994d20682cd44a9a287c1724ea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  pathsFollowers: []
+  animator: {fileID: 4579970964192679533}
+  pathsFollowers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   endOfPathInstruction: 0
-  speed: 5
+  speed: 16.59
   flamethrowerDelay: 1
   flyTime: 10
-  changePathProbability: 2
-  startFlyingProbability: 30
+  changePathProbability: 0
+  startFlyingProbability: 74.6
   groundFlamethrowerProbability: 60
   simpleFlamethrowerProbability: 50
   leftAttackProbability: 50
@@ -71,8 +74,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2382800651363490166}
   running: 0
-  mouthReference: {fileID: 0}
-  flamethrowerPrefab: {fileID: 0}
+  mouthReference: {fileID: 2325085677917751098}
+  flamethrowerParticle: {fileID: 2865517921825750632}
 --- !u!1001 &2324127311761209116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,6 +137,11 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: bfad3061ff9bfc44b88ac75cbc4435ad, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
+--- !u!1 &2325085677917751098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1311043580964902, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
+  m_PrefabInstance: {fileID: 2324127311761209116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2325701335904281122 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1821285486597438, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
@@ -151,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31afcad8e9175e46a781ba93efc62ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathFollower: {fileID: 0}
+  pathFollower: {fileID: 5431272053549611940}
 --- !u!4 &2328564268198276434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
@@ -160,5 +168,10 @@ Transform:
 --- !u!95 &2382800651363490166 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95030689951936106, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
+  m_PrefabInstance: {fileID: 2324127311761209116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2865517921825750632 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 541742744100342132, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
   m_PrefabInstance: {fileID: 2324127311761209116}
   m_PrefabAsset: {fileID: 0}

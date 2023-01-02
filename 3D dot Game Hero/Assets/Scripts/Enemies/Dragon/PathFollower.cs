@@ -50,6 +50,7 @@ public class PathFollower : MonoBehaviour {
         flamethrower = false;
         canFlameThrower = true;
         animator.toIdle();
+        animator.SetFlamethrower(false);
     }
 
     IEnumerator delayedFlamethrowerRoutine(float time) {
@@ -158,5 +159,10 @@ public class PathFollower : MonoBehaviour {
 
     public void OnFlamethrowerFinished() {
         StartCoroutine(delayedFlamethrowerRoutine(flamethrowerDelay));
+        animator.SetFlamethrower(false);
+    }
+
+    public void OnFlamethrowerStarted() {
+        animator.SetFlamethrower(true);
     }
 }

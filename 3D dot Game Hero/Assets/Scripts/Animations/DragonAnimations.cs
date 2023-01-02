@@ -6,7 +6,7 @@ public class DragonAnimations : AnimationManager {
 
     bool flying = false;
     [SerializeField] private GameObject mouthReference;
-    [SerializeField] private GameObject flamethrowerPrefab;
+    [SerializeField] private ParticleSystem flamethrowerParticle;
 
     public virtual void toIdle() {
         enableRunning(false);
@@ -29,22 +29,18 @@ public class DragonAnimations : AnimationManager {
 
     public void Breath_Gs() {
         animator.Play("Breath_Gs");
-        Instantiate(flamethrowerPrefab, mouthReference.transform);
     }
 
     public void Breath_Gw() {
         animator.Play("Breath_Gw");
-        Instantiate(flamethrowerPrefab, mouthReference.transform);
     }
 
     public void Breath_Fs() {
         animator.Play("Breath_Fs");
-        Instantiate(flamethrowerPrefab, mouthReference.transform);
     }
 
     public void Breath_Fw() {
         animator.Play("Breath_Fw");
-        Instantiate(flamethrowerPrefab, mouthReference.transform);
     }
 
     public void AttackClawL() {
@@ -53,6 +49,11 @@ public class DragonAnimations : AnimationManager {
 
     public void AttackClawR() {
         animator.Play("Atk_Claw_R");
+    }
+
+    public void SetFlamethrower(bool value) {
+        if (value) flamethrowerParticle.Play();
+        else flamethrowerParticle.Stop();
     }
 
     public override void AttackStarted() { return; }

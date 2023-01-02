@@ -5,7 +5,14 @@ using UnityEngine;
 public class DragonAnimationEventsHandler : MonoBehaviour {
 
     [SerializeField] private PathFollower pathFollower;
+
     void OnFlamethrowerFinished() {
         pathFollower.OnFlamethrowerFinished();
+
+    }
+
+    void OnFlamethrowerStarted() {
+        pathFollower.OnFlamethrowerStarted();
+
     }
 }
