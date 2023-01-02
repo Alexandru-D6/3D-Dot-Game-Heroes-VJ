@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private InventorySystem inventorySystem;
     [SerializeField] private PlayerAnimations playerAnimations;
+    [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private Collider playerCollider;
     [SerializeField] private Rigidbody playerRigidBody;
     [SerializeField] private PlayerAutomaticMovement playerAutomaticMovement;
@@ -38,6 +39,7 @@ public class PlayerManager : MonoBehaviour {
 
     [Header("Values")]
     [SerializeField] private float deathDelay = 2.0f;
+    [SerializeField] private Vector3 dragonThrowback = new Vector3(10.0f, 5.0f, 0.0f);
 
     #endregion
 
@@ -59,7 +61,7 @@ public class PlayerManager : MonoBehaviour {
                 inventorySystem.AddToAvailables(tag);
                 break;
             case OutputInventory.Consumables:
-                // Comunicate with health system to increase or do what it's need to do
+                playerHealth.IncreaseHealth(playerHealth.GetHealing(tag));
                 break;
         }
         
@@ -105,6 +107,20 @@ public class PlayerManager : MonoBehaviour {
 
     public void MoveTo(Vector3 doorPosition, Vector3 doorForward, float distance) {
         playerAutomaticMovement.MoveTo(doorPosition + doorForward * distance);
+    }
+
+    public void DragonHit(Tags tag) {
+        GameObject dragon = GameObject.FindGameObjectWithTag(Tags.Dragon.ToString());
+        Vector3 dragonForward = dragon.transform.forward;
+
+        switch (tag) {
+            case Tags.DragonLeftFoot:
+                playerRigidBody.velocity += new Vector3(dragonThrowback.x * dragonForward.z,dragonThrowback.y, -1.0f * dragonThrowback.z * dragonForward.x);
+                break;
+            case Tags.DragonRightFoot:
+                playerRigidBody.velocity += new Vector3(-1.0f * dragonThrowback.x * dragonForward.z, dragonThrowback.y, dragonThrowback.z * dragonForward.x);
+                break;
+        }
     }
 
     #endregion

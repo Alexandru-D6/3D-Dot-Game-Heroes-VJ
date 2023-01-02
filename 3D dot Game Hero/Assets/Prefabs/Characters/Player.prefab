@@ -641,7 +641,6 @@ GameObject:
   - component: {fileID: 2222480201678553054}
   - component: {fileID: 3411510570702866761}
   - component: {fileID: 5537726334345410472}
-  - component: {fileID: 4713331758898903793}
   - component: {fileID: 8800294357765895709}
   - component: {fileID: 3119554770518494729}
   - component: {fileID: 448156431308847209}
@@ -694,10 +693,12 @@ MonoBehaviour:
   playerInput: {fileID: 4816398731180999629}
   inventorySystem: {fileID: 505633924705408062}
   playerAnimations: {fileID: 2222480201678553054}
+  playerHealth: {fileID: 5537726334345410472}
   playerCollider: {fileID: 6925475127036339142}
   playerRigidBody: {fileID: 1603912058711816172}
   playerAutomaticMovement: {fileID: 8800294357765895709}
   deathDelay: 2
+  dragonThrowback: {x: 15, y: 5, z: 0}
 --- !u!114 &4816398731180999629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,20 +801,18 @@ MonoBehaviour:
     value: 10
   - weapon: 33
     value: 100
+  - weapon: 34
+    value: 10
+  - weapon: 35
+    value: 10
+  - weapon: 36
+    value: 10
+  healingStats:
+  - weapon: 19
+    value: 10
+  isInmortal: 0
   playerManager: {fileID: 8215279082758402672}
   blood: {fileID: 1153182194385908334, guid: a34346b2a5b5e6744937e9ecbd0d6413, type: 3}
---- !u!114 &4713331758898903793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626721005123845776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b558e7ebe46383e4abbace11506bd25d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8800294357765895709
 MonoBehaviour:
   m_ObjectHideFlags: 0

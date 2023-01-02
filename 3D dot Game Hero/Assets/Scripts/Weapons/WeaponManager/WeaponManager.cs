@@ -44,7 +44,7 @@ public abstract class WeaponManager : MonoBehaviour {
         if (inventory.Count == 0) return false;
 
         // Returning true, the selection of another weapon while boomerang is flying while be invalid
-        if (currentWeapon.transform.parent != hand.transform) return true;
+        if (currentWeapon != null && currentWeapon.transform.parent != hand.transform) return true;
 
         // Reset animation and button cooldown
         animationManager.toIdle();
