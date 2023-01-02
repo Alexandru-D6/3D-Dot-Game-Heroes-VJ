@@ -39,6 +39,19 @@ public abstract class HealthScript : MonoBehaviour {
         new DamageStat(Tags.FlamethrowerParticles, 30),
     };
 
+    [Header("Others")]
+    [SerializeField] private bool isInmortal = false;
+
+    #endregion
+
+    #region IEnumerators
+
+    IEnumerator delayedInmortalityDisableRoutine(float time) {
+        yield return new WaitForSeconds(time);
+
+        isInmortal = false;
+    }
+
     #endregion
 
     #region Abstract Methods
@@ -77,10 +90,18 @@ public abstract class HealthScript : MonoBehaviour {
     }
 
     public void DecreaseHealth(int value) {
-        if (value > 0) {
+        if (value > 0 && !isInmortal) {
             currentHealth -= value;
             if (currentHealth > 0) GetHit();
+
+            GiveInmortality(1.0f);
         }
+    }
+
+    public void GiveInmortality(float time, bool infinite = false) {
+        isInmortal = true;
+
+        if (!infinite) StartCoroutine(delayedInmortalityDisableRoutine(time));
     }
 
     #endregion

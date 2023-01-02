@@ -1085,10 +1085,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flamethrower
       objectReference: {fileID: 0}
-    - target: {fileID: 5490055727977711471, guid: 120c2d334dfac2941a8058b1d1e2c7e9, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 5738416632250761160, guid: 120c2d334dfac2941a8058b1d1e2c7e9, type: 3}
       propertyPath: m_RootOrder
       value: 1

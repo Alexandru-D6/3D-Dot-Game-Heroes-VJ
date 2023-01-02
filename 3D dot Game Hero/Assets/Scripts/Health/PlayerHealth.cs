@@ -15,8 +15,8 @@ public class PlayerHealth : HealthScript {
     #region Collision Methods
 
     private void OnParticleCollision(GameObject other) {
-        if (other.tag == Tags.FlamethrowerParticles.ToString()) {
-            Debug.Log("AAAAAAAAAAAAA");
+        if (other.gameObject.layer == (int)Layers.Weapon) {
+            DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
         }
     }
 

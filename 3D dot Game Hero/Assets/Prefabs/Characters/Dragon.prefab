@@ -57,6 +57,7 @@ MonoBehaviour:
   - {fileID: 0}
   endOfPathInstruction: 0
   speed: 16.59
+  rotationSpeed: 3
   flamethrowerDelay: 1
   flyTime: 10
   footKickDelay: 1
