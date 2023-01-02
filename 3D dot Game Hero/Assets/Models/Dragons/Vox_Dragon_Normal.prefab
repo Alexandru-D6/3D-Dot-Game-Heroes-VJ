@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4120570794679746}
   - component: {fileID: 8093141118038310628}
-  m_Layer: 6
+  m_Layer: 31
   m_Name: RightHand
   m_TagString: DragonRightFoot
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4820292292892148}
   - component: {fileID: 6888013101706699295}
-  m_Layer: 6
+  m_Layer: 31
   m_Name: LeftHand
   m_TagString: DragonLeftFoot
   m_Icon: {fileID: 0}

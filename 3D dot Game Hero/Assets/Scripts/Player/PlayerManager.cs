@@ -107,12 +107,15 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public void DragonHit(Tags tag) {
+        GameObject dragon = GameObject.FindGameObjectWithTag(Tags.Dragon.ToString());
+        Vector3 dragonForward = dragon.transform.forward;
+
         switch (tag) {
             case Tags.DragonLeftFoot:
-                playerRigidBody.velocity += dragonThrowback;
+                playerRigidBody.velocity += new Vector3(dragonThrowback.x * dragonForward.z,dragonThrowback.y, -1.0f * dragonThrowback.z * dragonForward.x);
                 break;
             case Tags.DragonRightFoot:
-                playerRigidBody.velocity += new Vector3(-1.0f * dragonThrowback.x,dragonThrowback.y,dragonThrowback.z);
+                playerRigidBody.velocity += new Vector3(-1.0f * dragonThrowback.x * dragonForward.z, dragonThrowback.y, dragonThrowback.z * dragonForward.x);
                 break;
         }
     }
