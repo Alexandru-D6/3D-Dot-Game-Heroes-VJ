@@ -9,6 +9,7 @@ public class DragonLogic : MonoBehaviour {
 
     [Header("References")]
     [SerializeField] private DragonAnimations animator;
+    [SerializeField] private GameObject player;
 
     [Header("Paths configuration")]
     [SerializeField] private List<PathCreator> pathsFollowers;
@@ -21,8 +22,14 @@ public class DragonLogic : MonoBehaviour {
     [Header("Other")]
     [SerializeField] private float rotationSpeed = 3.0f;
 
+    [Header("Follow Player")]
+    [SerializeField] private float followPlayerDuration = 20.0f;
+    private Vector3 followDestination;
+    private bool canFollowPlayer = true;
+
     [Header("States")]
     private bool isFollowingPath = true;
+    private bool isFollowingPlayer = false;
     private bool isFlying = false;
     private bool isAttacking = false;
     private bool skipNextFly = false;
@@ -41,6 +48,8 @@ public class DragonLogic : MonoBehaviour {
     private bool canFootKick = true;
 
     [Header("Probabilities")]
+    [Range(0,100)]
+    [SerializeField] private float followPlayerProbability = 20;
     [Range(0,100)]
     [SerializeField] private float changePathProbability = 2;
     [Range(0,100)]
@@ -63,7 +72,8 @@ public class DragonLogic : MonoBehaviour {
         isFlying = false;
         flamethrower = false;
         canFlameThrower = true;
-        isFollowingPath = true;
+        isFollowingPlayer = false;
+        if (!isFollowingPlayer) isFollowingPath = true;
 
         animator.SetFlamethrower(false);
 
@@ -81,19 +91,59 @@ public class DragonLogic : MonoBehaviour {
 
         canFootKick = true;
         isAttacking = false;
+        isFollowingPlayer = false;
         isFollowingPath = true;
+
+        if (!canFollowPlayer) StartCoroutine(delayedNextPlayerFollowerRoutine(followPlayerDuration * 2.0f));
+
+        distanceTravelled = currentPathFollower.path.GetClosestDistanceAlongPath(transform.position);
 
         animator.toIdle();
         animator.enableRunning(true);
     }
 
+    IEnumerator delayedPlayerFollowerDisableRoutine(float time) {
+        yield return new WaitForSeconds(time);
+
+        isFollowingPlayer = false;
+        isFollowingPath = true;
+
+        StartCoroutine(delayedNextPlayerFollowerRoutine(followPlayerDuration * 2.0f));
+
+        distanceTravelled = currentPathFollower.path.GetClosestDistanceAlongPath(transform.position);
+    }
+
+    IEnumerator delayedNextPlayerFollowerRoutine(float time) {
+        yield return new WaitForSeconds(time);
+
+        canFollowPlayer = true;
+    }
+
     private void OnTriggerEnter(Collider other) {
-        if (canFootKick && !isAttacking && (other.tag == Tags.Player.ToString() || other.gameObject.layer == (int)Layers.Weapon)) {
+        if (canFootKick && !isAttacking && other.tag == Tags.Player.ToString()) {
             isFollowingPath = false;
+            isFollowingPlayer = false;
             isAttacking = true;
         }
     }
 
+    private void GetToTheNeareastPath() {
+        int i = 0;
+        int lowest = 0;
+        float dist = float.MaxValue;
+        foreach(var x in pathsFollowers) {
+            float tmp = Vector3.Distance(x.path.GetClosestPointOnPath(transform.position), transform.position);
+            if (tmp < dist) {
+                lowest = i;
+                dist = tmp;
+            }
+            i++;
+        }
+
+        lastPathFollower = currentPathFollower;
+        currentPathFollower = pathsFollowers[lowest];
+        distanceTravelled = currentPathFollower.path.GetClosestDistanceAlongPath(transform.position);
+    }
     private void ChangeToNearestPath(float maxDist) {
         foreach(var x in pathsFollowers) {
             // The conditions to change the path are:
@@ -117,6 +167,20 @@ public class DragonLogic : MonoBehaviour {
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0.0f,rotY,0.0f), rotationSpeed);
     }
 
+    private void PathRoutine() {
+        if (currentPathFollower != null) {
+            if (isFollowingPath) animator.enableRunning(true);
+
+            distanceTravelled += speed * Time.deltaTime;
+            transform.position = currentPathFollower.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
+            transform.rotation = currentPathFollower.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
+
+            HandleFlyingFlamethrower();
+        }
+
+        ChangeToNearestPath(0.2f);
+    }
+
     private void HandleFlyingFlamethrower() {
         if (!skipNextFly && currentPathFollower == pathsFollowers[0] && Mathf.Abs(currentPathFollower.path.length - (distanceTravelled % currentPathFollower.path.length)) < 0.5f) {
             if (Random.Range(0,100) < startFlyingProbability) {
@@ -137,20 +201,6 @@ public class DragonLogic : MonoBehaviour {
         } else if (skipNextFly && currentPathFollower == pathsFollowers[0]) {
             skipNextFly = Mathf.Abs(currentPathFollower.path.length - (distanceTravelled % currentPathFollower.path.length)) <= 0.5f;
         }
-    }
-
-    private void PathRoutine() {
-        if (currentPathFollower != null) {
-            if (isFollowingPath) animator.enableRunning(true);
-
-            distanceTravelled += speed * Time.deltaTime;
-            transform.position = currentPathFollower.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
-            transform.rotation = currentPathFollower.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
-
-            HandleFlyingFlamethrower();
-        }
-
-        ChangeToNearestPath(0.2f);
     }
 
     private void FlamethrowerAttack() {
@@ -180,7 +230,20 @@ public class DragonLogic : MonoBehaviour {
         canFootKick = false;
     }
 
+    private void PlayerFollowRoutine() {
+        followDestination = player.transform.position;
+
+        Vector3 dir = (followDestination - transform.position).normalized;
+
+        transform.Translate(dir * speed * Time.deltaTime, Space.World);
+
+        Vector2 tmp = new Vector2(dir.x, dir.z);
+        Vector2 tmpForward = new Vector2(transform.forward.x, transform.forward.z);
+        LookAt(Vector2.SignedAngle(tmp, tmpForward));
+    }
+
     void Start() {
+        player = GameObject.FindGameObjectWithTag(Tags.Player.ToString());
         currentPathFollower = pathsFollowers[0];
 
         if (currentPathFollower != null) {
@@ -189,15 +252,24 @@ public class DragonLogic : MonoBehaviour {
     }
 
     void Update() {
-        if (isFollowingPath) PathRoutine();
+        if (isFollowingPath) {
+            flamethrower = false;
+            animator.SetFlamethrower(false);
+            PathRoutine();
+        }
         if (isFlying || flamethrower) LookAt(0.0f);
         if (flamethrower) FlamethrowerAttack();
         if (isAttacking) AttackRoutine();
+        if (isFollowingPlayer) PlayerFollowRoutine();
+
+        /*if (!isFollowingPlayer && canFollowPlayer  && isFollowingPath && Random.Range(0,100) < followPlayerProbability) {
+            isFollowingPlayer = true;
+            isFollowingPath = false;
+            canFollowPlayer = false;
+            StartCoroutine(delayedPlayerFollowerDisableRoutine(followPlayerDuration));
+        }*/
     }
 
-
-    // If the path changes during the game, update the distance travelled so that the follower's position on the new path
-    // is as close as possible to its position on the old path
     void OnPathChanged() {
         distanceTravelled = currentPathFollower.path.GetClosestDistanceAlongPath(transform.position);
     }

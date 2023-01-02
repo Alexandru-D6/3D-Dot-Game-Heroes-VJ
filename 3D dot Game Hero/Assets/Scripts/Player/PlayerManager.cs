@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private InventorySystem inventorySystem;
     [SerializeField] private PlayerAnimations playerAnimations;
+    [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private Collider playerCollider;
     [SerializeField] private Rigidbody playerRigidBody;
     [SerializeField] private PlayerAutomaticMovement playerAutomaticMovement;
@@ -59,7 +60,7 @@ public class PlayerManager : MonoBehaviour {
                 inventorySystem.AddToAvailables(tag);
                 break;
             case OutputInventory.Consumables:
-                // Comunicate with health system to increase or do what it's need to do
+                playerHealth.IncreaseHealth(playerHealth.GetHealing(tag));
                 break;
         }
     }

@@ -9,12 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 333124095646137499}
+  - component: {fileID: 2756969612480768307}
   - component: {fileID: 5431272053549611940}
   - component: {fileID: 4579970964192679533}
+  - component: {fileID: 4535377054194254367}
   - component: {fileID: 4149749693904389519}
   - component: {fileID: 1305025558792157419}
   - component: {fileID: 523783264522908486}
   - component: {fileID: 7188852952862234733}
+  - component: {fileID: 9066632875138014741}
   m_Layer: 6
   m_Name: Dragon
   m_TagString: Dragon
@@ -38,6 +41,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2756969612480768307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112905824697361829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066248f463f11e34aa1c9974e7327dcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4579970964192679533}
+  dragonLogic: {fileID: 5431272053549611940}
+  deathDelay: 2
 --- !u!114 &5431272053549611940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,22 +69,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4579970964192679533}
+  player: {fileID: 0}
   pathsFollowers:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   endOfPathInstruction: 0
-  speed: 16.59
+  speed: 5
   rotationSpeed: 3
+  followPlayerDuration: 5
   flamethrowerDelay: 1
   flyTime: 10
   footKickDelay: 1
   playerDetector: {fileID: 4149749693904389519}
   rightCollider: {fileID: 5769227182870661624}
   leftCollider: {fileID: 9212066936030598403}
-  changePathProbability: 0
-  startFlyingProbability: 74.6
-  groundFlamethrowerProbability: 60
+  followPlayerProbability: 0
+  changePathProbability: 3
+  startFlyingProbability: 40
+  groundFlamethrowerProbability: 70
   simpleFlamethrowerProbability: 50
   leftFootKickProbability: 50
 --- !u!114 &4579970964192679533
@@ -84,6 +105,36 @@ MonoBehaviour:
   animator: {fileID: 2382800651363490166}
   running: 0
   flamethrowerParticle: {fileID: 2865517921825750632}
+  flashingAlpha: {fileID: 9066632875138014741}
+--- !u!114 &4535377054194254367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112905824697361829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 998c55d544d19e643b5c6a0bfa44f4a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 50
+  maxHealth: 50
+  damageStats:
+  - weapon: 9
+    value: 10
+  - weapon: 5
+    value: 10
+  - weapon: 7
+    value: 10
+  - weapon: 20
+    value: 10
+  - weapon: 1
+    value: 10
+  - weapon: 33
+    value: 10
+  isInmortal: 0
+  dragonManager: {fileID: 2756969612480768307}
 --- !u!65 &4149749693904389519
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -139,6 +190,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &9066632875138014741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112905824697361829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04cad753ec85bee4788181d0a86dd01f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matBlack: {fileID: 2100000, guid: 3ac0743b252e96c4dbf91f52c9ef3b2b, type: 2}
+  matTrans: {fileID: 2100000, guid: 814f4cb853974984e8343c2149e78de8, type: 2}
+  _renderer: {fileID: 2426020025774194390}
+  timeRemaining: -0.1
+  amplitude: 0.15
+  steeps: 0.1
 --- !u!1001 &2324127311761209116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -281,18 +350,6 @@ PrefabInstance:
     - target: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
       propertyPath: m_LocalPosition.x
@@ -450,31 +507,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -28.149904
       objectReference: {fileID: 0}
-    - target: {fileID: 95030689951936106, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
-      propertyPath: m_Controller
+    - target: {fileID: 137924001041107402, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
+      propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 9100000, guid: bfad3061ff9bfc44b88ac75cbc4435ad, type: 2}
+      objectReference: {fileID: 2100000, guid: 3ac0743b252e96c4dbf91f52c9ef3b2b, type: 2}
+    - target: {fileID: 3858379640974707310, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
+      propertyPath: dragonLogic
+      value: 
+      objectReference: {fileID: 5431272053549611940}
     m_RemovedComponents:
     - {fileID: 8706927738576204049, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
---- !u!1 &2325701335904281122 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1821285486597438, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
-  m_PrefabInstance: {fileID: 2324127311761209116}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6307735671431529060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2325701335904281122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c31afcad8e9175e46a781ba93efc62ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dragonLogic: {fileID: 5431272053549611940}
 --- !u!4 &2328564268198276434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
@@ -483,6 +526,11 @@ Transform:
 --- !u!95 &2382800651363490166 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95030689951936106, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
+  m_PrefabInstance: {fileID: 2324127311761209116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2426020025774194390 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 137924001041107402, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
   m_PrefabInstance: {fileID: 2324127311761209116}
   m_PrefabAsset: {fileID: 0}
 --- !u!198 &2865517921825750632 stripped

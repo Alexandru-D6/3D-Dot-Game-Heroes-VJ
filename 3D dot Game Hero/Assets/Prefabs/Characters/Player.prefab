@@ -693,6 +693,7 @@ MonoBehaviour:
   playerInput: {fileID: 4816398731180999629}
   inventorySystem: {fileID: 505633924705408062}
   playerAnimations: {fileID: 2222480201678553054}
+  playerHealth: {fileID: 5537726334345410472}
   playerCollider: {fileID: 6925475127036339142}
   playerRigidBody: {fileID: 1603912058711816172}
   playerAutomaticMovement: {fileID: 8800294357765895709}
@@ -805,6 +806,9 @@ MonoBehaviour:
   - weapon: 35
     value: 10
   - weapon: 36
+    value: 10
+  healingStats:
+  - weapon: 19
     value: 10
   isInmortal: 0
   playerManager: {fileID: 8215279082758402672}

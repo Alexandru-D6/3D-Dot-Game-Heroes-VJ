@@ -7,10 +7,15 @@ public class DragonAnimations : AnimationManager {
 
     bool flying = false;
     [SerializeField] private ParticleSystem flamethrowerParticle;
+    [SerializeField] private FlashingAlphaScript flashingAlpha;
 
-    public virtual void toIdle() {
+    public override void toIdle() {
         enableRunning(false);
         animator.Play("Idle");
+    }
+
+    public override void toHit() {
+        flashingAlpha.SetFlashing(1.0f, 0.15f, 0.1f);
     }
 
     public void forceRunning() {
@@ -72,5 +77,4 @@ public class DragonAnimations : AnimationManager {
 
     public override void AttackFinished() { return; }
 
-    public override void toHit() { return; }
 }

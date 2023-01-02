@@ -38,6 +38,10 @@ public abstract class HealthScript : MonoBehaviour {
         new DamageStat(Tags.DragonRightFoot, 10),
         new DamageStat(Tags.FlamethrowerParticles, 30),
     };
+    [Space(10)]
+    [SerializeField] List<DamageStat> healingStats = new List<DamageStat>{ 
+        new DamageStat(Tags.Hamburguer, 10),
+    };
 
     [Header("Others")]
     [SerializeField] private bool isInmortal = false;
@@ -70,6 +74,16 @@ public abstract class HealthScript : MonoBehaviour {
 
     public int GetMaxHealth() {
         return maxHealth;
+    }
+
+    public int GetHealing(Tags tag) {
+        int heal = 0;
+
+        foreach (DamageStat healingStat in healingStats) {
+            if (healingStat.weapon == tag) heal = healingStat.value;
+        }
+
+        return heal;
     }
 
     public void IncreaseHealth(int value) {
