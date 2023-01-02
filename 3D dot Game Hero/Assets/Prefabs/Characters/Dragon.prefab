@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 333124095646137499}
   - component: {fileID: 5431272053549611940}
   - component: {fileID: 4579970964192679533}
-  m_Layer: 0
+  - component: {fileID: 4149749693904389519}
+  m_Layer: 6
   m_Name: Dragon
-  m_TagString: Untagged
+  m_TagString: Dragon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,11 +56,15 @@ MonoBehaviour:
   speed: 16.59
   flamethrowerDelay: 1
   flyTime: 10
+  footKickDelay: 1
+  playerDetector: {fileID: 4149749693904389519}
+  rightCollider: {fileID: 5769227182870661624}
+  leftCollider: {fileID: 9212066936030598403}
   changePathProbability: 0
   startFlyingProbability: 74.6
   groundFlamethrowerProbability: 60
   simpleFlamethrowerProbability: 50
-  leftAttackProbability: 50
+  leftFootKickProbability: 50
 --- !u!114 &4579970964192679533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,8 +79,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2382800651363490166}
   running: 0
-  mouthReference: {fileID: 2325085677917751098}
   flamethrowerParticle: {fileID: 2865517921825750632}
+--- !u!65 &4149749693904389519
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112905824697361829}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2381256, y: 3.3482034, z: 3.0601685}
+  m_Center: {x: 0.088591695, y: 1.1741015, z: 5.283997}
 --- !u!1001 &2324127311761209116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,6 +109,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -101,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
       propertyPath: m_LocalRotation.w
@@ -135,13 +164,9 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: bfad3061ff9bfc44b88ac75cbc4435ad, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8706927738576204049, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
---- !u!1 &2325085677917751098 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1311043580964902, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
-  m_PrefabInstance: {fileID: 2324127311761209116}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2325701335904281122 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1821285486597438, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
@@ -159,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31afcad8e9175e46a781ba93efc62ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathFollower: {fileID: 5431272053549611940}
+  dragonLogic: {fileID: 5431272053549611940}
 --- !u!4 &2328564268198276434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4588969432930894, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
@@ -173,5 +198,15 @@ Animator:
 --- !u!198 &2865517921825750632 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 541742744100342132, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
+  m_PrefabInstance: {fileID: 2324127311761209116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5769227182870661624 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8093141118038310628, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
+  m_PrefabInstance: {fileID: 2324127311761209116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &9212066936030598403 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 6888013101706699295, guid: 489939eafa6439b41b2be82f493c9598, type: 3}
   m_PrefabInstance: {fileID: 2324127311761209116}
   m_PrefabAsset: {fileID: 0}

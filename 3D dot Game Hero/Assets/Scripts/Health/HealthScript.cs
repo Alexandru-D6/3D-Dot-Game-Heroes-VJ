@@ -34,6 +34,8 @@ public abstract class HealthScript : MonoBehaviour {
         new DamageStat(Tags.EndermanArm, 10),
         new DamageStat(Tags.ExplosionCreeper, 10),
         new DamageStat(Tags.ExplotionBomb, 100),
+        new DamageStat(Tags.DragonLeftFoot, 10),
+        new DamageStat(Tags.DragonRightFoot, 10),
     };
 
     #endregion

@@ -5,7 +5,6 @@ using UnityEngine;
 public class DragonAnimations : AnimationManager {
 
     bool flying = false;
-    [SerializeField] private GameObject mouthReference;
     [SerializeField] private ParticleSystem flamethrowerParticle;
 
     public virtual void toIdle() {

@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class DragonAnimationEventsHandler : MonoBehaviour {
 
-    [SerializeField] private PathFollower pathFollower;
+    [SerializeField] private DragonLogic dragonLogic;
 
     void OnFlamethrowerFinished() {
-        pathFollower.OnFlamethrowerFinished();
+        dragonLogic.OnFlamethrowerFinished();
 
     }
 
     void OnFlamethrowerStarted() {
-        pathFollower.OnFlamethrowerStarted();
+        dragonLogic.OnFlamethrowerStarted();
 
+    }
+
+    void OnFootKickFinished() {
+        dragonLogic.OnFootKickFinished();
     }
 }

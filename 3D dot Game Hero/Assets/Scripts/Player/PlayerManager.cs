@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviour {
 
     [Header("Values")]
     [SerializeField] private float deathDelay = 2.0f;
+    [SerializeField] private Vector3 dragonThrowback = new Vector3(10.0f, 5.0f, 0.0f);
 
     #endregion
 
@@ -103,6 +104,17 @@ public class PlayerManager : MonoBehaviour {
 
     public void MoveTo(Vector3 doorPosition, Vector3 doorForward, float distance) {
         playerAutomaticMovement.MoveTo(doorPosition + doorForward * distance);
+    }
+
+    public void DragonHit(Tags tag) {
+        switch (tag) {
+            case Tags.DragonLeftFoot:
+                playerRigidBody.velocity += dragonThrowback;
+                break;
+            case Tags.DragonRightFoot:
+                playerRigidBody.velocity += new Vector3(-1.0f * dragonThrowback.x,dragonThrowback.y,dragonThrowback.z);
+                break;
+        }
     }
 
     #endregion

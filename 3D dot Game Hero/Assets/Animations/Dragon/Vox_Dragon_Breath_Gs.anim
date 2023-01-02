@@ -9036,7 +9036,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.3666666
+  - time: 2.0833333
     functionName: OnFlamethrowerFinished
     data: 
     objectReferenceParameter: {fileID: 0}

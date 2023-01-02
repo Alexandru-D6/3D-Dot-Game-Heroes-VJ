@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathFollower : MonoBehaviour {
+public class DragonLogic : MonoBehaviour {
 
     #region parameters
 
@@ -17,15 +17,25 @@ public class PathFollower : MonoBehaviour {
     private PathCreator currentPathFollower;
     private PathCreator lastPathFollower = null;
     private float distanceTravelled = 0;
+
+    [Header("States")]
     private bool isFollowingPath = true;
     private bool isFlying = false;
-    private bool isIdle = false;
+    private bool isAttacking = false;
     private bool skipNextFly = false;
     private bool flamethrower = false;
 
-    private bool canFlameThrower = true;
+    [Header("Flamethrower")]
     [SerializeField] private float flamethrowerDelay = 1.0f;
     [SerializeField] private float flyTime = 10.0f;
+    private bool canFlameThrower = true;
+
+    [Header("Foot Kick")]
+    [SerializeField] private float footKickDelay = 1.0f;
+    [SerializeField] private Collider playerDetector;
+    [SerializeField] private Collider rightCollider;
+    [SerializeField] private Collider leftCollider;
+    private bool canFootKick = true;
 
     [Header("Probabilities")]
     [Range(0,100)]
@@ -37,7 +47,7 @@ public class PathFollower : MonoBehaviour {
     [Range(0,100)]
     [SerializeField] private float simpleFlamethrowerProbability = 50;
     [Range(0,100)]
-    [SerializeField] private float leftAttackProbability = 50;
+    [SerializeField] private float leftFootKickProbability = 50;
 
 
     #endregion
@@ -49,14 +59,32 @@ public class PathFollower : MonoBehaviour {
         isFlying = false;
         flamethrower = false;
         canFlameThrower = true;
+
         animator.toIdle();
         animator.SetFlamethrower(false);
+
+        playerDetector.enabled = true;
     }
 
     IEnumerator delayedFlamethrowerRoutine(float time) {
         yield return new WaitForSeconds(time);
 
         canFlameThrower = true;
+    }
+
+    IEnumerator delayedFootKickRoutine(float time) {
+        yield return new WaitForSeconds(time);
+
+        canFootKick = true;
+        isAttacking = false;
+        isFollowingPath = true;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (canFootKick && !isAttacking && (other.tag == Tags.Player.ToString() || other.gameObject.layer == (int)Layers.Weapon)) {
+            isFollowingPath = false;
+            isAttacking = true;
+        }
     }
 
     private void ChangeToNearestPath(float maxDist) {
@@ -86,6 +114,7 @@ public class PathFollower : MonoBehaviour {
         if (!skipNextFly && currentPathFollower == pathsFollowers[0] && Mathf.Abs(currentPathFollower.path.length - (distanceTravelled % currentPathFollower.path.length)) < 0.5f) {
             if (Random.Range(0,100) < startFlyingProbability) {
                 isFlying = true;
+                playerDetector.enabled = false;
                 animator.enableFlying(true);
             }else if (Random.Range(0,100) < groundFlamethrowerProbability){
                 animator.toIdle();
@@ -131,7 +160,17 @@ public class PathFollower : MonoBehaviour {
     }
 
     private void AttackRoutine() {
+        if (!canFootKick) return;
 
+        if (Random.Range(0, 100) < leftFootKickProbability) {
+            animator.AttackClawL();
+            leftCollider.enabled = true;
+        } else {
+            animator.AttackClawR();
+            rightCollider.enabled = true;
+        }
+
+        canFootKick = false;
     }
 
     void Start() {
@@ -146,8 +185,7 @@ public class PathFollower : MonoBehaviour {
         if (isFollowingPath) PathRoutine();
         if (isFlying || flamethrower) LookAt(0.0f);
         if (flamethrower) FlamethrowerAttack();
-
-        AttackRoutine();
+        if (isAttacking) AttackRoutine();
     }
 
 
@@ -164,5 +202,11 @@ public class PathFollower : MonoBehaviour {
 
     public void OnFlamethrowerStarted() {
         animator.SetFlamethrower(true);
+    }
+
+    public void OnFootKickFinished() {
+        StartCoroutine(delayedFootKickRoutine(footKickDelay));
+        leftCollider.enabled = false;
+        rightCollider.enabled = false;
     }
 }

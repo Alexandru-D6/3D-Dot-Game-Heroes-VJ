@@ -698,6 +698,7 @@ MonoBehaviour:
   playerRigidBody: {fileID: 1603912058711816172}
   playerAutomaticMovement: {fileID: 8800294357765895709}
   deathDelay: 2
+  dragonThrowback: {x: 15, y: 5, z: 0}
 --- !u!114 &4816398731180999629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,8 +778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b8b11a6c4d47c4d8c4f16014243e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 0
+  currentHealth: 97
+  maxHealth: 101
   damageStats:
   - weapon: 9
     value: 10

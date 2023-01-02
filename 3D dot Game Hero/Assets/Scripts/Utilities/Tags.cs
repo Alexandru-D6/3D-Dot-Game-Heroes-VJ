@@ -34,6 +34,8 @@ public enum Tags {
     EndermanArm,
     Debug,
     ExplotionBomb,
+    DragonLeftFoot,
+    DragonRightFoot,
     Uknown,
 }
 

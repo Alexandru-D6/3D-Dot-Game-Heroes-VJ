@@ -38,6 +38,8 @@ TagManager:
   - EndermanArm
   - Debug
   - ExplotionBomb
+  - DragonLeftFoot
+  - DragonRightFoot
   layers:
   - Default
   - TransparentFX
