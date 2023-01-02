@@ -33,6 +33,7 @@ public enum Tags {
     SpawnParticles,
     EndermanArm,
     Debug,
+    Obstacle,
     ExplotionBomb,
     DragonLeftFoot,
     DragonRightFoot,
@@ -76,6 +77,17 @@ public enum Layers{
     Weapon
 }
 
+[System.Serializable] 
+public enum ObstacleParts{ 
+    Front,
+    Back,
+    Right,
+    Left,
+    Up,
+    Down
+}
+// Start is called before the first frame update
+
 public class TagsUtils {
     public static Tags GetTag(string name) {
         return (Tags)System.Enum.Parse( typeof(Tags), name );
@@ -84,4 +96,10 @@ public class TagsUtils {
     public static Layers GetLayers(string name) {
         return (Layers)System.Enum.Parse( typeof(Layers), name );
     }
+
+    public static ObstacleParts GetObstaclePart(string name)
+    {
+        return (ObstacleParts)System.Enum.Parse(typeof(ObstacleParts), name);
+    }
+
 }
