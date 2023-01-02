@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class DragonAnimations : AnimationManager {
 
@@ -12,11 +13,23 @@ public class DragonAnimations : AnimationManager {
         animator.Play("Idle");
     }
 
+    public void forceRunning() {
+        running = true;
+        flying = false;
+        animator.Play("Walk");
+    }
+
     public override void enableRunning(bool value) {
         running = value;
         flying = false;
         animator.SetBool("Walk", running);
         animator.SetBool("Fly", flying);
+    }
+
+    public void forceFlying() {
+        running = false;
+        flying = true;
+        animator.Play("Fly");
     }
 
     public void enableFlying(bool value) {

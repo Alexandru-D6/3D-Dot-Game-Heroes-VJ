@@ -55,12 +55,14 @@ public class DragonLogic : MonoBehaviour {
     IEnumerator delayedActiveFollowRoutine(float time) {
         yield return new WaitForSeconds(time);
 
-        isFollowingPath = true;
+        if (isFlying) animator.forceFlying();
+        else animator.toIdle();
+
         isFlying = false;
         flamethrower = false;
         canFlameThrower = true;
+        isFollowingPath = true;
 
-        animator.toIdle();
         animator.SetFlamethrower(false);
 
         playerDetector.enabled = true;
@@ -78,6 +80,9 @@ public class DragonLogic : MonoBehaviour {
         canFootKick = true;
         isAttacking = false;
         isFollowingPath = true;
+
+        animator.toIdle();
+        animator.enableRunning(true);
     }
 
     private void OnTriggerEnter(Collider other) {
