@@ -18,6 +18,9 @@ public class DragonLogic : MonoBehaviour {
     private PathCreator lastPathFollower = null;
     private float distanceTravelled = 0;
 
+    [Header("Other")]
+    [SerializeField] private float rotationSpeed = 3.0f;
+
     [Header("States")]
     private bool isFollowingPath = true;
     private bool isFlying = false;
@@ -48,7 +51,6 @@ public class DragonLogic : MonoBehaviour {
     [SerializeField] private float simpleFlamethrowerProbability = 50;
     [Range(0,100)]
     [SerializeField] private float leftFootKickProbability = 50;
-
 
     #endregion
 
@@ -112,7 +114,7 @@ public class DragonLogic : MonoBehaviour {
     }
 
     private void LookAt(float rotY) {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0.0f,rotY,0.0f), 10.0f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0.0f,rotY,0.0f), rotationSpeed);
     }
 
     private void HandleFlyingFlamethrower() {
