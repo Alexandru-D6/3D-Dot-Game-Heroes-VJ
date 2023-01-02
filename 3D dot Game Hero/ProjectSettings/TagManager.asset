@@ -39,6 +39,9 @@ TagManager:
   - Debug
   - Obstacle
   - ExplotionBomb
+  - DragonLeftFoot
+  - DragonRightFoot
+  - FlamethrowerParticles
   layers:
   - Default
   - TransparentFX

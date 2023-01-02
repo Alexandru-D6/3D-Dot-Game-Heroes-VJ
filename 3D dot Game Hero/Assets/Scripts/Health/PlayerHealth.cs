@@ -14,8 +14,16 @@ public class PlayerHealth : HealthScript {
 
     #region Collision Methods
 
+    private void OnParticleCollision(GameObject other) {
+        if (other.gameObject.layer == (int)Layers.Weapon) {
+            DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
+        }
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.layer == (int)Layers.Weapon) {
+
+            Tags tag = TagsUtils.GetTag(other.tag);
 
             Collider[] colliders = Physics.OverlapSphere(other.transform.position, Vector3.Distance(other.bounds.max, other.bounds.min) * 0.75f);
 
@@ -24,7 +32,7 @@ public class PlayerHealth : HealthScript {
             }
 
             // Exclude weapon List
-            switch(TagsUtils.GetTag(other.tag)) {
+            switch(tag) {
                 case Tags.Hand:
                 case Tags.Shield:
                 case Tags.Sword:
@@ -33,9 +41,11 @@ public class PlayerHealth : HealthScript {
                     return;
             }
 
-            if (other.tag == Tags.Arrow.ToString() && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Player) return;
+            if (tag == Tags.Arrow && other.GetComponent<ArrowScript>().GetOriginalLayer() == Layers.Player) return;
 
-            DecreaseHealth(GetDamage(TagsUtils.GetTag(other.tag)));
+            if (tag == Tags.DragonLeftFoot || tag == Tags.DragonRightFoot) playerManager.DragonHit(tag);
+
+            DecreaseHealth(GetDamage(tag));
         }
     }
 

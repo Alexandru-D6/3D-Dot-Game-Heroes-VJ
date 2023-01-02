@@ -35,6 +35,9 @@ public enum Tags {
     Debug,
     Obstacle,
     ExplotionBomb,
+    DragonLeftFoot,
+    DragonRightFoot,
+    FlamethrowerParticles,
     Uknown,
 }
 
