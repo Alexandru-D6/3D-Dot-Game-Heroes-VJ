@@ -62,6 +62,7 @@ public class PlayerManager : MonoBehaviour {
                 break;
             case OutputInventory.Consumables:
                 playerHealth.IncreaseHealth(playerHealth.GetHealing(tag));
+                UIPlayer.Instance.playerHealed();
                 break;
         }
         
@@ -76,6 +77,7 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public void GetHit() {
+        UIPlayer.Instance.playerDamaged();
         playerAnimations.toHit();
     }
 

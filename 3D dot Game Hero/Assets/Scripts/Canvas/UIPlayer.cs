@@ -23,8 +23,8 @@ public class UIPlayer : MonoBehaviour
     [SerializeField] Sprite SlotInvSkullKey;
     [SerializeField] Sprite SlotInvEnderKey;
     [SerializeField] Sprite SlotInvBossKey;
-    [SerializeField] TextMeshPro TextNumCoins;
-    [SerializeField] TextMeshPro TextNumBombs;
+    [SerializeField] GameObject TextNumCoins;
+    [SerializeField] GameObject TextNumBombs;
 
     private int numCoins;
     private int numBombs;
@@ -50,6 +50,8 @@ public class UIPlayer : MonoBehaviour
         numBombs = 0;
         fillHearts();
         inventory[0].GetComponent<Image>().sprite = SlotInvSword;
+        TextNumCoins.SetActive(false);
+        TextNumBombs.SetActive(false);
     }
 
     public void fillHearts()
@@ -73,8 +75,8 @@ public class UIPlayer : MonoBehaviour
             case Tags.Bomb:
                 inventory[3].GetComponent<Image>().sprite = SlotInvBoomb;
                 numBombs = 10;
-                TextNumBombs.enabled = true;
-                TextNumBombs.SetText(numBombs.ToString());
+                TextNumBombs.SetActive(true);
+                TextNumBombs.GetComponent<TextMeshProUGUI>().SetText(numBombs.ToString());
                 break;
         }
     }
@@ -84,12 +86,12 @@ public class UIPlayer : MonoBehaviour
         
         if (numCoins == 0)
         {
-            inventory[7].GetComponent<Image>().sprite = SlotInvBoomb;
-            TextNumCoins.enabled = true;
-            
+            inventory[4].GetComponent<Image>().sprite = SlotInvCoin;
+            TextNumCoins.SetActive(true);
+
         }
         numCoins++;
-        TextNumCoins.SetText(numCoins.ToString());
+        TextNumCoins.GetComponent<TextMeshProUGUI>().SetText(numCoins.ToString());
     }
 
     public void UpdateInventoy(Tags name, bool obtained)
@@ -112,17 +114,17 @@ public class UIPlayer : MonoBehaviour
                 if (obtained)
                 {
                     inventory[3].GetComponent<Image>().sprite = SlotInvBoomb;
-                    TextNumBombs.enabled = true;
+                    TextNumBombs.SetActive(true);
                     numBombs = 10;
-                    TextNumBombs.SetText(numBombs.ToString());
+                    TextNumBombs.GetComponent<TextMeshProUGUI>().SetText(numBombs.ToString());
                 }
                 else
                 {
                     numBombs = 0;
-                    TextNumBombs.SetText(numBombs.ToString());
-                    TextNumBombs.enabled = false;
-                   
-                   inventory[3].GetComponent<Image>().sprite = SlotInvEmpty;
+                    TextNumBombs.GetComponent<TextMeshProUGUI>().SetText(numBombs.ToString());
+                    TextNumBombs.SetActive(false);
+
+                    inventory[3].GetComponent<Image>().sprite = SlotInvEmpty;
                 }
                 break;
             case Tags.Coin:
@@ -130,14 +132,14 @@ public class UIPlayer : MonoBehaviour
                 {
                     inventory[4].GetComponent<Image>().sprite = SlotInvCoin;
                     numCoins= 1;
-                    TextNumCoins.enabled= true;
-                    TextNumCoins.SetText(numCoins.ToString());
+                    TextNumCoins.SetActive(true);
+                    TextNumCoins.GetComponent<TextMeshProUGUI>().SetText(numCoins.ToString());
                 }
                 else
                 {
                     numCoins = 0;
-                    TextNumCoins.SetText(numCoins.ToString());
-                    TextNumCoins.enabled = false;
+                    TextNumCoins.GetComponent<TextMeshProUGUI>().SetText(numCoins.ToString());
+                    TextNumCoins.SetActive(false);
                     inventory[4].GetComponent<Image>().sprite = SlotInvEmpty;
                 }
                 break;
@@ -159,11 +161,11 @@ public class UIPlayer : MonoBehaviour
     public void UsedaBomb()
     {
         numBombs--;
-        TextNumBombs.SetText(numBombs.ToString());
+        TextNumBombs.GetComponent<TextMeshProUGUI>().SetText(numBombs.ToString());
         if(numBombs == 0)
         {
             inventory[3].GetComponent<Image>().sprite = SlotInvEmpty;
-            TextNumBombs.enabled = false;
+            TextNumBombs.SetActive(false);
         }
     }
 

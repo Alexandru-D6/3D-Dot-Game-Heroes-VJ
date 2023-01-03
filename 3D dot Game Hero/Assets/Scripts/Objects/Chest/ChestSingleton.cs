@@ -36,7 +36,7 @@ public class ChestSingleton {
 
     [Header("Available Tags in Pool")]
     private Dictionary<Tags, int> availableObjects = new Dictionary<Tags, int>() {
-        { Tags.Bomb,        20      },
+        { Tags.Bomb,        10      },
         { Tags.Shield,      1       },
         { Tags.Sword,       1       },
         { Tags.Boomerang,   1       },
