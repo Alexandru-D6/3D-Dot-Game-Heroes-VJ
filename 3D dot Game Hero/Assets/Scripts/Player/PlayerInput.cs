@@ -165,7 +165,7 @@ public class PlayerInput : MonoBehaviour {
 
         dash = playerControls.Player.Dash;
         dash.Enable();
-        dash.performed += DashButtons;
+        dash.started += DashButtons;
     }
 
     private void OnDisable() {
@@ -243,26 +243,9 @@ public class PlayerInput : MonoBehaviour {
         if (canDash) {
             canDash = false;
 
-            Vector3 playerPos = transform.position;
-            Vector3 dir = new Vector3(0.0f,0.0f,0.0f);
-            switch(context.control.path) {
-                case "/Keyboard/w":
-                    dir = new Vector3(0.0f,0.0f,1.0f);
-                    break;
-                case "/Keyboard/a":
-                    dir = new Vector3(-1.0f,0.0f,0.0f);
-                    break;
-                case "/Keyboard/s":
-                    dir = new Vector3(0.0f,0.0f,-1.0f);
-                    break;
-                case "/Keyboard/d":
-                    dir = new Vector3(1.0f,0.0f,0.0f);
-                    break;
-            }
-
-            rb.velocity += new Vector3(dir.x * dashVelocities.x,
-                                        dir.y * dashVelocities.y,
-                                        dir.y * dashVelocities.y);
+            rb.velocity += new Vector3(moveDirection.x * dashVelocities.x,
+                                        0.0f,
+                                        moveDirection.y * dashVelocities.z);
 
             StartCoroutine(delayedDashButton(dashDelay));
         }
