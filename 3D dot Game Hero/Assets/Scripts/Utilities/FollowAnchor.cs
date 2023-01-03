@@ -15,7 +15,7 @@ public class FollowAnchor : MonoBehaviour {
     #region MonoBehaviour Methods
 
     private void Start() {
-        if(transform.parent != null && !transform.parent.tag.Equals(Tags.SceneObjects.ToString())) externalAnchor = transform.parent.transform.Find(externalAnchorName).transform;
+        if(externalAnchor == null && transform.parent != null && !transform.parent.tag.Equals(Tags.SceneObjects.ToString())) externalAnchor = transform.parent.transform.Find(externalAnchorName).transform;
     }
 
     void Update() {

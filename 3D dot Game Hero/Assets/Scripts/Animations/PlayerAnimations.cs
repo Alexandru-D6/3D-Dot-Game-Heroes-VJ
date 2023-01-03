@@ -15,6 +15,14 @@ public class PlayerAnimations : AnimationManager {
         animator.Play("Attack Return");
     }
 
+    public void EnableShield(bool value) {
+        animator.SetBool("ShieldDeployed", value);
+        if (value) {
+            enableRunning(false);
+            toIdle();
+        }
+    }
+
     public override void AttackStarted() { return; }
 
     public override void AttackFinished() { return; }

@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour {
 
     [Header("Managers")]
     [SerializeField] private PlayerWeaponManager playerWeaponManager;
+    [SerializeField] private ShieldScript shieldScript;
     [SerializeField] private AnimationManager animationManager;
     [SerializeField] private Rigidbody rb;
 
@@ -27,6 +28,7 @@ public class PlayerInput : MonoBehaviour {
     private InputAction numericButtons;
     private InputAction godMode;
     private InputAction dash;
+    private InputAction shield;
     private bool canFire;
     private bool canNumericButton;
     private bool canDash;
@@ -166,6 +168,14 @@ public class PlayerInput : MonoBehaviour {
         dash = playerControls.Player.Dash;
         dash.Enable();
         dash.started += DashButtons;
+
+        shield = playerControls.Player.Shield;
+        shield.Enable();
+        shield.started += EnableShield;
+
+        shield = playerControls.Player.Shield;
+        shield.Enable();
+        shield.canceled += DisableShield;
     }
 
     private void OnDisable() {
@@ -173,6 +183,7 @@ public class PlayerInput : MonoBehaviour {
         fire.Disable();
         godMode.Disable();
         numericButtons.Disable();
+        shield.Disable();
     }
 
     void Start(){
@@ -249,6 +260,21 @@ public class PlayerInput : MonoBehaviour {
 
             StartCoroutine(delayedDashButton(dashDelay));
         }
+    }
+
+    public void EnableShield(InputAction.CallbackContext context) {
+        if (canFire) {
+            canDash = false;
+            canFire = false;
+
+            shieldScript.EnableShield();
+        }
+    }
+
+    public void DisableShield(InputAction.CallbackContext context) {
+        canDash = true;
+        canFire = true;
+        shieldScript.DisableShield();
     }
 
     #endregion
