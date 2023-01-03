@@ -6,39 +6,46 @@ using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class ObstacleManager : MonoBehaviour
-{
-    public void PushedFrom(ObstacleParts name)
-    {
-        switch (name)
-        {
+public class ObstacleManager : MonoBehaviour {
+
+    [SerializeField] private Rigidbody rb;
+    private RigidbodyConstraints rotationConstraint = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+    public bool isPushing = false;
+
+    public void PushedFrom(ObstacleParts name) {
+        switch (name) {
             case ObstacleParts.Front:
 
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
+                rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | rotationConstraint;
                 break;
             case ObstacleParts.Back:
 
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
+                rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | rotationConstraint;
                 break;
             case ObstacleParts.Right:
 
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | rotationConstraint;
                 break;
             case ObstacleParts.Left:
 
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | rotationConstraint;
                 break;
         }
   
         
     }
 
-    public void blockAll()
-    {
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+    public void blockAll() {
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
 
+    private void Start() {
+        blockAll();
+    }
+
+    private void Update() {
+        if (!isPushing) blockAll();
     }
 
 }

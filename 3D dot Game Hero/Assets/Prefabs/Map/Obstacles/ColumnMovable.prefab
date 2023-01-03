@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 896244098073372255}
   - component: {fileID: 4314381198860954106}
   - component: {fileID: 2034278611920084272}
-  m_Layer: 30
+  m_Layer: 24
   m_Name: GenericWall (0)
-  m_TagString: Wall
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 9180691825328876437}
   - component: {fileID: 8464086635024874329}
   - component: {fileID: 9051245790611762636}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: ColumnMovable
-  m_TagString: Untagged
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2689b838c63e84da58ff137882be15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 8464086635024874329}
+  isPushing: 0
 --- !u!54 &8464086635024874329
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,7 +147,7 @@ Rigidbody:
   m_Mass: 500
   m_Drag: 6
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
@@ -161,8 +163,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8616912, y: 4.1509624, z: 1.9002743}
-  m_Center: {x: 0.0064305067, y: 2.0899236, z: -0.051444054}
+  m_Size: {x: 2.1176596, y: 4.1509624, z: 2.0992255}
+  m_Center: {x: -0.012451172, y: 2.0899236, z: -0.016146183}
 --- !u!1 &2372695034820837649
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,9 +176,9 @@ GameObject:
   - component: {fileID: 3145290711065435051}
   - component: {fileID: 2020298370507805710}
   - component: {fileID: 4318246019020873924}
-  m_Layer: 30
+  m_Layer: 24
   m_Name: GenericWall (0)
-  m_TagString: Wall
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,9 +259,9 @@ GameObject:
   - component: {fileID: 2447754940012822338}
   - component: {fileID: 1610027741969969383}
   - component: {fileID: 3581207205060543533}
-  m_Layer: 30
+  m_Layer: 24
   m_Name: GenericWall (1)
-  m_TagString: Wall
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,9 +342,9 @@ GameObject:
   - component: {fileID: 2608812251196396536}
   - component: {fileID: 1412871886973475933}
   - component: {fileID: 3782865594381002903}
-  m_Layer: 30
+  m_Layer: 24
   m_Name: GenericWall (0)
-  m_TagString: Wall
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -423,9 +425,9 @@ GameObject:
   - component: {fileID: 3893220710431307201}
   - component: {fileID: 3785625073345554332}
   - component: {fileID: 2611569541875629866}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Wall3x1
-  m_TagString: Untagged
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -455,11 +457,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4419048199643080790}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0482337, y: 3.9996922, z: 0.04196024}
-  m_Center: {x: 0.98560965, y: 1.9959263, z: -0.03416705}
+  m_Size: {x: 1.0984013, y: 3.9996922, z: 0.04196024}
+  m_Center: {x: 0.9920274, y: 1.9959263, z: -0.03416705}
 --- !u!114 &2611569541875629866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   namePart: 1
-  wholeObstacle: {fileID: 2365715410574495233}
+  wholeObstacle: {fileID: 9180691825328876437}
 --- !u!1 &4748617327680462656
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,9 +487,9 @@ GameObject:
   - component: {fileID: 5382532985806717655}
   - component: {fileID: 498578297600384917}
   - component: {fileID: 8987363892536536145}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Wall3x1 (2)
-  m_TagString: Untagged
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -517,11 +519,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4748617327680462656}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9186909, y: 3.9797397, z: 0.075501926}
-  m_Center: {x: 0.9747106, y: 2.0252922, z: 0.026614439}
+  m_Size: {x: 1.1164682, y: 3.9797397, z: 0.075501926}
+  m_Center: {x: 1.0228441, y: 2.0252922, z: 0.026614439}
 --- !u!114 &8987363892536536145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   namePart: 3
-  wholeObstacle: {fileID: 2365715410574495233}
+  wholeObstacle: {fileID: 9180691825328876437}
 --- !u!1 &5653274944104240915
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,9 +549,9 @@ GameObject:
   - component: {fileID: 4981144932167092868}
   - component: {fileID: 4726652773389486652}
   - component: {fileID: 716317116454857577}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Wall3x1 (3)
-  m_TagString: Untagged
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -579,11 +581,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5653274944104240915}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0004141, y: 4.001244, z: 0.05699504}
-  m_Center: {x: 1.015572, y: 2.0159872, z: 0.043862354}
+  m_Size: {x: 1.0569999, y: 4.001244, z: 0.05699504}
+  m_Center: {x: 0.98669195, y: 2.0159872, z: 0.043862354}
 --- !u!114 &716317116454857577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,7 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   namePart: 2
-  wholeObstacle: {fileID: 2365715410574495233}
+  wholeObstacle: {fileID: 9180691825328876437}
 --- !u!1 &6198670708533170926
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,9 +611,9 @@ GameObject:
   - component: {fileID: 6723252496800499796}
   - component: {fileID: 7701737086075946993}
   - component: {fileID: 5550376868946031419}
-  m_Layer: 30
+  m_Layer: 24
   m_Name: GenericWall (1)
-  m_TagString: Wall
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -692,9 +694,9 @@ GameObject:
   - component: {fileID: 5971710783323029511}
   - component: {fileID: 7309373823954571170}
   - component: {fileID: 4797718497256356712}
-  m_Layer: 30
+  m_Layer: 24
   m_Name: GenericWall (1)
-  m_TagString: Wall
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -764,6 +766,89 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6563637067440237478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5790900761016463644}
+  - component: {fileID: 7490244958295948985}
+  - component: {fileID: 4617954691403418227}
+  m_Layer: 24
+  m_Name: GenericWall
+  m_TagString: MovableObstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5790900761016463644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6563637067440237478}
+  m_LocalRotation: {x: -0.00000002107343, y: 0.7071069, z: 0.7071067, w: -0.00000002107342}
+  m_LocalPosition: {x: -0.021, y: 3.91, z: -1.054}
+  m_LocalScale: {x: 102.00001, y: 102.00001, z: 102.00001}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 737231625523451}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
+--- !u!33 &7490244958295948985
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6563637067440237478}
+  m_Mesh: {fileID: -1633704888941585985, guid: 9b9001b408bd98543a654c41fb568ae2, type: 3}
+--- !u!23 &4617954691403418227
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6563637067440237478}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -8469494145858465668, guid: 9b9001b408bd98543a654c41fb568ae2, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6654181906662487559
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,9 +860,9 @@ GameObject:
   - component: {fileID: 6274560589918547133}
   - component: {fileID: 6970565111552254744}
   - component: {fileID: 5141029675566192594}
-  m_Layer: 30
+  m_Layer: 24
   m_Name: GenericWall (0)
-  m_TagString: Wall
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -858,9 +943,9 @@ GameObject:
   - component: {fileID: 7882655342474379043}
   - component: {fileID: 9079852959923659425}
   - component: {fileID: 4855646615889115966}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Wall3x1 (1)
-  m_TagString: Untagged
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -890,11 +975,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7363440582615147188}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9996328, y: 4.0072594, z: 0.06295252}
-  m_Center: {x: 1.0119588, y: 2.0157723, z: 0.043618917}
+  m_Size: {x: 1.1396493, y: 4.0072594, z: 0.06295252}
+  m_Center: {x: 0.98628765, y: 2.0157723, z: 0.043618917}
 --- !u!114 &4855646615889115966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -908,7 +993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   namePart: 0
-  wholeObstacle: {fileID: 2365715410574495233}
+  wholeObstacle: {fileID: 9180691825328876437}
 --- !u!1 &8201145443655954202
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,9 +1005,9 @@ GameObject:
   - component: {fileID: 8834799098950153632}
   - component: {fileID: 5563169766624098821}
   - component: {fileID: 7696843234676477647}
-  m_Layer: 30
+  m_Layer: 24
   m_Name: GenericWall (1)
-  m_TagString: Wall
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -992,81 +1077,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &6237930860966209377
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 737231625523451}
-    m_Modifications:
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 102.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 102.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 102.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.021
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.054
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.00000002107342
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.00000002107343
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071069
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 974796439522299079, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-      propertyPath: m_Name
-      value: GenericWall
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
---- !u!4 &5790900761016463644 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 490044218916116093, guid: 9fcda53e7084f224aa2db0317f1f9ec3, type: 3}
-  m_PrefabInstance: {fileID: 6237930860966209377}
-  m_PrefabAsset: {fileID: 0}

@@ -38,6 +38,7 @@ public enum Tags {
     DragonLeftFoot,
     DragonRightFoot,
     FlamethrowerParticles,
+    MovableObstacle,
     Uknown,
 }
 
@@ -67,8 +68,8 @@ public enum Layers{
     Empty21,
     Empty22,
     Empty23,
-    Empty24,
-    Empty25,
+    MovableObstacle,
+    Shield,
     Debug,
     Key,
     Player,
@@ -86,7 +87,6 @@ public enum ObstacleParts{
     Up,
     Down
 }
-// Start is called before the first frame update
 
 public class TagsUtils {
     public static Tags GetTag(string name) {
