@@ -3,34 +3,28 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ObstaclePart : MonoBehaviour
-{
+public class ObstaclePart : MonoBehaviour {
+
     [SerializeField] private ObstacleParts namePart;
-    [SerializeField] private GameObject wholeObstacle;
- 
-    // Start is called before the first frame update
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == Tags.Player.ToString())
-        {
-            wholeObstacle.GetComponent<ObstacleManager>().PushedFrom(namePart);
-        }
-        else if(other.tag != Tags.Wall.ToString() && other.tag != Tags.Obstacle.ToString() && other.tag !=Tags.Vase.ToString())
-        {
-            wholeObstacle.GetComponent<ObstacleManager>().blockAll();
+    [SerializeField] private ObstacleManager wholeObstacle;
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.transform.parent != null && other.transform.parent.gameObject.layer == (int)Layers.Player || other.gameObject.layer == (int)Layers.Player || other.tag == Tags.MovableObstacle.ToString()) {
+            wholeObstacle.PushedFrom(namePart);
+            wholeObstacle.isPushing = true;
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == Tags.Player.ToString())
-        {
-            wholeObstacle.GetComponent<ObstacleManager>().PushedFrom(namePart);
+    private void OnTriggerStay(Collider other) {
+        if (other.transform.parent != null && other.transform.parent.gameObject.layer == (int)Layers.Player || other.gameObject.layer == (int)Layers.Player || other.tag == Tags.MovableObstacle.ToString()) {
+            wholeObstacle.PushedFrom(namePart);
+            wholeObstacle.isPushing = true;
         }
+    }
 
-        else if (other.tag != Tags.Wall.ToString() && other.tag != Tags.Obstacle.ToString() && other.tag != Tags.Vase.ToString())
-        {
-            wholeObstacle.GetComponent<ObstacleManager>().blockAll();
+    private void OnTriggerExit(Collider other) {
+        if (other.transform.parent != null && other.transform.parent.gameObject.layer == (int)Layers.Player || other.gameObject.layer == (int)Layers.Player || other.tag == Tags.MovableObstacle.ToString()) {
+            wholeObstacle.isPushing = false;
         }
     }
     private void OnTriggerExit()

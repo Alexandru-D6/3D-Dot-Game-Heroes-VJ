@@ -125,6 +125,10 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
+    public void SwitchGodMode() {
+        playerHealth.GiveInmortality(0.0f, !playerHealth.IsInmortal());
+    }
+
     #endregion
 
     #region Private Methods

@@ -3082,6 +3082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SouthGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 7593029975634718135, guid: cb4df72327daef14ea8af198d1797f57, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb4df72327daef14ea8af198d1797f57, type: 3}
 --- !u!114 &2180509662117786596 stripped
@@ -5836,6 +5840,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WestGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 7593029975634718135, guid: cb4df72327daef14ea8af198d1797f57, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb4df72327daef14ea8af198d1797f57, type: 3}
 --- !u!4 &147060205342281172 stripped
@@ -7102,6 +7110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NorthGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 7593029975634718135, guid: cb4df72327daef14ea8af198d1797f57, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb4df72327daef14ea8af198d1797f57, type: 3}
 --- !u!1 &64069974337338760 stripped
@@ -7489,6 +7501,10 @@ PrefabInstance:
     - target: {fileID: 7593029975634718135, guid: cb4df72327daef14ea8af198d1797f57, type: 3}
       propertyPath: m_Name
       value: EastGrid
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593029975634718135, guid: cb4df72327daef14ea8af198d1797f57, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb4df72327daef14ea8af198d1797f57, type: 3}

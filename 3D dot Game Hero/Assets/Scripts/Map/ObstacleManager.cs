@@ -6,47 +6,46 @@ using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class ObstacleManager : MonoBehaviour
-{
-    [SerializeField] Rigidbody rigidbody;
+public class ObstacleManager : MonoBehaviour {
 
-    private void Start()
-    {
-        rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+    [SerializeField] private Rigidbody rb;
+    private RigidbodyConstraints rotationConstraint = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
-    }
+    public bool isPushing = false;
 
-    public void PushedFrom(ObstacleParts name)
-    {
-        switch (name)
-        {
+    public void PushedFrom(ObstacleParts name) {
+        switch (name) {
             case ObstacleParts.Front:
 
-                rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
+                rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | rotationConstraint;
                 break;
             case ObstacleParts.Back:
 
-                rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
+                rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | rotationConstraint;
                 break;
             case ObstacleParts.Right:
 
-                rigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | rotationConstraint;
                 break;
             case ObstacleParts.Left:
 
-                rigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | rotationConstraint;
                 break;
         }
   
         
     }
 
-    public void blockAll()
-    {
-        rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+    public void blockAll() {
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
 
+    private void Start() {
+        blockAll();
+    }
+
+    private void Update() {
+        if (!isPushing) blockAll();
     }
 
 }
