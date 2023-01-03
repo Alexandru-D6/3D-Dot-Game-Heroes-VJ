@@ -713,12 +713,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWeaponManager: {fileID: 448156431308847209}
   animationManager: {fileID: 2222480201678553054}
+  rb: {fileID: 1603912058711816172}
   fireDelay: 0.05
   numericButtonDelay: 0.15
+  dashDelay: 0.5
   moveDirection: {x: 0, y: 0}
   moveSpeed: {x: 7, y: 7}
   currentRotation: 4
-  rotationSpeed: 10
+  rotationSpeed: 2.5
+  dashVelocities: {x: 10, y: 0, z: 10}
 --- !u!114 &505633924705408062
 MonoBehaviour:
   m_ObjectHideFlags: 0

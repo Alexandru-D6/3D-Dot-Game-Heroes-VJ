@@ -16,6 +16,7 @@ public class PlayerInput : MonoBehaviour {
     [Header("Managers")]
     [SerializeField] private PlayerWeaponManager playerWeaponManager;
     [SerializeField] private AnimationManager animationManager;
+    [SerializeField] private Rigidbody rb;
 
     [Space(10)]
 
@@ -25,21 +26,24 @@ public class PlayerInput : MonoBehaviour {
     private InputAction move;
     private InputAction numericButtons;
     private InputAction godMode;
+    private InputAction dash;
     private bool canFire;
     private bool canNumericButton;
-    private bool canGodMode;
+    private bool canDash;
 
     [Space(10)]
 
     [Header("Controls parameters")]
     [SerializeField] private float fireDelay;
     [SerializeField] private float numericButtonDelay;
+    [SerializeField] private float dashDelay;
     [Space(2)]
     [SerializeField] private Vector2 moveDirection = Vector2.zero;
     [SerializeField] private Vector2 moveSpeed;
     [Space(2)]
     [SerializeField] rotationStates currentRotation = rotationStates.Forward;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private Vector3 dashVelocities;
     private bool inputEnabled = true;
 
     #endregion
@@ -54,6 +58,11 @@ public class PlayerInput : MonoBehaviour {
     IEnumerator delayedNumericButton(float time) {
         yield return new WaitForSeconds(time);
         canNumericButton = true;
+    }
+
+    IEnumerator delayedDashButton(float time) {
+        yield return new WaitForSeconds(time);
+        canDash = true;
     }
 
     #endregion
@@ -153,17 +162,23 @@ public class PlayerInput : MonoBehaviour {
         godMode = playerControls.Player.GodMode;
         godMode.Enable();
         godMode.started += EnableGodMode;
+
+        dash = playerControls.Player.Dash;
+        dash.Enable();
+        dash.performed += DashButtons;
     }
 
     private void OnDisable() {
         move.Disable();
         fire.Disable();
+        godMode.Disable();
         numericButtons.Disable();
     }
 
     void Start(){
         canFire = true;
         canNumericButton = true;
+        canDash = true;
     }
 
     void Update() {
@@ -222,6 +237,35 @@ public class PlayerInput : MonoBehaviour {
 
     public void EnableGodMode(InputAction.CallbackContext context) {
         PlayerManager.Instance.SwitchGodMode();
+    }
+
+    public void DashButtons(InputAction.CallbackContext context) {
+        if (canDash) {
+            canDash = false;
+
+            Vector3 playerPos = transform.position;
+            Vector3 dir = new Vector3(0.0f,0.0f,0.0f);
+            switch(context.control.path) {
+                case "/Keyboard/w":
+                    dir = new Vector3(0.0f,0.0f,1.0f);
+                    break;
+                case "/Keyboard/a":
+                    dir = new Vector3(-1.0f,0.0f,0.0f);
+                    break;
+                case "/Keyboard/s":
+                    dir = new Vector3(0.0f,0.0f,-1.0f);
+                    break;
+                case "/Keyboard/d":
+                    dir = new Vector3(1.0f,0.0f,0.0f);
+                    break;
+            }
+
+            rb.velocity += new Vector3(dir.x * dashVelocities.x,
+                                        dir.y * dashVelocities.y,
+                                        dir.y * dashVelocities.y);
+
+            StartCoroutine(delayedDashButton(dashDelay));
+        }
     }
 
     #endregion
