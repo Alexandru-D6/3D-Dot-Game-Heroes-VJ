@@ -24,8 +24,10 @@ public class PlayerInput : MonoBehaviour {
     private InputAction fire;
     private InputAction move;
     private InputAction numericButtons;
+    private InputAction godMode;
     private bool canFire;
     private bool canNumericButton;
+    private bool canGodMode;
 
     [Space(10)]
 
@@ -147,6 +149,10 @@ public class PlayerInput : MonoBehaviour {
         numericButtons = playerControls.Player.NumericButtons;
         numericButtons.Enable();
         numericButtons.started += NumericalButtons;
+
+        godMode = playerControls.Player.GodMode;
+        godMode.Enable();
+        godMode.started += EnableGodMode;
     }
 
     private void OnDisable() {
@@ -212,6 +218,10 @@ public class PlayerInput : MonoBehaviour {
 
             StartCoroutine(delayedNumericButton(fireDelay));
         }
+    }
+
+    public void EnableGodMode(InputAction.CallbackContext context) {
+        PlayerManager.Instance.SwitchGodMode();
     }
 
     #endregion
