@@ -12,6 +12,8 @@ public class RoomManager : MonoBehaviour {
     [SerializeField] private bool isPlayerInsideTheRoom = true;
     [SerializeField] private bool isSpawnRoom = false;
 
+    [SerializeField] private EnemySpawnInfo spawns;
+
     #endregion
 
     private void UnlockGrids() {
@@ -41,6 +43,10 @@ public class RoomManager : MonoBehaviour {
     public void Start() {
         InitRoom();
         SceneEvents.onPlayerDeath += OnPlayerDeath;
+
+        foreach(var x in spawns.Enemies) {
+            Instantiate(x.prefab, x.position, Quaternion.identity, transform);
+        }
     }
 
     void Update() {
