@@ -7,7 +7,16 @@ public class ShieldScript : MonoBehaviour {
     
     [SerializeField] private PlayerAnimations animator;
     [SerializeField] private RotationConstraint rotationConstraint;
+    [SerializeField] private Collider _collider;
     private bool isHolding = false;
+
+    private void OnTriggerEnter(Collider other) {
+        Tags tag = TagsUtils.GetTag(other.tag);
+
+        if (tag == Tags.ExplosionCreeper || tag == Tags.ExplotionBomb) {
+            PlayerManager.Instance.GiveInmortality(0.2f);
+        }
+    }
 
     public void EnableShield() {
         animator.EnableShield(true);
@@ -15,6 +24,7 @@ public class ShieldScript : MonoBehaviour {
         rotationConstraint.rotationAxis = lockedAxis;
 
         isHolding = true;
+        _collider.enabled = true;
     }
 
     public void DisableShield() {
@@ -23,6 +33,7 @@ public class ShieldScript : MonoBehaviour {
         rotationConstraint.rotationAxis = lockedAxis;
 
         isHolding = false;
+        _collider.enabled = false;
     }
 
     private void Update() {

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6329275976698866433}
   - component: {fileID: 1357030105038218653}
   - component: {fileID: 8485634659715541417}
+  - component: {fileID: 7754078848646266911}
   m_Layer: 25
   m_Name: Shield
   m_TagString: Shield
@@ -115,6 +116,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   rotationConstraint: {fileID: 1357030105038218653}
+  _collider: {fileID: 7754078848646266911}
+--- !u!65 &7754078848646266911
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625899388901456224}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 2.4165392, y: 3.4520097, z: 0.33817434}
+  m_Center: {x: -0.011610799, y: 0.9995927, z: 0.23221949}
 --- !u!1001 &8383374809001622161
 PrefabInstance:
   m_ObjectHideFlags: 0
