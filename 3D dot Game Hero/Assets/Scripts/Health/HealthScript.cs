@@ -118,6 +118,10 @@ public abstract class HealthScript : MonoBehaviour {
         if (!infinite) StartCoroutine(delayedInmortalityDisableRoutine(time));
     }
 
+    public bool IsInmortal() {
+        return isInmortal;
+    }
+
     #endregion
 
     #region MonoBehaviour
