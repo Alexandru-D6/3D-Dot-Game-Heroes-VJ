@@ -754,7 +754,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0}
   moveSpeed: {x: 7, y: 7}
   currentRotation: 4
-  rotationSpeed: 2.5
+  rotationSpeed: 5
   dashVelocities: {x: 75, y: 0, z: 75}
 --- !u!114 &505633924705408062
 MonoBehaviour:
@@ -839,7 +839,7 @@ MonoBehaviour:
   - weapon: 33
     value: 100
   - weapon: 34
-    value: 10
+    value: 20
   - weapon: 35
     value: 10
   - weapon: 36

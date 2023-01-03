@@ -28,7 +28,9 @@ public class PlayerHealth : HealthScript {
             Collider[] colliders = Physics.OverlapSphere(other.transform.position, Vector3.Distance(other.bounds.max, other.bounds.min) * 0.55f);
 
             foreach (var collider in colliders) {
-                if (colliders.Length <= 1 || collider != other && (collider.gameObject.layer == (int)Layers.Weapon || collider.gameObject.layer == (int)Layers.Shield)) return;
+                if (colliders.Length <= 1 || ((collider != other && collider.tag != Tags.Bomb.ToString()) && (collider.gameObject.layer == (int)Layers.Weapon || collider.gameObject.layer == (int)Layers.Shield))) {
+                    return;
+                }
             }
 
             // Exclude weapon List

@@ -272,9 +272,9 @@ public class PlayerInput : MonoBehaviour {
     }
 
     public void DisableShield(InputAction.CallbackContext context) {
-        //canDash = true;
-        //canFire = true;
-        //shieldScript.DisableShield();
+        canDash = true;
+        canFire = true;
+        shieldScript.DisableShield();
     }
 
     #endregion
