@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using Unity.VisualScripting;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class ObstacleManager : MonoBehaviour {
 

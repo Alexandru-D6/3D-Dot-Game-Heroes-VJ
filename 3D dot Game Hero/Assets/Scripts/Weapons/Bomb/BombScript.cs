@@ -118,7 +118,7 @@ public class BombScript : WeaponScript {
         Instantiate(explotionParticles, transform.position, transform.rotation, sceneObjects.transform);
         explotionCollider.SetActive(true);
 
-        StartCoroutine(delayedDestroyRoutine(0.01f));
+        StartCoroutine(delayedDestroyRoutine(0.5f));
     }
 
     #endregion

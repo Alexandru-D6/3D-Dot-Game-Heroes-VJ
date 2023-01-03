@@ -125,6 +125,10 @@ public class PlayerManager : MonoBehaviour {
         playerHealth.GiveInmortality(0.0f, !playerHealth.IsInmortal());
     }
 
+    public void GiveInmortality(float value) {
+        playerHealth.GiveInmortality(value);
+    }
+
     #endregion
 
     #region Private Methods
