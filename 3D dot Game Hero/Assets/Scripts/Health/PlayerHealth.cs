@@ -25,10 +25,12 @@ public class PlayerHealth : HealthScript {
 
             Tags tag = TagsUtils.GetTag(other.tag);
 
-            Collider[] colliders = Physics.OverlapSphere(other.transform.position, Vector3.Distance(other.bounds.max, other.bounds.min) * 0.75f);
+            Collider[] colliders = Physics.OverlapSphere(other.transform.position, Vector3.Distance(other.bounds.max, other.bounds.min) * 0.55f);
 
             foreach (var collider in colliders) {
-                if (collider != other && collider.gameObject.layer == (int)Layers.Weapon && colliders.Length <= 1) return;
+                if (colliders.Length <= 1 || ((collider != other && collider.tag != Tags.Bomb.ToString()) && (collider.gameObject.layer == (int)Layers.Weapon || collider.gameObject.layer == (int)Layers.Shield))) {
+                    return;
+                }
             }
 
             // Exclude weapon List
