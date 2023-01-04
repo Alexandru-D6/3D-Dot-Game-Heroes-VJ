@@ -16981,6 +16981,8 @@ MonoBehaviour:
   isRoomCleared: 0
   isPlayerInsideTheRoom: 0
   isSpawnRoom: 0
+  enemiesRoomManager: {fileID: 0}
+  VaseManager: {fileID: 0}
 --- !u!1001 &8417960550115340325
 PrefabInstance:
   m_ObjectHideFlags: 0

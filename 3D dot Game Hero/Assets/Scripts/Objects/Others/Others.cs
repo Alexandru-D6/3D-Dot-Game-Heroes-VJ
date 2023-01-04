@@ -5,6 +5,7 @@ using UnityEngine;
 public class Others : MonoBehaviour
 {
     [SerializeField] private GameObject destroyedParticles;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == (int)Layers.Weapon )
@@ -16,9 +17,12 @@ public class Others : MonoBehaviour
                 Instantiate(destroyedParticles, transform.position, transform.rotation);
                 gameObject.SetActive(false);
                 gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
+                
             }
             
             
         }
     }
+
+
 }

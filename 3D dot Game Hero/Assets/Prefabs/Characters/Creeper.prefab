@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 8032975861488864794}
   - component: {fileID: 2980120660700385613}
   - component: {fileID: 7971566982567755802}
+  - component: {fileID: -406207573377275294}
   m_Layer: 6
   m_Name: Creeper
   m_TagString: Creeper
@@ -422,11 +423,16 @@ MonoBehaviour:
     value: 10
   - weapon: 33
     value: 100
+  healingStats:
+  - weapon: 20
+    value: 10
+  isInmortal: 0
   creeperMov: {fileID: 9145281206296212765}
   animator: {fileID: 1899036119892083257}
   creeperCollider: {fileID: 8032975861488864794}
   disappearParticles: {fileID: 3023261532592782735, guid: e9d558bd4747daf4dabc5171e1e7f9db, type: 3}
   impactParticles: {fileID: 7197067429383718148, guid: dfb3b8cfbf8d7e245ad42331ab9c0927, type: 3}
+  manager: {fileID: -406207573377275294}
 --- !u!114 &7971566982567755802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +448,18 @@ MonoBehaviour:
   lootList:
   - {fileID: 11400000, guid: 7d5bd93eb168c8543a2a72681f21fa67, type: 2}
   - {fileID: 11400000, guid: 87679e6bb8de41c499bc7ecef6dc7eb9, type: 2}
+--- !u!114 &-406207573377275294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085942122596314836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a42c4ac40807b47b219f820291e72f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3369812828860119021
 GameObject:
   m_ObjectHideFlags: 0
