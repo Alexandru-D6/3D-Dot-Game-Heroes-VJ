@@ -140,6 +140,10 @@ public class PlayerManager : MonoBehaviour {
         if (value) playerAnimations.toIdle();
     }
 
+    public void SetWeaponLevel(int value) {
+        playerWeaponManager.SetWeaponLevel(value);
+    }
+
     #endregion
 
     #region Private Methods
