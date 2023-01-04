@@ -257,7 +257,7 @@ public class DragonLogic : MonoBehaviour {
             animator.SetFlamethrower(false);
             PathRoutine();
         }
-        if (isFlying || flamethrower) LookAt(0.0f);
+        if (isFlying || flamethrower) LookAt(180.0f);
         if (flamethrower) FlamethrowerAttack();
         if (isAttacking) AttackRoutine();
         if (isFollowingPlayer) PlayerFollowRoutine();
