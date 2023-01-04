@@ -42,6 +42,15 @@ public class SoundManager : MonoBehaviour {
     [SerializeField] private AudioSource chestOpen;
     [SerializeField] private AudioSource chestClose;
     [SerializeField] private AudioSource dashSound;
+    [SerializeField] private AudioSource dragonFlamethrower;
+    [SerializeField] private AudioSource dragonFly;
+    [SerializeField] private AudioSource dragonRoar;
+    [SerializeField] private AudioSource othersPadlock;
+    [SerializeField] private AudioSource othersVase;
+    [SerializeField] private AudioSource playerBoomerang;
+    [SerializeField] private AudioSource playerSword;
+    [SerializeField] private AudioSource minecraftMainTheme;
+    [SerializeField] private AudioSource zeldaMainTheme;
 
     public void PlayBowShoot() { bowShoot.Play(); }
     public void PlayCreeperDeath() { creeperDeath.Play(); }
@@ -67,6 +76,19 @@ public class SoundManager : MonoBehaviour {
     public void PlayChestOpen() { chestOpen.Play(); }
     public void PlayChestClose() { chestClose.Play(); }
     public void PlayDashSound() { dashSound.Play(); }
+    public void PlayDragonFlamethrower() { dragonFlamethrower.Play(); }
+    public void StopDragonFlamethrower() { dragonFlamethrower.Stop(); }
+    public void PlayDragonFly() { dragonFly.Play(); }
+    public void StopDragonFly() { dragonFly.Stop(); }
+    public void PlayDragonRoar() { dragonRoar.Play(); }
+    public void PlayOthersPadlock() { othersPadlock.Play(); }
+    public void PlayOthersVase() { othersVase.Play(); }
+    public void PlayPlayerBoomerang() { playerBoomerang.Play(); }
+    public void PlayPlayerSword() { playerSword.Play(); }
+    public void PlayMinecraftMainTheme() { minecraftMainTheme.Play(); }
+    public void StopMinecraftMainTheme() { minecraftMainTheme.Stop(); }
+    public void PlayZeldaMainTheme() { zeldaMainTheme.Play(); }
+    public void StopZeldaMainTheme() { zeldaMainTheme.Stop(); }
 
 
     private bool walkingState = false;
