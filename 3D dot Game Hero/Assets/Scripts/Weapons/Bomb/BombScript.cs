@@ -19,7 +19,7 @@ public class BombScript : WeaponScript {
     [Range(0.0f,1.0f)]
     [SerializeField] private float attackDelay = 0.25f;
     [Range(0.0f,5.0f)]
-    [SerializeField] private float explotionDelay = 0.25f;
+    [SerializeField] private float explotionDelay = 0.1f;
     [SerializeField] private Vector3 bombSpawnRotation;
     [SerializeField] private Vector3 throwVelocity;
 
@@ -93,6 +93,7 @@ public class BombScript : WeaponScript {
     public void StartCoroutines() {
         StartCoroutine(delayedColliderRoutine(0.1f));
         StartCoroutine(delayedExplotionRoutine(explotionDelay));
+        SoundManager.Instance.PlayMinecraftTNT();
     }
 
     #endregion
