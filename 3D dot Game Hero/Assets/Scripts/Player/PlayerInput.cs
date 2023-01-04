@@ -98,6 +98,7 @@ public class PlayerInput : MonoBehaviour {
         setTranslation();
         setRotation(moveDirection);
 
+        SoundManager.Instance.PlayPlayerWalking(moveDirection != Vector2.zero);
         animationManager.enableRunning(moveDirection != Vector2.zero);
     }
 

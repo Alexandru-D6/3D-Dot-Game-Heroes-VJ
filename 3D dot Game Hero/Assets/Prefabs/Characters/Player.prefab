@@ -730,7 +730,7 @@ MonoBehaviour:
   playerCollider: {fileID: 6925475127036339142}
   playerRigidBody: {fileID: 1603912058711816172}
   playerAutomaticMovement: {fileID: 8800294357765895709}
-  deathDelay: 2
+  deathDelay: 15.2
   dragonThrowback: {x: 15, y: 5, z: 0}
 --- !u!114 &4816398731180999629
 MonoBehaviour:
@@ -845,7 +845,7 @@ MonoBehaviour:
   - weapon: 38
     value: 10
   healingStats:
-  - weapon: 19
+  - weapon: 20
     value: 10
   isInmortal: 0
   playerManager: {fileID: 8215279082758402672}

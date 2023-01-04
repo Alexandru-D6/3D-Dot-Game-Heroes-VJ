@@ -86,12 +86,13 @@ public abstract class HealthScript : MonoBehaviour {
         return heal;
     }
 
-    public void IncreaseHealth(int value) {
+    public bool IncreaseHealth(int value) {
+        if (currentHealth >= maxHealth) return false;
+
         currentHealth += value;
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
+        SoundManager.Instance.PlayPlayerEating();
+        return true;
     }
     public int GetDamage(Tags tag) {
         int damage = 0;

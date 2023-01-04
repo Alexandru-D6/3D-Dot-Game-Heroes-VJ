@@ -61,7 +61,16 @@ public class SoundManager : MonoBehaviour {
     public void PlayZombieHit() { zombieHit.Play(); }
     public void PlayZombieSound() { zombieSound.Play(); }
 
-    public void PlayPlayerWalking(bool value) { if (value) playerWalking.Play(); else playerWalking.Stop(); }
+
+    private bool walkingState = false;
+    public void PlayPlayerWalking(bool value) { 
+        if (walkingState != value) {
+            walkingState = value;
+            if (value)playerWalking.Play(); 
+            else playerWalking.Stop(); 
+        }
+    }
+
     public void PlayRespawnSong(bool value) { if (value) respawnSong.Play(); else respawnSong.Stop(); }
 
 }

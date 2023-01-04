@@ -62,11 +62,11 @@ public class PlayerManager : MonoBehaviour {
                 inventorySystem.AddToAvailables(tag);
                 break;
             case OutputInventory.Consumables:
-                playerHealth.IncreaseHealth(playerHealth.GetHealing(tag));
-                UIPlayer.Instance.playerHealed();
+                if (playerHealth.IncreaseHealth(playerHealth.GetHealing(tag)))
+                    UIPlayer.Instance.playerHealed();
                 break;
         }
-        
+        SoundManager.Instance.PlayMinecraftDropBlock();
     }
 
     public bool IsItemAvailable(Tags tag) {
@@ -80,6 +80,7 @@ public class PlayerManager : MonoBehaviour {
     public void GetHit() {
         UIPlayer.Instance.playerDamaged();
         playerAnimations.toHit();
+        SoundManager.Instance.PlayPlayerHit();
     }
 
     IEnumerator DelayedReset(float time) {
@@ -96,6 +97,7 @@ public class PlayerManager : MonoBehaviour {
         playerInput.enabled = false;
         dead = true;
 
+        SoundManager.Instance.PlayRespawnSong(true);
         StartCoroutine(DelayedReset(deathDelay));
     }
 
