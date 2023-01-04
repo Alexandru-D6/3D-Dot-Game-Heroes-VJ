@@ -36,7 +36,7 @@ public class DragonManager : MonoBehaviour {
         dragonLogic.enabled = false;
         dead = true;
 
-        delayedToCreditsRoutine(deathDelay);
+        StartCoroutine(delayedToCreditsRoutine(deathDelay));
     }
 
     public bool isDead() {
