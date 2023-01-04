@@ -15,11 +15,13 @@ public class DragonManager : MonoBehaviour {
     private bool dead = false;
 
     [Header("Values")]
-    [SerializeField] private float deathDelay = 5.0f;
+    [SerializeField] private float deathDelay = 10.0f;
 
     #endregion
 
     IEnumerator delayedToCreditsRoutine(float time) {
+        SoundManager.Instance.PlayMinecraftLevelUp();
+
         yield return new WaitForSeconds(time);
 
         SceneManager.LoadScene("Credits");

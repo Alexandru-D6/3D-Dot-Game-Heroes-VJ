@@ -43,7 +43,7 @@ public class SkeletonMov : MonoBehaviour
     {
         if(!target.GetComponent<PlayerManager>().isDead())Comportamiento_Skeleton();
 
-        if (Random.Range(0,500) < 10) SoundManager.Instance.PlaySkeletonSounds();
+        if (Random.Range(0,2500) < 1) SoundManager.Instance.PlaySkeletonSounds();
     }
 
     public void Comportamiento_Skeleton()
