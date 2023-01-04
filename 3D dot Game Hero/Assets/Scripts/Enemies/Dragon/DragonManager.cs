@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DragonManager : MonoBehaviour {
 
@@ -14,9 +15,15 @@ public class DragonManager : MonoBehaviour {
     private bool dead = false;
 
     [Header("Values")]
-    [SerializeField] private float deathDelay = 2.0f;
+    [SerializeField] private float deathDelay = 5.0f;
 
     #endregion
+
+    IEnumerator delayedToCreditsRoutine(float time) {
+        yield return new WaitForSeconds(time);
+
+        SceneManager.LoadScene("Credits");
+    }
 
     #region Public Methods
 
@@ -28,6 +35,8 @@ public class DragonManager : MonoBehaviour {
         animator.toDeath();
         dragonLogic.enabled = false;
         dead = true;
+
+        delayedToCreditsRoutine(deathDelay);
     }
 
     public bool isDead() {
