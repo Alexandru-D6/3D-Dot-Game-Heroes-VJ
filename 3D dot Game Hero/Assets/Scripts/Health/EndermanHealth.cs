@@ -1,3 +1,4 @@
+using Assets.Scripts.Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class EndermanHealth : HealthScript {
     [SerializeField] private Collider endermanCollider;
     [SerializeField] private GameObject disappearParticles;
     [SerializeField] private GameObject impactParticles;
+    [SerializeField] private Manager manager;
 
     private bool isDead = false;
 
@@ -74,6 +76,7 @@ public class EndermanHealth : HealthScript {
     {
         yield return new WaitForSeconds(1f);
         this.gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
+        manager.isDead();
         Destroy(this.gameObject);
 
     }

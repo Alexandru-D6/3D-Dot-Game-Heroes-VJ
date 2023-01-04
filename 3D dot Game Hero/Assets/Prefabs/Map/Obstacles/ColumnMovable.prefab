@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 896244098073372255}
   - component: {fileID: 4314381198860954106}
   - component: {fileID: 2034278611920084272}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: GenericWall (0)
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 9180691825328876437}
   - component: {fileID: 8464086635024874329}
   - component: {fileID: 9051245790611762636}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: ColumnMovable
-  m_TagString: MovableObstacle
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,7 +150,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 1
 --- !u!65 &9051245790611762636
 BoxCollider:
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 3145290711065435051}
   - component: {fileID: 2020298370507805710}
   - component: {fileID: 4318246019020873924}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: GenericWall (0)
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 2447754940012822338}
   - component: {fileID: 1610027741969969383}
   - component: {fileID: 3581207205060543533}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: GenericWall (1)
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 2608812251196396536}
   - component: {fileID: 1412871886973475933}
   - component: {fileID: 3782865594381002903}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: GenericWall (0)
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 3893220710431307201}
   - component: {fileID: 3785625073345554332}
   - component: {fileID: 2611569541875629866}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: Wall3x1
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 5382532985806717655}
   - component: {fileID: 498578297600384917}
   - component: {fileID: 8987363892536536145}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: Wall3x1 (2)
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 4981144932167092868}
   - component: {fileID: 4726652773389486652}
   - component: {fileID: 716317116454857577}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: Wall3x1 (3)
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 6723252496800499796}
   - component: {fileID: 7701737086075946993}
   - component: {fileID: 5550376868946031419}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: GenericWall (1)
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 5971710783323029511}
   - component: {fileID: 7309373823954571170}
   - component: {fileID: 4797718497256356712}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: GenericWall (1)
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -777,7 +777,7 @@ GameObject:
   - component: {fileID: 5790900761016463644}
   - component: {fileID: 7490244958295948985}
   - component: {fileID: 4617954691403418227}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: GenericWall
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -860,7 +860,7 @@ GameObject:
   - component: {fileID: 6274560589918547133}
   - component: {fileID: 6970565111552254744}
   - component: {fileID: 5141029675566192594}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: GenericWall (0)
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -943,7 +943,7 @@ GameObject:
   - component: {fileID: 7882655342474379043}
   - component: {fileID: 9079852959923659425}
   - component: {fileID: 4855646615889115966}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: Wall3x1 (1)
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
@@ -1005,7 +1005,7 @@ GameObject:
   - component: {fileID: 8834799098950153632}
   - component: {fileID: 5563169766624098821}
   - component: {fileID: 7696843234676477647}
-  m_Layer: 24
+  m_Layer: 29
   m_Name: GenericWall (1)
   m_TagString: MovableObstacle
   m_Icon: {fileID: 0}

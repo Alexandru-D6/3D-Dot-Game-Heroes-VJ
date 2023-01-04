@@ -1,3 +1,4 @@
+using Assets.Scripts.Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class CreeperHealth : HealthScript {
     [SerializeField] private Collider creeperCollider;
     [SerializeField] private GameObject disappearParticles;
     [SerializeField] private GameObject impactParticles;
+    [SerializeField] private Manager manager;
 
     private bool isDead = false;
 
@@ -75,6 +77,7 @@ public class CreeperHealth : HealthScript {
     {
         yield return new WaitForSeconds(1f);
         this.gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
+        manager.isDead();
         Destroy(this.gameObject);
         
 

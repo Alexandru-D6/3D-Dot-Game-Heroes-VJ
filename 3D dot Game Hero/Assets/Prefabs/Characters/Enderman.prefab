@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 3392937606577375328}
   - component: {fileID: 864524426622896888}
   - component: {fileID: 3422829696050782131}
+  - component: {fileID: -8802251781829770683}
   m_Layer: 6
   m_Name: Enderman
   m_TagString: Enderman
@@ -588,11 +589,16 @@ MonoBehaviour:
     value: 10
   - weapon: 33
     value: 100
+  healingStats:
+  - weapon: 20
+    value: 10
+  isInmortal: 0
   endermanMov: {fileID: 3392937606577375328}
   animator: {fileID: 2318985479639805853}
   endermanCollider: {fileID: -2532341082811563627}
   disappearParticles: {fileID: 3023261532592782735, guid: 58b133e984c8cc14e9f91b87f4ecd124, type: 3}
   impactParticles: {fileID: 7197067429383718148, guid: dfb3b8cfbf8d7e245ad42331ab9c0927, type: 3}
+  manager: {fileID: -8802251781829770683}
 --- !u!114 &3422829696050782131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,6 +614,18 @@ MonoBehaviour:
   lootList:
   - {fileID: 11400000, guid: 7d5bd93eb168c8543a2a72681f21fa67, type: 2}
   - {fileID: 11400000, guid: 87679e6bb8de41c499bc7ecef6dc7eb9, type: 2}
+--- !u!114 &-8802251781829770683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979412807181547424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a42c4ac40807b47b219f820291e72f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6263282980836109977
 GameObject:
   m_ObjectHideFlags: 0

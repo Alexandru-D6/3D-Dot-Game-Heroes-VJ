@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4681024858665172855}
+  - component: {fileID: 1885728612076983058}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1885728612076983058
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308669182357336656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.95125544, z: 1}
+  m_Center: {x: -8.4180845e-16, y: 0.44076288, z: 0}
 --- !u!1001 &6968701087640779182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45,15 +59,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ab67b9dc6208454a9d91717e961248f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.256601
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ab67b9dc6208454a9d91717e961248f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 90.353966
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ab67b9dc6208454a9d91717e961248f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 147.50339
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ab67b9dc6208454a9d91717e961248f, type: 3}
       propertyPath: m_LocalRotation.w

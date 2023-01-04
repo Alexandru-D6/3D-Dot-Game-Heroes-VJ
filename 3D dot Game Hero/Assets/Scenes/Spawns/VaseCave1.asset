@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510a85d3e2a78db46afc1beb49a51080, type: 3}
+  m_Name: VaseCave1
+  m_EditorClassIdentifier: 
+  Vases:
+  - position: {x: -12.925149, y: -0.29999986, z: -7.392044}
+  - position: {x: -13.115745, y: -0.2999999, z: -5.549633}
+  - position: {x: -13.052213, y: -0.2999999, z: -3.5801582}
+  - position: {x: -13.052213, y: -0.2999999, z: -1.8012772}
+  - position: {x: 4.993622, y: -0.2999999, z: 5.0985336}

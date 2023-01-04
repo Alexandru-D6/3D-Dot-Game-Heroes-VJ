@@ -42,6 +42,8 @@ public class InventorySystem : MonoBehaviour {
 
     public void AddToAvailables(Tags item) {
         // Search if it's already exists
+        if(item == Tags.Coin)UIPlayer.Instance.addCoin();
+        else UIPlayer.Instance.UpdateInventoy(item, true);
         int i = 0;
         while (i < itemsAvailable.Count) {
             if (itemsAvailable[i].First == item) {

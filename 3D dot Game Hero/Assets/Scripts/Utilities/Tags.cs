@@ -8,6 +8,7 @@ public enum Tags {
     Boomerang,
     SceneObjects,
     Hand,
+    Zombie,
     Chest,
     Arrow,
     Bomb,

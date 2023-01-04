@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &263588156227085921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263588156227085919}
+  - component: {fileID: 263588156227085918}
+  - component: {fileID: 263588156227085917}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &263588156227085919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263588156227085921}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.6173626, y: 3.0198622, z: -0.7930688}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &263588156227085918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263588156227085921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e088989cedf71a94ea7e95d4268926e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  cameraLocation:
+    position: {x: 0, y: 18.5, z: -12.5}
+    rotation: {x: 55, y: 0, z: 0}
+  prefabs:
+  - prefab: {fileID: 5626721005123845776, guid: 82a897325f129734ba49e57ccd586349, type: 3}
+    location:
+      position: {x: 0, y: 0.93, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 8197730238382724148, guid: f4ba0eb508a2bb9448e583f946693dc7, type: 3}
+    location:
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 2603491130056323763, guid: 68461dbff39dd464a92a58cdfdc2557e, type: 3}
+    location:
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+  lightsLocations: []
+  offsetRooms: {x: 32.2, y: 24.125}
+  offsetDoor: {x: 7, y: 7}
+--- !u!114 &263588156227085917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263588156227085921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54437986fa6f5a44eabc7952b93678e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
