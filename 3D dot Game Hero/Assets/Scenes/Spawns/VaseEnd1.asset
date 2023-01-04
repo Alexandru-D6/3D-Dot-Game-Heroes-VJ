@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510a85d3e2a78db46afc1beb49a51080, type: 3}
+  m_Name: VaseEnd1
+  m_EditorClassIdentifier: 
+  Vases:
+  - position: {x: -13.011055, y: -0.2999999, z: 9.0057745}
+  - position: {x: -12.965427, y: -0.2999999, z: 3.0597}
+  - position: {x: 3.1760178, y: -0.2999999, z: 8.978229}
+  - position: {x: 10.947815, y: -0.33347213, z: -4.72}
+  - position: {x: 12.980438, y: -0.2999999, z: -6.864298}
+  - position: {x: 10.947815, y: -0.29999995, z: -6.8}
+  - position: {x: 12.920654, y: -0.29999986, z: -4.8316717}

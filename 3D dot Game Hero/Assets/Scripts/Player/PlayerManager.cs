@@ -55,14 +55,17 @@ public class PlayerManager : MonoBehaviour {
         switch(GetInventory(tag)) {
             case OutputInventory.Weapon:
                 playerWeaponManager.AddToAvailables(tag);
+                UIPlayer.Instance.UnlockedWeapon(tag);
                 break;
             case OutputInventory.Items:
                 inventorySystem.AddToAvailables(tag);
                 break;
             case OutputInventory.Consumables:
                 playerHealth.IncreaseHealth(playerHealth.GetHealing(tag));
+                UIPlayer.Instance.playerHealed();
                 break;
         }
+        
     }
 
     public bool IsItemAvailable(Tags tag) {
@@ -74,6 +77,7 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public void GetHit() {
+        UIPlayer.Instance.playerDamaged();
         playerAnimations.toHit();
     }
 

@@ -1,3 +1,4 @@
+using Assets.Scripts.Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,6 +15,7 @@ public class SkeletonHealth : HealthScript {
     [SerializeField] private Collider skeletonCollider;
     [SerializeField] private GameObject disappearParticles;
     [SerializeField] private GameObject impactParticles;
+    [SerializeField] private Manager manager;
 
     private bool isDead = false;
 
@@ -80,6 +82,7 @@ public class SkeletonHealth : HealthScript {
     {
         yield return new WaitForSeconds(1f);
         this.gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
+        manager.isDead();
         Destroy(this.gameObject);
 
     }

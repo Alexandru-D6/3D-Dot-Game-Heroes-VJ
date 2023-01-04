@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 1148804310382969382}
   - component: {fileID: 5213939552130626042}
   - component: {fileID: 382255032364141858}
+  - component: {fileID: 4406088656194312563}
   m_Layer: 6
   m_Name: Skeleton
   m_TagString: Skeleton
@@ -442,11 +443,16 @@ MonoBehaviour:
     value: 10
   - weapon: 33
     value: 100
+  healingStats:
+  - weapon: 20
+    value: 10
+  isInmortal: 0
   skeletonMov: {fileID: 2863543732854746102}
   animator: {fileID: 2717843879363128259}
   skeletonCollider: {fileID: 5320408901920540910}
   disappearParticles: {fileID: 3023261532592782735, guid: e9d558bd4747daf4dabc5171e1e7f9db, type: 3}
   impactParticles: {fileID: 7197067429383718148, guid: dfb3b8cfbf8d7e245ad42331ab9c0927, type: 3}
+  manager: {fileID: 4406088656194312563}
 --- !u!114 &382255032364141858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +468,18 @@ MonoBehaviour:
   lootList:
   - {fileID: 11400000, guid: 7d5bd93eb168c8543a2a72681f21fa67, type: 2}
   - {fileID: 11400000, guid: 87679e6bb8de41c499bc7ecef6dc7eb9, type: 2}
+--- !u!114 &4406088656194312563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042913704747044189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a42c4ac40807b47b219f820291e72f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2345234867961923175
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,9 @@ public class PlayerWeaponManager : WeaponManager {
         if (currentWeapon != null) {
             ((PlayerAnimations)animationManager).AttackStart();
             currentWeapon.GetComponent<WeaponScript>().Attack();
+            if (currentWeapon.tag == Tags.Bomb.ToString()) {
+                UIPlayer.Instance.UsedaBomb();
+            } 
         }
     }
 

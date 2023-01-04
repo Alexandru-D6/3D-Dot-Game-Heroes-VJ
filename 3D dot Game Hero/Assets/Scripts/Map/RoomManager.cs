@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static EnemySpawnInfo;
 
 public class RoomManager : MonoBehaviour {
 
@@ -11,10 +12,12 @@ public class RoomManager : MonoBehaviour {
     [SerializeField] private bool isRoomCleared = false;
     [SerializeField] private bool isPlayerInsideTheRoom = true;
     [SerializeField] private bool isSpawnRoom = false;
+    [SerializeField] private EnemiesRoomManager enemiesRoomManager;
+    [SerializeField] private VaseManager VaseManager;
 
     #endregion
 
-    private void UnlockGrids() {
+    public void UnlockGrids() {
         foreach(var grid in gridsInsideTheRoom) {
             if (grid != null && grid.gameObject.activeInHierarchy) grid.OpenGrid();
         }
@@ -28,19 +31,34 @@ public class RoomManager : MonoBehaviour {
 
     public void ChangePlayerPresence() {
         isPlayerInsideTheRoom = !isPlayerInsideTheRoom;
+
+        if (isPlayerInsideTheRoom)
+        {
+            if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();   
+        }
+        else
+        {
+            if (enemiesRoomManager != null) enemiesRoomManager.DestroyAllEnemies();
+        }
     }
 
     public void InitRoom() {
         gridsOpen = true;
         isRoomCleared = false;
         isPlayerInsideTheRoom = isSpawnRoom;
-
+        if (isPlayerInsideTheRoom)
+        {
+            if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();
+            if (VaseManager != null) VaseManager.EnableAllVases();
+        }
         UnlockGrids();
     }
 
     public void Start() {
         InitRoom();
         SceneEvents.onPlayerDeath += OnPlayerDeath;
+        if (VaseManager != null) VaseManager.SpawnAllVases();
+
     }
 
     void Update() {
@@ -60,4 +78,9 @@ public class RoomManager : MonoBehaviour {
     public void OnPlayerDeath() {
         InitRoom();
     }
+
+    public void setRoomCleared()
+    { isRoomCleared = true; }
+
+
 }

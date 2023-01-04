@@ -112,10 +112,10 @@ Material:
     - _offsetSpeed: 0.1
     - _pixelation: 6
     m_Colors:
-    - _BaseColor: {r: 0.07843135, g: 0.24838893, b: 0.8862745, a: 1}
+    - _BaseColor: {r: 0.18289423, g: 0.2916061, b: 0.7075472, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HighlightsColor: {r: 0.058823526, g: 0.6611272, b: 0.94509804, a: 0}
+    - _HighlightsColor: {r: 0.31100032, g: 0.6801415, b: 0.8584906, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &2199443877332152353

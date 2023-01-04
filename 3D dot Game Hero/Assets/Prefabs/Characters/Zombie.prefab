@@ -658,6 +658,7 @@ GameObject:
   - component: {fileID: 6272831672846311400}
   - component: {fileID: 2487794067974272484}
   - component: {fileID: 7765368191956467152}
+  - component: {fileID: 6188839725305504982}
   m_Layer: 6
   m_Name: Zombie
   m_TagString: Zombie
@@ -843,11 +844,16 @@ MonoBehaviour:
     value: 10
   - weapon: 33
     value: 100
+  healingStats:
+  - weapon: 20
+    value: 10
+  isInmortal: 0
   zombieMov: {fileID: 5072185551581666535}
   animator: {fileID: 6617030023809101826}
   zombieCollider: {fileID: 7320515222127249657}
   disappearParticles: {fileID: 3023261532592782735, guid: e9d558bd4747daf4dabc5171e1e7f9db, type: 3}
   impactParticles: {fileID: 7197067429383718148, guid: dfb3b8cfbf8d7e245ad42331ab9c0927, type: 3}
+  manager: {fileID: 6188839725305504982}
 --- !u!114 &7765368191956467152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -863,6 +869,18 @@ MonoBehaviour:
   lootList:
   - {fileID: 11400000, guid: 7d5bd93eb168c8543a2a72681f21fa67, type: 2}
   - {fileID: 11400000, guid: 87679e6bb8de41c499bc7ecef6dc7eb9, type: 2}
+--- !u!114 &6188839725305504982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7860236232448223703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a42c4ac40807b47b219f820291e72f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1258083725041793641
 PrefabInstance:
   m_ObjectHideFlags: 0

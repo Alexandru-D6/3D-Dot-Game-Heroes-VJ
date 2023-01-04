@@ -34,7 +34,7 @@ public class DoorTriggerScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag.Equals(Tags.Player.ToString())) {
-            SceneManager.Instance.ChangeRoom(getDirection(), room);
+            SceneManagement.Instance.ChangeRoom(getDirection(), room);
 
             StartCoroutine(delayedPlayerPresence(delay));
         }
