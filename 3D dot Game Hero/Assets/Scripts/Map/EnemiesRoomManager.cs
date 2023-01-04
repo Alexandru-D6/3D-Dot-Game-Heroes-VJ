@@ -56,7 +56,7 @@ public class EnemiesRoomManager : MonoBehaviour
         if(enemiesaLive == 0)
         {
             active= false;
-            roomManager.setRoomCleared();
+            roomManager.roomSolved();
         }
     }
 

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2c7f45156b86e4c88bc6ee9b36219c, type: 3}
+  m_Name: ColumnsEndP3
+  m_EditorClassIdentifier: 
+  Enemies:
+  - prefab: {fileID: 2365715410574495233, guid: 138358cbb29c9dd45baadcc79bacc79b, type: 3}
+    position: {x: 89.505936, y: 0, z: 19.02765}
+  - prefab: {fileID: 2365715410574495233, guid: 138358cbb29c9dd45baadcc79bacc79b, type: 3}
+    position: {x: 89.505936, y: 0, z: 16.777643}
+  - prefab: {fileID: 2365715410574495233, guid: 138358cbb29c9dd45baadcc79bacc79b, type: 3}
+    position: {x: 89.505936, y: 0, z: 29.277693}
+  - prefab: {fileID: 2365715410574495233, guid: 138358cbb29c9dd45baadcc79bacc79b, type: 3}
+    position: {x: 89.505936, y: 0, z: 31.527702}
+  - prefab: {fileID: 2365715410574495233, guid: 138358cbb29c9dd45baadcc79bacc79b, type: 3}
+    position: {x: 85.50591, y: 0, z: 31.277699}
+  - prefab: {fileID: 2365715410574495233, guid: 138358cbb29c9dd45baadcc79bacc79b, type: 3}
+    position: {x: 85.50591, y: 0, z: 17.027643}
+  - prefab: {fileID: 2365715410574495233, guid: 138358cbb29c9dd45baadcc79bacc79b, type: 3}
+    position: {x: 93.75595, y: 0, z: 31.277699}
+  - prefab: {fileID: 2365715410574495233, guid: 138358cbb29c9dd45baadcc79bacc79b, type: 3}
+    position: {x: 93.50595, y: 0, z: 17.027643}
