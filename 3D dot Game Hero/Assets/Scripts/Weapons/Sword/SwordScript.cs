@@ -176,7 +176,7 @@ public class SwordScript : WeaponScript {
 
             case 1:
                 switchBlade(true);
-                rangeLimiter = 1.0f;
+                rangeLimiter = 0.95f;
                 break;
 
             case 2:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -131,6 +132,16 @@ public class PlayerManager : MonoBehaviour {
 
     public void GiveInmortality(float value) {
         playerHealth.GiveInmortality(value);
+    }
+
+    public void LockPlayer(bool value) {
+        playerInput.enabled = value;
+
+        if (value) playerAnimations.toIdle();
+    }
+
+    public void SetWeaponLevel(int value) {
+        playerWeaponManager.SetWeaponLevel(value);
     }
 
     #endregion

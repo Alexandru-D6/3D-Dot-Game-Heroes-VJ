@@ -5,15 +5,18 @@ using UnityEngine;
 public class DragonAnimationEventsHandler : MonoBehaviour {
 
     [SerializeField] private DragonLogic dragonLogic;
+    private bool disableFlamethrower = false;
+
+    public void DisableFlamethrower(bool value) {
+        disableFlamethrower = value;
+    }
 
     void OnFlamethrowerFinished() {
-        dragonLogic.OnFlamethrowerFinished();
-
+        if (!disableFlamethrower) dragonLogic.OnFlamethrowerFinished();
     }
 
     void OnFlamethrowerStarted() {
-        dragonLogic.OnFlamethrowerStarted();
-
+        if (!disableFlamethrower) dragonLogic.OnFlamethrowerStarted();
     }
 
     void OnFootKickFinished() {
