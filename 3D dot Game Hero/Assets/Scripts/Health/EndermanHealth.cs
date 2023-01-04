@@ -50,6 +50,7 @@ public class EndermanHealth : HealthScript {
         animator.SetBool("Attack", false);
         animator.Play("Idle");
         animator.SetTrigger("Dead");
+        SoundManager.Instance.PlayEnderDeath();
     }
 
     protected override void GetHit() {
@@ -59,6 +60,7 @@ public class EndermanHealth : HealthScript {
         endermanMov.enabled = false;
         animator.Play("Idle");
         animator.SetTrigger("Hit");
+        SoundManager.Instance.PlayEnderHit();
     }
 
     public void EndHitAnimation()

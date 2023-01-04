@@ -156,4 +156,8 @@ public class CreeperMov : MonoBehaviour
         agent.enabled = false;
 
     }
+
+    public void StartFuse() {
+        SoundManager.Instance.PlayCreeperFuse();
+    }
 }

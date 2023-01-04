@@ -254,6 +254,7 @@ public class PlayerInput : MonoBehaviour {
     public void DashButtons(InputAction.CallbackContext context) {
         if (canDash) {
             canDash = false;
+            SoundManager.Instance.PlayDashSound();
 
             rb.velocity += new Vector3(moveDirection.x * dashVelocities.x,
                                         0.0f,

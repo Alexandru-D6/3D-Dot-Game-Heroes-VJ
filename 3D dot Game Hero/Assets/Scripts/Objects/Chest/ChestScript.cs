@@ -32,6 +32,7 @@ public class ChestScript : MonoBehaviour {
     IEnumerator DelayedCloseChest(float time) {
         yield return new WaitForSeconds(time);
         chestAnimations.close();
+        SoundManager.Instance.PlayChestClose();
         StartCoroutine(DelayedDestroy(destroyDelay));
     }
 
@@ -80,6 +81,7 @@ public class ChestScript : MonoBehaviour {
         if (canOpen && isPlayerNear) {
             canOpen = false;
             chestAnimations.open();
+            SoundManager.Instance.PlayChestOpen();
             Debug.Log(chestProbabilities.RollAnItem());
             StartCoroutine(DelayedOpenButton(openDelay));
             StartCoroutine(DelayedCloseChest(closeChestDelay));

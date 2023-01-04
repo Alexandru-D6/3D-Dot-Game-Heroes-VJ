@@ -61,6 +61,7 @@ public class DoorScript : MonoBehaviour {
 #region Public Methods
 
     public void OpenDoor() {
+        SoundManager.Instance.PlayMinecraftDoor();
         doorAnimator.SetTrigger("Open");
     }
 

@@ -34,6 +34,8 @@ public class ZombieMov : MonoBehaviour
     void Update()
     {
         Comportamiento_Zombie();
+
+        if (Random.Range(0,500) < 10) SoundManager.Instance.PlayZombieSound();
     }
 
     public void Comportamiento_Zombie()

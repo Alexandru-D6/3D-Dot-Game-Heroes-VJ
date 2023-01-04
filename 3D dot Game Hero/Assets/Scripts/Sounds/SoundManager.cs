@@ -39,10 +39,14 @@ public class SoundManager : MonoBehaviour {
     [SerializeField] private AudioSource zombieDeath;
     [SerializeField] private AudioSource zombieHit;
     [SerializeField] private AudioSource zombieSound;
+    [SerializeField] private AudioSource chestOpen;
+    [SerializeField] private AudioSource chestClose;
+    [SerializeField] private AudioSource dashSound;
 
     public void PlayBowShoot() { bowShoot.Play(); }
     public void PlayCreeperDeath() { creeperDeath.Play(); }
     public void PlayCreeperFuse() { creeperFuse.Play(); }
+    public void StopCreeperFuse() { creeperFuse.Stop(); }
     public void PlayCreeperHit() { creeperHit.Play(); }
     public void PlayEnderDeath() { enderDeath.Play(); }
     public void PlayEnderHit() { enderHit.Play(); }
@@ -60,6 +64,9 @@ public class SoundManager : MonoBehaviour {
     public void PlayZombieDeath() { zombieDeath.Play(); }
     public void PlayZombieHit() { zombieHit.Play(); }
     public void PlayZombieSound() { zombieSound.Play(); }
+    public void PlayChestOpen() { chestOpen.Play(); }
+    public void PlayChestClose() { chestClose.Play(); }
+    public void PlayDashSound() { dashSound.Play(); }
 
 
     private bool walkingState = false;
