@@ -34,6 +34,10 @@ public class DragonManager : MonoBehaviour {
         return dead;
     }
 
+    public DragonAnimations GetAnimator() {
+        return animator;
+    }
+
     #endregion
 
     #region MonoBehaviour Methods

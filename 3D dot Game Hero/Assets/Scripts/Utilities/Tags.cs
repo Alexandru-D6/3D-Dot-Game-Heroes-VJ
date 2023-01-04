@@ -90,6 +90,7 @@ public enum ObstacleParts{
 
 public class TagsUtils {
     public static Tags GetTag(string name) {
+        if (name.Equals("Untagged")) return Tags.Uknown;
         return (Tags)System.Enum.Parse( typeof(Tags), name );
     }
 

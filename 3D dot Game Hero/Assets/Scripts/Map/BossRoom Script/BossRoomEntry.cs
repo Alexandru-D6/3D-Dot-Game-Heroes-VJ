@@ -8,6 +8,7 @@ public class BossRoomEntry : MonoBehaviour {
     [SerializeField] Vector3 CameraPosition;
 
     [SerializeField] List<GridScript> gridsInsideTheRoom;
+    [SerializeField] private BossRoomManager bossRoomManager;
 
     IEnumerator delayedGridDoorsRoutine(float time, bool state) {
         yield return new WaitForSeconds(time);
@@ -31,6 +32,7 @@ public class BossRoomEntry : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         playerCamera.GetComponent<CameraSmoothMovement>().MoveTo(CameraPosition);
         StartCoroutine(delayedGridDoorsRoutine(1.0f, false));
+        bossRoomManager.PlayerEntered();
     }
 
     private void Start() {
