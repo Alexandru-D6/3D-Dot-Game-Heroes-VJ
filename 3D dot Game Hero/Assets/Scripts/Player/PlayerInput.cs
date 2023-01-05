@@ -98,6 +98,7 @@ public class PlayerInput : MonoBehaviour {
         setTranslation();
         setRotation(moveDirection);
 
+        SoundManager.Instance.PlayPlayerWalking(moveDirection != Vector2.zero);
         animationManager.enableRunning(moveDirection != Vector2.zero);
     }
 
@@ -253,6 +254,7 @@ public class PlayerInput : MonoBehaviour {
     public void DashButtons(InputAction.CallbackContext context) {
         if (canDash) {
             canDash = false;
+            SoundManager.Instance.PlayDashSound();
 
             rb.velocity += new Vector3(moveDirection.x * dashVelocities.x,
                                         0.0f,

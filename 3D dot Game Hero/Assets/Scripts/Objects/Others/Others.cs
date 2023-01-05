@@ -17,7 +17,7 @@ public class Others : MonoBehaviour
                 Instantiate(destroyedParticles, transform.position, transform.rotation);
                 gameObject.SetActive(false);
                 gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
-                
+                SoundManager.Instance.PlayOthersVase();
             }
             
             

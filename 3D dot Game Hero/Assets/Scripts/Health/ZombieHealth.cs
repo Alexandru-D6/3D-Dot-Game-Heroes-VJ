@@ -48,6 +48,7 @@ public class ZombieHealth : HealthScript {
         animator.SetBool("Attack", false);
         animator.Play("Idle");
         animator.SetTrigger("Dead");
+        SoundManager.Instance.PlayZombieDeath();
     }
 
     protected override void GetHit() {
@@ -57,6 +58,7 @@ public class ZombieHealth : HealthScript {
         zombieMov.enabled = false;
         animator.Play("Idle");
         animator.SetTrigger("getHit");
+        SoundManager.Instance.PlayZombieHit();
     }
 
     public void EndHitAnimation()

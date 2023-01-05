@@ -95,7 +95,7 @@ MonoBehaviour:
   explotionParticles: {fileID: 1225702381336473600, guid: ff6aa4f52bb8e134b9f8d41b7ca5641d, type: 3}
   explotionCollider: {fileID: 4389701604972337258}
   attackDelay: 0.2
-  explotionDelay: 1.63
+  explotionDelay: 1
   bombSpawnRotation: {x: 90, y: 0, z: 0}
   throwVelocity: {x: 15, y: 5, z: 15}
 --- !u!114 &7273896127798119598

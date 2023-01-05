@@ -159,6 +159,8 @@ public class EndermanMov : MonoBehaviour
                     if (1 == ((int)Random.Range(0, 2)))
                     {
                         teleporting = true; 
+
+                        SoundManager.Instance.PlayEnderTeleport();
                     }
                 }
             }      

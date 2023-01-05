@@ -51,9 +51,12 @@ public class CreeperHealth : HealthScript {
         animator.SetBool("Explosion", false);
         animator.Play("Idle");
         animator.SetTrigger("Dead");
+        SoundManager.Instance.StopCreeperFuse();
+        SoundManager.Instance.PlayCreeperDeath();
     }
 
     protected override void GetHit() {
+        SoundManager.Instance.PlayCreeperHit();
        // creeperMov.Hitted();
        // creeperMov.enabled = false;
        // animator.Play("Idle");
