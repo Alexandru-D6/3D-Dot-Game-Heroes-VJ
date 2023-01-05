@@ -35,16 +35,17 @@ namespace Assets.Scripts.Map
             {
                 columns[i].transform.position = infocolumns.Enemies[i].position;
                 columns[i].GetComponent<ObsMangEnd>().isBlocked= false;
+            }
 
-
+            foreach(var x in detectors) {
+                x.GetComponent<Detector>().SetDetectedToFalse();
             }
         }
 
         public override void aButtonHaveBeenPressed()
         {
             numcolumnsOnPos++;
-            if(numcolumnsOnPos == detectors.Count)
-            solved();
+            if(numcolumnsOnPos == detectors.Count) solved();
         }
     }
 }

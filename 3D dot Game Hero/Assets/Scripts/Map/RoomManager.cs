@@ -41,13 +41,12 @@ public class RoomManager : MonoBehaviour {
             if (enemiesRoomManager != null) {
                 enemiesRoomManager.SpawnAllEnemies();
                 isRoomCleared = false;
+            }else {
+                isRoomCleared = true;
             }
-
-            isRoomCleared = isRoomCleared | isSpawnRoom;
         } else {
             if (enemiesRoomManager != null) {
                 enemiesRoomManager.DestroyAllEnemies();
-                isRoomCleared = false;
             }
 
             if (hasAPuzzle) puzzleManager.setUpPuzzle();
@@ -67,6 +66,10 @@ public class RoomManager : MonoBehaviour {
             if (hasAPuzzle) puzzleManager.setUpPuzzle();
         }
         UnlockGrids();
+    }
+
+    public bool IsPlayerInsideTheRoom() {
+        return isPlayerInsideTheRoom;
     }
 
     public void Start() {

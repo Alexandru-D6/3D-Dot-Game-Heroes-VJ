@@ -69,23 +69,26 @@ public class EnemiesRoomManager : MonoBehaviour
     {
         foreach(GameObject enemy in enemies)
         {
-            if(enemy.tag == Tags.Zombie.ToString())
-            {
-                enemy.GetComponent<ZombieHealth>().readyToDestroy();
+            if (enemy != null) {
+                if(enemy.tag == Tags.Zombie.ToString())
+                {
+                    enemy.GetComponent<ZombieHealth>().readyToDestroy();
+                }
+                else if (enemy.tag == Tags.Creeper.ToString())
+                {
+                    enemy.GetComponent<CreeperHealth>().readyToDestroy();
+                }
+                else if (enemy.tag == Tags.Enderman.ToString())
+                {
+                    enemy.GetComponent<EndermanHealth>().readyToDestroy();
+                }
+                else if (enemy.tag == Tags.Skeleton.ToString())
+                {
+                    enemy.GetComponent<SkeletonHealth>().readyToDestroy();
+                }
             }
-            else if (enemy.tag == Tags.Creeper.ToString())
-            {
-                enemy.GetComponent<CreeperHealth>().readyToDestroy();
-            }
-            else if (enemy.tag == Tags.Enderman.ToString())
-            {
-                enemy.GetComponent<EndermanHealth>().readyToDestroy();
-            }
-            else if (enemy.tag == Tags.Skeleton.ToString())
-            {
-                enemy.GetComponent<SkeletonHealth>().readyToDestroy();
-            }
-        }   
+        }
 
+        roomManager.setRoomCleared();
     }
 }

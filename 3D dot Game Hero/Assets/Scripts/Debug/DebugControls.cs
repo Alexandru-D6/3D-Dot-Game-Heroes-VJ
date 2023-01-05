@@ -13,6 +13,7 @@ public class DebugControls : MonoBehaviour {
 
     [SerializeField] private bool buttonAvailability;
     [SerializeField] private float buttonDelay;
+    List<Tags> availablesKeys = new List<Tags> { Tags.EnderKey, Tags.SkullKey };
 
     #region IEnumerators
 
@@ -27,21 +28,39 @@ public class DebugControls : MonoBehaviour {
     public void Key_1_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
+
+            EnemiesRoomManager[] components = GameObject.FindObjectsOfType<EnemiesRoomManager>();
+
+            foreach (EnemiesRoomManager x in components) {
+                if (x.gameObject.GetComponent<RoomManager>().IsPlayerInsideTheRoom()) x.DestroyAllEnemies();
+            }
         }
     }
     public void Key_2_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
+
+            RoomManager[] components = GameObject.FindObjectsOfType<RoomManager>();
+
+            foreach (RoomManager x in components) {
+                if (x.IsPlayerInsideTheRoom()) x.roomSolved();
+            }
         }
     }
     public void Key_3_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
+
+            int random = Random.Range(0,availablesKeys.Count);
+            PlayerManager.Instance.ReceiveItem(availablesKeys[random]);
+            availablesKeys.RemoveAt(random);
         }
     }
     public void Key_4_Pressed(InputAction.CallbackContext context) {
         if (buttonAvailability) {
             StartCoroutine(delayedButon(buttonDelay));
+
+            PlayerManager.Instance.ReceiveItem(Tags.BossKey);
         }
     }
     public void Key_5_Pressed(InputAction.CallbackContext context) {
