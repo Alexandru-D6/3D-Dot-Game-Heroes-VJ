@@ -1,2 +1,5 @@
-# Copia-barata-Zelda-VJ
- 
+# 3D Dot Game Heroes
+
+Developed by:
+    - Álvaro Rodríguez Rubio
+    - Alexandru Dumitru Maroz
