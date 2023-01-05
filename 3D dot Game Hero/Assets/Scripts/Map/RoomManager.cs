@@ -1,3 +1,4 @@
+using Assets.Scripts.Map;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,10 @@ public class RoomManager : MonoBehaviour {
     [SerializeField] private bool isSpawnRoom = false;
     [SerializeField] private EnemiesRoomManager enemiesRoomManager;
     [SerializeField] private VaseManager VaseManager;
+    [SerializeField] private bool hasAPuzzle;
+    [SerializeField] private bool isSolved;
+    [SerializeField] private PuzzleManager puzzleManager;
+    [SerializeField] private GameObject chest;
 
     #endregion
 
@@ -34,11 +39,17 @@ public class RoomManager : MonoBehaviour {
 
         if (isPlayerInsideTheRoom)
         {
-            if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();   
+            //if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();
+            
         }
         else
         {
+            isRoomCleared= false;
             if (enemiesRoomManager != null) enemiesRoomManager.DestroyAllEnemies();
+            if (hasAPuzzle)
+            {
+                puzzleManager.setUpPuzzle();
+            }
         }
     }
 
@@ -46,10 +57,15 @@ public class RoomManager : MonoBehaviour {
         gridsOpen = true;
         isRoomCleared = true;
         isPlayerInsideTheRoom = isSpawnRoom;
+        isSolved= false;
         if (isPlayerInsideTheRoom)
         {
-            if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();
+            //if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();
             if (VaseManager != null) VaseManager.EnableAllVases();
+            if(hasAPuzzle)
+            {
+                puzzleManager.setUpPuzzle();
+            }
         }
         UnlockGrids();
     }
@@ -65,7 +81,7 @@ public class RoomManager : MonoBehaviour {
         if (!gridsOpen && isRoomCleared && isPlayerInsideTheRoom) {
             gridsOpen = true;
             UnlockGrids();
-        }else if (gridsOpen && !isRoomCleared && isPlayerInsideTheRoom) {
+        }else if (gridsOpen && !isRoomCleared && isPlayerInsideTheRoom && !hasAPuzzle) {
             gridsOpen = false;
             LockGrids();
         }
@@ -81,6 +97,17 @@ public class RoomManager : MonoBehaviour {
 
     public void setRoomCleared()
     { isRoomCleared = true; }
+
+    public void roomSolved()
+    {
+        if (!isSolved) {
+            isSolved= true;
+            if (chest !=null){
+                chest.GetComponent<ChestScript>().RestoreChest(); 
+            }
+            isRoomCleared= true;
+        }
+    }
 
 
 }

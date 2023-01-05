@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2c7f45156b86e4c88bc6ee9b36219c, type: 3}
+  m_Name: ColumnsPuzzle1
+  m_EditorClassIdentifier: 
+  Enemies:
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -8.584724, y: 0, z: -4.0723457}
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -8.584724, y: 0, z: -1.8223362}
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -4.0847015, y: 0, z: -4.072346}
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -6.334709, y: 0, z: -1.8223362}
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -1.8346939, y: 0, z: -1.8223381}
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -1.8346939, y: 0, z: 0.42767143}
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -1.834696, y: 0, z: 2.6776829}
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -4.0846996, y: 0, z: 4.927691}
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -6.334712, y: 0, z: 0.42767143}
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -6.334709, y: 0, z: 2.677681}
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -8.584724, y: 0, z: 2.677681}
+  - prefab: {fileID: 2365715410574495233, guid: 6e792afe6882c544f91ceb2603c17b0d, type: 3}
+    position: {x: -8.584724, y: 0, z: 4.9276905}
