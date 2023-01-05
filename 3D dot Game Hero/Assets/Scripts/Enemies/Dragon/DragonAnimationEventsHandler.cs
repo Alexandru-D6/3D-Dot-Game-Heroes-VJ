@@ -12,11 +12,17 @@ public class DragonAnimationEventsHandler : MonoBehaviour {
     }
 
     void OnFlamethrowerFinished() {
-        if (!disableFlamethrower) dragonLogic.OnFlamethrowerFinished();
+        if (!disableFlamethrower) {
+            dragonLogic.OnFlamethrowerFinished();
+            SoundManager.Instance.StopDragonFlamethrower();
+        }
     }
 
     void OnFlamethrowerStarted() {
-        if (!disableFlamethrower) dragonLogic.OnFlamethrowerStarted();
+        if (!disableFlamethrower) {
+            dragonLogic.OnFlamethrowerStarted();
+            SoundManager.Instance.PlayDragonFlamethrower();
+        }
     }
 
     void OnFootKickFinished() {

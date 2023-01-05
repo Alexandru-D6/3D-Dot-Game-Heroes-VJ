@@ -84,6 +84,8 @@ public class SceneManagement : MonoBehaviour {
         foreach(PrefabSpawn x in prefabs) {
             Instantiate(x.prefab, x.location.position, Quaternion.Euler(x.location.rotation));
         }
+        SoundManager.Instance.PlayMinecraftMainTheme();
+
     }
 
     private void CleanScene() {

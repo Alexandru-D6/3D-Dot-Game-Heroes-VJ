@@ -60,6 +60,7 @@ public class SwordScript : WeaponScript {
         restoreAnim = false;
         emergencyStop = false;
         boxCollider.enabled = true;
+        SoundManager.Instance.PlayPlayerSword();
     }
 
     public override void Release() {

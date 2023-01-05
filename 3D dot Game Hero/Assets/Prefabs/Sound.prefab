@@ -103,6 +103,15 @@ MonoBehaviour:
   chestOpen: {fileID: 288085603976798560}
   chestClose: {fileID: 288085603976798559}
   dashSound: {fileID: 288085603976798561}
+  dragonFlamethrower: {fileID: 6534007549978689519}
+  dragonFly: {fileID: 7466710804943200911}
+  dragonRoar: {fileID: 5773472783354966347}
+  othersPadlock: {fileID: 7529679471467373116}
+  othersVase: {fileID: 8603695906547014901}
+  playerBoomerang: {fileID: 1792839278834661810}
+  playerSword: {fileID: 6397414204072246278}
+  minecraftMainTheme: {fileID: 7090586458778472985}
+  zeldaMainTheme: {fileID: 796815117256752673}
 --- !u!82 &288085603976798556
 AudioSource:
   m_ObjectHideFlags: 0

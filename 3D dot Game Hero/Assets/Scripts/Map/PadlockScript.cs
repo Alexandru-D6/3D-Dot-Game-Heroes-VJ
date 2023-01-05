@@ -23,6 +23,7 @@ public class PadlockScript : MonoBehaviour {
             padlockCamera.enabled = true;
 
             padlockAnimator.SetTrigger("Unlock");
+            SoundManager.Instance.PlayOthersPadlock();
         }
     }
 

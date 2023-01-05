@@ -35,6 +35,7 @@ public class DragonAnimations : AnimationManager {
         running = false;
         flying = true;
         animator.Play("Fly");
+        SoundManager.Instance.PlayDragonFly();
     }
 
     public void enableFlying(bool value) {
@@ -42,6 +43,9 @@ public class DragonAnimations : AnimationManager {
         flying = value;
         animator.SetBool("Walk", running);
         animator.SetBool("Fly", flying);
+
+        if (flying) SoundManager.Instance.PlayDragonFly();
+        else SoundManager.Instance.StopDragonFly();
     }
 
     public void Breath_Gs() {

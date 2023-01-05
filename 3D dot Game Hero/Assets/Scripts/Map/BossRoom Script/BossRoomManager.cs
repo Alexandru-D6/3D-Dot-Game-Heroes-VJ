@@ -28,6 +28,7 @@ public class BossRoomManager : MonoBehaviour {
     IEnumerator delayedRoarRoutine(float time) {
         yield return new WaitForSeconds(time);
         
+        SoundManager.Instance.PlayDragonRoar();
         dragonAnimator.Breath_Gs();
     }
 
@@ -46,6 +47,9 @@ public class BossRoomManager : MonoBehaviour {
 
         dragonAnimator.toIdle();
         dragonAnimator.enableFlying(true);
+
+        SoundManager.Instance.StopMinecraftMainTheme();
+        SoundManager.Instance.PlayZeldaMainTheme();
     }
 
     public void SpawnAnimation() {
