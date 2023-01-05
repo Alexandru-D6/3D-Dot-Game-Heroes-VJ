@@ -54,10 +54,10 @@ public class BossRoomManager : MonoBehaviour {
 
     public void SpawnAnimation() {
         if (startMovement) {
-            Vector3 direction = targetPosition - bossGameObject.position;
+            Vector3 direction = targetPosition - bossGameObject.localPosition;
             direction.Normalize();
 
-            if (Vector3.Distance(bossGameObject.position, targetPosition) < animationSpeed.x * Time.deltaTime) {
+            if (Vector3.Distance(bossGameObject.localPosition, targetPosition) < animationSpeed.x * Time.deltaTime) {
                 bossGameObject.localPosition = targetPosition;
                 startMovement = false;
                 BossRoar();
@@ -76,7 +76,7 @@ public class BossRoomManager : MonoBehaviour {
     }
 
     private void Start() {
-        bossGameObject.position = initBossPosition;
+        bossGameObject.localPosition = initBossPosition;
         bossGameObject.localEulerAngles = new Vector3(0.0f,180.0f,0.0f);
         dragonAnimator = bossGameObject.GetComponent<DragonAnimations>();
         dragonAnimationEventsHandler = bossGameObject.GetComponentInChildren<DragonAnimationEventsHandler>();
