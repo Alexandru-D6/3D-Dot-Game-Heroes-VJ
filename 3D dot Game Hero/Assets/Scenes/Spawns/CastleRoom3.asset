@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemies:
   - prefab: {fileID: 7860236232448223703, guid: cce88f849cef3d745b3778dd55d1ff1d, type: 3}
-    position: {x: -20.83, y: 0, z: 27.28}
+    position: {x: -20.83, y: 0.1, z: 27.28}
   - prefab: {fileID: 7860236232448223703, guid: cce88f849cef3d745b3778dd55d1ff1d, type: 3}
-    position: {x: -25.19, y: 0, z: 21.11}
+    position: {x: -25.19, y: 0.1, z: 21.11}
   - prefab: {fileID: 7860236232448223703, guid: cce88f849cef3d745b3778dd55d1ff1d, type: 3}
-    position: {x: -42, y: 0, z: 17.7}
+    position: {x: -42, y: 0.1, z: 17.7}
   - prefab: {fileID: 1042913704747044189, guid: 1740ed699dff8124a9b3ece1dad61ef0, type: 3}
-    position: {x: -43.7, y: 0, z: 47.7}
+    position: {x: -43.7, y: 0.1, z: 16}

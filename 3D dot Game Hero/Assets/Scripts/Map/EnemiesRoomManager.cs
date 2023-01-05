@@ -20,6 +20,7 @@ public class EnemiesRoomManager : MonoBehaviour
         active= false;
         enemiesaLive = 0;
     }
+
     private void Update()
     {
         
@@ -40,6 +41,10 @@ public class EnemiesRoomManager : MonoBehaviour
         }
     }
 
+    public bool HasEnemies() {
+        return enemiesaLive > 0;
+    }
+
     IEnumerator SpawnAnEnemy(SpawnInfo enemy)
     {
         yield return new WaitForSeconds(1f);
@@ -56,7 +61,7 @@ public class EnemiesRoomManager : MonoBehaviour
         if(enemiesaLive == 0)
         {
             active= false;
-            roomManager.roomSolved();
+            roomManager.setRoomCleared();
         }
     }
 

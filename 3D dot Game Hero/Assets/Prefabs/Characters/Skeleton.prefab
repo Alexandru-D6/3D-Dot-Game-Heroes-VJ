@@ -406,7 +406,7 @@ MonoBehaviour:
   animationManager: {fileID: 8512067872458765317}
   weaponsPrefabs:
   - {fileID: 5882221031244944910, guid: 72573004f758d7f42a5ea74db98ebf2e, type: 3}
-  weaponsAvailable: 0c000000
+  weaponsAvailable: 0d000000
   inventory: []
   hand: {fileID: 7117536230953724243}
   currentWeapon: {fileID: 0}
@@ -441,8 +441,6 @@ MonoBehaviour:
     value: 10
   - weapon: 25
     value: 10
-  - weapon: 33
-    value: 100
   healingStats:
   - weapon: 20
     value: 10

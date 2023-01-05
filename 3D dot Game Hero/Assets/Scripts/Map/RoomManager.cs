@@ -37,35 +37,34 @@ public class RoomManager : MonoBehaviour {
     public void ChangePlayerPresence() {
         isPlayerInsideTheRoom = !isPlayerInsideTheRoom;
 
-        if (isPlayerInsideTheRoom)
-        {
-            //if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();
-            
-        }
-        else
-        {
-            isRoomCleared= false;
-            if (enemiesRoomManager != null) enemiesRoomManager.DestroyAllEnemies();
-            if (hasAPuzzle)
-            {
-                puzzleManager.setUpPuzzle();
+        if (isPlayerInsideTheRoom) {
+            if (enemiesRoomManager != null) {
+                enemiesRoomManager.SpawnAllEnemies();
+                isRoomCleared = false;
             }
+
+            isRoomCleared = isRoomCleared | isSpawnRoom;
+        } else {
+            if (enemiesRoomManager != null) {
+                enemiesRoomManager.DestroyAllEnemies();
+                isRoomCleared = false;
+            }
+
+            if (hasAPuzzle) puzzleManager.setUpPuzzle();
         }
     }
 
     public void InitRoom() {
         gridsOpen = true;
-        isRoomCleared = true;
+        isRoomCleared = isSpawnRoom;
         isPlayerInsideTheRoom = isSpawnRoom;
         isSolved= false;
+
         if (isPlayerInsideTheRoom)
         {
-            //if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();
+            if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();
             if (VaseManager != null) VaseManager.EnableAllVases();
-            if(hasAPuzzle)
-            {
-                puzzleManager.setUpPuzzle();
-            }
+            if (hasAPuzzle) puzzleManager.setUpPuzzle();
         }
         UnlockGrids();
     }
@@ -95,19 +94,20 @@ public class RoomManager : MonoBehaviour {
         InitRoom();
     }
 
-    public void setRoomCleared()
-    { isRoomCleared = true; }
-
-    public void roomSolved()
-    {
-        if (!isSolved) {
-            isSolved= true;
-            if (chest !=null){
-                chest.GetComponent<ChestScript>().RestoreChest(); 
-            }
-            isRoomCleared= true;
+    public void setRoomCleared() { 
+        isRoomCleared = true;
+        if (chest != null && !hasAPuzzle && !isSolved) {
+            chest.GetComponent<ChestScript>().RestoreChest();
+            isSolved = true;
         }
     }
 
+    public void roomSolved() {
+        if (!isSolved) {
+            isSolved= true;
+            if (chest != null) chest.GetComponent<ChestScript>().RestoreChest(); 
+            isRoomCleared= true;
+        }
+    }
 
 }
