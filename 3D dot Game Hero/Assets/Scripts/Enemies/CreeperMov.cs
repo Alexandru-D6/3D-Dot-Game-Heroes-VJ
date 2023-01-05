@@ -1,3 +1,4 @@
+using Assets.Scripts.Enemies;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -133,13 +134,19 @@ public class CreeperMov : MonoBehaviour
         
     }
 
+    IEnumerator delayedDestroyRoutine(float time) {
+        yield return new WaitForSeconds(time);
+
+        Destroy(this.gameObject);
+    }
     public void Final_Anim()
     {
         anim.SetBool("Explosion", false);
         exploding = false;
         explosion.SetActive(true);
         Instantiate(particle, transform.position, transform.rotation);
-        Destroy(this.gameObject);
+        StartCoroutine(delayedDestroyRoutine(0.5f));
+        gameObject.GetComponent<Manager>().isDead();
     }
 
 
