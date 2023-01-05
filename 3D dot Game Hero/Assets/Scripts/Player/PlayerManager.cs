@@ -98,6 +98,8 @@ public class PlayerManager : MonoBehaviour {
         dead = true;
 
         SoundManager.Instance.PlayRespawnSong(true);
+        SoundManager.Instance.StopMinecraftMainTheme();
+        SoundManager.Instance.StopZeldaMainTheme();
         StartCoroutine(DelayedReset(deathDelay));
     }
 
