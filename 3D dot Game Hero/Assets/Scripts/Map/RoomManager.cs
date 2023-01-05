@@ -102,7 +102,9 @@ public class RoomManager : MonoBehaviour {
     {
         if (!isSolved) {
             isSolved= true;
-            if (chest !=null){ }
+            if (chest !=null){
+                chest.GetComponent<ChestScript>().RestoreChest(); 
+            }
             isRoomCleared= true;
         }
     }

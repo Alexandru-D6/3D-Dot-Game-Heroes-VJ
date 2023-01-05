@@ -10,7 +10,7 @@ public class ObsMangEnd : MonoBehaviour {
     public bool isPushing = false;
 
     public void PushedFrom(ObstacleParts name) {
-        if(!isBlocked)
+        if (!isBlocked) { 
         switch (name) {
             case ObstacleParts.Front:
 
@@ -29,6 +29,7 @@ public class ObsMangEnd : MonoBehaviour {
                 rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | rotationConstraint;
                 break;
         }
+            }
   
         
     }
