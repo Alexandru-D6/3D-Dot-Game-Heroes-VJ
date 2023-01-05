@@ -750,7 +750,7 @@ MonoBehaviour:
   rb: {fileID: 1603912058711816172}
   fireDelay: 0.05
   numericButtonDelay: 0.15
-  dashDelay: 0.5
+  dashDelay: 2
   moveDirection: {x: 0, y: 0}
   moveSpeed: {x: 7, y: 7}
   currentRotation: 4
@@ -815,33 +815,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b8b11a6c4d47c4d8c4f16014243e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 32
-  maxHealth: 32
+  currentHealth: 50
+  maxHealth: 50
   damageStats:
-  - weapon: 8
-    value: 10
-  - weapon: 10
-    value: 10
-  - weapon: 5
-    value: 10
-  - weapon: 7
-    value: 10
-  - weapon: 7
-    value: 10
-  - weapon: 1
-    value: 10
-  - weapon: 10
-    value: 10
   - weapon: 25
     value: 10
-  - weapon: 26
+  - weapon: 32
     value: 10
+  - weapon: 10
+    value: 10
+  - weapon: 26
+    value: 20
   - weapon: 35
-    value: 100
+    value: 20
   - weapon: 36
     value: 20
   - weapon: 37
-    value: 10
+    value: 20
   - weapon: 38
     value: 10
   healingStats:
@@ -899,7 +889,7 @@ MonoBehaviour:
   - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
   - {fileID: 5882221031244944910, guid: 72573004f758d7f42a5ea74db98ebf2e, type: 3}
   - {fileID: 4224969745914348796, guid: 892efaefcd99cc542992bc5a2f951c5a, type: 3}
-  weaponsAvailable: 0700000001000000050000000d0000000b000000
+  weaponsAvailable: 0700000001000000
   inventory: []
   hand: {fileID: 2497701129174850206}
   currentWeapon: {fileID: 0}

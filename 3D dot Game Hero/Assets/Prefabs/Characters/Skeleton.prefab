@@ -422,28 +422,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f939a0110597b3440894789824b960d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 28
-  maxHealth: 28
+  currentHealth: 40
+  maxHealth: 40
   damageStats:
-  - weapon: 9
-    value: 10
-  - weapon: 10
+  - weapon: 1
     value: 10
   - weapon: 5
     value: 10
   - weapon: 7
+    value: 1
+  - weapon: 10
     value: 10
-  - weapon: 20
-    value: 10
-  - weapon: 1
-    value: 10
-  - weapon: 24
-    value: 10
-  - weapon: 25
-    value: 10
-  healingStats:
-  - weapon: 20
-    value: 10
+  - weapon: 35
+    value: 30
+  - weapon: 26
+    value: 30
+  healingStats: []
   isInmortal: 0
   skeletonMov: {fileID: 2863543732854746102}
   animator: {fileID: 2717843879363128259}

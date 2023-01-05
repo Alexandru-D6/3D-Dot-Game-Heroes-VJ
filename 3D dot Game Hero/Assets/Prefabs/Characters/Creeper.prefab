@@ -400,32 +400,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e940db2584b484c877263c218db76f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 16
-  maxHealth: 66
+  currentHealth: 30
+  maxHealth: 30
   damageStats:
-  - weapon: 9
-    value: 10
-  - weapon: 10
+  - weapon: 1
     value: 10
   - weapon: 5
     value: 10
   - weapon: 7
+    value: 1
+  - weapon: 10
     value: 10
-  - weapon: 20
-    value: 10
-  - weapon: 1
-    value: 10
-  - weapon: 24
-    value: 10
-  - weapon: 31
-    value: 10
-  - weapon: 25
-    value: 10
-  - weapon: 33
-    value: 100
-  healingStats:
-  - weapon: 20
-    value: 10
+  - weapon: 35
+    value: 30
+  healingStats: []
   isInmortal: 0
   creeperMov: {fileID: 9145281206296212765}
   animator: {fileID: 1899036119892083257}

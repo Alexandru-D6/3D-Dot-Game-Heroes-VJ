@@ -823,27 +823,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af36df63a6d4a847bae4848ea404779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 34
-  maxHealth: 34
+  currentHealth: 40
+  maxHealth: 40
   damageStats:
-  - weapon: 9
-    value: 10
-  - weapon: 10
+  - weapon: 1
     value: 10
   - weapon: 5
     value: 10
   - weapon: 7
+    value: 1
+  - weapon: 10
     value: 10
-  - weapon: 20
-    value: 10
-  - weapon: 1
-    value: 10
-  - weapon: 24
-    value: 10
-  - weapon: 25
-    value: 10
-  - weapon: 33
-    value: 100
+  - weapon: 35
+    value: 30
+  - weapon: 26
+    value: 30
   healingStats:
   - weapon: 20
     value: 10
