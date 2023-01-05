@@ -94,6 +94,8 @@ public class SceneManagement : MonoBehaviour {
             
             foreach(var i in objs) Destroy(i);
         }
+
+        SceneObjectsManager.Instance.DestroyObjects();
     }
 
     #endregion

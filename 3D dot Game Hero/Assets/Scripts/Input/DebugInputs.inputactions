@@ -101,8 +101,30 @@
                 },
                 {
                     "name": "",
-                    "id": "f87b4b2e-ff23-487b-8113-ca1f6388bce9",
+                    "id": "aef6e8bc-2c5b-485e-8eee-fe7414875d44",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d5281033-f9c3-4ec6-97f1-6c4667bda102",
                     "path": "<Keyboard>/numpad2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f87b4b2e-ff23-487b-8113-ca1f6388bce9",
+                    "path": "<Keyboard>/m",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -112,8 +134,19 @@
                 },
                 {
                     "name": "",
-                    "id": "fea794d2-fbbe-4feb-af69-058bd6f67e54",
+                    "id": "4bc74937-bce5-4e69-abe2-d50f20412048",
                     "path": "<Keyboard>/numpad3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fea794d2-fbbe-4feb-af69-058bd6f67e54",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -123,8 +156,19 @@
                 },
                 {
                     "name": "",
-                    "id": "d9f09838-69dc-4bfb-b21a-8e4eee225913",
+                    "id": "2e8f826d-5691-4061-b401-82a2209a3761",
                     "path": "<Keyboard>/numpad4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9f09838-69dc-4bfb-b21a-8e4eee225913",
+                    "path": "<Keyboard>/b",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",

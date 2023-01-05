@@ -37,44 +37,44 @@ public class RoomManager : MonoBehaviour {
     public void ChangePlayerPresence() {
         isPlayerInsideTheRoom = !isPlayerInsideTheRoom;
 
-        if (isPlayerInsideTheRoom)
-        {
-            //if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();
-            
-        }
-        else
-        {
-            isRoomCleared= false;
-            if (enemiesRoomManager != null) enemiesRoomManager.DestroyAllEnemies();
-            if (hasAPuzzle)
-            {
-                puzzleManager.setUpPuzzle();
+        if (isPlayerInsideTheRoom) {
+            if (enemiesRoomManager != null) {
+                enemiesRoomManager.SpawnAllEnemies();
+                isRoomCleared = false;
+            }else {
+                isRoomCleared = true;
             }
+        } else {
+            if (enemiesRoomManager != null) {
+                enemiesRoomManager.DestroyAllEnemies();
+            }
+
+            SceneObjectsManager.Instance.DestroyObjects();
+
+            if (hasAPuzzle) puzzleManager.setUpPuzzle();
         }
     }
 
-    public void InitRoom() {
+    public void InitRoom(bool value) {
         gridsOpen = true;
-        isRoomCleared = true;
+        isRoomCleared = isSpawnRoom;
         isPlayerInsideTheRoom = isSpawnRoom;
         isSolved= false;
-        if (isPlayerInsideTheRoom)
-        {
-            //if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();
-            if (VaseManager != null) VaseManager.EnableAllVases();
-            if(hasAPuzzle)
-            {
-                puzzleManager.setUpPuzzle();
-            }
-        }
+
+        if (enemiesRoomManager != null && !value) enemiesRoomManager.DestroyAllEnemies();
+        if (VaseManager != null) VaseManager.EnableAllVases();
+        if (hasAPuzzle) puzzleManager.setUpPuzzle();
+
         UnlockGrids();
     }
 
-    public void Start() {
-        InitRoom();
-        SceneEvents.onPlayerDeath += OnPlayerDeath;
-        if (VaseManager != null) VaseManager.SpawnAllVases();
+    public bool IsPlayerInsideTheRoom() {
+        return isPlayerInsideTheRoom;
+    }
 
+    public void Start() {
+        InitRoom(true);
+        SceneEvents.onPlayerDeath += OnPlayerDeath;
     }
 
     void Update() {
@@ -92,22 +92,23 @@ public class RoomManager : MonoBehaviour {
     }
 
     public void OnPlayerDeath() {
-        InitRoom();
+        InitRoom(false);
     }
 
-    public void setRoomCleared()
-    { isRoomCleared = true; }
-
-    public void roomSolved()
-    {
-        if (!isSolved) {
-            isSolved= true;
-            if (chest !=null){
-                chest.GetComponent<ChestScript>().RestoreChest(); 
-            }
-            isRoomCleared= true;
+    public void setRoomCleared() { 
+        isRoomCleared = true;
+        if (chest != null && !hasAPuzzle && !isSolved) {
+            chest.GetComponent<ChestScript>().RestoreChest(true);
+            isSolved = true;
         }
     }
 
+    public void roomSolved() {
+        if (!isSolved) {
+            isSolved= true;
+            if (chest != null) chest.GetComponent<ChestScript>().RestoreChest(true); 
+            isRoomCleared= true;
+        }
+    }
 
 }

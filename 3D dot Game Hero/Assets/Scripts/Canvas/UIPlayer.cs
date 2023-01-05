@@ -42,14 +42,31 @@ public class UIPlayer : MonoBehaviour
         else Instance = this;
     }
 
-    
-    private void Start()
-    {
+    private void Start() {
+        SceneEvents.onPlayerDeath += OnPlayerDeath;
         numCoins = 0;
         isGodMode= false;
         numBombs = 0;
         fillHearts();
         inventory[0].GetComponent<Image>().sprite = SlotInvSword;
+        TextNumCoins.SetActive(false);
+        TextNumBombs.SetActive(false);
+    }
+
+    private void OnDestroy() {
+        SceneEvents.onPlayerDeath -= OnPlayerDeath;
+    }
+
+    public void OnPlayerDeath() {
+        numCoins = 0;
+        isGodMode= false;
+        numBombs = 0;
+        fillHearts();
+        inventory[0].GetComponent<Image>().sprite = SlotInvSword;
+
+        for (int i = 1; i < inventory.Count; ++i) {
+            inventory[i].GetComponent<Image>().sprite = SlotInvEmpty;
+        }
         TextNumCoins.SetActive(false);
         TextNumBombs.SetActive(false);
     }

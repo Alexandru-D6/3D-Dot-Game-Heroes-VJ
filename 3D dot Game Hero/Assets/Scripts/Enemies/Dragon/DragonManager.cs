@@ -10,6 +10,7 @@ public class DragonManager : MonoBehaviour {
     [Header("References")]
     [SerializeField] private DragonAnimations animator;
     [SerializeField] private DragonLogic dragonLogic;
+    [SerializeField] private DragonHealth dragonHealth;
 
     [Header("States")]
     private bool dead = false;
@@ -51,14 +52,24 @@ public class DragonManager : MonoBehaviour {
 
     #endregion
 
-    #region MonoBehaviour Methods
-
-    void Start() {
+    private void RestoreDragon() {
+        dragonHealth.RestoreHealth();
     }
 
-    void Update() {
+    private void Start() {
+        RestoreDragon();
+        SceneEvents.onPlayerDeath += OnPlayerDeath;
     }
 
-    #endregion
+    private void Update() {
+    }
+
+    private void OnDestroy() {
+        SceneEvents.onPlayerDeath -= OnPlayerDeath;
+    }
+
+    public void OnPlayerDeath() {
+        RestoreDragon();
+    }
 
 }

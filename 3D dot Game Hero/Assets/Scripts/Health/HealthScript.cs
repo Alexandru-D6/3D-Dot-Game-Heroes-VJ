@@ -123,6 +123,10 @@ public abstract class HealthScript : MonoBehaviour {
         return isInmortal;
     }
 
+    public void RestoreHealth() {
+        currentHealth = maxHealth;
+    }
+
     #endregion
 
     #region MonoBehaviour

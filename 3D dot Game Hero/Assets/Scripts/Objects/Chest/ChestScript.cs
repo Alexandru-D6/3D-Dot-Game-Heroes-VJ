@@ -49,11 +49,13 @@ public class ChestScript : MonoBehaviour {
         isPlayerNear = value;
     }
 
-    public void RestoreChest() {
-        canOpen = true;
-        chestAnimations.toIdle();
+    public void RestoreChest(bool value) {
+        gameObject.SetActive(value);
 
-        gameObject.SetActive(true);
+        if (value) {
+            canOpen = true;
+            chestAnimations.toIdle();
+        }
     }
 
 #endregion
@@ -61,7 +63,6 @@ public class ChestScript : MonoBehaviour {
 #region MonoBehaviour Methods
 
     void Start() {
-        canOpen = true;
         SceneEvents.onPlayerDeath += OnPlayerDeath;
     }
 
@@ -89,7 +90,7 @@ public class ChestScript : MonoBehaviour {
     }
 
     public void OnPlayerDeath() {
-        RestoreChest();
+        RestoreChest(false);
     }
 
     #endregion

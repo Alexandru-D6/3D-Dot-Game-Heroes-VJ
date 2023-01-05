@@ -6,7 +6,12 @@ namespace Assets.Scripts.Map
     public class Detector : MonoBehaviour
     {
         [SerializeField] private Puzzle3Manager puzzle3;
+        private bool wasDetected = false;
         // Use this for initialization
+
+        public void SetDetectedToFalse() {
+            wasDetected = false;
+        }
 
         private void OnTriggerStay(Collider other)
         {
@@ -14,7 +19,10 @@ namespace Assets.Scripts.Map
             {
                 other.gameObject.transform.position = transform.position;
                 other.gameObject.GetComponent<ObsMangEnd>().Blocked();
-                puzzle3.aButtonHaveBeenPressed();
+                if (!wasDetected) {
+                    puzzle3.aButtonHaveBeenPressed();
+                    wasDetected = true;
+                }
             }
         }
     }

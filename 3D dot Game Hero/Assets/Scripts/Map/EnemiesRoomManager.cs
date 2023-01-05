@@ -20,6 +20,7 @@ public class EnemiesRoomManager : MonoBehaviour
         active= false;
         enemiesaLive = 0;
     }
+
     private void Update()
     {
         
@@ -28,16 +29,22 @@ public class EnemiesRoomManager : MonoBehaviour
     public void SpawnAllEnemies()
     {
         active= true;
+        enemiesaLive = 0;
         if(spawns != null) foreach (var x in spawns.Enemies)
         {
             Instantiate(spawnParticles, x.position, Quaternion.identity, transform);
             StartCoroutine(SpawnAnEnemy(x));
             enemiesaLive++;
         }
-        if(enemiesaLive == 0)
+
+        if(enemiesaLive <= 0)
         {
             roomManager.setRoomCleared();
         }
+    }
+
+    public bool HasEnemies() {
+        return enemiesaLive > 0;
     }
 
     IEnumerator SpawnAnEnemy(SpawnInfo enemy)
@@ -53,10 +60,10 @@ public class EnemiesRoomManager : MonoBehaviour
     {
         enemiesaLive--;
         enemies.Remove(enemy);
-        if(enemiesaLive == 0)
+        if(enemiesaLive <= 0)
         {
             active= false;
-            roomManager.roomSolved();
+            roomManager.setRoomCleared();
         }
     }
 
@@ -64,23 +71,27 @@ public class EnemiesRoomManager : MonoBehaviour
     {
         foreach(GameObject enemy in enemies)
         {
-            if(enemy.tag == Tags.Zombie.ToString())
-            {
-                enemy.GetComponent<ZombieHealth>().readyToDestroy();
+            if (enemy != null) {
+                if(enemy.tag == Tags.Zombie.ToString())
+                {
+                    enemy.GetComponent<ZombieHealth>().readyToDestroy();
+                }
+                else if (enemy.tag == Tags.Creeper.ToString())
+                {
+                    enemy.GetComponent<CreeperHealth>().readyToDestroy();
+                }
+                else if (enemy.tag == Tags.Enderman.ToString())
+                {
+                    enemy.GetComponent<EndermanHealth>().readyToDestroy();
+                }
+                else if (enemy.tag == Tags.Skeleton.ToString())
+                {
+                    enemy.GetComponent<SkeletonHealth>().readyToDestroy();
+                }
             }
-            else if (enemy.tag == Tags.Creeper.ToString())
-            {
-                enemy.GetComponent<CreeperHealth>().readyToDestroy();
-            }
-            else if (enemy.tag == Tags.Enderman.ToString())
-            {
-                enemy.GetComponent<EndermanHealth>().readyToDestroy();
-            }
-            else if (enemy.tag == Tags.Skeleton.ToString())
-            {
-                enemy.GetComponent<SkeletonHealth>().readyToDestroy();
-            }
-        }   
+        }
 
+        enemiesaLive = 0;
+        roomManager.setRoomCleared();
     }
 }

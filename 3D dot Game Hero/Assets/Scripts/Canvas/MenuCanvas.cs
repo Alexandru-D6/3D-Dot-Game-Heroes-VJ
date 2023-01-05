@@ -16,6 +16,12 @@ public class MenuCanvas : MonoBehaviour {
         SceneManager.LoadScene("Credits");
 
     }
+
+    public void Instructions()
+    {
+        SceneManager.LoadScene("Instructions");
+
+    }
     public void Exit()
     {
         Application.Quit();
