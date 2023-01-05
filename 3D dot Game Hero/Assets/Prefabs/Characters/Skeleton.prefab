@@ -372,9 +372,9 @@ MonoBehaviour:
   stay_Attacking: 0
   target: {fileID: 0}
   agent: {fileID: 9114311415864239006}
-  attack_distance: 5
-  distance_search_again: 9
-  vision_radio: 10
+  attack_distance: 8
+  distance_search_again: 12
+  vision_radio: 14
   checkerWall: {fileID: 7615001068383725081}
   SkeletonWeaponManager: {fileID: 1148804310382969382}
   runningparticles: {fileID: 6951839713475921428}

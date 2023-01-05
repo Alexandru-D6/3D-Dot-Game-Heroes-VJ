@@ -200,19 +200,14 @@ public class UIPlayer : MonoBehaviour
         else hearts[damage].GetComponent<Image>().sprite = RedHeart;
     }
     public void isPlayerGodMode(bool isOnGodMode) {
-        if (isOnGodMode)
-        {
+        if (isOnGodMode) {
             isGodMode = true;
-            for (int i = damage; i < hearts.Count; i++)
-            {
+            for (int i = damage; i < hearts.Count; i++) {
                 hearts[i].GetComponent<Image>().sprite = GoldenHeart;
             }
-        }
-        else
-        {
-            isGodMode = false;  
-            for(int i = damage; i< hearts.Count;i++ )
-            {
+        } else {
+            isGodMode = false;
+            for (int i = damage; i < hearts.Count; i++) {
                 hearts[i].GetComponent<Image>().sprite = RedHeart;
             }
         }

@@ -74,6 +74,7 @@ public class RoomManager : MonoBehaviour {
 
     public void Start() {
         InitRoom(true);
+        if (VaseManager != null) VaseManager.SpawnAllVases();
         SceneEvents.onPlayerDeath += OnPlayerDeath;
     }
 

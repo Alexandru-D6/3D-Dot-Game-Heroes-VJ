@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent(typeof(PlayerWeaponManager))]
 [RequireComponent(typeof(PlayerInput))]
@@ -131,6 +132,7 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public void SwitchGodMode() {
+        UIPlayer.Instance.isPlayerGodMode(!playerHealth.IsInmortal());
         playerHealth.GiveInmortality(0.0f, !playerHealth.IsInmortal());
     }
 

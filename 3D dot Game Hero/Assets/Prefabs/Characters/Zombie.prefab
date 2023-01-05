@@ -757,7 +757,7 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 6272831672846311400}
   attack_distance: 1.5
-  vision_radio: 7
+  vision_radio: 10
   runningparticles: {fileID: 400356158224931454}
 --- !u!54 &6513263311219216870
 Rigidbody:

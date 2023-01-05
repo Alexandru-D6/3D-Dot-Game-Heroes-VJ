@@ -337,7 +337,7 @@ MonoBehaviour:
   agent: {fileID: 8522983224055534990}
   initial_explode_distance: 1
   after_exploding_distance: 5
-  vision_radio: 8
+  vision_radio: 12
   particle: {fileID: 4651895679804869464, guid: 6d939d2f3dcbc7d4d87e11aba1043c04, type: 3}
   runningparticles: {fileID: 905847004489365855}
 --- !u!114 &9014655281847286226

@@ -10,6 +10,12 @@ public class ShieldScript : MonoBehaviour {
     [SerializeField] private Collider _collider;
     private bool isHolding = false;
 
+    private void OnParticleCollision(GameObject other) {
+        if (other.gameObject.layer == (int)Layers.Weapon) {
+            PlayerManager.Instance.GiveInmortality(0.5f);
+        }
+    }
+
     private void OnTriggerEnter(Collider other) {
         Tags tag = TagsUtils.GetTag(other.tag);
 

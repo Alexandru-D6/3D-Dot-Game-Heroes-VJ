@@ -22,6 +22,9 @@ public class DragonAnimations : AnimationManager {
         running = true;
         flying = false;
         animator.Play("Walk");
+
+        SoundManager.Instance.StopDragonFly();
+        SoundManager.Instance.StopDragonFlamethrower();
     }
 
     public override void enableRunning(bool value) {
@@ -29,6 +32,9 @@ public class DragonAnimations : AnimationManager {
         flying = false;
         animator.SetBool("Walk", running);
         animator.SetBool("Fly", flying);
+
+        SoundManager.Instance.StopDragonFly();
+        if (running) SoundManager.Instance.StopDragonFlamethrower();
     }
 
     public void forceFlying() {
