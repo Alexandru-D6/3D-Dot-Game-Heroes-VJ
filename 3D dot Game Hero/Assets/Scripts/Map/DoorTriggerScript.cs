@@ -15,7 +15,7 @@ public class DoorTriggerScript : MonoBehaviour {
     IEnumerator delayedPlayerPresence(float time) {
         yield return new WaitForSeconds(time);
 
-        roomManager.ChangePlayerPresence();
+        if (roomManager != null) roomManager.ChangePlayerPresence();
     }
 
     private Vector2 getDirection() {

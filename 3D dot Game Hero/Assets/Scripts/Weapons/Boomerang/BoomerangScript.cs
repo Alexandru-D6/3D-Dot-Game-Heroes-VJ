@@ -69,6 +69,8 @@ public class BoomerangScript : WeaponScript {
         boomerangAnimations.enableFlying(true);
 
         LockAxis(true, true, true);
+
+        SoundManager.Instance.PlayPlayerBoomerang();
     }
 
     public override void Release() {

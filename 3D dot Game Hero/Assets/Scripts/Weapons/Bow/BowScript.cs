@@ -57,6 +57,7 @@ public class BowScript : WeaponScript {
         armed = false;
         arrow.GetComponent<ArrowScript>().ShootArrow(transform.worldToLocalMatrix.MultiplyVector(transform.forward));
         arrow = null;
+        SoundManager.Instance.PlayBowShoot();
     }
 
     private void spawnArrow() {

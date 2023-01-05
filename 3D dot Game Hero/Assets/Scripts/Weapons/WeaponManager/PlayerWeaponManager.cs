@@ -38,6 +38,12 @@ public class PlayerWeaponManager : WeaponManager {
         ((PlayerAnimations)animationManager).AttackReturn();
     }
 
+    public void SetWeaponLevel(int value) {
+        if (currentWeapon != null) {
+            currentWeapon.SetLevelOfPower(value);
+        }
+    }
+
 #endregion
 
 #region MonoBehaviour Methods

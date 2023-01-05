@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -61,11 +62,11 @@ public class PlayerManager : MonoBehaviour {
                 inventorySystem.AddToAvailables(tag);
                 break;
             case OutputInventory.Consumables:
-                playerHealth.IncreaseHealth(playerHealth.GetHealing(tag));
-                UIPlayer.Instance.playerHealed();
+                if (playerHealth.IncreaseHealth(playerHealth.GetHealing(tag)))
+                    UIPlayer.Instance.playerHealed();
                 break;
         }
-        
+        SoundManager.Instance.PlayMinecraftDropBlock();
     }
 
     public bool IsItemAvailable(Tags tag) {
@@ -79,6 +80,7 @@ public class PlayerManager : MonoBehaviour {
     public void GetHit() {
         UIPlayer.Instance.playerDamaged();
         playerAnimations.toHit();
+        SoundManager.Instance.PlayPlayerHit();
     }
 
     IEnumerator DelayedReset(float time) {
@@ -95,6 +97,9 @@ public class PlayerManager : MonoBehaviour {
         playerInput.enabled = false;
         dead = true;
 
+        SoundManager.Instance.PlayRespawnSong(true);
+        SoundManager.Instance.StopMinecraftMainTheme();
+        SoundManager.Instance.StopZeldaMainTheme();
         StartCoroutine(DelayedReset(deathDelay));
     }
 
@@ -131,6 +136,16 @@ public class PlayerManager : MonoBehaviour {
 
     public void GiveInmortality(float value) {
         playerHealth.GiveInmortality(value);
+    }
+
+    public void LockPlayer(bool value) {
+        playerInput.enabled = value;
+
+        if (value) playerAnimations.toIdle();
+    }
+
+    public void SetWeaponLevel(int value) {
+        playerWeaponManager.SetWeaponLevel(value);
     }
 
     #endregion

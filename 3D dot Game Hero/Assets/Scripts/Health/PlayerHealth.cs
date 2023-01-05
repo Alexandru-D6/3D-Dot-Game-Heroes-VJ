@@ -72,6 +72,10 @@ public class PlayerHealth : HealthScript {
         if (currentHealth <= 0 && !playerManager.isDead()) {
             Die();
         }
+
+        if (currentHealth >= maxHealth * 0.8) PlayerManager.Instance.SetWeaponLevel(2);
+        else if (currentHealth >= maxHealth * 0.4) PlayerManager.Instance.SetWeaponLevel(1);
+        else PlayerManager.Instance.SetWeaponLevel(0);
     }
 
     #endregion

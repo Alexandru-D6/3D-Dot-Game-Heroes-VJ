@@ -55,7 +55,7 @@ public class RoomManager : MonoBehaviour {
 
     public void InitRoom() {
         gridsOpen = true;
-        isRoomCleared = false;
+        isRoomCleared = true;
         isPlayerInsideTheRoom = isSpawnRoom;
         isSolved= false;
         if (isPlayerInsideTheRoom)

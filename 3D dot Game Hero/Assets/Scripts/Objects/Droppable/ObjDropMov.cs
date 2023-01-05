@@ -11,9 +11,8 @@ public class ObjDropMov : MonoBehaviour
     [SerializeField] float weight;
     [SerializeField] float freq;
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+        SoundManager.Instance.PlayMinecraftDropBlock();
     }
 
     // Update is called once per frame

@@ -730,7 +730,7 @@ MonoBehaviour:
   playerCollider: {fileID: 6925475127036339142}
   playerRigidBody: {fileID: 1603912058711816172}
   playerAutomaticMovement: {fileID: 8800294357765895709}
-  deathDelay: 2
+  deathDelay: 15.2
   dragonThrowback: {x: 15, y: 5, z: 0}
 --- !u!114 &4816398731180999629
 MonoBehaviour:
@@ -815,10 +815,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b8b11a6c4d47c4d8c4f16014243e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 29
+  currentHealth: 32
   maxHealth: 32
   damageStats:
-  - weapon: 9
+  - weapon: 8
     value: 10
   - weapon: 10
     value: 10
@@ -826,26 +826,26 @@ MonoBehaviour:
     value: 10
   - weapon: 7
     value: 10
-  - weapon: 20
+  - weapon: 7
     value: 10
   - weapon: 1
     value: 10
-  - weapon: 24
-    value: 10
-  - weapon: 31
+  - weapon: 10
     value: 10
   - weapon: 25
     value: 10
-  - weapon: 33
-    value: 100
-  - weapon: 34
-    value: 20
-  - weapon: 35
+  - weapon: 26
     value: 10
+  - weapon: 35
+    value: 100
   - weapon: 36
+    value: 20
+  - weapon: 37
+    value: 10
+  - weapon: 38
     value: 10
   healingStats:
-  - weapon: 19
+  - weapon: 20
     value: 10
   isInmortal: 0
   playerManager: {fileID: 8215279082758402672}
@@ -899,7 +899,7 @@ MonoBehaviour:
   - {fileID: 639913805845899478, guid: dc5e2b87f158e53499e530cf7bcb1ea2, type: 3}
   - {fileID: 5882221031244944910, guid: 72573004f758d7f42a5ea74db98ebf2e, type: 3}
   - {fileID: 4224969745914348796, guid: 892efaefcd99cc542992bc5a2f951c5a, type: 3}
-  weaponsAvailable: 0700000001000000050000000c0000000a000000
+  weaponsAvailable: 0700000001000000050000000d0000000b000000
   inventory: []
   hand: {fileID: 2497701129174850206}
   currentWeapon: {fileID: 0}

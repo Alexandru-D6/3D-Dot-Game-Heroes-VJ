@@ -52,6 +52,7 @@ public class SkeletonHealth : HealthScript {
         animator.SetBool("Shoot",false);
         animator.Play("Idle");
         animator.SetTrigger("Dead");
+        SoundManager.Instance.PlaySkeletonDeath();
     }
 
     protected override void GetHit() {
@@ -61,6 +62,7 @@ public class SkeletonHealth : HealthScript {
         skeletonMov.enabled = false;
         animator.Play("Idle");
         animator.SetTrigger("Hit");
+        SoundManager.Instance.PlaySkeletonHit();
     }
 
     public void EndHitAnimation()

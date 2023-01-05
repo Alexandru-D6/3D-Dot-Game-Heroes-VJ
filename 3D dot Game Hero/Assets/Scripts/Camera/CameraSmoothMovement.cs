@@ -6,7 +6,7 @@ public class CameraSmoothMovement : MonoBehaviour {
     #region Parameters
 
     [Header("Config")]
-    [SerializeField] private Vector2 moveSpeed;
+    [SerializeField] private Vector3 moveSpeed;
     [SerializeField] private Vector3 targetPosition;
     [SerializeField] private bool startMovement;
 
@@ -17,7 +17,6 @@ public class CameraSmoothMovement : MonoBehaviour {
     private void movementRoutine() {
         if (startMovement) {
             Vector3 direction = targetPosition - transform.position;
-            direction.y = 0.0f;
             direction.Normalize();
 
             if (Vector3.Distance(transform.position, targetPosition) < moveSpeed.x * Time.deltaTime) {
@@ -26,7 +25,7 @@ public class CameraSmoothMovement : MonoBehaviour {
                 return;
             }
 
-            transform.Translate(new Vector3(direction.x * moveSpeed.x, 0.0f, direction.z * moveSpeed.y) * Time.deltaTime, Space.World);
+            transform.Translate(new Vector3(direction.x * moveSpeed.x, direction.y * moveSpeed.y, direction.z * moveSpeed.y) * Time.deltaTime, Space.World);
         }
     }
 
@@ -34,7 +33,7 @@ public class CameraSmoothMovement : MonoBehaviour {
 
     #region Public Methods
 
-    public void MoveTo(Vector4 target) {
+    public void MoveTo(Vector3 target) {
         targetPosition = target;
         startMovement = true;
     }
