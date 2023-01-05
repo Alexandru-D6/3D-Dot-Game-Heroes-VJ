@@ -58,7 +58,7 @@ public class BossRoomManager : MonoBehaviour {
             direction.Normalize();
 
             if (Vector3.Distance(bossGameObject.position, targetPosition) < animationSpeed.x * Time.deltaTime) {
-                bossGameObject.position = targetPosition;
+                bossGameObject.localPosition = targetPosition;
                 startMovement = false;
                 BossRoar();
                 return;
