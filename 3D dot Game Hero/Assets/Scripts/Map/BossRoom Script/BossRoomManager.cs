@@ -1,3 +1,4 @@
+using Assets.Scripts.Map;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -75,14 +76,27 @@ public class BossRoomManager : MonoBehaviour {
         StartCoroutine(delayedStartBattleRoutine(4.0f));
     }
 
-    private void Start() {
+    public void InitRoom() {
         bossGameObject.localPosition = initBossPosition;
         bossGameObject.localEulerAngles = new Vector3(0.0f,180.0f,0.0f);
         dragonAnimator = bossGameObject.GetComponent<DragonAnimations>();
         dragonAnimationEventsHandler = bossGameObject.GetComponentInChildren<DragonAnimationEventsHandler>();
     }
 
+    private void Start() {
+        InitRoom();
+        SceneEvents.onPlayerDeath += OnPlayerDeath;
+    }
+
     private void Update() {
         if (enableSpawn) SpawnAnimation();
+    }
+
+    private void OnDestroy() {
+        SceneEvents.onPlayerDeath -= OnPlayerDeath;
+    }
+
+    public void OnPlayerDeath() {
+        InitRoom();
     }
 }

@@ -9,7 +9,7 @@ public class DragonLogic : MonoBehaviour {
 
     [Header("References")]
     [SerializeField] private DragonAnimations animator;
-    [SerializeField] private GameObject player;
+    //[SerializeField] private GameObject player;
 
     [Header("Paths configuration")]
     [SerializeField] private List<PathCreator> pathsFollowers;
@@ -22,10 +22,10 @@ public class DragonLogic : MonoBehaviour {
     [Header("Other")]
     [SerializeField] private float rotationSpeed = 3.0f;
 
-    [Header("Follow Player")]
-    [SerializeField] private float followPlayerDuration = 20.0f;
-    private Vector3 followDestination;
-    private bool canFollowPlayer = true;
+    //[Header("Follow Player")]
+    //[SerializeField] private float followPlayerDuration = 20.0f;
+    //private Vector3 followDestination;
+    //private bool canFollowPlayer = true;
 
     [Header("States")]
     private bool isFollowingPath = true;
@@ -94,7 +94,7 @@ public class DragonLogic : MonoBehaviour {
         isFollowingPlayer = false;
         isFollowingPath = true;
 
-        if (!canFollowPlayer) StartCoroutine(delayedNextPlayerFollowerRoutine(followPlayerDuration * 2.0f));
+        //if (!canFollowPlayer) StartCoroutine(delayedNextPlayerFollowerRoutine(followPlayerDuration * 2.0f));
 
         distanceTravelled = currentPathFollower.path.GetClosestDistanceAlongPath(transform.position);
 
@@ -108,7 +108,7 @@ public class DragonLogic : MonoBehaviour {
         isFollowingPlayer = false;
         isFollowingPath = true;
 
-        StartCoroutine(delayedNextPlayerFollowerRoutine(followPlayerDuration * 2.0f));
+        //StartCoroutine(delayedNextPlayerFollowerRoutine(followPlayerDuration * 2.0f));
 
         distanceTravelled = currentPathFollower.path.GetClosestDistanceAlongPath(transform.position);
     }
@@ -116,7 +116,7 @@ public class DragonLogic : MonoBehaviour {
     IEnumerator delayedNextPlayerFollowerRoutine(float time) {
         yield return new WaitForSeconds(time);
 
-        canFollowPlayer = true;
+        //canFollowPlayer = true;
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -230,20 +230,20 @@ public class DragonLogic : MonoBehaviour {
         canFootKick = false;
     }
 
-    private void PlayerFollowRoutine() {
-        followDestination = player.transform.position;
+    //private void PlayerFollowRoutine() {
+    //    followDestination = player.transform.position;
 
-        Vector3 dir = (followDestination - transform.position).normalized;
+    //    Vector3 dir = (followDestination - transform.position).normalized;
 
-        transform.Translate(dir * speed * Time.deltaTime, Space.World);
+    //    transform.Translate(dir * speed * Time.deltaTime, Space.World);
 
-        Vector2 tmp = new Vector2(dir.x, dir.z);
-        Vector2 tmpForward = new Vector2(transform.forward.x, transform.forward.z);
-        LookAt(Vector2.SignedAngle(tmp, tmpForward));
-    }
+    //    Vector2 tmp = new Vector2(dir.x, dir.z);
+    //    Vector2 tmpForward = new Vector2(transform.forward.x, transform.forward.z);
+    //    LookAt(Vector2.SignedAngle(tmp, tmpForward));
+    //}
 
     void Start() {
-        player = GameObject.FindGameObjectWithTag(Tags.Player.ToString());
+        //player = GameObject.FindGameObjectWithTag(Tags.Player.ToString());
         currentPathFollower = pathsFollowers[0];
 
         if (currentPathFollower != null) {
@@ -260,14 +260,14 @@ public class DragonLogic : MonoBehaviour {
         if (isFlying || flamethrower) LookAt(180.0f);
         if (flamethrower) FlamethrowerAttack();
         if (isAttacking) AttackRoutine();
-        if (isFollowingPlayer) PlayerFollowRoutine();
+        //if (isFollowingPlayer) PlayerFollowRoutine();
 
-        /*if (!isFollowingPlayer && canFollowPlayer  && isFollowingPath && Random.Range(0,100) < followPlayerProbability) {
-            isFollowingPlayer = true;
-            isFollowingPath = false;
-            canFollowPlayer = false;
-            StartCoroutine(delayedPlayerFollowerDisableRoutine(followPlayerDuration));
-        }*/
+        //if (!isFollowingPlayer && canFollowPlayer  && isFollowingPath && Random.Range(0,100) < followPlayerProbability) {
+        //    isFollowingPlayer = true;
+        //    isFollowingPath = false;
+        //    canFollowPlayer = false;
+        //    StartCoroutine(delayedPlayerFollowerDisableRoutine(followPlayerDuration));
+        //}
     }
 
     void OnPathChanged() {

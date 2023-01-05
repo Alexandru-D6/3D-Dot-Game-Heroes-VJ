@@ -28,7 +28,7 @@ public class LootBag : MonoBehaviour
         LootObj obj = GetDroopedItem();
         if(obj != null)
         {
-            Instantiate(obj.prefav, pos, Quaternion.identity);
+            Instantiate(obj.prefav, pos, Quaternion.identity, SceneObjectsManager.Instance.transform);
         }
     }
 }

@@ -49,22 +49,22 @@ public class RoomManager : MonoBehaviour {
                 enemiesRoomManager.DestroyAllEnemies();
             }
 
+            SceneObjectsManager.Instance.DestroyObjects();
+
             if (hasAPuzzle) puzzleManager.setUpPuzzle();
         }
     }
 
-    public void InitRoom() {
+    public void InitRoom(bool value) {
         gridsOpen = true;
         isRoomCleared = isSpawnRoom;
         isPlayerInsideTheRoom = isSpawnRoom;
         isSolved= false;
 
-        if (isPlayerInsideTheRoom)
-        {
-            if (enemiesRoomManager != null) enemiesRoomManager.SpawnAllEnemies();
-            if (VaseManager != null) VaseManager.EnableAllVases();
-            if (hasAPuzzle) puzzleManager.setUpPuzzle();
-        }
+        if (enemiesRoomManager != null && !value) enemiesRoomManager.DestroyAllEnemies();
+        if (VaseManager != null) VaseManager.EnableAllVases();
+        if (hasAPuzzle) puzzleManager.setUpPuzzle();
+
         UnlockGrids();
     }
 
@@ -73,10 +73,8 @@ public class RoomManager : MonoBehaviour {
     }
 
     public void Start() {
-        InitRoom();
+        InitRoom(true);
         SceneEvents.onPlayerDeath += OnPlayerDeath;
-        if (VaseManager != null) VaseManager.SpawnAllVases();
-
     }
 
     void Update() {
@@ -94,13 +92,13 @@ public class RoomManager : MonoBehaviour {
     }
 
     public void OnPlayerDeath() {
-        InitRoom();
+        InitRoom(false);
     }
 
     public void setRoomCleared() { 
         isRoomCleared = true;
         if (chest != null && !hasAPuzzle && !isSolved) {
-            chest.GetComponent<ChestScript>().RestoreChest();
+            chest.GetComponent<ChestScript>().RestoreChest(true);
             isSolved = true;
         }
     }
@@ -108,7 +106,7 @@ public class RoomManager : MonoBehaviour {
     public void roomSolved() {
         if (!isSolved) {
             isSolved= true;
-            if (chest != null) chest.GetComponent<ChestScript>().RestoreChest(); 
+            if (chest != null) chest.GetComponent<ChestScript>().RestoreChest(true); 
             isRoomCleared= true;
         }
     }
