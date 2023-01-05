@@ -32,7 +32,7 @@ public class BoomerangScript : WeaponScript {
 
     private void OnTriggerEnter(Collider other) {
 
-        if (other.tag.Equals("Wall")) {
+        if (other.tag.Equals("Wall") && Vector3.Distance(originalPosition, transform.position) > 1.0f) {
             isReturning = true;
         }else if (other.tag.Equals("Player") && isReturning) {
             boomerangAnimations.enableFlying(false);

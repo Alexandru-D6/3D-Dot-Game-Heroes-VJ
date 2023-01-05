@@ -29,13 +29,15 @@ public class EnemiesRoomManager : MonoBehaviour
     public void SpawnAllEnemies()
     {
         active= true;
+        enemiesaLive = 0;
         if(spawns != null) foreach (var x in spawns.Enemies)
         {
             Instantiate(spawnParticles, x.position, Quaternion.identity, transform);
             StartCoroutine(SpawnAnEnemy(x));
             enemiesaLive++;
         }
-        if(enemiesaLive == 0)
+
+        if(enemiesaLive <= 0)
         {
             roomManager.setRoomCleared();
         }
@@ -58,7 +60,7 @@ public class EnemiesRoomManager : MonoBehaviour
     {
         enemiesaLive--;
         enemies.Remove(enemy);
-        if(enemiesaLive == 0)
+        if(enemiesaLive <= 0)
         {
             active= false;
             roomManager.setRoomCleared();
@@ -89,6 +91,7 @@ public class EnemiesRoomManager : MonoBehaviour
             }
         }
 
+        enemiesaLive = 0;
         roomManager.setRoomCleared();
     }
 }
